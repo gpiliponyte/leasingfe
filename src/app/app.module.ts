@@ -7,18 +7,22 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { LeasingFormComponent } from './leasing-form/leasing-form.component';
 
 
 @NgModule(<NgModule>{
   declarations: [
-    AppComponent
+    AppComponent,
+    LeasingFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
