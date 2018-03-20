@@ -2,40 +2,59 @@
   <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-horizontal">
       <div class="form-group">
         <label for="customerType" class="control-label col-xs-4">Customer type:</label> 
-        <div class="col-xs-4">
-          <label class="radio-inline">
-            <input name="customerType" [(ngModel)]="customerType" value="Business" type="radio">
-                  Business
-          </label>
-          <label class="radio-inline">
-            <input name="customerType" [(ngModel)]="customerType" value="Private" type="radio">
-                  Private
+        <div class="col-xs-4" >
+          <label class="radio-inline" *ngFor="let customerType of customerTypes">
+            <input 
+            type="radio"
+            name="customerType"
+            required
+            ngModel
+            [value]="customerType">
+            {{customerType}}
           </label>
         </div>
       </div>
       <div class="form-group">
         <label for="assetType" class="control-label col-xs-4">Asset type:</label> 
         <div class="col-xs-8">
-          <label class="radio-inline">
-            <input name="assetType" [(ngModel)]="assetType" value="New" type="radio">
-                  New
-          </label>
-          <label class="radio-inline">
-            <input name="assetType" [(ngModel)]="assetType" value="Old" type="radio">
-                  Old
-          </label>
+            <label class="radio-inline" *ngFor="let assetType of assetTypes">
+                <input 
+                type="radio"
+                name="assetType"
+                required
+                ngModel
+                [value]="assetType">
+                {{assetType}}
+              </label>
         </div>
       </div>
       <div class="form-group">
         <label for="make" class="control-label col-xs-4">Make:</label> 
         <div class="col-xs-2">
-          <select id="make" name="make" required="required" class="select form-control"></select>
+          <select 
+          [(ngModel)]="selectedBrand" 
+          (ngModelChange)="getCarModelsByBrand($event)" 
+          id="make" 
+          name="make" 
+          required 
+          class="select form-control">
+              <option selected="" value="" selected disabled hidden>Choose make</option>
+              <option *ngFor="let make of makes" [value]="make">{{make}}</option>
+          </select>
         </div>
       </div>
       <div class="form-group">
         <label for="model" class="control-label col-xs-4">Model:</label> 
         <div class="col-xs-2">
-          <select id="model" name="model" required="required" class="select form-control"></select>
+          <select 
+          [(ngModel)]="selectedModel" 
+          id="model" 
+          name="model" 
+          required 
+          class="select form-control">
+              <option value="" selected disabled hidden>Choose model</option>
+              <option *ngFor="let model of modelsBySelectedBrand" [value]="model">{{model}}</option>
+          </select>
         </div>
       </div>
       <div class="form-group">
@@ -44,71 +63,126 @@
           <input
           id="year"
           name="year"
-          required="required"
+          required
           class="form-control"
           type="text"
-          ngModel>
+          ngModel
+          #year="ngModel">
         </div>
+        <!-- <span class="help-block" *ngIf="!year.valid && year.touched">Please enter valid value</span> -->
       </div>
       <div class="form-group">
         <label for="enginePower" class="control-label col-xs-4">Engine power (kW):</label> 
         <div class="col-xs-2">
-          <input id="enginePower" name="enginePower" required="required" class="form-control" type="text">
+          <input 
+          id="enginePower" 
+          name="enginePower" 
+          required 
+          class="form-control" 
+          type="text"
+          ngModel
+          #enginePower="ngModel">
         </div>
       </div>
       <div class="form-group">
         <label for="assetPrice" class="control-label col-xs-4">Asset price (€):</label> 
         <div class="col-xs-2">
-          <input id="assetPrice" name="assetPrice" class="form-control" required="required" type="text">
+          <input 
+          id="assetPrice" 
+          name="assetPrice" 
+          class="form-control" 
+          required
+          type="text"
+          ngModel
+          #assetPrice="ngModel">
         </div>
       </div>
       <div class="form-group">
         <label for="advancePaymentPercentage" class="control-label col-xs-4">Advance payment percentage:</label> 
         <div class="col-xs-2">
-          <input id="advancePaymentPercentage" name="advancePaymentPercentage" class="form-control" required="required" type="text">
+          <input 
+          id="advancePaymentPercentage" 
+          name="advancePaymentPercentage" 
+          class="form-control" 
+          required 
+          type="text"
+          ngModel
+          #advancePaymentPercentage="ngModel">
         </div>
       </div>
       <div class="form-group">
         <label for="advancePaymentAmount" class="control-label col-xs-4">Advance payment amount(€):</label> 
         <div class="col-xs-2">
-          <input id="advancePaymentAmount" name="advancePaymentAmount" required="required" class="form-control" type="text">
+          <input 
+          id="advancePaymentAmount" 
+          name="advancePaymentAmount" 
+          required 
+          class="form-control" 
+          type="text"
+          ngModel
+          #assetPrice="ngModel">
         </div>
       </div>
       <div class="form-group">
-        <label for="text" class="control-label col-xs-4">Slider</label> 
+        <label for="text" class="control-label col-xs-4">Lease period:</label> 
         <div class="col-xs-2">
-          <input id="text" name="text" class="form-control" type="text">
+          <input 
+          id="text" 
+          name="leasePeriod" 
+          class="form-control" 
+          type="text"
+          ngModel
+          #leasePeriod="ngModel">
         </div>
       </div>
       <div class="form-group">
         <label for="margin" class="control-label col-xs-4">Margin (%):</label> 
         <div class="col-xs-2">
-          <input id="margin" name="margin" class="form-control" required="required" type="text">
+          <input 
+          id="margin" 
+          name="margin" 
+          class="form-control" 
+          required 
+          type="text"
+          ngModel
+          #margin="ngModel">
         </div>
       </div>
       <div class="form-group">
         <label for="contractFee" class="control-label col-xs-4">Contract fee (€):</label> 
         <div class="col-xs-2">
-          <input id="contractFee" name="contractFee" class="form-control" required="required" type="text">
+          <input 
+          id="contractFee" 
+          name="contractFee" 
+          class="form-control" 
+          readonly 
+          type="text"
+          [ngModel]="defaultContractFee">
         </div>
       </div>
       <div class="form-group">
         <label for="paymentDate" class="control-label col-xs-4">Payment date:</label> 
         <div class="col-xs-8">
-          <label class="radio-inline">
-            <input name="paymentDate" [(ngModel)]="paymentDate" value="15" type="radio">
-                  15
-          </label>
-          <label class="radio-inline">
-            <input name="paymentDate" [(ngModel)]="paymentDate" value="30" type="radio">
-                  30
-          </label>
+            <label class="radio-inline" *ngFor="let paymentDate of paymentDates">
+                <input 
+                type="radio"
+                name="paymentDate"
+                required
+                ngModel
+                [value]="paymentDate">
+                {{paymentDate}}
+              </label>
         </div>
       </div> 
       <div class="form-group row">
         <div class="col-xs-offset-4 col-xs-8">
-          <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+          <button
+          name="submit" 
+          type="submit" 
+          class="btn btn-primary"
+          [disabled]="!f.valid">Submit</button>
         </div>
       </div>
     </form>
   </div>
+  
