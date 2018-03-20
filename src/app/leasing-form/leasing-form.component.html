@@ -1,7 +1,8 @@
-  <form class="form-horizontal">
+  <div class="container">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-horizontal">
       <div class="form-group">
         <label for="customerType" class="control-label col-xs-4">Customer type:</label> 
-        <div class="col-xs-8">
+        <div class="col-xs-4">
           <label class="radio-inline">
             <input name="customerType" [(ngModel)]="customerType" value="Business" type="radio">
                   Business
@@ -27,61 +28,67 @@
       </div>
       <div class="form-group">
         <label for="make" class="control-label col-xs-4">Make:</label> 
-        <div class="col-xs-8">
+        <div class="col-xs-2">
           <select id="make" name="make" required="required" class="select form-control"></select>
         </div>
       </div>
       <div class="form-group">
         <label for="model" class="control-label col-xs-4">Model:</label> 
-        <div class="col-xs-8">
+        <div class="col-xs-2">
           <select id="model" name="model" required="required" class="select form-control"></select>
         </div>
       </div>
       <div class="form-group">
         <label for="year" class="control-label col-xs-4">Year:</label> 
-        <div class="col-xs-8">
-          <input id="year" name="year" required="required" class="form-control" type="text">
+        <div class="col-xs-2">
+          <input
+          id="year"
+          name="year"
+          required="required"
+          class="form-control"
+          type="text"
+          ngModel>
         </div>
       </div>
       <div class="form-group">
         <label for="enginePower" class="control-label col-xs-4">Engine power (kW):</label> 
-        <div class="col-xs-8">
+        <div class="col-xs-2">
           <input id="enginePower" name="enginePower" required="required" class="form-control" type="text">
         </div>
       </div>
       <div class="form-group">
-        <label for="assetPrice" class="control-label col-xs-4">Asset price:</label> 
-        <div class="col-xs-8">
+        <label for="assetPrice" class="control-label col-xs-4">Asset price (€):</label> 
+        <div class="col-xs-2">
           <input id="assetPrice" name="assetPrice" class="form-control" required="required" type="text">
         </div>
       </div>
       <div class="form-group">
         <label for="advancePaymentPercentage" class="control-label col-xs-4">Advance payment percentage:</label> 
-        <div class="col-xs-8">
+        <div class="col-xs-2">
           <input id="advancePaymentPercentage" name="advancePaymentPercentage" class="form-control" required="required" type="text">
         </div>
       </div>
       <div class="form-group">
-        <label for="advancePaymentAmount" class="control-label col-xs-4">Advance payment amount:</label> 
-        <div class="col-xs-8">
+        <label for="advancePaymentAmount" class="control-label col-xs-4">Advance payment amount(€):</label> 
+        <div class="col-xs-2">
           <input id="advancePaymentAmount" name="advancePaymentAmount" required="required" class="form-control" type="text">
         </div>
       </div>
       <div class="form-group">
         <label for="text" class="control-label col-xs-4">Slider</label> 
-        <div class="col-xs-8">
+        <div class="col-xs-2">
           <input id="text" name="text" class="form-control" type="text">
         </div>
       </div>
       <div class="form-group">
         <label for="margin" class="control-label col-xs-4">Margin (%):</label> 
-        <div class="col-xs-8">
+        <div class="col-xs-2">
           <input id="margin" name="margin" class="form-control" required="required" type="text">
         </div>
       </div>
       <div class="form-group">
-        <label for="contractFee" class="control-label col-xs-4">Contract fee:</label> 
-        <div class="col-xs-8">
+        <label for="contractFee" class="control-label col-xs-4">Contract fee (€):</label> 
+        <div class="col-xs-2">
           <input id="contractFee" name="contractFee" class="form-control" required="required" type="text">
         </div>
       </div>
@@ -104,13 +111,4 @@
         </div>
       </div>
     </form>
-  
-
-
-
-{{test}}
-
-
-<h1>{{paymentDate}}</h1>
-<h1>{{customerType}}</h1>
-<h1>{{assetType}}</h1>
+  </div>
