@@ -27,8 +27,8 @@ export class LeasingFormComponent implements OnInit {
   selectedBrand: string = "";
   selectedModel: string= "";
   showForm = true;
-  showFormSummary = true;
-  showOK = true;
+  showFormSummary = false;
+  showOK = false;
 
   listVehicle;
 
@@ -59,8 +59,20 @@ export class LeasingFormComponent implements OnInit {
     }})
   }
 
+  goBackToForm(){
+    this.showFormSummary = false;
+    this.showForm = true;
+  }
+
+  submit(){
+    this.showFormSummary = false;
+    this.showOK = true;
+  }
+
   onSubmit(form: NgForm){
     console.log(form);
+    this.showForm = false;
+    this.showFormSummary = true;
   }
 
 }
