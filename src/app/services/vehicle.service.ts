@@ -23,7 +23,7 @@ export class VehicleService {
 
   getAllVehicleInfo() {
     return this.http
-    .get('http://localhost:8080/vehicles')
+    .get('https://leasingbe.herokuapp.com/vehicles')
     .toPromise();
   }
 
