@@ -26,6 +26,9 @@ export class LeasingFormComponent implements OnInit {
   modelsBySelectedBrand;
   selectedBrand: string = "";
   selectedModel: string= "";
+  showForm = true;
+  showFormSummary = true;
+  showOK = true;
 
   listVehicle;
 
