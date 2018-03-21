@@ -1,4 +1,4 @@
-  <div class="container">
+  <div class="container" id="form">
   <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-horizontal">
       <div class="form-group">
         <label for="customerType" class="control-label col-xs-4">Customer type:</label> 
@@ -53,31 +53,31 @@
           required="required"
           class="form-control"
           type="text"
-          ngModel>
+          [(ngModel)]="year">
         </div>
       </div>
       <div class="form-group">
         <label for="enginePower" class="control-label col-xs-4">Engine power (kW):</label> 
         <div class="col-xs-2">
-          <input id="enginePower" name="enginePower" required="required" class="form-control" type="text">
+          <input id="enginePower" [(ngModel)]="enginePower" name="enginePower" required="required" class="form-control" type="text">
         </div>
       </div>
       <div class="form-group">
         <label for="assetPrice" class="control-label col-xs-4">Asset price (€):</label> 
         <div class="col-xs-2">
-          <input id="assetPrice" name="assetPrice" class="form-control" required="required" type="text">
+          <input id="assetPrice" [(ngModel)]="assetPrice" name="assetPrice" class="form-control" required="required" type="text">
         </div>
       </div>
       <div class="form-group">
         <label for="advancePaymentPercentage" class="control-label col-xs-4">Advance payment percentage:</label> 
         <div class="col-xs-2">
-          <input id="advancePaymentPercentage" name="advancePaymentPercentage" class="form-control" required="required" type="text">
+          <input id="advancePaymentPercentage" [(ngModel)]="enginePower" name="advancePaymentPercentage" class="form-control" required="required" type="text">
         </div>
       </div>
       <div class="form-group">
         <label for="advancePaymentAmount" class="control-label col-xs-4">Advance payment amount(€):</label> 
         <div class="col-xs-2">
-          <input id="advancePaymentAmount" name="advancePaymentAmount" required="required" class="form-control" type="text">
+          <input id="advancePaymentAmount" [(ngModel)]="advancePaymentAmount" name="advancePaymentAmount" required="required" class="form-control" type="text">
         </div>
       </div>
       <div class="form-group">
@@ -89,13 +89,13 @@
       <div class="form-group">
         <label for="margin" class="control-label col-xs-4">Margin (%):</label> 
         <div class="col-xs-2">
-          <input id="margin" name="margin" class="form-control" required="required" type="text">
+          <input id="margin" [(ngModel)]="margin" name="margin" class="form-control" required="required" type="text">
         </div>
       </div>
       <div class="form-group">
         <label for="contractFee" class="control-label col-xs-4">Contract fee (€):</label> 
         <div class="col-xs-2">
-          <input id="contractFee" name="contractFee" class="form-control" required="required" type="text">
+          <input id="contractFee" [(ngModel)]="contactFee" name="contractFee" class="form-control" required="required" type="text">
         </div>
       </div>
       <div class="form-group">
@@ -117,4 +117,22 @@
         </div>
       </div>
     </form>
+  </div>
+
+  <div id="summary" >
+    <p><b>Customer type : </b>{{customerType}}</p>
+    <p><b>Asset type : </b>{{assetType}}</p>
+    <p><b>Make : </b>{{make}}</p>
+    <p><b>Year : </b>{{year}}</p>
+    <p><b>Engine power (kW) : </b>{{enginePower}}</p>
+    <p><b>Asset price (€) : </b>{{assetPrice}}</p>
+    <p><b>Advance payment percentage : </b>{{advancePaymentPercentage}}</p>
+    <p><b>Advance payment amount(€) : </b>{{advancePaymentAmount}}</p>
+    <p><b>Margin (%) : </b>{{margin}}</p>
+    <p><b>Contract fee (€) :</b>{{contactFee}}</p>
+    <p><b>Payment date :</b>{{paymentDate}}</p>
+  </div>
+
+  <div id="ok">
+    <p>You did it! Yay</p>
   </div>
