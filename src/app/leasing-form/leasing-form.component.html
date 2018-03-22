@@ -83,6 +83,7 @@
       <label for="advancePaymentPercentage" class="control-label col-xs-4">Advance payment percentage:</label>
       <div class="col-xs-2">
         <input
+          (ngModelChange)="autocalculateAPA($event)"
           formControlName="advancePaymentPercentage"
           id="advancePaymentPercentage"
           class="form-control"
@@ -161,6 +162,8 @@
     </div>
   </form>
 </div>
+
+<p>Form value: {{ leaseForm.value | json }}</p>
 
 
 
