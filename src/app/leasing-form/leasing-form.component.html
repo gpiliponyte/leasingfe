@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="showForm">
   <form class="form-horizontal" [formGroup]="leaseForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="customerType" class="control-label col-xs-4">Customer type:</label>
@@ -104,16 +104,17 @@
               class="label label-warning">Only numeric values. Required field.</span>
       </div>
     </div>
-    <div class="form-group">
-      <label for="text" class="control-label col-xs-4">Lease period:</label>
-      <div class="col-xs-2">
-        <input
-          formControlName="leasePeriod"
-          id="text"
-          class="form-control"
-          type="text">
-      </div>
-    </div>
+      <div class="form-group">
+      <label  class="control-label col-xs-4">Lease period:</label> 
+      
+      <div class="col-xs-2"> 
+            <input  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue (input)="pitch($event)" value="6"> 
+          
+          <input  style="margin-top:3%" class="form-control" type="text" readonly value="{{ rangevalue.value }} months"> 
+        </div>
+        
+    </div> 
+    
     <div class="form-group">
       <label for="margin" class="control-label col-xs-4">Margin (%):</label>
       <div class="col-xs-2">
@@ -155,6 +156,7 @@
           [disabled]="!leaseForm.valid"
           name="submit"
           type="submit"
+          (click)="onSubmit()"
           class="btn btn-primary">Next
         </button>
       </div>
@@ -162,11 +164,9 @@
   </form>
 </div>
 
-
-
-
-
-<div id="summary">
+<div id="summary" *ngIf="showFormSummary">
+<div class="col-xs-offset-3 col-xs-6" id="summary_div">
+  <h3><b>Vehicle lease summary : </b></h3>
   <p><b>Customer type : </b>{{leaseForm.get('customerType').value}}</p>
   <p><b>Asset type : </b>{{leaseForm.get('assetType').value}}</p>
   <p><b>Brand : </b>{{leaseForm.get('brand').value}}</p>
@@ -176,11 +176,17 @@
   <p><b>Asset price (€) : </b>{{leaseForm.get('assetPrice').value}}</p>
   <p><b>Advance payment percentage : </b>{{leaseForm.get('advancePaymentPercentage').value}}</p>
   <p><b>Advance payment amount(€) : </b>{{leaseForm.get('advancePaymentAmount').value}}</p>
+  <p><b>Lease period : </b>{{leaseForm.get('leasePeriod').value}}</p>
   <p><b>Margin (%) : </b>{{leaseForm.get('margin').value}}</p>
-  <p><b>Contract fee (€) :</b>{{leaseForm.get('contractFee').value}}</p>
-  <p><b>Payment date :</b>{{leaseForm.get('paymentDate').value}}</p>
+  <p><b>Contract fee (€) : </b>{{leaseForm.get('contractFee').value}}</p>
+  <p><b>Payment date : </b>{{leaseForm.get('paymentDate').value}}</p>
+  <div class="form-group row">
+        <button (click)="goBackToForm()" name="submit1" type="submit" class="btn btn-dark">Back</button>
+        <button (click)="submit()" name="submit2" type="submit" class="btn btn-dark">Submit</button>
+  </div>
+  </div>
 </div>
 
-<div id="ok">
+<div id="ok" *ngIf="showOK">
   <p>You did it! Yay</p>
 </div>

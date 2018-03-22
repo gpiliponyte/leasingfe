@@ -31,12 +31,14 @@ export class LeasingFormComponent implements OnInit {
   contractFee;
   paymentDate;
   brands;
+  rangeValue;
   modelsBySelectedBrand;
   selectedBrand = '';
   selectedModel = '';
   showForm = true;
-  showFormSummary = true;
-  showOK = true;
+  showFormSummary = false;
+  showOK = false;
+  changeScrollValue = true;
   selectedYear = '';
 
   listVehicle;
@@ -69,7 +71,7 @@ export class LeasingFormComponent implements OnInit {
       'advancePaymentPercentage': new FormControl(null,
         [Validators.required, Validators.pattern(this.numberRegex), Validators.max(100), Validators.maxLength(4)]),
       'advancePaymentAmount': new FormControl(null, [Validators.required, Validators.pattern(this.numberRegex)]),
-      'leasePeriod': new FormControl(200, Validators.required),
+      'leasePeriod': new FormControl(6, Validators.required),
       'margin': new FormControl(null,
         [Validators.required, Validators.pattern(this.numberRegex), Validators.max(100), Validators.maxLength(4)]),
       'contractFee': new FormControl(200, Validators.required),
@@ -80,7 +82,10 @@ export class LeasingFormComponent implements OnInit {
   }
 
   getCarModelsByBrand(brand) {
-    this.selectedModel = '';
+    if(this.changeScrollValue){
+      this.selectedModel = "";
+    }
+    this.changeScrollValue ? this.selectedModel = "" : this.changeScrollValue = true;
     this.modelsBySelectedBrand = [];
     this.listVehicle.forEach(data => {
       console.log(data['groupValue']);
@@ -90,8 +95,26 @@ export class LeasingFormComponent implements OnInit {
     });
   }
 
+  goBackToForm(){
+    this.showFormSummary = false;
+    this.showForm = true;
+  }
+
+  submit(){
+    this.showFormSummary = false;
+    this.showOK = true;
+  }
+
   onSubmit() {
     console.log(this.leaseForm);
+     this.showFormSummary = true;
+     this.showForm = false;
+     this.changeScrollValue = false;
   }
+
+  pitch(event: any) {
+  this.rangeValue=event.value;
+
+}
 
 }
