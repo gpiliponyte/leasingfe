@@ -63,6 +63,8 @@
           id="enginePower"
           class="form-control"
           type="text">
+        <span *ngIf="leaseForm.get('enginePower').invalid && leaseForm.get('enginePower').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
       </div>
     </div>
     <div class="form-group">
@@ -73,6 +75,8 @@
           id="assetPrice"
           class="form-control"
           type="text">
+        <span *ngIf="leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
       </div>
     </div>
     <div class="form-group">
@@ -83,6 +87,9 @@
           id="advancePaymentPercentage"
           class="form-control"
           type="text">
+        <span
+          *ngIf="leaseForm.get('advancePaymentPercentage').invalid && leaseForm.get('advancePaymentPercentage').touched"
+          class="label label-warning">Only numeric values. Required field.</span>
       </div>
     </div>
     <div class="form-group">
@@ -93,6 +100,8 @@
           id="advancePaymentAmount"
           class="form-control"
           type="text">
+        <span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
       </div>
     </div>
     <div class="form-group">
@@ -113,6 +122,8 @@
           id="margin"
           class="form-control"
           type="text">
+        <span *ngIf="leaseForm.get('margin').invalid && leaseForm.get('margin').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
       </div>
     </div>
     <div class="form-group">
@@ -152,19 +163,22 @@
 </div>
 
 
+
+
+
 <div id="summary">
   <p><b>Customer type : </b>{{leaseForm.get('customerType').value}}</p>
-  <p><b>Asset type : </b>{{assetType}}</p>
-  <p><b>Brand : </b>{{selectedBrand}}</p>
-  <p><b>Model : </b>{{selectedModel}}</p>
-  <p><b>Year : </b>{{year}}</p>
-  <p><b>Engine power (kW) : </b>{{enginePower}}</p>
-  <p><b>Asset price (€) : </b>{{assetPrice}}</p>
-  <p><b>Advance payment percentage : </b>{{advancePaymentPercentage}}</p>
-  <p><b>Advance payment amount(€) : </b>{{advancePaymentAmount}}</p>
-  <p><b>Margin (%) : </b>{{margin}}</p>
-  <p><b>Contract fee (€) :</b>{{contactFee}}</p>
-  <p><b>Payment date :</b>{{paymentDate}}</p>
+  <p><b>Asset type : </b>{{leaseForm.get('assetType').value}}</p>
+  <p><b>Brand : </b>{{leaseForm.get('brand').value}}</p>
+  <p><b>Model : </b>{{leaseForm.get('model').value}}</p>
+  <p><b>Year : </b>{{leaseForm.get('year').value}}</p>
+  <p><b>Engine power (kW) : </b>{{leaseForm.get('enginePower').value}}</p>
+  <p><b>Asset price (€) : </b>{{leaseForm.get('assetPrice').value}}</p>
+  <p><b>Advance payment percentage : </b>{{leaseForm.get('advancePaymentPercentage').value}}</p>
+  <p><b>Advance payment amount(€) : </b>{{leaseForm.get('advancePaymentAmount').value}}</p>
+  <p><b>Margin (%) : </b>{{leaseForm.get('margin').value}}</p>
+  <p><b>Contract fee (€) :</b>{{leaseForm.get('contractFee').value}}</p>
+  <p><b>Payment date :</b>{{leaseForm.get('paymentDate').value}}</p>
 </div>
 
 <div id="ok">

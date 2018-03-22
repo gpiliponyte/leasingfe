@@ -73,7 +73,7 @@ export class LeasingFormComponent implements OnInit {
       'margin': new FormControl(null,
         [Validators.required, Validators.pattern(this.numberRegex), Validators.max(100), Validators.maxLength(4)]),
       'contractFee': new FormControl(200, Validators.required),
-      'paymentDate': new FormControl(15, Validators.required)
+      'paymentDate': new FormControl(null, Validators.required)
     });
     this.loadVehicles();
 

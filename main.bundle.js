@@ -143,7 +143,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ngx_bootstrap_dropdown__["a" /* BsDropdownModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_3_ngx_bootstrap_tooltip__["a" /* TooltipModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap_modal__["a" /* ModalModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_8__angular_forms__["a" /* FormsModule */]
+                __WEBPACK_IMPORTED_MODULE_8__angular_forms__["c" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_8__angular_forms__["d" /* ReactiveFormsModule */]
             ],
             providers: [__WEBPACK_IMPORTED_MODULE_10__services_vehicle_service__["a" /* VehicleService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
@@ -159,14 +160,14 @@ var AppModule = /** @class */ (function () {
 /***/ "./src/app/leasing-form/leasing-form.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {\r\n  border: 1px solid red;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/leasing-form/leasing-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <div class=\"container\" id=\"form\">\r\n  <form (ngSubmit)=\"onSubmit(f)\" #f=\"ngForm\" class=\"form-horizontal\">\r\n      <div class=\"form-group\">\r\n        <label for=\"customerType\" class=\"control-label col-xs-4\">Customer type:</label> \r\n        <div class=\"col-xs-4\">\r\n          <label class=\"radio-inline\">\r\n            <input name=\"customerType\" [(ngModel)]=\"customerType\" value=\"Business\" type=\"radio\">\r\n                  Business\r\n          </label>\r\n          <label class=\"radio-inline\">\r\n            <input name=\"customerType\" [(ngModel)]=\"customerType\" value=\"Private\" type=\"radio\">\r\n                  Private\r\n          </label>\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"assetType\" class=\"control-label col-xs-4\">Asset type:</label> \r\n        <div class=\"col-xs-8\">\r\n          <label class=\"radio-inline\">\r\n            <input name=\"assetType\" [(ngModel)]=\"assetType\" value=\"New\" type=\"radio\">\r\n                  New\r\n          </label>\r\n          <label class=\"radio-inline\">\r\n            <input name=\"assetType\" [(ngModel)]=\"assetType\" value=\"Old\" type=\"radio\">\r\n                  Old\r\n          </label>\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"make\" class=\"control-label col-xs-4\">Make:</label> \r\n        <div class=\"col-xs-2\">\r\n          <select [(ngModel)]=\"selectedBrand\" (ngModelChange)=\"getCarModelsByBrand($event)\" id=\"make\" name=\"make\" required=\"required\" class=\"select form-control\">\r\n            <option selected=\"\" value=\"\" selected disabled hidden>Choose make</option>\r\n            <option *ngFor=\"let brand of brands\" [value]=\"brand\">{{brand}}</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"model\" class=\"control-label col-xs-4\">Model:</label> \r\n        <div class=\"col-xs-2\">\r\n          <select [(ngModel)]=\"selectedModel\" id=\"model\" name=\"model\" required=\"required\" class=\"select form-control\">\r\n            <option value=\"\" selected disabled hidden>Choose model</option>\r\n            <option *ngFor=\"let model of modelsBySelectedBrand\" value=\"model\">{{model}}</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"year\" class=\"control-label col-xs-4\">Year:</label> \r\n        <div class=\"col-xs-2\">\r\n          <input\r\n          id=\"year\"\r\n          name=\"year\"\r\n          required=\"required\"\r\n          class=\"form-control\"\r\n          type=\"text\"\r\n          [(ngModel)]=\"year\">\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"enginePower\" class=\"control-label col-xs-4\">Engine power (kW):</label> \r\n        <div class=\"col-xs-2\">\r\n          <input id=\"enginePower\" [(ngModel)]=\"enginePower\" name=\"enginePower\" required=\"required\" class=\"form-control\" type=\"text\">\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"assetPrice\" class=\"control-label col-xs-4\">Asset price (€):</label> \r\n        <div class=\"col-xs-2\">\r\n          <input id=\"assetPrice\" [(ngModel)]=\"assetPrice\" name=\"assetPrice\" class=\"form-control\" required=\"required\" type=\"text\">\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"advancePaymentPercentage\" class=\"control-label col-xs-4\">Advance payment percentage:</label> \r\n        <div class=\"col-xs-2\">\r\n          <input id=\"advancePaymentPercentage\" [(ngModel)]=\"advancedPaymentPercentage\" name=\"advancePaymentPercentage\" class=\"form-control\" required=\"required\" type=\"text\">\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"advancePaymentAmount\" class=\"control-label col-xs-4\">Advance payment amount(€):</label> \r\n        <div class=\"col-xs-2\">\r\n          <input id=\"advancePaymentAmount\" [(ngModel)]=\"advancePaymentAmount\" name=\"advancePaymentAmount\" required=\"required\" class=\"form-control\" type=\"text\">\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"text\" class=\"control-label col-xs-4\">Slider</label> \r\n        <div class=\"col-xs-2\">\r\n          <input id=\"text\" name=\"text\" class=\"form-control\" type=\"text\">\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"margin\" class=\"control-label col-xs-4\">Margin (%):</label> \r\n        <div class=\"col-xs-2\">\r\n          <input id=\"margin\" [(ngModel)]=\"margin\" name=\"margin\" class=\"form-control\" required=\"required\" type=\"text\">\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"contractFee\" class=\"control-label col-xs-4\">Contract fee (€):</label> \r\n        <div class=\"col-xs-2\">\r\n          <input id=\"contractFee\" [(ngModel)]=\"contactFee\" name=\"contractFee\" class=\"form-control\" required=\"required\" type=\"text\">\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"paymentDate\" class=\"control-label col-xs-4\">Payment date:</label> \r\n        <div class=\"col-xs-8\">\r\n          <label class=\"radio-inline\">\r\n            <input name=\"paymentDate\" [(ngModel)]=\"paymentDate\" value=\"15\" type=\"radio\">\r\n                  15\r\n          </label>\r\n          <label class=\"radio-inline\">\r\n            <input name=\"paymentDate\" [(ngModel)]=\"paymentDate\" value=\"30\" type=\"radio\">\r\n                  30\r\n          </label>\r\n        </div>\r\n      </div> \r\n      <div class=\"form-group row\">\r\n        <div class=\"col-xs-offset-4 col-xs-8\">\r\n          <button name=\"submit\" type=\"submit\" class=\"btn btn-primary\">Submit</button>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div>\r\n\r\n  <div id=\"summary\" >\r\n    <p><b>Customer type : </b>{{customerType}}</p>\r\n    <p><b>Asset type : </b>{{assetType}}</p>\r\n    <p><b>Brand : </b>{{selectedBrand}}</p>\r\n    <p><b>Model : </b>{{selectedModel}}</p>\r\n    <p><b>Year : </b>{{year}}</p>\r\n    <p><b>Engine power (kW) : </b>{{enginePower}}</p>\r\n    <p><b>Asset price (€) : </b>{{assetPrice}}</p>\r\n    <p><b>Advance payment percentage : </b>{{advancePaymentPercentage}}</p>\r\n    <p><b>Advance payment amount(€) : </b>{{advancePaymentAmount}}</p>\r\n    <p><b>Margin (%) : </b>{{margin}}</p>\r\n    <p><b>Contract fee (€) :</b>{{contactFee}}</p>\r\n    <p><b>Payment date :</b>{{paymentDate}}</p>\r\n  </div>\r\n\r\n  <div id=\"ok\">\r\n    <p>You did it! Yay</p>\r\n  </div>"
+module.exports = "<div class=\"container\">\r\n  <form class=\"form-horizontal\" [formGroup]=\"leaseForm\" (ngSubmit)=\"onSubmit()\">\r\n    <div class=\"form-group\">\r\n      <label for=\"customerType\" class=\"control-label col-xs-4\">Customer type:</label>\r\n      <div class=\"col-xs-4\">\r\n        <label class=\"radio-inline\" *ngFor=\"let customerType of customerTypes\">\r\n          <input\r\n            formControlName=\"customerType\"\r\n            type=\"radio\"\r\n            [value]=\"customerType\">\r\n          {{customerType}}\r\n        </label>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"assetType\" class=\"control-label col-xs-4\">Asset type:</label>\r\n      <div class=\"col-xs-8\">\r\n        <label class=\"radio-inline\" *ngFor=\"let assetType of assetTypes\">\r\n          <input\r\n            formControlName=\"assetType\"\r\n            type=\"radio\"\r\n            [value]=\"assetType\">\r\n          {{assetType}}\r\n        </label>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"make\" class=\"control-label col-xs-4\">Brand:</label>\r\n      <div class=\"col-xs-2\">\r\n        <select [formControlName]=\"'brand'\" [(ngModel)]=\"selectedBrand\" (ngModelChange)=\"getCarModelsByBrand($event)\"\r\n                id=\"make\" name=\"make\"\r\n                class=\"select form-control\">\r\n          <option selected=\"\" value=\"\" selected disabled hidden>Choose brand</option>\r\n          <option *ngFor=\"let brand of brands\" [value]=\"brand\">{{brand}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"model\" class=\"control-label col-xs-4\">Model:</label>\r\n      <div class=\"col-xs-2\">\r\n        <select [formControlName]=\"'model'\" [(ngModel)]=\"selectedModel\" id=\"model\" name=\"model\"\r\n                class=\"select form-control\">\r\n          <option value=\"\" selected disabled hidden>Choose model</option>\r\n          <option *ngFor=\"let model of modelsBySelectedBrand\" [value]=\"model\">{{model}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"year\" class=\"control-label col-xs-4\">Year:</label>\r\n      <div class=\"col-xs-2\">\r\n        <select [formControlName]=\"'year'\" [(ngModel)]=\"selectedYear\" id=\"year\" name=\"year\"\r\n                class=\"select form-control\">\r\n          <option value=\"\" selected disabled hidden>Choose year</option>\r\n          <option *ngFor=\"let year of years\" [value]=\"year\">{{year}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"enginePower\" class=\"control-label col-xs-4\">Engine power (kW):</label>\r\n      <div class=\"col-xs-2\">\r\n        <input\r\n          formControlName=\"enginePower\"\r\n          id=\"enginePower\"\r\n          class=\"form-control\"\r\n          type=\"text\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"assetPrice\" class=\"control-label col-xs-4\">Asset price (€):</label>\r\n      <div class=\"col-xs-2\">\r\n        <input\r\n          formControlName=\"assetPrice\"\r\n          id=\"assetPrice\"\r\n          class=\"form-control\"\r\n          type=\"text\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"advancePaymentPercentage\" class=\"control-label col-xs-4\">Advance payment percentage:</label>\r\n      <div class=\"col-xs-2\">\r\n        <input\r\n          formControlName=\"advancePaymentPercentage\"\r\n          id=\"advancePaymentPercentage\"\r\n          class=\"form-control\"\r\n          type=\"text\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"advancePaymentAmount\" class=\"control-label col-xs-4\">Advance payment amount(€):</label>\r\n      <div class=\"col-xs-2\">\r\n        <input\r\n          formControlName=\"advancePaymentAmount\"\r\n          id=\"advancePaymentAmount\"\r\n          class=\"form-control\"\r\n          type=\"text\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"text\" class=\"control-label col-xs-4\">Lease period:</label>\r\n      <div class=\"col-xs-2\">\r\n        <input\r\n          formControlName=\"leasePeriod\"\r\n          id=\"text\"\r\n          class=\"form-control\"\r\n          type=\"text\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"margin\" class=\"control-label col-xs-4\">Margin (%):</label>\r\n      <div class=\"col-xs-2\">\r\n        <input\r\n          formControlName=\"margin\"\r\n          id=\"margin\"\r\n          class=\"form-control\"\r\n          type=\"text\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"contractFee\" class=\"control-label col-xs-4\">Contract fee (€):</label>\r\n      <div class=\"col-xs-2\">\r\n        <input\r\n          formControlName=\"contractFee\"\r\n          readonly\r\n          id=\"contractFee\"\r\n          class=\"form-control\"\r\n          type=\"text\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"paymentDate\" class=\"control-label col-xs-4\">Payment date:</label>\r\n      <div class=\"col-xs-8\">\r\n        <label class=\"radio-inline\" *ngFor=\"let paymentDate of paymentDates\">\r\n          <input\r\n            formControlName=\"paymentDate\"\r\n            type=\"radio\"\r\n            [value]=\"paymentDate\">\r\n          {{paymentDate}}\r\n        </label>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-xs-offset-4 col-xs-8\">\r\n        <button\r\n          [disabled]=\"!leaseForm.valid\"\r\n          name=\"submit\"\r\n          type=\"submit\"\r\n          class=\"btn btn-primary\">Next\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n\r\n<div id=\"summary\">\r\n  <p><b>Customer type : </b>{{leaseForm.get('customerType').value}}</p>\r\n  <p><b>Asset type : </b>{{assetType}}</p>\r\n  <p><b>Brand : </b>{{selectedBrand}}</p>\r\n  <p><b>Model : </b>{{selectedModel}}</p>\r\n  <p><b>Year : </b>{{year}}</p>\r\n  <p><b>Engine power (kW) : </b>{{enginePower}}</p>\r\n  <p><b>Asset price (€) : </b>{{assetPrice}}</p>\r\n  <p><b>Advance payment percentage : </b>{{advancePaymentPercentage}}</p>\r\n  <p><b>Advance payment amount(€) : </b>{{advancePaymentAmount}}</p>\r\n  <p><b>Margin (%) : </b>{{margin}}</p>\r\n  <p><b>Contract fee (€) :</b>{{contactFee}}</p>\r\n  <p><b>Payment date :</b>{{paymentDate}}</p>\r\n</div>\r\n\r\n<div id=\"ok\">\r\n  <p>You did it! Yay</p>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -176,7 +177,8 @@ module.exports = "  <div class=\"container\" id=\"form\">\r\n  <form (ngSubmit)=
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LeasingFormComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_vehicle_service__ = __webpack_require__("./src/app/services/vehicle.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_vehicle_service__ = __webpack_require__("./src/app/services/vehicle.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -188,14 +190,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var LeasingFormComponent = /** @class */ (function () {
     function LeasingFormComponent(vehicleService) {
         this.vehicleService = vehicleService;
-        this.selectedBrand = "";
-        this.selectedModel = "";
+        this.defaultContractFee = 200;
+        this.customerTypes = ['Private', 'Business'];
+        this.assetTypes = ['New', 'Old'];
+        this.paymentDates = [15, 30];
+        this.years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
+        this.numberRegex = '^\\s*(?=.*[1-9])\\d*(?:\\,\\d{1,2})?\\s*$';
+        this.selectedBrand = '';
+        this.selectedModel = '';
         this.showForm = true;
         this.showFormSummary = true;
         this.showOK = true;
+        this.selectedYear = '';
     }
     LeasingFormComponent.prototype.loadVehicles = function () {
         var _this = this;
@@ -203,33 +213,49 @@ var LeasingFormComponent = /** @class */ (function () {
             .then(function (data) {
             _this.listVehicle = data;
             var temp = [];
-            _this.listVehicle.forEach(function (data) { return temp.push(data["groupValue"]); });
+            _this.listVehicle.forEach(function (data) { return temp.push(data['groupValue']); });
             _this.brands = Array.from(new Set(temp));
         });
     };
     LeasingFormComponent.prototype.ngOnInit = function () {
+        this.leaseForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
+            'customerType': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            'assetType': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            'brand': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            'model': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            'year': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            'enginePower': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(this.numberRegex)]),
+            'assetPrice': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(this.numberRegex)]),
+            'advancePaymentPercentage': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(this.numberRegex), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].max(100), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(4)]),
+            'advancePaymentAmount': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(this.numberRegex)]),
+            'leasePeriod': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](200, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            'margin': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(this.numberRegex), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].max(100), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(4)]),
+            'contractFee': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](200, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            'paymentDate': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](15, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required)
+        });
         this.loadVehicles();
     };
     LeasingFormComponent.prototype.getCarModelsByBrand = function (brand) {
         var _this = this;
-        this.selectedModel = "";
+        this.selectedModel = '';
         this.modelsBySelectedBrand = [];
         this.listVehicle.forEach(function (data) {
-            if (data["groupValue"] === brand) {
-                _this.modelsBySelectedBrand.push(data["text"]);
+            console.log(data['groupValue']);
+            if (data['groupValue'] === brand) {
+                _this.modelsBySelectedBrand.push(data['text']);
             }
         });
     };
-    LeasingFormComponent.prototype.onSubmit = function (form) {
-        console.log(form);
+    LeasingFormComponent.prototype.onSubmit = function () {
+        console.log(this.leaseForm);
     };
     LeasingFormComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: "app-leasing-form",
+            selector: 'app-leasing-form',
             template: __webpack_require__("./src/app/leasing-form/leasing-form.component.html"),
             styles: [__webpack_require__("./src/app/leasing-form/leasing-form.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_vehicle_service__["a" /* VehicleService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_vehicle_service__["a" /* VehicleService */]])
     ], LeasingFormComponent);
     return LeasingFormComponent;
 }());
@@ -274,7 +300,7 @@ var VehicleService = /** @class */ (function () {
      }*/
     VehicleService.prototype.getAllVehicleInfo = function () {
         return this.http
-            .get('http://localhost:8080/vehicles')
+            .get('https://leasingbe.herokuapp.com/vehicles')
             .toPromise();
     };
     VehicleService = __decorate([
