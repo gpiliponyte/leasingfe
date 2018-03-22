@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="showForm">
   <form class="form-horizontal" [formGroup]="leaseForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="customerType" class="control-label col-xs-4">Customer type:</label>
@@ -155,6 +155,7 @@
           [disabled]="!leaseForm.valid"
           name="submit"
           type="submit"
+          (click)="onSubmit()"
           class="btn btn-primary">Next
         </button>
       </div>
@@ -166,7 +167,7 @@
 
 
 
-<div id="summary">
+<div id="summary" *ngIf="showFormSummary">
   <p><b>Customer type : </b>{{leaseForm.get('customerType').value}}</p>
   <p><b>Asset type : </b>{{leaseForm.get('assetType').value}}</p>
   <p><b>Brand : </b>{{leaseForm.get('brand').value}}</p>
@@ -179,8 +180,13 @@
   <p><b>Margin (%) : </b>{{leaseForm.get('margin').value}}</p>
   <p><b>Contract fee (€) :</b>{{leaseForm.get('contractFee').value}}</p>
   <p><b>Payment date :</b>{{leaseForm.get('paymentDate').value}}</p>
+  <div class="form-group row">
+    <button (click)="goBackToForm()" name="submit1" type="submit" class="btn btn-dark">Back</button>
+    <button (click)="submit()" name="submit2" type="submit" class="btn btn-dark">Submit</button>
+  </div>
+</div>  
 </div>
 
-<div id="ok">
+<div id="ok" *ngIf="showOK">
   <p>You did it! Yay</p>
 </div>

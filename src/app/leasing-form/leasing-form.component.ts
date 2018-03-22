@@ -35,13 +35,23 @@ export class LeasingFormComponent implements OnInit {
   selectedBrand = '';
   selectedModel = '';
   showForm = true;
-  showFormSummary = true;
-  showOK = true;
+  showFormSummary = false;
+  showOK = false;
   selectedYear = '';
 
   listVehicle;
 
   constructor(private vehicleService: VehicleService) {
+  }
+
+  goBackToForm(){
+    this.showFormSummary = false;
+    this.showForm = true;
+  }
+
+  submit(){
+    this.showFormSummary = false;
+    this.showOK = true;
   }
 
 
@@ -57,6 +67,8 @@ export class LeasingFormComponent implements OnInit {
 
 
   ngOnInit() {
+
+    //this.loadVehicles();
 
     this.leaseForm = new FormGroup({
       'customerType': new FormControl(null, Validators.required),
@@ -75,7 +87,7 @@ export class LeasingFormComponent implements OnInit {
       'contractFee': new FormControl(200, Validators.required),
       'paymentDate': new FormControl(null, Validators.required)
     });
-    this.loadVehicles();
+    //this.loadVehicles();
 
   }
 
@@ -90,8 +102,9 @@ export class LeasingFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(this.leaseForm);
+  onSubmit(){
+    this.showForm = false;
+    this.showFormSummary = true;
   }
 
 }
