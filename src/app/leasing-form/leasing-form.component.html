@@ -1,139 +1,186 @@
-  <div class="container" id="form">
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-horizontal">
-      <div class="form-group">
-        <label for="customerType" class="control-label col-xs-4">Customer type:</label> 
-        <div class="col-xs-4">
-          <label class="radio-inline">
-            <input name="customerType" [(ngModel)]="customerType" value="Business" type="radio">
-                  Business
-          </label>
-          <label class="radio-inline">
-            <input name="customerType" [(ngModel)]="customerType" value="Private" type="radio">
-                  Private
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="assetType" class="control-label col-xs-4">Asset type:</label> 
-        <div class="col-xs-8">
-          <label class="radio-inline">
-            <input name="assetType" [(ngModel)]="assetType" value="New" type="radio">
-                  New
-          </label>
-          <label class="radio-inline">
-            <input name="assetType" [(ngModel)]="assetType" value="Old" type="radio">
-                  Old
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="make" class="control-label col-xs-4">Make:</label> 
-        <div class="col-xs-2">
-          <select [(ngModel)]="selectedBrand" (ngModelChange)="getCarModelsByBrand($event)" id="make" name="make" required="required" class="select form-control">
-            <option selected="" value="" selected disabled hidden>Choose make</option>
-            <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="model" class="control-label col-xs-4">Model:</label> 
-        <div class="col-xs-2">
-          <select [(ngModel)]="selectedModel" id="model" name="model" required="required" class="select form-control">
-            <option value="" selected disabled hidden>Choose model</option>
-            <option *ngFor="let model of modelsBySelectedBrand" value="model">{{model}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="year" class="control-label col-xs-4">Year:</label> 
-        <div class="col-xs-2">
+<div class="container">
+  <form class="form-horizontal" [formGroup]="leaseForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="customerType" class="control-label col-xs-4">Customer type:</label>
+      <div class="col-xs-4">
+        <label class="radio-inline" *ngFor="let customerType of customerTypes">
           <input
-          id="year"
-          name="year"
-          required="required"
+            formControlName="customerType"
+            type="radio"
+            [value]="customerType">
+          {{customerType}}
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="assetType" class="control-label col-xs-4">Asset type:</label>
+      <div class="col-xs-8">
+        <label class="radio-inline" *ngFor="let assetType of assetTypes">
+          <input
+            formControlName="assetType"
+            type="radio"
+            [value]="assetType">
+          {{assetType}}
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="make" class="control-label col-xs-4">Brand:</label>
+      <div class="col-xs-2">
+        <select [formControlName]="'brand'" [(ngModel)]="selectedBrand" (ngModelChange)="getCarModelsByBrand($event)"
+                id="make" name="make"
+                class="select form-control">
+          <option selected="" value="" selected disabled hidden>Choose brand</option>
+          <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="model" class="control-label col-xs-4">Model:</label>
+      <div class="col-xs-2">
+        <select [formControlName]="'model'" [(ngModel)]="selectedModel" id="model" name="model"
+                class="select form-control">
+          <option value="" selected disabled hidden>Choose model</option>
+          <option *ngFor="let model of modelsBySelectedBrand" [value]="model">{{model}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="year" class="control-label col-xs-4">Year:</label>
+      <div class="col-xs-2">
+        <select [formControlName]="'year'" [(ngModel)]="selectedYear" id="year" name="year"
+                class="select form-control">
+          <option value="" selected disabled hidden>Choose year</option>
+          <option *ngFor="let year of years" [value]="year">{{year}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="enginePower" class="control-label col-xs-4">Engine power (kW):</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="enginePower"
+          id="enginePower"
           class="form-control"
-          type="text"
-          [(ngModel)]="year">
-        </div>
+          type="text">
+        <span *ngIf="leaseForm.get('enginePower').invalid && leaseForm.get('enginePower').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
       </div>
-      <div class="form-group">
-        <label for="enginePower" class="control-label col-xs-4">Engine power (kW):</label> 
-        <div class="col-xs-2">
-          <input id="enginePower" [(ngModel)]="enginePower" name="enginePower" required="required" class="form-control" type="text">
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="assetPrice" class="control-label col-xs-4">Asset price (€):</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="assetPrice"
+          id="assetPrice"
+          class="form-control"
+          type="text">
+        <span *ngIf="leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
       </div>
-      <div class="form-group">
-        <label for="assetPrice" class="control-label col-xs-4">Asset price (€):</label> 
-        <div class="col-xs-2">
-          <input id="assetPrice" [(ngModel)]="assetPrice" name="assetPrice" class="form-control" required="required" type="text">
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="advancePaymentPercentage" class="control-label col-xs-4">Advance payment percentage:</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="advancePaymentPercentage"
+          id="advancePaymentPercentage"
+          class="form-control"
+          type="text">
+        <span
+          *ngIf="leaseForm.get('advancePaymentPercentage').invalid && leaseForm.get('advancePaymentPercentage').touched"
+          class="label label-warning">Only numeric values. Required field.</span>
       </div>
-      <div class="form-group">
-        <label for="advancePaymentPercentage" class="control-label col-xs-4">Advance payment percentage:</label> 
-        <div class="col-xs-2">
-          <input id="advancePaymentPercentage" [(ngModel)]="advancedPaymentPercentage" name="advancePaymentPercentage" class="form-control" required="required" type="text">
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="advancePaymentAmount" class="control-label col-xs-4">Advance payment amount(€):</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="advancePaymentAmount"
+          id="advancePaymentAmount"
+          class="form-control"
+          type="text">
+        <span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
       </div>
-      <div class="form-group">
-        <label for="advancePaymentAmount" class="control-label col-xs-4">Advance payment amount(€):</label> 
-        <div class="col-xs-2">
-          <input id="advancePaymentAmount" [(ngModel)]="advancePaymentAmount" name="advancePaymentAmount" required="required" class="form-control" type="text">
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="text" class="control-label col-xs-4">Lease period:</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="leasePeriod"
+          id="text"
+          class="form-control"
+          type="text">
       </div>
-      <div class="form-group">
-        <label for="text" class="control-label col-xs-4">Slider</label> 
-        <div class="col-xs-2">
-          <input id="text" name="text" class="form-control" type="text">
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="margin" class="control-label col-xs-4">Margin (%):</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="margin"
+          id="margin"
+          class="form-control"
+          type="text">
+        <span *ngIf="leaseForm.get('margin').invalid && leaseForm.get('margin').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
       </div>
-      <div class="form-group">
-        <label for="margin" class="control-label col-xs-4">Margin (%):</label> 
-        <div class="col-xs-2">
-          <input id="margin" [(ngModel)]="margin" name="margin" class="form-control" required="required" type="text">
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="contractFee" class="control-label col-xs-4">Contract fee (€):</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="contractFee"
+          readonly
+          id="contractFee"
+          class="form-control"
+          type="text">
       </div>
-      <div class="form-group">
-        <label for="contractFee" class="control-label col-xs-4">Contract fee (€):</label> 
-        <div class="col-xs-2">
-          <input id="contractFee" [(ngModel)]="contactFee" name="contractFee" class="form-control" required="required" type="text">
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="paymentDate" class="control-label col-xs-4">Payment date:</label>
+      <div class="col-xs-8">
+        <label class="radio-inline" *ngFor="let paymentDate of paymentDates">
+          <input
+            formControlName="paymentDate"
+            type="radio"
+            [value]="paymentDate">
+          {{paymentDate}}
+        </label>
       </div>
-      <div class="form-group">
-        <label for="paymentDate" class="control-label col-xs-4">Payment date:</label> 
-        <div class="col-xs-8">
-          <label class="radio-inline">
-            <input name="paymentDate" [(ngModel)]="paymentDate" value="15" type="radio">
-                  15
-          </label>
-          <label class="radio-inline">
-            <input name="paymentDate" [(ngModel)]="paymentDate" value="30" type="radio">
-                  30
-          </label>
-        </div>
-      </div> 
-      <div class="form-group row">
-        <div class="col-xs-offset-4 col-xs-8">
-          <button name="submit" type="submit" class="btn btn-primary">Submit</button>
-        </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-offset-4 col-xs-8">
+        <button
+          [disabled]="!leaseForm.valid"
+          name="submit"
+          type="submit"
+          class="btn btn-primary">Next
+        </button>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
 
-  <div id="summary" >
-    <p><b>Customer type : </b>{{customerType}}</p>
-    <p><b>Asset type : </b>{{assetType}}</p>
-    <p><b>Brand : </b>{{selectedBrand}}</p>
-    <p><b>Model : </b>{{selectedModel}}</p>
-    <p><b>Year : </b>{{year}}</p>
-    <p><b>Engine power (kW) : </b>{{enginePower}}</p>
-    <p><b>Asset price (€) : </b>{{assetPrice}}</p>
-    <p><b>Advance payment percentage : </b>{{advancePaymentPercentage}}</p>
-    <p><b>Advance payment amount(€) : </b>{{advancePaymentAmount}}</p>
-    <p><b>Margin (%) : </b>{{margin}}</p>
-    <p><b>Contract fee (€) :</b>{{contactFee}}</p>
-    <p><b>Payment date :</b>{{paymentDate}}</p>
-  </div>
 
-  <div id="ok">
-    <p>You did it! Yay</p>
-  </div>
+
+
+
+<div id="summary">
+  <p><b>Customer type : </b>{{leaseForm.get('customerType').value}}</p>
+  <p><b>Asset type : </b>{{leaseForm.get('assetType').value}}</p>
+  <p><b>Brand : </b>{{leaseForm.get('brand').value}}</p>
+  <p><b>Model : </b>{{leaseForm.get('model').value}}</p>
+  <p><b>Year : </b>{{leaseForm.get('year').value}}</p>
+  <p><b>Engine power (kW) : </b>{{leaseForm.get('enginePower').value}}</p>
+  <p><b>Asset price (€) : </b>{{leaseForm.get('assetPrice').value}}</p>
+  <p><b>Advance payment percentage : </b>{{leaseForm.get('advancePaymentPercentage').value}}</p>
+  <p><b>Advance payment amount(€) : </b>{{leaseForm.get('advancePaymentAmount').value}}</p>
+  <p><b>Margin (%) : </b>{{leaseForm.get('margin').value}}</p>
+  <p><b>Contract fee (€) :</b>{{leaseForm.get('contractFee').value}}</p>
+  <p><b>Payment date :</b>{{leaseForm.get('paymentDate').value}}</p>
+</div>
+
+<div id="ok">
+  <p>You did it! Yay</p>
+</div>

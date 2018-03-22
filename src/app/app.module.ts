@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LeasingFormComponent } from './leasing-form/leasing-form.component';
 import { VehicleService } from './services/vehicle.service';
 
@@ -24,7 +24,8 @@ import { VehicleService } from './services/vehicle.service';
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [VehicleService],
   bootstrap: [AppComponent]
