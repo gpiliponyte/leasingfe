@@ -76,7 +76,7 @@
           class="form-control"
           type="text">
         <span *ngIf="leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
-              class="label label-warning">Only numeric values. Required field.</span>
+              class="label label-warning">Lowest asset price is 5000.</span>
       </div>
     </div>
     <div class="form-group">
@@ -89,32 +89,33 @@
           type="text">
         <span
           *ngIf="leaseForm.get('advancePaymentPercentage').invalid && leaseForm.get('advancePaymentPercentage').touched"
-          class="label label-warning">Only numeric values. Required field.</span>
+          class="label label-warning">Enter number between 10 and 100.</span>
       </div>
     </div>
     <div class="form-group">
       <label for="advancePaymentAmount" class="control-label col-xs-4">Advance payment amount(€):</label>
       <div class="col-xs-2">
         <input
+          readonly
           formControlName="advancePaymentAmount"
           id="advancePaymentAmount"
           class="form-control"
           type="text">
-        <span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"
-              class="label label-warning">Only numeric values. Required field.</span>
+        <!--<span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"-->
+              <!--class="label label-warning">Only numeric values. Required field.</span>-->
       </div>
     </div>
       <div class="form-group">
-      <label  class="control-label col-xs-4">Lease period:</label> 
-      
-      <div class="col-xs-2"> 
-            <input  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue (input)="pitch($event)" value="6"> 
-          
-          <input  style="margin-top:3%" class="form-control" type="text" readonly value="{{ rangevalue.value }} months"> 
+      <label  class="control-label col-xs-4">Lease period:</label>
+
+      <div class="col-xs-2">
+            <input  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue (input)="pitch($event)" value="6">
+
+          <input  style="margin-top:3%" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">
         </div>
-        
-    </div> 
-    
+
+    </div>
+
     <div class="form-group">
       <label for="margin" class="control-label col-xs-4">Margin (%):</label>
       <div class="col-xs-2">
@@ -124,7 +125,7 @@
           class="form-control"
           type="text">
         <span *ngIf="leaseForm.get('margin').invalid && leaseForm.get('margin').touched"
-              class="label label-warning">Only numeric values. Required field.</span>
+              class="label label-warning">Enter number between 3.2 and 100.</span>
       </div>
     </div>
     <div class="form-group">
