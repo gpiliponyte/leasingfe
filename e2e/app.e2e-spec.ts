@@ -1,5 +1,4 @@
 import { AppPage } from './app.po';
-import { browser } from 'protractor';
 
 describe('leasingfe App', () => {
   let page: AppPage;
@@ -15,15 +14,14 @@ describe('leasingfe App', () => {
   /*
   *****TEMPLATE FOR FILL FORM******
   page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
-  page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Old
+  page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Used
   page.chooseBrand('[value="LADA"]');
   page.chooseModel('[value="Niva"]');
   page.chooseYear('[value="2008"]');
   page.enterEnginePower('500');
   page.enterAssetPrice('5000');
   page.enterAdvancePaymentPercentage('20');
-  //page.enterAdvancePaymentAmount('400');
-  //nera slider testo
+  page.changeLeasePeriod(2);//sliderioIlgis/ tai kas ivesta skliausteliuose
   page.enterMargin('3.2');
   page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
   page.clickNext();
@@ -45,60 +43,55 @@ describe('leasingfe App', () => {
   expect(page.getContractFee()).toEqual('Contract fee (€) : 200');
   expect(page.getPaymentDate()).toEqual('Payment date : 15');
   */
-  it('should get to the vehicle lease summary', () => {
+  it('shouldnt be able to click next', () => {
+    page.navigateTo();
+    page.clickNext();
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('should get to the vehicle lease summary and display welcome message', () => {
+    page.navigateTo();
     page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
-    page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Old
+    page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Used
     page.chooseBrand('[value="LADA"]');
     page.chooseModel('[value="Niva"]');
     page.chooseYear('[value="2008"]');
     page.enterEnginePower('500');
     page.enterAssetPrice('5000');
     page.enterAdvancePaymentPercentage('20');
-    //page.enterAdvancePaymentAmount('400');
-    page.changeLeasePeriod('42');
+    page.changeLeasePeriod(2);//sliderioIlgis/ tai kas ivesta skliausteliuose
     page.enterMargin('3.2');
     page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
     page.clickNext();
 
     expect(page.getSummaryConfimationText()).toEqual('Vehicle lease summary :');
   });
-  it('should see customer type be private', () => {
-    expect(page.getCustomerType()).toEqual('Customer type : Private');
-  });
-  it('should see asset type be new', () => {
-    expect(page.getAssetType()).toEqual('Asset type : New');
-  });
-  it('should see brand be LADA', () => {
-    expect(page.getBrand()).toEqual('Brand : LADA');
-  });
-  it('should see model be Niva', () => {
-    expect(page.getModel()).toEqual('Model : Niva');
-  });
-  it('should see year be 2008', () => {
-    expect(page.getYear()).toEqual('Year : 2008');
-  });
-  it('should see engine power be 500', () => {
+  it('should see same summary values as entered', () => {
+    page.navigateTo();
+    page.getElementsWithTagFormGroupAndInput().get(1).click();//0- Private 1- Business 
+    page.getElementsWithTagFormGroupAndInput().get(3).click();//2- New 3 - Used
+    page.chooseBrand('[value="BMW"]');
+    page.chooseModel('[value="125"]');
+    page.chooseYear('[value="2000"]');
+    page.enterEnginePower('500');
+    page.enterAssetPrice('5000');
+    page.enterAdvancePaymentPercentage('20');
+    page.changeLeasePeriod(2);//sliderioIlgis/ tai kas ivesta skliausteliuose
+    page.enterMargin('3.2');
+    page.getElementsWithTagFormGroupAndInput().get(13).click();//12 - day:15 13 - day:30
+    page.clickNext();
+
+    expect(page.getCustomerType()).toEqual('Customer type : Business');
+    expect(page.getAssetType()).toEqual('Asset type : Used');
+    expect(page.getBrand()).toEqual('Brand : BMW');
+    expect(page.getModel()).toEqual('Model : 125');
+    expect(page.getYear()).toEqual('Year : 2000');
     expect(page.getEnginePower()).toEqual('Engine power (kW) : 500');
-  });
-  it('should see asset price the same', () => {
     expect(page.getAssetPrice()).toEqual('Asset price (€) : 5000');
-  });
-  it('should see Advance payment percentage be 20', () => {
     expect(page.getAdvancePaymentPercentage()).toEqual('Advance payment percentage : 20');
-  });
-  it('should see Advance payment amount same', () => {
     expect(page.getAdvancePaymentAmount()).toEqual('Advance payment amount(€) : 1000.00');
-  });
-  it('should see leasing period the same as chosen', () => {
     expect(page.getLeasePeriod()).toEqual('Lease period : 42');//nera dar auto ivedimo
-  });
-  it('should see margin be the same', () => {
     expect(page.getMargin()).toEqual('Margin (%) : 3.2');
-  });
-  it('should see contract fee the same', () => {
     expect(page.getContractFee()).toEqual('Contract fee (€) : 200');
-  });
-  it('should see payment date the same', () => {
-    expect(page.getPaymentDate()).toEqual('Payment date : 15');
+    expect(page.getPaymentDate()).toEqual('Payment date : 30');
   });
 });

@@ -11,9 +11,6 @@ export class AppPage {
   getElementsWithTagFormGroupAndInput(){
     return element.all(by.css('div.form-group input'));
   }
-  fillForm(){
-
-  }
   //Form methods
   chooseBrand(brand){
     element(by.id('brand')).$(brand).click();
@@ -36,13 +33,10 @@ export class AppPage {
     element(by.id('advancePaymentPercentage')).clear();
     element(by.id('advancePaymentPercentage')).sendKeys(advancePaymentPercentage);
   }
-  enterAdvancePaymentAmount(advancePaymentAmount){
-    element(by.id('advancePaymentAmount')).sendKeys(advancePaymentAmount);
-  }
   changeLeasePeriod(leasePeriod){
     element(by.css('[ng-reflect-name=leasePeriod]')).getSize()
       .then((sizeObj) => {
-        browser.actions().mouseMove(element(by.css('[ng-reflect-name=leasePeriod]')),{x:(sizeObj.width/2),y:0}).click().perform();
+        browser.actions().mouseMove(element(by.css('[ng-reflect-name=leasePeriod]')),{x:(sizeObj.width/leasePeriod),y:0}).click().perform();
     });
   
   }
@@ -52,6 +46,9 @@ export class AppPage {
   }
   clickNext(){
     element(by.css('button[name]')).click();
+  }
+  getFormNextButton(){
+    return element(by.css('button[name]'));
   }
 
   //Summary methods  
