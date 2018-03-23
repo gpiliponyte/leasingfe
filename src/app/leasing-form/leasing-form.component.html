@@ -82,7 +82,7 @@
     <div class="form-group">
       <label for="advancePaymentPercentage" class="control-label col-xs-4">Advance payment percentage:</label>
       <div class="col-xs-2">
-        <input
+        <input (change)="keyUpAdvancePaymentAmount()"
           formControlName="advancePaymentPercentage"
           id="advancePaymentPercentage"
           class="form-control"
@@ -95,14 +95,13 @@
     <div class="form-group">
       <label for="advancePaymentAmount" class="control-label col-xs-4">Advance payment amount(€):</label>
       <div class="col-xs-2">
-        <input
-          readonly
+        <input (change)="keyUpAdvancePaymentPercentage()"
           formControlName="advancePaymentAmount"
           id="advancePaymentAmount"
           class="form-control"
           type="text">
-        <!--<span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"-->
-              <!--class="label label-warning">Only numeric values. Required field.</span>-->
+        <span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
       </div>
     </div>
       <div class="form-group">
