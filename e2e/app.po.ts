@@ -12,46 +12,34 @@ export class AppPage {
     return element.all(by.css('div.form-group input'));
   }
   fillForm(){
-    this.getElementsWithTagFormGroupAndInput().get(0).click();//0-1
-    this.getElementsWithTagFormGroupAndInput().get(2).click();//2-3
-    this.chooseBrand();
-    this.chooseModel();
-    this.chooseYear();
-    this.enterEnginePower();
-    this.enterAssetPrice();
-    this.enterAdvancePaymentPercentage();
-    this.enterAdvancePaymentAmount();
-    //nera slider testo
-    this.enterMargin();
-    this.getElementsWithTagFormGroupAndInput().get(12).click();//12-13
+
   }
   //Form methods
-  chooseBrand(){
-    var select = element(by.id('brand'));
-    select.$('[value="LADA"]').click();
+  chooseBrand(brand){
+    element(by.id('brand')).$(brand).click();
   }
-  chooseModel(){
+  chooseModel(model){
     var select = element(by.id('model'));
-    select.$('[value="Niva"]').click();
+    select.$(model).click();
   }
-  chooseYear(){
+  chooseYear(year){
     var select = element(by.id('year'));
-    select.$('[value="2008"]').click();
+    select.$(year).click();
   }
-  enterEnginePower(){
-    element(by.id('enginePower')).sendKeys('500');
+  enterEnginePower(enginePower){
+    element(by.id('enginePower')).sendKeys(enginePower);
   }
-  enterAssetPrice(){
-    element(by.id('assetPrice')).sendKeys('2000');
+  enterAssetPrice(assetPrice){
+    element(by.id('assetPrice')).sendKeys(assetPrice);
   }
-  enterAdvancePaymentPercentage(){
-    element(by.id('advancePaymentPercentage')).sendKeys('20');
+  enterAdvancePaymentPercentage(advancePaymentPercentage){
+    element(by.id('advancePaymentPercentage')).sendKeys(advancePaymentPercentage);
   }
-  enterAdvancePaymentAmount(){
-    element(by.id('advancePaymentAmount')).sendKeys('400');
+  enterAdvancePaymentAmount(advancePaymentAmount){
+    element(by.id('advancePaymentAmount')).sendKeys(advancePaymentAmount);
   }
-  enterMargin(){
-    element(by.id('margin')).sendKeys('3');
+  enterMargin(margin){
+    element(by.id('margin')).sendKeys(margin);
   }
   clickNext(){
     element(by.css('button[name]')).click();
