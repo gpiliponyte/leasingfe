@@ -166,7 +166,6 @@
 </div>
 
 <div id="summary" *ngIf="showFormSummary">
-<div class="col-xs-offset-3 col-xs-6" id="summary_div">
   <h3><b>Vehicle lease summary : </b></h3>
   <p><b>Customer type : </b>{{leaseForm.get('customerType').value}}</p>
   <p><b>Asset type : </b>{{leaseForm.get('assetType').value}}</p>
@@ -181,13 +180,13 @@
   <p><b>Margin (%) : </b>{{leaseForm.get('margin').value}}</p>
   <p><b>Contract fee (€) : </b>{{leaseForm.get('contractFee').value}}</p>
   <p><b>Payment date : </b>{{leaseForm.get('paymentDate').value}}</p>
-  <div class="form-group row">
-        <button (click)="goBackToForm()" name="submit1" type="submit" class="btn btn-dark">Back</button>
-        <button (click)="submit()" name="submit2" type="submit" class="btn btn-dark">Submit</button>
-  </div>
+
+  <div class="form-group button-group row" >
+    <button (click)="goBackToForm()" name="submit1" type="submit" class="btn">Back</button>
+    <button (click)="submit()" name="submit2" type="submit" class="btn">Submit</button>
   </div>
 </div>
 
 <div id="ok" *ngIf="showOK">
-   <h3 class="text-center">Jums pavyko! Valioooooooooooo</h3>
+  <h3 class="text-center">Lease request was successfully accepted.</h3>
 </div>
