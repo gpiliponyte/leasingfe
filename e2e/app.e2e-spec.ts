@@ -13,8 +13,8 @@ describe('leasingfe App', () => {
   });
   /*
   *****TEMPLATE FOR FILL FORM******
-  page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
-  page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Used
+  page.chooseCustomerType('Private'); 
+  page.chooseAssetType('New');
   page.chooseBrand('[value="LADA"]');
   page.chooseModel('[value="Niva"]');
   page.chooseYear('[value="2008"]');
@@ -23,7 +23,7 @@ describe('leasingfe App', () => {
   page.enterAdvancePaymentPercentage('20');
   page.changeLeasePeriod(2);//sliderioIlgis/ tai kas ivesta skliausteliuose
   page.enterMargin('3.2');
-  page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
+  page.choosePaymentDate(15);
   page.clickNext();
   */
   /*
@@ -43,15 +43,19 @@ describe('leasingfe App', () => {
   expect(page.getContractFee()).toEqual('Contract fee (€) : 200');
   expect(page.getPaymentDate()).toEqual('Payment date : 15');
   */
-  it('shouldnt be able to click next', () => {
+  it('shouldnt be able to click next when nothing is filled', () => {
     page.navigateTo();
-    page.clickNext();
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only cutomer type is selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');//0- Private 1- Business
     expect(page.getFormNextButton().isEnabled()).toBe(false);
   });
   it('should get to the vehicle lease summary and display welcome message', () => {
     page.navigateTo();
-    page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
-    page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Used
+    page.chooseCustomerType('Private');//0- Private 1- Business 
+    page.chooseAssetType('New');//2- New 3 - Used
     page.chooseBrand('[value="LADA"]');
     page.chooseModel('[value="Niva"]');
     page.chooseYear('[value="2008"]');
@@ -60,15 +64,15 @@ describe('leasingfe App', () => {
     page.enterAdvancePaymentPercentage('20');
     page.changeLeasePeriod(2);//sliderioIlgis/ tai kas ivesta skliausteliuose
     page.enterMargin('3.2');
-    page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
+    page.choosePaymentDate(15);
     page.clickNext();
 
     expect(page.getSummaryConfimationText()).toEqual('Vehicle lease summary :');
   });
   it('should see same summary values as entered', () => {
     page.navigateTo();
-    page.getElementsWithTagFormGroupAndInput().get(1).click();//0- Private 1- Business 
-    page.getElementsWithTagFormGroupAndInput().get(3).click();//2- New 3 - Used
+    page.chooseCustomerType('Business');//0- Private 1- Business 
+    page.chooseAssetType('Used');//2- New 3 - Used
     page.chooseBrand('[value="BMW"]');
     page.chooseModel('[value="125"]');
     page.chooseYear('[value="2000"]');
@@ -77,7 +81,7 @@ describe('leasingfe App', () => {
     page.enterAdvancePaymentPercentage('20');
     page.changeLeasePeriod(2);//sliderioIlgis/ tai kas ivesta skliausteliuose
     page.enterMargin('3.2');
-    page.getElementsWithTagFormGroupAndInput().get(13).click();//12 - day:15 13 - day:30
+    page.choosePaymentDate(30);
     page.clickNext();
 
     expect(page.getCustomerType()).toEqual('Customer type : Business');

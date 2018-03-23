@@ -12,6 +12,22 @@ export class AppPage {
     return element.all(by.css('div.form-group input'));
   }
   //Form methods
+  chooseCustomerType(customerType){
+    if(customerType=='Private'){
+      this.getElementsWithTagFormGroupAndInput().get(0).click();
+    }
+    else if(customerType=='Business'){
+      this.getElementsWithTagFormGroupAndInput().get(1).click();
+    }
+  }
+  chooseAssetType(assetType){
+    if(assetType=='New'){
+      this.getElementsWithTagFormGroupAndInput().get(2).click();
+    }
+    else if(assetType=='Used'){
+      this.getElementsWithTagFormGroupAndInput().get(3).click();
+    }
+  }
   chooseBrand(brand){
     element(by.id('brand')).$(brand).click();
   }
@@ -43,6 +59,14 @@ export class AppPage {
   enterMargin(margin){
     element(by.id('margin')).clear();
     element(by.id('margin')).sendKeys(margin);
+  }
+  choosePaymentDate(paymentDate){
+    if(paymentDate==15){
+      this.getElementsWithTagFormGroupAndInput().get(12).click();
+    }
+    else if(paymentDate==30){
+      this.getElementsWithTagFormGroupAndInput().get(13).click();
+    }
   }
   clickNext(){
     element(by.css('button[name]')).click();
