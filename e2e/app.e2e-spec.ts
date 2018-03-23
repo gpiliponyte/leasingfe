@@ -55,6 +55,8 @@ describe('leasingfe App', () => {
     page.enterAssetPrice('5000');
     page.enterAdvancePaymentPercentage('20');
     //page.enterAdvancePaymentAmount('400');
+    page.changeLeasePeriod('42');
+    browser.sleep(9000);
     //nera slider testo
     page.enterMargin('3.2');
     page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
@@ -89,8 +91,8 @@ describe('leasingfe App', () => {
   it('should see Advance payment amount same', () => {
     expect(page.getAdvancePaymentAmount()).toEqual('Advance payment amount(€) : 1000.00');
   });
-  it('should see leasing period set be 6', () => {
-    expect(page.getLeasePeriod()).toEqual('Lease period : 6');//nera dar auto ivedimo
+  it('should see leasing period the same as chosen', () => {
+    expect(page.getLeasePeriod()).toEqual('Lease period : 42');//nera dar auto ivedimo
   });
   it('should see margin be the same', () => {
     expect(page.getMargin()).toEqual('Margin (%) : 3.2');

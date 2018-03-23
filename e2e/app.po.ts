@@ -39,6 +39,10 @@ export class AppPage {
   enterAdvancePaymentAmount(advancePaymentAmount){
     element(by.id('advancePaymentAmount')).sendKeys(advancePaymentAmount);
   }
+  changeLeasePeriod(leasePeriod){
+    //element(by.css('[ng-reflect-name=leasePeriod]')).sendKeys(leasePeriod);
+    browser.actions().dragAndDrop(element(by.css('[ng-reflect-name=leasePeriod]')),{x:100, y:0});
+  }
   enterMargin(margin){
     element(by.id('margin')).clear();
     element(by.id('margin')).sendKeys(margin);
