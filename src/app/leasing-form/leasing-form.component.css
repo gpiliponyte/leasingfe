@@ -57,11 +57,12 @@ h3{
 }
 
 .btn{
-  background-color: black;
+ /* background-color: black;*/
+  background-color: #4dff4d;
   color: white;
   min-width: 80px;
 }
 
 .button-group{
-  margin: 15px 80px;
+  margin: 15px 90px;
 }
