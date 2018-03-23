@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleService} from '../services/vehicle.service';
 
+
 @Component({
   selector: 'app-leasing-form',
   templateUrl: './leasing-form.component.html',
@@ -42,7 +43,9 @@ export class LeasingFormComponent implements OnInit {
   changeScrollValue = true;
   selectedYear = '';
   value;
-
+  temp: number;
+  temp1;
+  temp2;
   listVehicle;
 
   constructor(private vehicleService: VehicleService) {
@@ -124,20 +127,21 @@ export class LeasingFormComponent implements OnInit {
   }
 
   onChanges() {
-    this.leaseForm.get('advancePaymentPercentage').valueChanges.subscribe(val => {
-      console.log(val);
-      if (this.leaseForm.get('advancePaymentPercentage').valid) {
-        this.value = this.leaseForm.get('assetPrice').value * (parseFloat(val) / 100);
-        console.log('parsed value :' + parseFloat(val));
-        console.log(this.leaseForm.get('assetPrice').value);
-        console.log(this.value);
-        this.leaseForm.get('advancePaymentAmount').patchValue(this.value.toFixed(2));
-      } else {
-        this.leaseForm.get('advancePaymentAmount').patchValue('');
-      }
-    });
+    // this.leaseForm.get('advancePaymentPercentage').valueChanges.subscribe(val => {
+    //   // console.log(val);
+    //   if (this.leaseForm.get('advancePaymentPercentage').valid) {
+    //     this.value = this.leaseForm.get('assetPrice').value * (parseFloat(val) / 100);
+    //     // console.log('parsed value :' + parseFloat(val));
+    //     // console.log(this.leaseForm.get('assetPrice').value);
+    //     // console.log(this.value);
+    //     this.leaseForm.get('advancePaymentAmount').patchValue(this.value.toFixed(2));
+    //     // console.log('ALIO' + this.value.toFixed(2));
+    //   } else {
+    //     this.leaseForm.get('advancePaymentAmount').patchValue('');
+    //   }
+    // });
     this.leaseForm.get('assetPrice').valueChanges.subscribe(val => {
-      console.log('assetprice ' + val);
+      // console.log('assetprice ' + val);
       if (this.leaseForm.get('assetPrice').valid) {
         this.value = val * (1 / 100);
         if (this.value > this.leaseForm.get('contractFee').value && this.value > 200) {
@@ -153,11 +157,11 @@ export class LeasingFormComponent implements OnInit {
             val * (this.leaseForm.get('advancePaymentPercentage').value / 100))
             .toFixed(2));
         } else {
-          console.log('I am nan');
+          // console.log('I am nan');
           this.leaseForm.get('advancePaymentAmount').patchValue('');
         }
-        console.log(parseFloat(val));
-        console.log(this.value);
+        // console.log(parseFloat(val));
+        // console.log(this.value);
       } else {
         this.leaseForm.get('contractFee').patchValue(200);
         this.leaseForm.get('advancePaymentAmount').patchValue('');
@@ -165,16 +169,25 @@ export class LeasingFormComponent implements OnInit {
     });
   }
 
-  test() {
-    // this.value = this.leaseForm.get('assetPrice').value * (parseFloat(this.leaseForm.get('advancePaymentAMount').value) * 100);
-    // console.log(this.leaseForm.get('assetPrice').value);
-    // console.log(this.value);
-    // this.leaseForm.get('advancePaymentPercentage').patchValue(this.value);
-    if (this.advancePaymentPercentage < 10 && this.advancePaymentPercentage > 100) {
-      this.advancePaymentAmount = this.assetPrice * (10 / 100);
-    } else {
-      this.advancePaymentAmount = this.assetPrice * (this.advancePaymentPercentage / 100);
+  keyUpAdvancePaymentAmount(){
+      if (this.leaseForm.get('advancePaymentPercentage').valid) {
+        this.value = this.leaseForm.get('assetPrice').value * (this.leaseForm.get('advancePaymentPercentage').value / 100);
+        this.leaseForm.get('advancePaymentAmount').patchValue(this.value.toFixed(2));
+      } else {
+        this.leaseForm.get('advancePaymentAmount').patchValue('');
+      }
+  }
+  keyUpAdvancePaymentPercentage() {
+    this.temp2 = this.leaseForm.get('advancePaymentAmount').value;
+      this.temp  = ((this.leaseForm.get('advancePaymentAmount').value / this.leaseForm.get('assetPrice').value) * 100);
+      this.temp1 = (this.leaseForm.get('assetPrice').value * 0.1);
+       if (this.temp <= 100 || this.temp >= 10) {
+        this.leaseForm.get('advancePaymentPercentage').setValue(this.temp.toFixed(2));
+       }
+      if (this.temp > 100 || this.temp < 10) {
+        this.leaseForm.get('advancePaymentPercentage').setValue(10);
+        this.leaseForm.get('advancePaymentAmount').setValue(this.temp1);
+      }
     }
   }
 
-}
