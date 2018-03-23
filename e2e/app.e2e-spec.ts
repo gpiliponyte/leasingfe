@@ -14,93 +14,252 @@ describe('leasingfe App', () => {
   });
   /*
   *****TEMPLATE FOR FILL FORM******
-  page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
-  page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Old
+  page.chooseCustomerType('Private'); 
+  page.chooseAssetType('New');
   page.chooseBrand('[value="LADA"]');
   page.chooseModel('[value="Niva"]');
   page.chooseYear('[value="2008"]');
   page.enterEnginePower('500');
   page.enterAssetPrice('5000');
   page.enterAdvancePaymentPercentage('20');
-  //page.enterAdvancePaymentAmount('400');
-  //nera slider testo
+  page.changeLeasePeriod(0.5);//procentais pvz: puse baro 0.5
   page.enterMargin('3.2');
-  page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
+  page.choosePaymentDate(15);
   page.clickNext();
   */
   /*
   *****TEMPLATE FOR EXPECT******
   expect(page.getSummaryConfimationText()).toEqual('Vehicle lease summary :');
-  expect(page.getCustomerType()).toEqual('Customer type : Private');
-  expect(page.getAssetType()).toEqual('Asset type : New');
-  expect(page.getBrand()).toEqual('Brand : LADA');
-  expect(page.getModel()).toEqual('Model : Niva');
-  expect(page.getYear()).toEqual('Year : 2008');
-  expect(page.getEnginePower()).toEqual('Engine power (kW) : 500');
-  expect(page.getAssetPrice()).toEqual('Asset price (€) : 2000');
-  expect(page.getAdvancePaymentPercentage()).toEqual('Advance payment percentage : 20');
-  expect(page.getAdvancePaymentAmount()).toEqual('Advance payment amount(€) : 400');
-  expect(page.getLeasePeriod()).toEqual('Lease period : 6');//nera dar auto ivedimo
-  expect(page.getMargin()).toEqual('Margin (%) : 3');
-  expect(page.getContractFee()).toEqual('Contract fee (€) : 200');
-  expect(page.getPaymentDate()).toEqual('Payment date : 15');
+  expect(page.getSummaryCustomerTypeValue()).toEqual('Customer type : Private');
+  expect(page.getSummaryAssetTypeValue()).toEqual('Asset type : New');
+  expect(page.getSummaryBrandValue()).toEqual('Brand : LADA');
+  expect(page.getSummaryModelValue()).toEqual('Model : Niva');
+  expect(page.getSummaryYearValue()).toEqual('Year : 2008');
+  expect(page.getSummaryEnginePowerValue()).toEqual('Engine power (kW) : 500');
+  expect(page.getSummaryAssetPriceValue()).toEqual('Asset price (€) : 2000');
+  expect(page.getSummaryAdvancePaymentPercentageValue()).toEqual('Advance payment percentage : 20');
+  expect(page.getSummaryAdvancePaymentAmountValue()).toEqual('Advance payment amount(€) : 400');
+  expect(page.getSummaryLeasePeriodValue()).toEqual('Lease period : 6');//nera dar auto ivedimo
+  expect(page.getSummaryMarginValue()).toEqual('Margin (%) : 3');
+  expect(page.getSummaryContractFeeValue()).toEqual('Contract fee (€) : 200');
+  expect(page.getSummaryPaymentDateValue()).toEqual('Payment date : 15');
   */
-  it('should get to the vehicle lease summary', () => {
-    page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
-    page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Old
+ /*****FALSE-TESTS*******/
+  it('shouldnt be able to click next when nothing is filled', () => {
+    page.navigateTo();
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only cutomer type is selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only first 2 options are selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only first 3 options are selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
+    page.chooseBrand('[value="LADA"]');
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only first 4 options are selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
+    page.chooseBrand('[value="LADA"]');
+    page.chooseModel('[value="Niva"]');
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only first 5 options are selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
+    page.chooseBrand('[value="LADA"]');
+    page.chooseModel('[value="Niva"]');
+    page.chooseYear('[value="2008"]');
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only first 6 options are selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
+    page.chooseBrand('[value="LADA"]');
+    page.chooseModel('[value="Niva"]');
+    page.chooseYear('[value="2008"]');
+    page.enterEnginePower('500');
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only first 7 options are selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
+    page.chooseBrand('[value="LADA"]');
+    page.chooseModel('[value="Niva"]');
+    page.chooseYear('[value="2008"]');
+    page.enterEnginePower('500');
+    page.enterAssetPrice('5000');
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only first 8 options are selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
     page.chooseBrand('[value="LADA"]');
     page.chooseModel('[value="Niva"]');
     page.chooseYear('[value="2008"]');
     page.enterEnginePower('500');
     page.enterAssetPrice('5000');
     page.enterAdvancePaymentPercentage('20');
-    //page.enterAdvancePaymentAmount('400');
-    page.changeLeasePeriod('42');
-    browser.sleep(9000);
-    //nera slider testo
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only first 9 options are selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
+    page.chooseBrand('[value="LADA"]');
+    page.chooseModel('[value="Niva"]');
+    page.chooseYear('[value="2008"]');
+    page.enterEnginePower('500');
+    page.enterAssetPrice('5000');
+    page.enterAdvancePaymentPercentage('20');
+    page.changeLeasePeriod(0.5);//procentais pvz: puse baro 0.5
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('shouldnt be able to click next when only first 10 options are selected', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
+    page.chooseBrand('[value="LADA"]');
+    page.chooseModel('[value="Niva"]');
+    page.chooseYear('[value="2008"]');
+    page.enterEnginePower('500');
+    page.enterAssetPrice('5000');
+    page.enterAdvancePaymentPercentage('20');
+    page.changeLeasePeriod(0.5);//procentais pvz: puse baro 0.5
     page.enterMargin('3.2');
-    page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
+    expect(page.getFormNextButton().isEnabled()).toBe(false);
+  });
+  it('should get error when entering letters to Engine power', () => {
+    page.navigateTo();
+    page.enterEnginePower('ab');
+    page.chooseCustomerType('Private');
+    expect(page.getFormErrorElement().isEnabled()).toBe(true);
+  });
+  it('should get error when entering too many numbers after point to Engine power', () => {
+    page.navigateTo();
+    page.enterEnginePower('500.222');
+    page.chooseCustomerType('Private');
+    expect(page.getFormErrorElement().isEnabled()).toBe(true);
+  });
+  it('should get error when entering letters to Asset price', () => {
+    page.navigateTo();
+    page.enterAssetPrice('a');
+    page.chooseCustomerType('Private');
+    expect(page.getFormErrorElement().isEnabled()).toBe(true);
+  });
+  it('should get error when entering Asset price that is too low', () => {
+    page.navigateTo();
+    page.enterAssetPrice('1000');
+    page.chooseCustomerType('Private');
+    expect(page.getFormErrorElement().isEnabled()).toBe(true);
+  });
+  it('should get error when entering too many numbers after point to Asset price', () => {
+    page.navigateTo();
+    page.enterAssetPrice('1000.555');
+    page.chooseCustomerType('Private');
+    expect(page.getFormErrorElement().isEnabled()).toBe(true);
+  });
+  it('should get error when entering letters to Advance payment percentage', () => {
+    page.navigateTo();
+    page.enterAdvancePaymentPercentage('a');
+    page.chooseCustomerType('Private');
+    expect(page.getFormErrorElement().isEnabled()).toBe(true);
+  });
+  it('should get error when entering Advance payment percentage that is too low', () => {
+    page.navigateTo();
+    page.enterAdvancePaymentPercentage('9');
+    page.chooseCustomerType('Private');
+    expect(page.getFormErrorElement().isEnabled()).toBe(true);
+  });
+  it('should get error when entering Advance payment percentage that is too big', () => {
+    page.navigateTo();
+    page.enterAdvancePaymentPercentage('101');
+    page.chooseCustomerType('Private');
+    expect(page.getFormErrorElement().isEnabled()).toBe(true);
+  });
+  it('should get error when entering too many numbers after point to Advance payment percentage', () => {
+    page.navigateTo();
+    page.enterAdvancePaymentPercentage('15.98754554444');
+    page.chooseCustomerType('Private');
+    expect(page.getFormErrorElement().isEnabled()).toBe(true);
+  });
+  /*****TRUE-TESTS*******/
+  it('should change brand to LADA and model to ', () => {
+    page.navigateTo();
+    page.chooseBrand('[value="LADA"]');
+    expect(page.getFormBrandValue()).toEqual('LADA');
+  });
+  it('should change brand to LINCOLN and model to Navigator', () => {
+    page.navigateTo();
+    page.chooseBrand('[value="LINCOLN"]');
+    page.chooseModel('[value="Navigator"]');
+    expect(page.getFormBrandValue()).toEqual('LINCOLN');
+    expect(page.getFormModelValue()).toEqual('Navigator');
+  });
+  it('should change year to 2006', () => {
+    page.navigateTo();
+    page.chooseYear('[value="2006"]');
+    expect(page.getFormYearValue()).toEqual('2006');
+  });
+  it('should get to the vehicle lease summary and display welcome message', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Private');
+    page.chooseAssetType('New');
+    page.chooseBrand('[value="LADA"]');
+    page.chooseModel('[value="Niva"]');
+    page.chooseYear('[value="2008"]');
+    page.enterEnginePower('500');
+    page.enterAssetPrice('5000');
+    page.enterAdvancePaymentPercentage('20');
+    page.changeLeasePeriod(0.5);//procentais pvz: puse baro 0.5
+    page.enterMargin('3.2');
+    page.choosePaymentDate(15);
     page.clickNext();
 
     expect(page.getSummaryConfimationText()).toEqual('Vehicle lease summary :');
   });
-  it('should see customer type be private', () => {
-    expect(page.getCustomerType()).toEqual('Customer type : Private');
-  });
-  it('should see asset type be new', () => {
-    expect(page.getAssetType()).toEqual('Asset type : New');
-  });
-  it('should see brand be LADA', () => {
-    expect(page.getBrand()).toEqual('Brand : LADA');
-  });
-  it('should see model be Niva', () => {
-    expect(page.getModel()).toEqual('Model : Niva');
-  });
-  it('should see year be 2008', () => {
-    expect(page.getYear()).toEqual('Year : 2008');
-  });
-  it('should see engine power be 500', () => {
-    expect(page.getEnginePower()).toEqual('Engine power (kW) : 500');
-  });
-  it('should see asset price the same', () => {
-    expect(page.getAssetPrice()).toEqual('Asset price (€) : 5000');
-  });
-  it('should see Advance payment percentage be 20', () => {
-    expect(page.getAdvancePaymentPercentage()).toEqual('Advance payment percentage : 20');
-  });
-  it('should see Advance payment amount same', () => {
-    expect(page.getAdvancePaymentAmount()).toEqual('Advance payment amount(€) : 1000.00');
-  });
-  it('should see leasing period the same as chosen', () => {
-    expect(page.getLeasePeriod()).toEqual('Lease period : 42');//nera dar auto ivedimo
-  });
-  it('should see margin be the same', () => {
-    expect(page.getMargin()).toEqual('Margin (%) : 3.2');
-  });
-  it('should see contract fee the same', () => {
-    expect(page.getContractFee()).toEqual('Contract fee (€) : 200');
-  });
-  it('should see payment date the same', () => {
-    expect(page.getPaymentDate()).toEqual('Payment date : 15');
+  it('should see same summary values as entered', () => {
+    page.navigateTo();
+    page.chooseCustomerType('Business');
+    page.chooseAssetType('Used');
+    page.chooseBrand('[value="BMW"]');
+    page.chooseModel('[value="125"]');
+    page.chooseYear('[value="2000"]');
+    page.enterEnginePower('500');
+    page.enterAssetPrice('5000');
+    page.enterAdvancePaymentPercentage('20');
+    page.changeLeasePeriod(0.5);//procentais pvz: puse baro 0.5
+    page.enterMargin('3.2');
+    page.choosePaymentDate(30);
+    page.clickNext();
+
+    expect(page.getSummaryCustomerTypeValue()).toEqual('Customer type : Business');
+    expect(page.getSummaryAssetTypeValue()).toEqual('Asset type : Used');
+    expect(page.getSummaryBrandValue()).toEqual('Brand : BMW');
+    expect(page.getSummaryModelValue()).toEqual('Model : 125');
+    expect(page.getSummaryYearValue()).toEqual('Year : 2000');
+    expect(page.getSummaryEnginePowerValue()).toEqual('Engine power (kW) : 500');
+    expect(page.getSummaryAssetPriceValue()).toEqual('Asset price (€) : 5000');
+    expect(page.getSummaryAdvancePaymentPercentageValue()).toEqual('Advance payment percentage : 20');
+    expect(page.getSummaryAdvancePaymentAmountValue()).toEqual('Advance payment amount(€) : 1000.00');
+    expect(page.getSummaryLeasePeriodValue()).toEqual('Lease period : 42');
+    expect(page.getSummaryMarginValue()).toEqual('Margin (%) : 3.2');
+    expect(page.getSummaryContractFeeValue()).toEqual('Contract fee (€) : 200');
+    expect(page.getSummaryPaymentDateValue()).toEqual('Payment date : 30');
   });
 });
