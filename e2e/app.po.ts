@@ -40,8 +40,11 @@ export class AppPage {
     element(by.id('advancePaymentAmount')).sendKeys(advancePaymentAmount);
   }
   changeLeasePeriod(leasePeriod){
-    //element(by.css('[ng-reflect-name=leasePeriod]')).sendKeys(leasePeriod);
-    browser.actions().dragAndDrop(element(by.css('[ng-reflect-name=leasePeriod]')),{x:100, y:0});
+    element(by.css('[ng-reflect-name=leasePeriod]')).getSize()
+      .then((sizeObj) => {
+        browser.actions().mouseMove(element(by.css('[ng-reflect-name=leasePeriod]')),{x:(sizeObj.width/2),y:0}).click().perform();
+    });
+  
   }
   enterMargin(margin){
     element(by.id('margin')).clear();

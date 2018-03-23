@@ -56,8 +56,6 @@ describe('leasingfe App', () => {
     page.enterAdvancePaymentPercentage('20');
     //page.enterAdvancePaymentAmount('400');
     page.changeLeasePeriod('42');
-    browser.sleep(9000);
-    //nera slider testo
     page.enterMargin('3.2');
     page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
     page.clickNext();
