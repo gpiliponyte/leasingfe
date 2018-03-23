@@ -40,25 +40,3 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
     background: #4CAF50;
     cursor: pointer;
 }
-
-h3{
-  margin: 20px;
-}
-
-#summary{
-  padding: 10px;
-  width: 400px;
-  /*margin: 0 auto;*/
-  border: 1px solid black;
-  border-radius: 10px;
-}
-
-.btn{
-  background-color: #4dff4d;
-  color: white;
-  min-width: 80px;
-}
-
-.button-group{
-  margin: 15px 90px;
-}
