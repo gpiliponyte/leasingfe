@@ -11,38 +11,40 @@ describe('leasingfe App', () => {
   it('should display welcome message', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('Welcome to Lease Calculator!');
-  });/*
-  it('TEMPLATE', () => {
-    page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
-    page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Old
-    page.chooseBrand('[value="LADA"]');
-    page.chooseModel('[value="Niva"]');
-    page.chooseYear('[value="2008"]');
-    page.enterEnginePower('500');
-    page.enterAssetPrice('2000');
-    page.enterAdvancePaymentPercentage('20');
-    page.enterAdvancePaymentAmount('400');
-    //nera slider testo
-    page.enterMargin('3');
-    page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
-    browser.sleep(9000)
-    page.clickNext();
-
-    expect(page.getSummaryConfimationText()).toEqual('Vehicle lease summary :');
-    expect(page.getCustomerType()).toEqual('Customer type : Private');
-    expect(page.getAssetType()).toEqual('Asset type : New');
-    expect(page.getBrand()).toEqual('Brand : LADA');
-    expect(page.getModel()).toEqual('Model : Niva');
-    expect(page.getYear()).toEqual('Year : 2008');
-    expect(page.getEnginePower()).toEqual('Engine power (kW) : 500');
-    expect(page.getAssetPrice()).toEqual('Asset price (€) : 2000');
-    expect(page.getAdvancePaymentPercentage()).toEqual('Advance payment percentage : 20');
-    expect(page.getAdvancePaymentAmount()).toEqual('Advance payment amount(€) : 400');
-    expect(page.getLeasePeriod()).toEqual('Lease period : 6');//nera dar auto ivedimo
-    expect(page.getMargin()).toEqual('Margin (%) : 3');
-    expect(page.getContractFee()).toEqual('Contract fee (€) : 200');
-    expect(page.getPaymentDate()).toEqual('Payment date : 15');
-  });*/
+  });
+  /*
+  *****TEMPLATE FOR FILL FORM******
+  page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
+  page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Old
+  page.chooseBrand('[value="LADA"]');
+  page.chooseModel('[value="Niva"]');
+  page.chooseYear('[value="2008"]');
+  page.enterEnginePower('500');
+  page.enterAssetPrice('5000');
+  page.enterAdvancePaymentPercentage('20');
+  //page.enterAdvancePaymentAmount('400');
+  //nera slider testo
+  page.enterMargin('3.2');
+  page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
+  page.clickNext();
+  */
+  /*
+  *****TEMPLATE FOR EXPECT******
+  expect(page.getSummaryConfimationText()).toEqual('Vehicle lease summary :');
+  expect(page.getCustomerType()).toEqual('Customer type : Private');
+  expect(page.getAssetType()).toEqual('Asset type : New');
+  expect(page.getBrand()).toEqual('Brand : LADA');
+  expect(page.getModel()).toEqual('Model : Niva');
+  expect(page.getYear()).toEqual('Year : 2008');
+  expect(page.getEnginePower()).toEqual('Engine power (kW) : 500');
+  expect(page.getAssetPrice()).toEqual('Asset price (€) : 2000');
+  expect(page.getAdvancePaymentPercentage()).toEqual('Advance payment percentage : 20');
+  expect(page.getAdvancePaymentAmount()).toEqual('Advance payment amount(€) : 400');
+  expect(page.getLeasePeriod()).toEqual('Lease period : 6');//nera dar auto ivedimo
+  expect(page.getMargin()).toEqual('Margin (%) : 3');
+  expect(page.getContractFee()).toEqual('Contract fee (€) : 200');
+  expect(page.getPaymentDate()).toEqual('Payment date : 15');
+  */
   it('should get to the vehicle lease summary', () => {
     page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
     page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Old
@@ -50,13 +52,12 @@ describe('leasingfe App', () => {
     page.chooseModel('[value="Niva"]');
     page.chooseYear('[value="2008"]');
     page.enterEnginePower('500');
-    page.enterAssetPrice('2000');
+    page.enterAssetPrice('5000');
     page.enterAdvancePaymentPercentage('20');
-    page.enterAdvancePaymentAmount('400');
+    //page.enterAdvancePaymentAmount('400');
     //nera slider testo
-    page.enterMargin('3');
+    page.enterMargin('3.2');
     page.getElementsWithTagFormGroupAndInput().get(12).click();//12 - day:15 13 - day:30
-
     page.clickNext();
 
     expect(page.getSummaryConfimationText()).toEqual('Vehicle lease summary :');
@@ -79,25 +80,25 @@ describe('leasingfe App', () => {
   it('should see engine power be 500', () => {
     expect(page.getEnginePower()).toEqual('Engine power (kW) : 500');
   });
-  it('should see asset price be 2000', () => {
-    expect(page.getAssetPrice()).toEqual('Asset price (€) : 2000');
+  it('should see asset price the same', () => {
+    expect(page.getAssetPrice()).toEqual('Asset price (€) : 5000');
   });
   it('should see Advance payment percentage be 20', () => {
     expect(page.getAdvancePaymentPercentage()).toEqual('Advance payment percentage : 20');
   });
-  it('should see Advance payment amount be 400', () => {
-    expect(page.getAdvancePaymentAmount()).toEqual('Advance payment amount(€) : 400');
+  it('should see Advance payment amount same', () => {
+    expect(page.getAdvancePaymentAmount()).toEqual('Advance payment amount(€) : 1000.00');
   });
   it('should see leasing period set be 6', () => {
     expect(page.getLeasePeriod()).toEqual('Lease period : 6');//nera dar auto ivedimo
   });
-  it('should see margin be 3', () => {
-    expect(page.getMargin()).toEqual('Margin (%) : 3');
+  it('should see margin be the same', () => {
+    expect(page.getMargin()).toEqual('Margin (%) : 3.2');
   });
-  it('should see contract fee be 200', () => {
+  it('should see contract fee the same', () => {
     expect(page.getContractFee()).toEqual('Contract fee (€) : 200');
   });
-  it('should see payment date be 15', () => {
+  it('should see payment date the same', () => {
     expect(page.getPaymentDate()).toEqual('Payment date : 15');
   });
 });

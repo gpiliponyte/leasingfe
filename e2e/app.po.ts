@@ -33,12 +33,14 @@ export class AppPage {
     element(by.id('assetPrice')).sendKeys(assetPrice);
   }
   enterAdvancePaymentPercentage(advancePaymentPercentage){
+    element(by.id('advancePaymentPercentage')).clear();
     element(by.id('advancePaymentPercentage')).sendKeys(advancePaymentPercentage);
   }
   enterAdvancePaymentAmount(advancePaymentAmount){
     element(by.id('advancePaymentAmount')).sendKeys(advancePaymentAmount);
   }
   enterMargin(margin){
+    element(by.id('margin')).clear();
     element(by.id('margin')).sendKeys(margin);
   }
   clickNext(){
