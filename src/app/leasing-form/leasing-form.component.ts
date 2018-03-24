@@ -9,6 +9,7 @@ import {VehicleService} from '../services/vehicle.service';
 })
 export class LeasingFormComponent implements OnInit {
   leaseForm: FormGroup;
+  businessCustomerForm: FormGroup;
 
   defaultContractFee = 200;
   customerTypes = ['Private', 'Business'];
@@ -17,6 +18,16 @@ export class LeasingFormComponent implements OnInit {
   years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
   numberRegex = '^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*$';
   validationRegex = '^([1-9])\\d*(?:\\.\\d{1,2})?\\s*$';
+
+  //Business form regex
+  lithuanianRegex = '^[a-zA-Z0-9ĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]+$';
+  companyCodeRegex = '^[a-zA-Z0-9]+$';
+  emailRegex = '^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
+  cityRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]+$';
+  postCodeRegex = '[LT]{2}\\d{5}';
+  streetRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž0-9\\s\\.\\-]+$';
+  phoneNumberRegex = '^[0-9]{11}';
+  //
 
   customerType;
   assetType;
@@ -36,7 +47,7 @@ export class LeasingFormComponent implements OnInit {
   modelsBySelectedBrand;
   selectedBrand = '';
   selectedModel = '';
-  showForm = true;
+  showForm = false;
   showFormSummary = false;
   showOK = false;
   changeScrollValue = true;
@@ -83,6 +94,31 @@ export class LeasingFormComponent implements OnInit {
       'contractFee': new FormControl(200, Validators.required),
       'paymentDate': new FormControl(null, Validators.required)
     });
+
+
+
+    // Business customer form
+    this.businessCustomerForm = new FormGroup({
+      'companyName': new FormControl(null, [Validators.required,
+        Validators.pattern(this.lithuanianRegex)]),
+      'companyCode': new FormControl(null, [Validators.required,
+        Validators.pattern(this.companyCodeRegex)]),
+      'email': new FormControl(null, [Validators.email,
+        Validators.required, Validators.pattern(this.emailRegex)]),
+      'phoneNumber': new FormControl(null, [Validators.required,
+        Validators.pattern(this.phoneNumberRegex)]),
+      'street': new FormControl(null, [Validators.required,
+        Validators.pattern(this.streetRegex)]),
+      'city': new FormControl(null, [Validators.required,
+        Validators.pattern(this.cityRegex)]),
+      'postCode': new FormControl(null, [Validators.required,
+        Validators.pattern(this.postCodeRegex)]),
+      'country': new FormControl(null, [Validators.required,
+        Validators.pattern(this.cityRegex)])
+    });
+    //
+
+
     this.loadVehicles();
     this.onChanges();
   }
@@ -163,18 +199,6 @@ export class LeasingFormComponent implements OnInit {
         this.leaseForm.get('advancePaymentAmount').patchValue('');
       }
     });
-  }
-
-  test() {
-    // this.value = this.leaseForm.get('assetPrice').value * (parseFloat(this.leaseForm.get('advancePaymentAMount').value) * 100);
-    // console.log(this.leaseForm.get('assetPrice').value);
-    // console.log(this.value);
-    // this.leaseForm.get('advancePaymentPercentage').patchValue(this.value);
-    if (this.advancePaymentPercentage < 10 && this.advancePaymentPercentage > 100) {
-      this.advancePaymentAmount = this.assetPrice * (10 / 100);
-    } else {
-      this.advancePaymentAmount = this.assetPrice * (this.advancePaymentPercentage / 100);
-    }
   }
 
 }

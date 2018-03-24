@@ -102,17 +102,18 @@
           class="form-control"
           type="text">
         <!--<span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"-->
-              <!--class="label label-warning">Only numeric values. Required field.</span>-->
+        <!--class="label label-warning">Only numeric values. Required field.</span>-->
       </div>
     </div>
-      <div class="form-group">
-      <label  class="control-label col-xs-4">Lease period:</label>
+    <div class="form-group">
+      <label class="control-label col-xs-4">Lease period:</label>
 
       <div class="col-xs-2">
-            <input  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue (input)="pitch($event)" value="6">
+        <input [formControlName]="'leasePeriod'" type="range" min="6" max="84" step="6" class="slider" #rangevalue
+               (input)="pitch($event)" value="6">
 
-          <input  style="margin-top:3%" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">
-        </div>
+        <input style="margin-top:3%" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">
+      </div>
 
     </div>
 
@@ -181,7 +182,7 @@
   <p><b>Contract fee (€) : </b>{{leaseForm.get('contractFee').value}}</p>
   <p><b>Payment date : </b>{{leaseForm.get('paymentDate').value}}</p>
 
-  <div class="form-group button-group row" >
+  <div class="form-group button-group row">
     <button (click)="goBackToForm()" name="submit1" type="submit" class="btn">Back</button>
     <button (click)="submit()" name="submit2" type="submit" class="btn">Submit</button>
   </div>
@@ -190,3 +191,122 @@
 <div id="ok" *ngIf="showOK">
   <h3 class="text-center">Lease request was successfully accepted.</h3>
 </div>
+
+
+
+<!--Business form-->
+<div class="container">
+  <form class="form-horizontal" [formGroup]="businessCustomerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="companyName" class="control-label col-xs-4">Company name:</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="companyName"
+          id="companyName"
+          class="form-control"
+          type="text">
+        <span *ngIf="businessCustomerForm.get('companyName').invalid && businessCustomerForm.get('companyName').touched"
+              class="label label-warning">Invalid company name. Required field.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="companyCode" class="control-label col-xs-4">Company code:</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="companyCode"
+          id="companyCode"
+          class="form-control"
+          type="text">
+        <span *ngIf="businessCustomerForm.get('companyCode').invalid && businessCustomerForm.get('companyCode').touched"
+              class="label label-warning">Invalid company code. Required field.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="control-label col-xs-4">Email:</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="email"
+          id="email"
+          class="form-control"
+          type="email">
+        <span
+          *ngIf="businessCustomerForm.get('email').invalid && businessCustomerForm.get('email').touched"
+          class="label label-warning">Invalid email. Required field.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber" class="control-label col-xs-4">Phone number:</label>
+      <div class="col-xs-2">
+        <span class="input-group-addon"><i class="fa fa-plus"></i></span>
+        <input
+          formControlName="phoneNumber"
+          id="phoneNumber"
+          class="form-control bfh-phone"
+          type="text">
+        <span *ngIf="businessCustomerForm.get('phoneNumber').invalid && businessCustomerForm.get('phoneNumber').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
+      </div>
+    </div>
+    <div class="row">
+      <label class="control-label col-xs-4" id="address">Address:</label>
+    </div>
+    <div class="form-group">
+      <label for="street" class="control-label col-xs-4">Street:</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="street"
+          id="street"
+          class="form-control"
+          type="text">
+        <span *ngIf="businessCustomerForm.get('street').invalid && businessCustomerForm.get('street').touched"
+              class="label label-warning">Invalid street. Required field.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="city" class="control-label col-xs-4">City:</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="city"
+          id="city"
+          class="form-control"
+          type="text">
+        <span *ngIf="businessCustomerForm.get('city').invalid && businessCustomerForm.get('city').touched"
+              class="label label-warning">Invalid city. Required field.</span>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="postCode" class="control-label col-xs-4">Post code:</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="postCode"
+          id="postCode"
+          class="form-control"
+          type="text">
+        <span *ngIf="businessCustomerForm.get('postCode').invalid && businessCustomerForm.get('postCode').touched"
+              class="label label-warning">Invalid post code. Required field.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="country" class="control-label col-xs-4">Country:</label>
+      <div class="col-xs-2">
+        <input
+          formControlName="country"
+          id="country"
+          class="form-control"
+          type="text">
+        <span *ngIf="businessCustomerForm.get('country').invalid && businessCustomerForm.get('country').touched"
+              class="label label-warning">Invalid country. Required field.</span>
+      </div>
+    </div>
+
+    <div class="form-group button-group row">
+      <button (click)="goBackToForm()" name="submit1" type="submit" class="btn">Back</button>
+      <button (click)="submit()" name="submit2" type="submit" class="btn">Submit</button>
+    </div>
+
+    <!---->
+
