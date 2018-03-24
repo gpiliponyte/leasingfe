@@ -9,6 +9,8 @@ import {VehicleService} from '../services/vehicle.service';
 })
 export class LeasingFormComponent implements OnInit {
   leaseForm: FormGroup;
+  privateForm: FormGroup;
+  businessCustomerForm: FormGroup;
 
   defaultContractFee = 200;
   customerTypes = ['Private', 'Business'];
@@ -17,6 +19,17 @@ export class LeasingFormComponent implements OnInit {
   years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
   numberRegex = '^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*$';
   validationRegex = '^([1-9])\\d*(?:\\.\\d{1,2})?\\s*$';
+  lithuanianRegex = '^[a-zA-Z0-9ĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]+$';
+  companyCodeRegex = '^[a-zA-Z0-9]+$';
+  emailRegex = '^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
+  cityRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]+$';
+  postCodeRegex = '[LT]{2}\\d{5}';
+  streetRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž0-9\\s\\.\\-]+$';
+  phoneNumberRegex = '^[0-9]{11}';
+  personalIDRegex = '^[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}$';
+  nameRegex = '^[a-zA-ZąčęėįųūšžĄČĖĘĮŲŪČŠŽ ,.\'-]+$'
+  //emailRegex = '^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
+  //nameRegex = '/^(?=.{1,50}$)[a-z]+(?:[\'_.\\s][a-z]+)*$/i';
 
   customerType;
   assetType;
@@ -40,9 +53,10 @@ export class LeasingFormComponent implements OnInit {
   showFormSummary = false;
   showOK = false;
   changeScrollValue = true;
+  showCustomerForm = false;
   selectedYear = '';
   value;
-
+  isCheckboxChecked = false;
   listVehicle;
 
   constructor(private vehicleService: VehicleService) {
@@ -53,7 +67,7 @@ export class LeasingFormComponent implements OnInit {
     this.vehicleService.getAllVehicleInfo()
       .then(data => {
         this.listVehicle = data;
-        let temp = [];
+        const temp = [];
         this.listVehicle.forEach(data => temp.push(data['groupValue']));
         this.brands = Array.from(new Set(temp));
       });
@@ -83,6 +97,40 @@ export class LeasingFormComponent implements OnInit {
       'contractFee': new FormControl(200, Validators.required),
       'paymentDate': new FormControl(null, Validators.required)
     });
+
+    this.privateForm = new FormGroup({'firstName': new FormControl(null, [Validators.required, Validators.pattern(this.nameRegex)]),
+      'lastName': new FormControl(null, [Validators.required, Validators.pattern(this.nameRegex)]),
+      'personalID': new FormControl(null, [Validators.required, Validators.pattern(this.personalIDRegex)]),
+      'email': new FormControl(null, [Validators.required, Validators.pattern(this.emailRegex)]),
+      'phoneNumber': new FormControl(null, [Validators.required, Validators.pattern(this.phoneNumberRegex)]),
+      'street': new FormControl(null, [Validators.required, Validators.pattern(this.streetRegex)]),
+      'city': new FormControl(null, [Validators.required, Validators.pattern(this.cityRegex)]),
+      'postCode': new FormControl(null, [Validators.required, Validators.pattern(this.postCodeRegex)]),
+      'country': new FormControl(null, [Validators.required, Validators.pattern(this.cityRegex)]),
+      'checkbox': new FormControl(null, Validators.required)});
+
+
+    // Business customer form
+    this.businessCustomerForm = new FormGroup({
+      'companyName': new FormControl(null, [Validators.required,
+        Validators.pattern(this.lithuanianRegex)]),
+      'companyCode': new FormControl(null, [Validators.required,
+        Validators.pattern(this.companyCodeRegex)]),
+      'email': new FormControl(null, [Validators.email,
+        Validators.required, Validators.pattern(this.emailRegex)]),
+      'phoneNumber': new FormControl(null, [Validators.required,
+        Validators.pattern(this.phoneNumberRegex)]),
+      'street': new FormControl(null, [Validators.required,
+        Validators.pattern(this.streetRegex)]),
+      'city': new FormControl(null, [Validators.required,
+        Validators.pattern(this.cityRegex)]),
+      'postCode': new FormControl(null, [Validators.required,
+        Validators.pattern(this.postCodeRegex)]),
+      'country': new FormControl(null, [Validators.required,
+        Validators.pattern(this.cityRegex)])
+    });
+    //
+
     this.loadVehicles();
     this.onChanges();
   }
@@ -94,28 +142,31 @@ export class LeasingFormComponent implements OnInit {
     this.changeScrollValue ? this.selectedModel = '' : this.changeScrollValue = true;
     this.modelsBySelectedBrand = [];
     this.listVehicle.forEach(data => {
-      console.log(data['groupValue']);
       if (data['groupValue'] === brand) {
         this.modelsBySelectedBrand.push(data['text']);
       }
     });
   }
 
-  goBackToForm() {
+  goBackToForm1() {
     this.showFormSummary = false;
     this.showForm = true;
   }
 
-  submit() {
+  goNextToForm2() {
     this.showFormSummary = false;
-    this.showOK = true;
+    this.showCustomerForm = true;
   }
 
-  onSubmit() {
-    console.log(this.leaseForm);
+  goToSummary() {
     this.showFormSummary = true;
     this.showForm = false;
     this.changeScrollValue = false;
+  }
+
+  goBackToSummary() {
+    this.showCustomerForm = false;
+    this.showFormSummary = true;
   }
 
   pitch(event: any) {
@@ -123,21 +174,21 @@ export class LeasingFormComponent implements OnInit {
 
   }
 
+  submit() {
+    this.showOK = true;
+    this.showCustomerForm = false;
+  }
+
   onChanges() {
     this.leaseForm.get('advancePaymentPercentage').valueChanges.subscribe(val => {
-      console.log(val);
       if (this.leaseForm.get('advancePaymentPercentage').valid) {
         this.value = this.leaseForm.get('assetPrice').value * (parseFloat(val) / 100);
-        console.log('parsed value :' + parseFloat(val));
-        console.log(this.leaseForm.get('assetPrice').value);
-        console.log(this.value);
         this.leaseForm.get('advancePaymentAmount').patchValue(this.value.toFixed(2));
       } else {
         this.leaseForm.get('advancePaymentAmount').patchValue('');
       }
     });
     this.leaseForm.get('assetPrice').valueChanges.subscribe(val => {
-      console.log('assetprice ' + val);
       if (this.leaseForm.get('assetPrice').valid) {
         this.value = val * (1 / 100);
         if (this.value > this.leaseForm.get('contractFee').value && this.value > 200) {
@@ -153,11 +204,8 @@ export class LeasingFormComponent implements OnInit {
             val * (this.leaseForm.get('advancePaymentPercentage').value / 100))
             .toFixed(2));
         } else {
-          console.log('I am nan');
           this.leaseForm.get('advancePaymentAmount').patchValue('');
         }
-        console.log(parseFloat(val));
-        console.log(this.value);
       } else {
         this.leaseForm.get('contractFee').patchValue(200);
         this.leaseForm.get('advancePaymentAmount').patchValue('');
