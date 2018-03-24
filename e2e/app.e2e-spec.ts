@@ -12,16 +12,9 @@ describe('leasingfe App', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('Welcome to Lease Calculator!');
   });
-
-  /*//should not do anything
-  it('should not let press button', () => {
-    page.clickNext();
-    expect(page.isSummaryShown().toBeUndefined());
-  });*/
-
   /*
   *****TEMPLATE FOR FILL FORM******
-  page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business
+  page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
   page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Old
   page.chooseBrand('[value="LADA"]');
   page.chooseModel('[value="Niva"]');
@@ -53,7 +46,7 @@ describe('leasingfe App', () => {
   expect(page.getPaymentDate()).toEqual('Payment date : 15');
   */
   it('should get to the vehicle lease summary', () => {
-    page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business
+    page.getElementsWithTagFormGroupAndInput().get(0).click();//0- Private 1- Business 
     page.getElementsWithTagFormGroupAndInput().get(2).click();//2- New 3 - Old
     page.chooseBrand('[value="LADA"]');
     page.chooseModel('[value="Niva"]');

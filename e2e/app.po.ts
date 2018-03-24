@@ -18,11 +18,6 @@ export class AppPage {
   chooseBrand(brand){
     element(by.id('brand')).$(brand).click();
   }
-
-  isSummaryShown(){
-    element(by.css('#summary')).isPresent();
-  }
-
   chooseModel(model){
     var select = element(by.id('model'));
     select.$(model).click();
@@ -56,7 +51,7 @@ export class AppPage {
     element(by.css('button[name]')).click();
   }
 
-  //Summary methods
+  //Summary methods  
   getSummaryConfimationText(){
     return element(by.css('h3:first-child :first-child')).getText();
   }
