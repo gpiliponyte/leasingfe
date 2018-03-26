@@ -308,7 +308,17 @@ div input{
     font-size: 14px;
     font-weight: normal;
   } */
-
+/* 
   #ok{
     font-family: "Exo";
+  } */
+  .OK .container{
+    margin-top: 10%;
+    width: 70%;
+    border-radius: 1%;
+    border: 3px solid #F58321;
+    background-color: rgb(255, 255, 255);
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: normal;
   }

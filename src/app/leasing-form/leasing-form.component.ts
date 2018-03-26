@@ -28,6 +28,7 @@ export class LeasingFormComponent implements OnInit {
   phoneNumberRegex = '^[0-9]{11}';
   personalIDRegex = '^[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}$';
   nameRegex = '^[a-zA-ZąčęėįųūšžĄČĖĘĮŲŪČŠŽ ,.\'-]+$'
+  onlyNumbersRegex = '^[0-9]{9}$'
   //emailRegex = '^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
   //nameRegex = '/^(?=.{1,50}$)[a-z]+(?:[\'_.\\s][a-z]+)*$/i';
 
@@ -58,8 +59,30 @@ export class LeasingFormComponent implements OnInit {
   value;
   isCheckboxChecked = false;
   listVehicle;
+  temp: number;
+  temp1;
+  temp2;
 
   constructor(private vehicleService: VehicleService) {
+  }
+
+  onCustomerTypeChange(){
+    if(this.leaseForm.get('customerType').value == 'Private') {
+      console.log(1);
+      this.leaseForm.get('assetPrice').clearValidators();
+      this.leaseForm.get('assetPrice').setValidators([Validators.min(5000), Validators.required, Validators.pattern(this.validationRegex)]);
+      // this.leaseForm.get('assetPrice').setValidators([Validators.min(5000), Validators.required, Validators.pattern(this.validationRegex)]);
+       console.log( this.leaseForm.get('assetPrice').validator);
+       this.leaseForm.get('assetPrice').updateValueAndValidity();
+    }
+    else{
+      console.log(2);
+      this.leaseForm.get('assetPrice').clearValidators();
+      this.leaseForm.get('assetPrice').setValidators([Validators.min(10000), Validators.required, Validators.pattern(this.validationRegex)]);
+      //this.leaseForm.get('assetPrice').setValidators([Validators.min(10000), Validators.required, Validators.pattern(this.validationRegex)]);
+      console.log( this.leaseForm.get('assetPrice').validator);
+      this.leaseForm.get('assetPrice').updateValueAndValidity();
+    }
   }
 
 
@@ -84,8 +107,7 @@ export class LeasingFormComponent implements OnInit {
       'year': new FormControl(null, Validators.required),
       'enginePower': new FormControl(null, [Validators.required, Validators.pattern(this.validationRegex),
         Validators.min(1)]),
-      'assetPrice': new FormControl(null, [Validators.required, Validators.pattern(this.validationRegex),
-        Validators.min(5000)]),
+      'assetPrice': new FormControl(null, [Validators.required, Validators.pattern(this.validationRegex)]),
       'advancePaymentPercentage': new FormControl(10,
         [Validators.required, Validators.pattern(this.validationRegex), Validators.max(100),
           Validators.min(10)]),
@@ -115,7 +137,7 @@ export class LeasingFormComponent implements OnInit {
       'companyName': new FormControl(null, [Validators.required,
         Validators.pattern(this.lithuanianRegex)]),
       'companyCode': new FormControl(null, [Validators.required,
-        Validators.pattern(this.companyCodeRegex)]),
+        Validators.pattern(this.onlyNumbersRegex)]),
       'email': new FormControl(null, [Validators.email,
         Validators.required, Validators.pattern(this.emailRegex)]),
       'phoneNumber': new FormControl(null, [Validators.required,
@@ -180,14 +202,14 @@ export class LeasingFormComponent implements OnInit {
   }
 
   onChanges() {
-    this.leaseForm.get('advancePaymentPercentage').valueChanges.subscribe(val => {
-      if (this.leaseForm.get('advancePaymentPercentage').valid) {
-        this.value = this.leaseForm.get('assetPrice').value * (parseFloat(val) / 100);
-        this.leaseForm.get('advancePaymentAmount').patchValue(this.value.toFixed(2));
-      } else {
-        this.leaseForm.get('advancePaymentAmount').patchValue('');
-      }
-    });
+    // this.leaseForm.get('advancePaymentPercentage').valueChanges.subscribe(val => {
+    //   if (this.leaseForm.get('advancePaymentPercentage').valid) {
+    //     this.value = this.leaseForm.get('assetPrice').value * (parseFloat(val) / 100);
+    //     this.leaseForm.get('advancePaymentAmount').patchValue(this.value.toFixed(2));
+    //   } else {
+    //     this.leaseForm.get('advancePaymentAmount').patchValue('');
+    //   }
+    // });
     this.leaseForm.get('assetPrice').valueChanges.subscribe(val => {
       if (this.leaseForm.get('assetPrice').valid) {
         this.value = val * (1 / 100);

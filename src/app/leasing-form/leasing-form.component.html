@@ -6,6 +6,7 @@
       <div class="col-xs-6">
         <label class="radioBlock" *ngFor="let customerType of customerTypes">
           <input
+          (change) = "onCustomerTypeChange()"
             formControlName="customerType"
             type="radio"
             [value]="customerType">
@@ -73,9 +74,13 @@
   </div>
   <div class="col-xs-6" >
     <div class="form-group">
-      <label for="assetPrice" class="col-xs-6">ASSET PRICE €</label>
-      <span class="col-xs-6" *ngIf="leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
-              class="label label-warning">Lowest asset price is 5000.</span>
+      <label for="assetPrice" class="col-xs-4">ASSET PRICE €</label>
+      <span class="col-xs-8" *ngIf="leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched && leaseForm.get('customerType').value == null"
+              class="label label-warning">Only numeric values. Required field.</span>
+      <span class="col-xs-8" *ngIf="leaseForm.get('customerType').value == 'Private' && leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
+              class="label label-warning">Lowest asset price for private customers is 5000.</span>
+              <span class="col-xs-6" *ngIf="leaseForm.get('customerType').value == 'Business' && leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
+              class="label label-warning">Lowest asset price for business customers is 10000.</span>
       <div class="col-xs-12">
         <input
           formControlName="assetPrice"
@@ -90,7 +95,8 @@
           *ngIf="leaseForm.get('advancePaymentPercentage').invalid && leaseForm.get('advancePaymentPercentage').touched"
           class="label label-warning">Enter number between 10 and 100.</span>
       <div class="col-xs-12">
-        <input
+        <input 
+        (change)="keyUpAdvancePaymentAmount()"
           formControlName="advancePaymentPercentage"
           id="advancePaymentPercentage"
           class="form-control"
@@ -103,7 +109,7 @@
               class="label label-warning">Only numeric values. Required field.</span>
       <div class="col-xs-12">
         <input
-          readonly
+          (change)="keyUpAdvancePaymentPercentage()"
           formControlName="advancePaymentAmount"
           id="advancePaymentAmount"
           class="form-control"
@@ -222,7 +228,6 @@
 </div>
 </div>
 <div class="privatePersonalInfo">
-    
     <!-- <div class="container" *ngIf="showCustomerForm && leaseForm.get('customerType').value === 'Private'"> -->
 <div class="container" *ngIf="showCustomerForm && leaseForm.get('customerType').value === 'Private'">
   <form class="form-horizontal" [formGroup]="privateForm" (ngSubmit)="onSubmit()">
@@ -281,7 +286,7 @@
           type="text">
       </div>
       <span class="col-xs-3" *ngIf="privateForm.get('email').invalid && privateForm.get('email').touched"
-              class="label label-warning">Must be legit. Required field.</span>
+              class="label label-warning">Invalid email. Required field.</span>
     </div>
 
 
@@ -316,7 +321,7 @@
         
       </div>
       <span class="col-xs-3" *ngIf="privateForm.get('street').invalid && privateForm.get('street').touched"
-              class="label label-warning">Some street validation.</span>
+              class="label label-warning">Invalid street. Required field.</span>
     </div>
 
     <div class="form-group">
@@ -330,7 +335,7 @@
         
       </div>
       <span class="col-xs-3" *ngIf="privateForm.get('city').invalid && privateForm.get('city').touched"
-              class="label label-warning">Some city validation.</span>
+              class="label label-warning">Invalid city. Required field.</span>
     </div>
 
 
@@ -345,7 +350,7 @@
         
       </div>
       <span class="col-xs-3" *ngIf="privateForm.get('postCode').invalid && privateForm.get('postCode').touched"
-              class="label label-warning">Some post code validation.</span>
+              class="label label-warning">Invalid post code, eg. LTxxxxx Required field.</span>
     </div>
 
     <div class="form-group">
@@ -358,7 +363,7 @@
           type="text">
       </div>
       <span class="col-xs-3" *ngIf="privateForm.get('country').invalid && privateForm.get('country').touched"
-              class="label label-warning">Some country validation.</span>
+              class="label label-warning">Invalid country. Required field.</span>
     </div>
 
 
@@ -373,11 +378,6 @@
       <span class="col-xs-3" *ngIf="privateForm.get('checkbox').touched && !isCheckboxChecked"
             class="label label-warning">You must accept terms and conditions</span>
     </div>
-
-
-    
-
-
     <!-- <div class="form-group button-group row" >
       <div class="col-xs-offset-3">
         <button (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
@@ -508,7 +508,7 @@
           type="text">
        </div>
        <span class="col-xs-3" *ngIf="businessCustomerForm.get('postCode').invalid && businessCustomerForm.get('postCode').touched"
-       class="label label-warning">Invalid post code. Required field.</span>
+       class="label label-warning">Invalid post code, eg. LTxxxxx Required field.</span>
     </div>
 
     <div class="form-group">
@@ -543,10 +543,8 @@
   </div>
 </div>
 </div>
-<!-- <div class="OK">
-<div class="container"> -->
-<div id="ok" *ngIf="showOK">
+<div class="OK">
+<div class="container" *ngIf="showOK">
   <h3 class="text-center">Lease request was successfully accepted.</h3>
 </div>
-<!-- </div>
-</div> -->
+</div>
