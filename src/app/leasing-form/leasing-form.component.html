@@ -1,100 +1,107 @@
 <div class="container" *ngIf="showForm">
   <form class="form-horizontal" [formGroup]="leaseForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="customerType" class="control-label col-xs-4">Customer type:</label>
-      <div class="col-xs-4">
-        <label class="radio-inline" *ngFor="let customerType of customerTypes">
+    <div class="col-xs-6" >
+    <div class="form-group notBorder type">
+      <label for="customerType" class=" typetext col-xs-12">CUSTOMER TYPE</label>
+      <div class="col-xs-6">
+        <label class="radioBlock" *ngFor="let customerType of customerTypes">
           <input
             formControlName="customerType"
             type="radio"
             [value]="customerType">
+            <i></i>
           {{customerType}}
         </label>
       </div>
     </div>
-    <div class="form-group">
-      <label for="assetType" class="control-label col-xs-4">Asset type:</label>
-      <div class="col-xs-8">
-        <label class="radio-inline" *ngFor="let assetType of assetTypes">
+    <div class="form-group notBorder">
+      <label for="assetType" class="col-xs-12">ASSET TYPE</label>
+      <div class="col-xs-6">
+        <label class="radioBlock" *ngFor="let assetType of assetTypes">
           <input
             formControlName="assetType"
             type="radio"
             [value]="assetType">
+            <i></i>
           {{assetType}}
         </label>
       </div>
     </div>
-    <div class="form-group">
-      <label for="brand" class="control-label col-xs-4">Brand:</label>
-      <div class="col-xs-2">
+    <div class="form-group dropDown">
+      <label for="brand" class="col-xs-6">BRAND</label>
+      <div class="col-xs-6">
         <select [formControlName]="'brand'" [(ngModel)]="selectedBrand" (ngModelChange)="getCarModelsByBrand($event)"
                 id="brand" name="brand"
                 class="select form-control">
-          <option selected="" value="" selected disabled hidden>Choose brand</option>
+          <option selected="" value="" selected disabled hidden></option>
           <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
         </select>
       </div>
     </div>
-    <div class="form-group">
-      <label for="model" class="control-label col-xs-4">Model:</label>
-      <div class="col-xs-2">
+    <div class="form-group dropDown">
+      <label for="model" class="col-xs-6">MODEL</label>
+      <div class="col-xs-6">
         <select [formControlName]="'model'" [(ngModel)]="selectedModel" id="model" name="model"
                 class="select form-control">
-          <option value="" selected disabled hidden>Choose model</option>
+          <option value="" selected disabled hidden></option>
           <option *ngFor="let model of modelsBySelectedBrand" [value]="model">{{model}}</option>
         </select>
       </div>
     </div>
-    <div class="form-group">
-      <label for="year" class="control-label col-xs-4">Year:</label>
-      <div class="col-xs-2">
+    <div class="form-group dropDown">
+      <label for="year" class="col-xs-6">YEAR</label>
+      <div class="col-xs-6">
         <select [formControlName]="'year'" [(ngModel)]="selectedYear" id="year" name="year"
                 class="select form-control">
-          <option value="" selected disabled hidden>Choose year</option>
+          <option value="" selected disabled hidden></option>
           <option *ngFor="let year of years" [value]="year">{{year}}</option>
         </select>
       </div>
     </div>
     <div class="form-group">
-      <label for="enginePower" class="control-label col-xs-4">Engine power (kW):</label>
-      <div class="col-xs-2">
+      <label for="enginePower" class="col-xs-6">ENGINE POWER kW</label>
+      <span class="col-xs-6" *ngIf="leaseForm.get('enginePower').invalid && leaseForm.get('enginePower').touched"
+      class="label label-warning">Only numeric values. Required field.</span>
+      <div class="col-xs-12">
         <input
           formControlName="enginePower"
           id="enginePower"
           class="form-control"
           type="text">
-        <span *ngIf="leaseForm.get('enginePower').invalid && leaseForm.get('enginePower').touched"
-              class="label label-warning">Only numeric values. Required field.</span>
-      </div>
+        </div>
     </div>
+  </div>
+  <div class="col-xs-6" >
     <div class="form-group">
-      <label for="assetPrice" class="control-label col-xs-4">Asset price (€):</label>
-      <div class="col-xs-2">
+      <label for="assetPrice" class="col-xs-6">ASSET PRICE €</label>
+      <span class="col-xs-6" *ngIf="leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
+              class="label label-warning">Lowest asset price is 5000.</span>
+      <div class="col-xs-12">
         <input
           formControlName="assetPrice"
           id="assetPrice"
           class="form-control"
           type="text">
-        <span *ngIf="leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
-              class="label label-warning">Lowest asset price is 5000.</span>
-      </div>
+        </div>
     </div>
     <div class="form-group">
-      <label for="advancePaymentPercentage" class="control-label col-xs-4">Advance payment percentage:</label>
-      <div class="col-xs-2">
+      <label for="advancePaymentPercentage" class="col-xs-7">ADVANCE PAYMENT PERCENTAGE</label>
+      <span class="col-xs-5" style="padding:0%;margin:0%;"
+          *ngIf="leaseForm.get('advancePaymentPercentage').invalid && leaseForm.get('advancePaymentPercentage').touched"
+          class="label label-warning">Enter number between 10 and 100.</span>
+      <div class="col-xs-12">
         <input
           formControlName="advancePaymentPercentage"
           id="advancePaymentPercentage"
           class="form-control"
           type="text">
-        <span
-          *ngIf="leaseForm.get('advancePaymentPercentage').invalid && leaseForm.get('advancePaymentPercentage').touched"
-          class="label label-warning">Enter number between 10 and 100.</span>
-      </div>
+        </div>
     </div>
     <div class="form-group">
-      <label for="advancePaymentAmount" class="control-label col-xs-4">Advance payment amount(€):</label>
-      <div class="col-xs-2">
+      <label for="advancePaymentAmount" class="col-xs-7">ADVANCE PAYMENT AMOUNT €</label>
+      <span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
+      <div class="col-xs-12">
         <input
           readonly
           formControlName="advancePaymentAmount"
@@ -106,31 +113,34 @@
       </div>
     </div>
     <div class="form-group">
-      <label  class="control-label col-xs-4">Lease period:</label>
+      <label  class="col-xs-6">LEASE PERIOD</label>
 
-      <div class="col-xs-2">
-        <input  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue (input)="pitch($event)" value="6">
-
-        <input  style="margin-top:3%" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">
+      <div class="col-xs-12">
+          <div class="col-xs-6">
+        <input style="margin-top:4%"  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue (input)="pitch($event)" value="6">
+        </div>
+        <div class="col-xs-6">
+        <input style="background-color: white; margin-left:2%;" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">
+      </div>
       </div>
 
     </div>
 
     <div class="form-group">
-      <label for="margin" class="control-label col-xs-4">Margin (%):</label>
-      <div class="col-xs-2">
+      <label for="margin" class="col-xs-6">MARGIN %</label>
+      <span class="col-xs-6" *ngIf="leaseForm.get('margin').invalid && leaseForm.get('margin').touched"
+              class="label label-warning">Enter number between 3.2 and 100.</span>
+      <div class="col-xs-12">
         <input
           formControlName="margin"
           id="margin"
           class="form-control"
           type="text">
-        <span *ngIf="leaseForm.get('margin').invalid && leaseForm.get('margin').touched"
-              class="label label-warning">Enter number between 3.2 and 100.</span>
-      </div>
+         </div>
     </div>
     <div class="form-group">
-      <label for="contractFee" class="control-label col-xs-4">Contract fee (€):</label>
-      <div class="col-xs-2">
+      <label for="contractFee" class="col-xs-6">CONTRACT FEE €</label>
+      <div class="col-xs-12">
         <input
           formControlName="contractFee"
           readonly
@@ -139,20 +149,21 @@
           type="text">
       </div>
     </div>
-    <div class="form-group">
-      <label for="paymentDate" class="control-label col-xs-4">Payment date:</label>
-      <div class="col-xs-8">
-        <label class="radio-inline" *ngFor="let paymentDate of paymentDates">
+    <div class="form-group notBorder">
+      <label for="paymentDate" class="col-xs-6">PAYMENT DATE</label>
+      <div class="col-xs-12">
+        <label class="radioInline" *ngFor="let paymentDate of paymentDates">
           <input
             formControlName="paymentDate"
             type="radio"
             [value]="paymentDate">
+            <i></i>
           {{paymentDate}}
         </label>
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-xs-offset-4 col-xs-8">
+    <div class="form-group row notBorder">
+      <div class="col-xs-offset-9 col-xs-3">
         <button
           [disabled]="!leaseForm.valid"
           name="submit"
@@ -162,300 +173,380 @@
         </button>
       </div>
     </div>
+  </div>
   </form>
 </div>
-
-<div id="summary" *ngIf="showFormSummary">
-  <h3><b>Vehicle lease summary : </b></h3>
-  <p><b>Customer type : </b>{{leaseForm.get('customerType').value}}</p>
-  <p><b>Asset type : </b>{{leaseForm.get('assetType').value}}</p>
-  <p><b>Brand : </b>{{leaseForm.get('brand').value}}</p>
-  <p><b>Model : </b>{{leaseForm.get('model').value}}</p>
-  <p><b>Year : </b>{{leaseForm.get('year').value}}</p>
-  <p><b>Engine power (kW) : </b>{{leaseForm.get('enginePower').value}}</p>
-  <p><b>Asset price (€) : </b>{{leaseForm.get('assetPrice').value}}</p>
-  <p><b>Advance payment percentage : </b>{{leaseForm.get('advancePaymentPercentage').value}}</p>
-  <p><b>Advance payment amount(€) : </b>{{leaseForm.get('advancePaymentAmount').value}}</p>
-  <p><b>Lease period : </b>{{leaseForm.get('leasePeriod').value}}</p>
-  <p><b>Margin (%) : </b>{{leaseForm.get('margin').value}}</p>
-  <p><b>Contract fee (€) : </b>{{leaseForm.get('contractFee').value}}</p>
-  <p><b>Payment date : </b>{{leaseForm.get('paymentDate').value}}</p>
-
-  <div class="form-group button-group row" >
-    <button (click)="goBackToForm1()" name="submit1" type="submit" class="btn">Back</button>
-    <button (click)="goNextToForm2()" name="submit2" type="submit" class="btn">Next</button>
+<!-- id="summary" -->
+<div class="summary">
+<div class="container" *ngIf="showFormSummary">
+  
+  <div class="col-xs-12 title" >
+  <h3>VEHICLE LEASE SUMMARY</h3>
+  </div>
+  <div class="col-xs-12" style="padding:2%;">
+  <div class="col-xs-5">CUSTOMER TYPE</div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('customerType').value}}</div>
+  <div class="col-xs-5">ASSET TYPE</div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('assetType').value}}</div>
+  <div class="col-xs-5">BRAND</div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('brand').value}}</div>
+  <div class="col-xs-5">MODEL</div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('model').value}}</div>
+  <div class="col-xs-5">YEAR</div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('year').value}}</div>
+  <div class="col-xs-5">ENGINE POWER  </div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('enginePower').value}} kW</div>
+  <div class="col-xs-5">ASSET PRICE </div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('assetPrice').value}}  € </div>
+  <div class="col-xs-5">ADVANCE PAYMENT PERCENTAGE</div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('advancePaymentPercentage').value}} %</div>
+  <div class="col-xs-5">ADVANCE PAYMENT AMOUNT</div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('advancePaymentAmount').value}} €</div>
+  <div class="col-xs-5">LEASE PERIOD </div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('leasePeriod').value}} months</div>
+  <div class="col-xs-5">MARGIN </div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('margin').value}} %</div>
+  <div class="col-xs-5">CONTRACT FEE </div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('contractFee').value}} €</div>
+  <div class="col-xs-5">PAYMENT DATE </div>
+  <div class="col-xs-7 borderdiv">{{leaseForm.get('paymentDate').value}}</div>
+</div>
+  <div class="form-group button-group row " style="border-bottom:none; margin-top:2%;">
+      <div class="col-xs-1 SummaryButtons" style="border-bottom:none; margin-top:2%;">
+        <button  (click)="goBackToForm1()" name="submit1" type="submit" class="btn">Back</button>
+    </div>
+    <div class="col-xs-offset-9 col-xs-2 SummaryButtons"  style="border-bottom:none; margin-top:2%;">
+        <button style="margin-left:38%;"  (click)="goNextToForm2()" name="submit2" type="submit" class="btn">Next</button>
+  </div>
   </div>
 </div>
-
+</div>
+<div class="privatePersonalInfo">
+    
+    <!-- <div class="container" *ngIf="showCustomerForm && leaseForm.get('customerType').value === 'Private'"> -->
 <div class="container" *ngIf="showCustomerForm && leaseForm.get('customerType').value === 'Private'">
   <form class="form-horizontal" [formGroup]="privateForm" (ngSubmit)="onSubmit()">
-
+      <div class="col-xs-12 title" >
+          <h3>PERSONAL INFORMATION</h3>
+          </div>
     <div class="form-group">
-      <label for="firstName" class="control-label col-xs-4">First name:</label>
-      <div class="col-xs-2">
+        <!-- <div class="col-xs-offset-2 col-xs-2 "><label class="labels" for="firstName" >FIRST NAME</label></div> -->
+        <label for="personalID" class="control-label col-xs-4">FIRST NAME</label>
+        <div class="col-xs-5">
         <input
           formControlName="firstName"
           id="firstName"
           class="form-control"
           type="text">
-        <span *ngIf="privateForm.get('firstName').invalid && privateForm.get('firstName').touched"
+        </div>
+        <span class="col-xs-3" *ngIf="privateForm.get('firstName').invalid && privateForm.get('firstName').touched"
               class="label label-warning">Only alphabetic values. Required field.</span>
-      </div>
+      
     </div>
 
     <div class="form-group">
-      <label for="lastName" class="control-label col-xs-4">Last name:</label>
-      <div class="col-xs-2">
+      <label for="personalID" class="control-label col-xs-4">LAST NAME</label>
+      <div class="col-xs-5">
         <input
           formControlName="lastName"
           id="lastName"
           class="form-control"
           type="text">
-        <span *ngIf="privateForm.get('lastName').invalid && privateForm.get('lastName').touched"
-              class="label label-warning">Only alphabetic values. Required field.</span>
+        
       </div>
+      <span class="col-xs-3" *ngIf="privateForm.get('lastName').invalid && privateForm.get('lastName').touched"
+              class="label label-warning">Only alphabetic values. Required field.</span>
     </div>
 
     <div class="form-group">
-      <label for="personalID" class="control-label col-xs-4">ID code:</label>
-      <div class="col-xs-2">
+      <label for="personalID" class="control-label col-xs-4">ID CODE</label>
+      <div class="col-xs-5">
         <input
           formControlName="personalID"
           id="personalID"
           class="form-control"
           type="text">
-        <span *ngIf="privateForm.get('personalID').invalid && privateForm.get('personalID').touched"
-              class="label label-warning">Only numeric values. Required field.</span>
       </div>
+      <span class="col-xs-3" *ngIf="privateForm.get('personalID').invalid && privateForm.get('personalID').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
     </div>
 
     <div class="form-group">
-      <label for="email" class="control-label col-xs-4">Email:</label>
-      <div class="col-xs-2">
+      <label for="email" class="control-label col-xs-4">EMAIL</label>
+      <div class="col-xs-5">
         <input
           formControlName="email"
           id="email"
           class="form-control"
           type="text">
-        <span *ngIf="privateForm.get('email').invalid && privateForm.get('email').touched"
-              class="label label-warning">Must be legit. Required field.</span>
       </div>
+      <span class="col-xs-3" *ngIf="privateForm.get('email').invalid && privateForm.get('email').touched"
+              class="label label-warning">Must be legit. Required field.</span>
     </div>
 
 
     <div class="form-group">
-      <label for="phoneNumber" class="control-label col-xs-4">Phone number:</label>
-      <div class="col-xs-2">
-        <b>+ </b><input
+      <label for="phoneNumber" class="control-label col-xs-4">PHONE NUMBER</label>
+      <div  id="phoneNumber" class="col-xs-5">
+      <label class=" control-label col-xs-1" style="background-color:#d3d3d3;">+</label>
+      <div class="col-xs-8" style="border-bottom: none;">
+        <input
           formControlName="phoneNumber"
-          id="phoneNumber"
+          
           class="form-control"
           type="text">
-        <span *ngIf="privateForm.get('phoneNumber').invalid && privateForm.get('phoneNumber').touched"
-              class="label label-warning">Only numeric values. Required field.</span>
+        </div>
       </div>
+        <span class="col-xs-3" *ngIf="privateForm.get('phoneNumber').invalid && privateForm.get('phoneNumber').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
     </div>
 
     <div class="row">
-      <label class="control-label col-xs-4" id="address">Address:</label>
+      <label class="control-label col-xs-4" id="address">ADDRESS</label>
     </div>
 
     <div class="form-group">
-      <label for="street" class="control-label col-xs-4">Street:</label>
-      <div class="col-xs-2">
+      <label for="street" class="control-label col-xs-4">street</label>
+      <div class="col-xs-5">
         <input
           formControlName="street"
           id="street"
           class="form-control"
           type="text">
-        <span *ngIf="privateForm.get('street').invalid && privateForm.get('street').touched"
-              class="label label-warning">Some street validation.</span>
+        
       </div>
+      <span class="col-xs-3" *ngIf="privateForm.get('street').invalid && privateForm.get('street').touched"
+              class="label label-warning">Some street validation.</span>
     </div>
 
     <div class="form-group">
-      <label for="city" class="control-label col-xs-4">City:</label>
-      <div class="col-xs-2">
+      <label for="city" class="control-label col-xs-4">city</label>
+      <div class="col-xs-5">
         <input
           formControlName="city"
           id="city"
           class="form-control"
           type="text">
-        <span *ngIf="privateForm.get('city').invalid && privateForm.get('city').touched"
-              class="label label-warning">Some city validation.</span>
+        
       </div>
+      <span class="col-xs-3" *ngIf="privateForm.get('city').invalid && privateForm.get('city').touched"
+              class="label label-warning">Some city validation.</span>
     </div>
 
 
     <div class="form-group">
-      <label for="postCode" class="control-label col-xs-4">Post code:</label>
-      <div class="col-xs-2">
+      <label for="postCode" class="control-label col-xs-4">post code</label>
+      <div class="col-xs-5">
         <input
           formControlName="postCode"
           id="postCode"
           class="form-control"
           type="text">
-        <span *ngIf="privateForm.get('postCode').invalid && privateForm.get('postCode').touched"
-              class="label label-warning">Some post code validation.</span>
+        
       </div>
+      <span class="col-xs-3" *ngIf="privateForm.get('postCode').invalid && privateForm.get('postCode').touched"
+              class="label label-warning">Some post code validation.</span>
     </div>
 
     <div class="form-group">
-      <label for="country" class="control-label col-xs-4">Country:</label>
-      <div class="col-xs-2">
+      <label for="country" class="control-label col-xs-4">country</label>
+      <div class="col-xs-5">
         <input
           formControlName="country"
           id="country"
           class="form-control"
           type="text">
-        <span *ngIf="privateForm.get('country').invalid && privateForm.get('country').touched"
-              class="label label-warning">Some country validation.</span>
       </div>
+      <span class="col-xs-3" *ngIf="privateForm.get('country').invalid && privateForm.get('country').touched"
+              class="label label-warning">Some country validation.</span>
     </div>
 
 
     <div class="form-check col-xs-offset-4">
-      <label for="checkbox" class="form-check-label">I accept terms and conditions</label>
-      <input
+        <input style="margin-left:3.5%;"
         type="checkbox"
         formControlName="checkbox"
         class="filled-in form-check-input"
         id="checkbox"
         [(ngModel)]="isCheckboxChecked">
-      <span *ngIf="privateForm.get('checkbox').touched && !isCheckboxChecked"
+      <label for="checkbox" class="form-check-label">I accept terms and conditions</label>
+      <span class="col-xs-3" *ngIf="privateForm.get('checkbox').touched && !isCheckboxChecked"
             class="label label-warning">You must accept terms and conditions</span>
     </div>
 
-    <div class="form-group button-group row" >
+
+    
+
+
+    <!-- <div class="form-group button-group row" >
       <div class="col-xs-offset-3">
         <button (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
         <button (click)="submit()" [disabled]="!privateForm.valid || !isCheckboxChecked" name="submit2" type="submit" class="btn">Submit</button>
       </div>
-    </div>
-
+    </div> -->
+    
   </form>
+  <div class="form-group button-group row " style="border-bottom:none; margin-top:2%;">
+      <div class="col-xs-1 SummaryButtons" style="border-bottom:none; margin-top:2%;">
+        <button  (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
+    </div>
+    <div class="col-xs-offset-9 col-xs-2 SummaryButtons"  style="border-bottom:none; margin-top:2%;">
+        <button style="margin-left:38%;"  (click)="submit()" [disabled]="!privateForm.valid || !isCheckboxChecked" name="submit2" type="submit" class="btn">Submit</button>
+  </div>
+  </div>
 </div>
-
+</div>
 <!--Business form-->
-<div class="container">
-  <form class="form-horizontal" *ngIf="showCustomerForm && leaseForm.get('customerType').value === 'Business'" [formGroup]="businessCustomerForm" (ngSubmit)="onSubmit()">
+<div class="businessPersonalInfo">
+<div class="container" *ngIf="showCustomerForm && leaseForm.get('customerType').value === 'Business'">
+  <form class="form-horizontal"  [formGroup]="businessCustomerForm" (ngSubmit)="onSubmit()">
+      <div class="col-xs-12 title" >
+          <h3>PERSONAL INFORMATION</h3>
+          </div>
     <div class="form-group">
-      <label for="companyName" class="control-label col-xs-4">Company name:</label>
-      <div class="col-xs-2">
+      <label for="companyName" class="control-label col-xs-4">COMPANY NAME</label>
+      <div class="col-xs-5">
         <input
           formControlName="companyName"
           id="companyName"
           class="form-control"
           type="text">
-        <span *ngIf="businessCustomerForm.get('companyName').invalid && businessCustomerForm.get('companyName').touched"
+        </div>
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('companyName').invalid && businessCustomerForm.get('companyName').touched"
               class="label label-warning">Invalid company name. Required field.</span>
-      </div>
     </div>
     <div class="form-group">
-      <label for="companyCode" class="control-label col-xs-4">Company code:</label>
-      <div class="col-xs-2">
+      <label for="companyCode" class="control-label col-xs-4">COMPANY CODE</label>
+      <div class="col-xs-5">
         <input
           formControlName="companyCode"
           id="companyCode"
           class="form-control"
           type="text">
-        <span *ngIf="businessCustomerForm.get('companyCode').invalid && businessCustomerForm.get('companyCode').touched"
+        </div>
+        <span  class="col-xs-3" *ngIf="businessCustomerForm.get('companyCode').invalid && businessCustomerForm.get('companyCode').touched"
               class="label label-warning">Invalid company code. Required field.</span>
-      </div>
+      
     </div>
     <div class="form-group">
-      <label for="email" class="control-label col-xs-4">Email:</label>
-      <div class="col-xs-2">
+      <label for="email" class="control-label col-xs-4">EMAIL</label>
+      <div class="col-xs-5">
         <input
           formControlName="email"
           id="bussinessEmail"
           class="form-control"
           type="email">
-        <span
+        </div>
+        <span class="col-xs-3"
           *ngIf="businessCustomerForm.get('email').invalid && businessCustomerForm.get('email').touched"
           class="label label-warning">Invalid email. Required field.</span>
-      </div>
     </div>
     <div class="form-group">
-      <label for="phoneNumber" class="control-label col-xs-4">Phone number:</label>
-      <div class="col-xs-2">
+      <label for="phoneNumber" class="control-label col-xs-4">PHONE NUMBER</label>
+      
+      <div  id="phoneNumber" class="col-xs-5">
+          <label class=" control-label col-xs-1" style="background-color:#d3d3d3;">+</label>
+          <div class="col-xs-8" style="border-bottom: none;">
+            <input
+              formControlName="phoneNumber"
+              id="businessPhoneNumber"
+              class="form-control bfh-phone"
+              type="text">
+            </div>
+            </div>
+      <!-- <div class="col-xs-5">
         <span class="input-group-addon"><i class="fa fa-plus"></i></span>
         <input
           formControlName="phoneNumber"
           id="businessPhoneNumber"
           class="form-control bfh-phone"
           type="text">
-        <span *ngIf="businessCustomerForm.get('phoneNumber').invalid && businessCustomerForm.get('phoneNumber').touched"
+        </div> -->
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('phoneNumber').invalid && businessCustomerForm.get('phoneNumber').touched"
               class="label label-warning">Only numeric values. Required field.</span>
-      </div>
+      
     </div>
     <div class="row">
-      <label class="control-label col-xs-4" id="address">Address:</label>
+      <label class="control-label col-xs-4" id="address">ADDRESS</label>
     </div>
     <div class="form-group">
-      <label for="street" class="control-label col-xs-4">Street:</label>
-      <div class="col-xs-2">
+      <label for="street" class="control-label col-xs-4">street</label>
+      <div class="col-xs-5">
         <input
           formControlName="street"
           id="businessStreet"
           class="form-control"
           type="text">
-        <span *ngIf="businessCustomerForm.get('street').invalid && businessCustomerForm.get('street').touched"
+        </div>
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('street').invalid && businessCustomerForm.get('street').touched"
               class="label label-warning">Invalid street. Required field.</span>
-      </div>
+      
     </div>
 
     <div class="form-group">
-      <label for="city" class="control-label col-xs-4">City:</label>
-      <div class="col-xs-2">
+      <label for="city" class="control-label col-xs-4">city</label>
+      <div class="col-xs-5">
         <input
           formControlName="city"
           id="businessCity"
           class="form-control"
           type="text">
-        <span *ngIf="businessCustomerForm.get('city').invalid && businessCustomerForm.get('city').touched"
+        </div>
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('city').invalid && businessCustomerForm.get('city').touched"
               class="label label-warning">Invalid city. Required field.</span>
-      </div>
+      
     </div>
 
 
     <div class="form-group">
-      <label for="postCode" class="control-label col-xs-4">Post code:</label>
-      <div class="col-xs-2">
+      <label for="postCode" class="control-label col-xs-4">post code</label>
+      <div class="col-xs-5">
         <input
           formControlName="postCode"
           id="businessPostCode"
           class="form-control"
           type="text">
-        <span *ngIf="businessCustomerForm.get('postCode').invalid && businessCustomerForm.get('postCode').touched"
-              class="label label-warning">Invalid post code. Required field.</span>
-      </div>
+       </div>
+       <span class="col-xs-3" *ngIf="businessCustomerForm.get('postCode').invalid && businessCustomerForm.get('postCode').touched"
+       class="label label-warning">Invalid post code. Required field.</span>
     </div>
 
     <div class="form-group">
-      <label for="country" class="control-label col-xs-4">Country:</label>
-      <div class="col-xs-2">
+      <label for="country" class="control-label col-xs-4">country</label>
+      <div class="col-xs-5">
         <input
           formControlName="country"
           id="businessCountry"
           class="form-control"
           type="text">
-        <span *ngIf="businessCustomerForm.get('country').invalid && businessCustomerForm.get('country').touched"
+        </div>
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('country').invalid && businessCustomerForm.get('country').touched"
               class="label label-warning">Invalid country. Required field.</span>
-      </div>
+      
     </div>
 
-    <div class="form-group button-group row" >
+    <!-- <div class="form-group button-group row" >
       <div class="col-xs-offset-3">
         <button (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
         <button (click)="submit()" [disabled]="!businessCustomerForm.valid" name="submit2" type="submit" class="btn">Submit</button>
       </div>
-    </div>
+    </div> -->
 
   </form>
+  <div class="form-group button-group row " style="border-bottom:none; margin-top:2%;">
+      <div class="col-xs-1 SummaryButtons" style="border-bottom:none; margin-top:2%;">
+        <button  (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
+    </div>
+    <div class="col-xs-offset-9 col-xs-2 SummaryButtons"  style="border-bottom:none; margin-top:2%;">
+        <button style="margin-left:38%;"  (click)="submit()" [disabled]="!businessCustomerForm.valid" name="submit2" type="submit" class="btn">Submit</button>
+  </div>
+  </div>
 </div>
-
+</div>
+<!-- <div class="OK">
+<div class="container"> -->
 <div id="ok" *ngIf="showOK">
   <h3 class="text-center">Lease request was successfully accepted.</h3>
 </div>
-
+<!-- </div>
+</div> -->

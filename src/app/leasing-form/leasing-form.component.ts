@@ -225,5 +225,26 @@ export class LeasingFormComponent implements OnInit {
     }
   }
 
+  keyUpAdvancePaymentAmount(){
+    if (this.leaseForm.get('advancePaymentPercentage').valid) {
+      this.value = this.leaseForm.get('assetPrice').value * (this.leaseForm.get('advancePaymentPercentage').value / 100);
+      this.leaseForm.get('advancePaymentAmount').patchValue(this.value.toFixed(2));
+    } else {
+      this.leaseForm.get('advancePaymentAmount').patchValue('');
+    }
+}
+keyUpAdvancePaymentPercentage() {
+  this.temp2 = this.leaseForm.get('advancePaymentAmount').value;
+    this.temp  = ((this.leaseForm.get('advancePaymentAmount').value / this.leaseForm.get('assetPrice').value) * 100);
+    this.temp1 = (this.leaseForm.get('assetPrice').value * 0.1);
+     if (this.temp <= 100 || this.temp >= 10) {
+      this.leaseForm.get('advancePaymentPercentage').setValue(this.temp.toFixed(2));
+     }
+    if (this.temp > 100 || this.temp < 10) {
+      this.leaseForm.get('advancePaymentPercentage').setValue(10);
+      this.leaseForm.get('advancePaymentAmount').setValue(this.temp1);
+    }
+  }
+
 }
 

@@ -2,3 +2,18 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 @import "~font-awesome/css/font-awesome.css";
+
+app-root{
+    position: sticky;
+    width: 100%;
+}
+#back{
+    margin: 0%;
+    margin-left: 40%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to bottom right, #F58321, #FFCA13);
+    padding-left: 50%;
+    position: absolute;
+    
+}
