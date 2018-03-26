@@ -1,0 +1,147 @@
+<!--Business form-->
+<div class="businessPersonalInfo">
+  <div class="container">
+    <form class="form-horizontal"  [formGroup]="businessCustomerForm">
+      <div class="col-xs-12 title" >
+        <h3>PERSONAL INFORMATION</h3>
+      </div>
+      <div class="form-group">
+        <label for="companyName" class="control-label col-xs-4">COMPANY NAME</label>
+        <div class="col-xs-5">
+          <input
+            formControlName="companyName"
+            id="companyName"
+            class="form-control"
+            type="text">
+        </div>
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('companyName').invalid && businessCustomerForm.get('companyName').touched"
+              class="label label-warning">Invalid company name. Required field.</span>
+      </div>
+      <div class="form-group">
+        <label for="companyCode" class="control-label col-xs-4">COMPANY CODE</label>
+        <div class="col-xs-5">
+          <input
+            formControlName="companyCode"
+            id="companyCode"
+            class="form-control"
+            type="text">
+        </div>
+        <span  class="col-xs-3" *ngIf="businessCustomerForm.get('companyCode').invalid && businessCustomerForm.get('companyCode').touched"
+               class="label label-warning">Invalid company code. Required field.</span>
+
+      </div>
+      <div class="form-group">
+        <label for="email" class="control-label col-xs-4">EMAIL</label>
+        <div class="col-xs-5">
+          <input
+            formControlName="email"
+            id="bussinessEmail"
+            class="form-control"
+            type="email">
+        </div>
+        <span class="col-xs-3"
+              *ngIf="businessCustomerForm.get('email').invalid && businessCustomerForm.get('email').touched"
+              class="label label-warning">Invalid email. Required field.</span>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber" class="control-label col-xs-4">PHONE NUMBER</label>
+
+        <div  id="phoneNumber" class="col-xs-5">
+          <label class=" control-label col-xs-1" style="background-color:#d3d3d3;">+</label>
+          <div class="col-xs-8" style="border-bottom: none;">
+            <input
+              formControlName="phoneNumber"
+              id="businessPhoneNumber"
+              class="form-control bfh-phone"
+              type="text">
+          </div>
+        </div>
+        <!-- <div class="col-xs-5">
+          <span class="input-group-addon"><i class="fa fa-plus"></i></span>
+          <input
+            formControlName="phoneNumber"
+            id="businessPhoneNumber"
+            class="form-control bfh-phone"
+            type="text">
+          </div> -->
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('phoneNumber').invalid && businessCustomerForm.get('phoneNumber').touched"
+              class="label label-warning">Only numeric values. Required field.</span>
+
+      </div>
+      <div class="row">
+        <label class="control-label col-xs-4" id="address">ADDRESS</label>
+      </div>
+      <div class="form-group">
+        <label for="street" class="control-label col-xs-4">street</label>
+        <div class="col-xs-5">
+          <input
+            formControlName="street"
+            id="businessStreet"
+            class="form-control"
+            type="text">
+        </div>
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('street').invalid && businessCustomerForm.get('street').touched"
+              class="label label-warning">Invalid street. Required field.</span>
+
+      </div>
+
+      <div class="form-group">
+        <label for="city" class="control-label col-xs-4">city</label>
+        <div class="col-xs-5">
+          <input
+            formControlName="city"
+            id="businessCity"
+            class="form-control"
+            type="text">
+        </div>
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('city').invalid && businessCustomerForm.get('city').touched"
+              class="label label-warning">Invalid city. Required field.</span>
+
+      </div>
+
+
+      <div class="form-group">
+        <label for="postCode" class="control-label col-xs-4">post code</label>
+        <div class="col-xs-5">
+          <input
+            formControlName="postCode"
+            id="businessPostCode"
+            class="form-control"
+            type="text">
+        </div>
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('postCode').invalid && businessCustomerForm.get('postCode').touched"
+              class="label label-warning">Invalid post code, eg. LTxxxxx Required field.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="country" class="control-label col-xs-4">country</label>
+        <div class="col-xs-5">
+          <input
+            formControlName="country"
+            id="businessCountry"
+            class="form-control"
+            type="text">
+        </div>
+        <span class="col-xs-3" *ngIf="businessCustomerForm.get('country').invalid && businessCustomerForm.get('country').touched"
+              class="label label-warning">Invalid country. Required field.</span>
+
+      </div>
+
+      <!-- <div class="form-group button-group row" >
+        <div class="col-xs-offset-3">
+          <button (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
+          <button (click)="submit()" [disabled]="!businessCustomerForm.valid" name="submit2" type="submit" class="btn">Submit</button>
+        </div>
+      </div> -->
+
+    </form>
+    <div class="form-group button-group row " style="border-bottom:none; margin-top:2%;">
+      <div class="col-xs-1 SummaryButtons" style="border-bottom:none; margin-top:2%;">
+        <button  (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
+      </div>
+      <div class="col-xs-offset-9 col-xs-2 SummaryButtons"  style="border-bottom:none; margin-top:2%;">
+        <button style="margin-left:38%;"  (click)="submit()" [disabled]="!businessCustomerForm.valid" name="submit2" type="submit" class="btn">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

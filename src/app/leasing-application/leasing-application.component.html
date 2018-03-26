@@ -1,0 +1,9 @@
+<app-lease-form [showElement] = "showForm" [resetModels]="changeScrollValue" [lease] = "leaseObject" (leaseObject)='onLeaseObjectReceive($event)'></app-lease-form>
+<app-lease-summary *ngIf="showSummary" [lease]="leaseObject" (backToForm1)='onGoBackToForm1($event)'
+                   (nextToForm2)='onGoNextToForm2($event)'></app-lease-summary>
+<app-private-form *ngIf="showCustomerForm && leaseObject.customerType == 'Private'"
+                  (privateSubmitted)="onSubmitted($event)" (privateBackToSummary)="onBackToSummary($event)"></app-private-form>
+<app-business-form *ngIf="showCustomerForm && leaseObject.customerType == 'Business'"
+                   (businessSubmitted)="onSubmitted($event)" (businessBackToSummary)="onBackToSummary($event)" ></app-business-form>
+<app-confirmation-page *ngIf="showConfirmationPage"></app-confirmation-page>
+

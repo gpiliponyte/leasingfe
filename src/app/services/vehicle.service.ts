@@ -5,6 +5,23 @@ import { HttpClient } from '@angular/common/http';
 export class VehicleService {
 
   listPost;
+  changeScrollValue = true;
+  firstName;
+  lastName;
+  privateEmail;
+  privatePhoneNumber;
+  privateStreet;
+  privateCity;
+  privatePostCode;
+  privateCountry;
+  businessEmail;
+  businessPhoneNumber;
+  businessStreet;
+  businessCity;
+  businessPostCode;
+  businessCountry;
+  companyName;
+  companyCode;
 
   constructor(private http: HttpClient) { }
 
