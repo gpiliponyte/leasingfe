@@ -10,12 +10,27 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LeasingFormComponent } from './leasing-form/leasing-form.component';
 import { VehicleService } from './services/vehicle.service';
+import {LeasingApplicationComponent} from './leasing-application/leasing-application.component';
+import {LeaseFormComponent} from './lease-form/lease-form.component';
+import {LeaseSummaryComponent} from './lease-summary/lease-summary.component';
+import {BusinessFormComponent} from './business-form/business-form.component';
+import {ConfirmationPageComponent} from './confirmation-page/confirmation-page.component';
+import {PrivateFormComponent} from './private-form/private-form.component';
+import {PrivateService} from './services/private.service';
+import {BusinessService} from './services/business.service';
+import {LeaseService} from './services/lease.service';
 
 
 @NgModule(<NgModule>{
   declarations: [
     AppComponent,
-    LeasingFormComponent
+    LeasingFormComponent,
+    LeasingApplicationComponent,
+    LeaseFormComponent,
+    LeaseSummaryComponent,
+    BusinessFormComponent,
+    ConfirmationPageComponent,
+    PrivateFormComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +42,7 @@ import { VehicleService } from './services/vehicle.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [VehicleService],
+  providers: [VehicleService, PrivateService, BusinessService, LeaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

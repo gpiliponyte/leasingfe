@@ -27,8 +27,8 @@ export class LeasingFormComponent implements OnInit {
   streetRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž0-9\\s\\.\\-]+$';
   phoneNumberRegex = '^[0-9]{11}';
   personalIDRegex = '^[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}$';
-  nameRegex = '^[a-zA-ZąčęėįųūšžĄČĖĘĮŲŪČŠŽ ,.\'-]+$'
-  onlyNumbersRegex = '^[0-9]{9}$'
+  nameRegex = '^[a-zA-ZąčęėįųūšžĄČĖĘĮŲŪČŠŽ ,.\'-]+$';
+  onlyNumbersRegex = '^[0-9]{9}$';
   //emailRegex = '^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
   //nameRegex = '/^(?=.{1,50}$)[a-z]+(?:[\'_.\\s][a-z]+)*$/i';
 

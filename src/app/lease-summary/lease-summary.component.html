@@ -1,0 +1,48 @@
+<!-- id="summary" -->
+<div class="summary">
+  <div class="container">
+
+    <div class="col-xs-12 title" >
+      <h3>VEHICLE LEASE SUMMARY</h3>
+    </div>
+
+    <div class="col-xs-12" style="padding:2%;">
+      <div class="col-xs-5">CUSTOMER TYPE</div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.customerType}}</div>
+      <div class="col-xs-5">ASSET TYPE</div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.assetType}}</div>
+      <div class="col-xs-5">BRAND</div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.vehicleBrand}}</div>
+      <div class="col-xs-5">MODEL</div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.model}}</div>
+      <div class="col-xs-5">YEAR</div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.year}}</div>
+      <div class="col-xs-5">ENGINE POWER  </div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.enginePower}} kW</div>
+      <div class="col-xs-5">ASSET PRICE </div>
+      <div class="col-xs-7 borderdiv"> {{vehicleService.leaseObject.assetPrice}} € </div>
+      <div class="col-xs-5">ADVANCE PAYMENT PERCENTAGE</div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.advancePaymentPercentage}} %</div>
+      <div class="col-xs-5">ADVANCE PAYMENT AMOUNT</div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.advancePaymentAmount}} €</div>
+      <div class="col-xs-5">LEASE PERIOD </div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.leasePeriod}}</div>
+      <div class="col-xs-5">MARGIN </div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.margin}} %</div>
+      <div class="col-xs-5">CONTRACT FEE </div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.contractFee}} €</div>
+      <div class="col-xs-5">PAYMENT DATE </div>
+      <div class="col-xs-7 borderdiv">{{vehicleService.leaseObject.paymentDate}}</div>
+    </div>
+
+    <div class="form-group button-group row " style="border-bottom:none; margin-top:2%;">
+      <div class="col-xs-1 SummaryButtons" style="border-bottom:none; margin-top:2%;">
+        <button  (click)="goBackToForm1()" name="submit1" type="submit" class="btn">Back</button>
+      </div>
+      <div class="col-xs-offset-9 col-xs-2 SummaryButtons"  style="border-bottom:none; margin-top:2%;">
+        <button style="margin-left:38%;"  (click)="goNextToForm2()" name="submit2" type="submit" class="btn">Next</button>
+      </div>
+    </div>
+
+  </div>
+</div>
