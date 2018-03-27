@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleService} from '../services/vehicle.service';
 
@@ -18,7 +18,9 @@ export class PrivateFormComponent implements OnInit {
   personalIDRegex = '^[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}$';
   nameRegex = '^[a-zA-ZąčęėįųūšžĄČĖĘĮŲŪČŠŽ ,.\'-]+$';
 
-  constructor(private vehicleService: VehicleService) { }
+  @Input() showElement;
+
+  constructor(protected vehicleService: VehicleService) { }
 
   ngOnInit() {
 
@@ -47,19 +49,20 @@ export class PrivateFormComponent implements OnInit {
       city: this.privateForm.get('city').value,
       postCode: this.privateForm.get('postCode').value,
       country: this.privateForm.get('country').value
-    }
+    };
+    this.vehicleService.customerObject = privateCustomerObject;
     this.privateSubmitted.emit(privateCustomerObject);
   }
 
   goBackToSummary() {
-    this.vehicleService.firstName;
-    this.vehicleService.lastName;
-    this.vehicleService.privateEmail;
-    this.vehicleService.privatePhoneNumber;
-    this.vehicleService.privateStreet;
-    this.vehicleService.privateCity;
-    this.vehicleService.privatePostCode;
-    this.vehicleService.privateCountry;
+    // this.vehicleService.firstName;
+    // this.vehicleService.lastName;
+    // this.vehicleService.privateEmail;
+    // this.vehicleService.privatePhoneNumber;
+    // this.vehicleService.privateStreet;
+    // this.vehicleService.privateCity;
+    // this.vehicleService.privatePostCode;
+    // this.vehicleService.privateCountry;
     this.privateBackToSummary.emit();
   }
 

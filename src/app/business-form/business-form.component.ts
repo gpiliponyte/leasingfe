@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {VehicleService} from '../services/vehicle.service';
 
 @Component({
   selector: 'app-business-form',
@@ -18,7 +19,9 @@ export class BusinessFormComponent implements OnInit {
   onlyNumbersRegex = '^[0-9]{9}$';
   businessCustomerForm: FormGroup;
 
-  constructor() { }
+  @Input() showElement;
+
+  constructor(protected vehicleService: VehicleService) { }
 
   ngOnInit() {
 
@@ -57,6 +60,8 @@ export class BusinessFormComponent implements OnInit {
       postCode: this.businessCustomerForm.get('postCode').value,
       country: this.businessCustomerForm.get('country').value
     }
+
+    this.vehicleService.customerObject = businessCustomerObject;
     this.businessSubmitted.emit(businessCustomerObject);
   }
 

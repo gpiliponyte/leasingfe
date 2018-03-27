@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {VehicleService} from '../services/vehicle.service';
 
 @Component({
   selector: 'app-lease-summary',
@@ -7,13 +8,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class LeaseSummaryComponent implements OnInit {
 
-  @Input() lease;
-
-  constructor() { }
+  constructor(protected vehicleService: VehicleService) { }
 
   ngOnInit() {
   }
-
 
   @Output() backToForm1 = new EventEmitter<Object>();
   @Output() nextToForm2  = new EventEmitter<Object>();

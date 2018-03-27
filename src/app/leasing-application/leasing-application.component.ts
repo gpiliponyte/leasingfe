@@ -12,7 +12,6 @@ export class LeasingApplicationComponent implements OnInit {
   showSummary = false;
   showCustomerForm = false;
   showConfirmationPage = false;
-  leaseObject;
   customerObject;
 
   constructor(private vehicleService: VehicleService) { }
@@ -20,8 +19,7 @@ export class LeasingApplicationComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLeaseObjectReceive(leaseObject) {
-    this.leaseObject = leaseObject;
+  onGoToSummary() {
     this.showForm = false;
     this.showSummary = true;
     this.vehicleService.changeScrollValue = false;

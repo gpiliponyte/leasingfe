@@ -26,7 +26,6 @@ export class LeaseFormComponent implements OnInit {
   temp2;
   modelsBySelectedBrand;
 
-  @Input() lease;
   @Input() showElement;
   @Input() resetModels;
 
@@ -95,8 +94,7 @@ export class LeaseFormComponent implements OnInit {
       });
   }
 
-  @Output()
-  leaseObject = new EventEmitter<Object>();
+  @Output() nextToSummary = new EventEmitter<Object>();
 
   goToSummary() {
     const leaseFormObject = {
@@ -115,7 +113,8 @@ export class LeaseFormComponent implements OnInit {
       paymentDate: this.leaseForm.get('paymentDate').value,
     };
 
-    this.leaseObject.emit(leaseFormObject);
+    this.vehicleService.leaseObject = leaseFormObject;
+    this.nextToSummary.emit();
   }
 
   onChanges() {
