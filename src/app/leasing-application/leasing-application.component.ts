@@ -36,12 +36,12 @@ export class LeasingApplicationComponent implements OnInit {
     this.showCustomerForm = true;
   }
 
-  onSubmitted(customerObject) {
+  onSubmitted() {
+    console.log(this.vehicleService.customerObject)
     this.leaseService.submitLease().then(data => {
-      console.log('subscribe');
+      console.log(data);
       this.showCustomerForm = false;
       this.showConfirmationPage = true;
-      this.customerObject = customerObject;
     });
 
 

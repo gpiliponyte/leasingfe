@@ -12,7 +12,7 @@ export class LeaseService {
     const lease = {
       customerType: this.leaseObject.customerType,
       assetType: this.leaseObject.assetType,
-      brand: this.leaseObject.brand,
+      brand: this.leaseObject.vehicleBrand,
       model: this.leaseObject.model,
       year: this.leaseObject.year,
       enginePower: this.leaseObject.enginePower,
@@ -37,7 +37,7 @@ export class LeaseService {
     };
 
     return this.http
-      .post('http://localhost:8080/lease', lease)
+      .post('http://localhost:8080/addLease', lease)
       .toPromise();
   }
 }
