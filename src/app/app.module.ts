@@ -16,6 +16,7 @@ import {LeaseSummaryComponent} from './lease-summary/lease-summary.component';
 import {BusinessFormComponent} from './business-form/business-form.component';
 import {ConfirmationPageComponent} from './confirmation-page/confirmation-page.component';
 import {PrivateFormComponent} from './private-form/private-form.component';
+import {PopupModule} from 'ng2-opd-popup';
 
 
 @NgModule(<NgModule>{
@@ -37,7 +38,8 @@ import {PrivateFormComponent} from './private-form/private-form.component';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PopupModule.forRoot()
   ],
   providers: [VehicleService],
   bootstrap: [AppComponent]
