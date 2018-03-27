@@ -16,8 +16,8 @@ import {LeaseSummaryComponent} from './lease-summary/lease-summary.component';
 import {BusinessFormComponent} from './business-form/business-form.component';
 import {ConfirmationPageComponent} from './confirmation-page/confirmation-page.component';
 import {PrivateFormComponent} from './private-form/private-form.component';
+import {LeaseService} from './services/lease.service';
 import { LeaseCalculateBoxComponent } from './lease-calculate-box/lease-calculate-box.component';
-
 
 
 @NgModule(<NgModule>{
@@ -42,7 +42,7 @@ import { LeaseCalculateBoxComponent } from './lease-calculate-box/lease-calculat
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [VehicleService],
+  providers: [VehicleService, LeaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

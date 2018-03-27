@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {VehicleService} from '../services/vehicle.service';
+import {LeaseService} from '../services/lease.service';
 
 @Component({
   selector: 'app-lease-summary',
@@ -8,7 +9,7 @@ import {VehicleService} from '../services/vehicle.service';
 })
 export class LeaseSummaryComponent implements OnInit {
 
-  constructor(protected vehicleService: VehicleService) { }
+  constructor(protected leaseService: LeaseService) { }
 
   ngOnInit() {
   }
