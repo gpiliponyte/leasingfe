@@ -16,6 +16,8 @@ import {LeaseSummaryComponent} from './lease-summary/lease-summary.component';
 import {BusinessFormComponent} from './business-form/business-form.component';
 import {ConfirmationPageComponent} from './confirmation-page/confirmation-page.component';
 import {PrivateFormComponent} from './private-form/private-form.component';
+import { LeaseCalculateBoxComponent } from './lease-calculate-box/lease-calculate-box.component';
+
 
 
 @NgModule(<NgModule>{
@@ -27,7 +29,8 @@ import {PrivateFormComponent} from './private-form/private-form.component';
     LeaseSummaryComponent,
     BusinessFormComponent,
     ConfirmationPageComponent,
-    PrivateFormComponent
+    PrivateFormComponent,
+    LeaseCalculateBoxComponent
   ],
   imports: [
     BrowserModule,
