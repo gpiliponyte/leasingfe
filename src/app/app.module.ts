@@ -16,9 +16,6 @@ import {LeaseSummaryComponent} from './lease-summary/lease-summary.component';
 import {BusinessFormComponent} from './business-form/business-form.component';
 import {ConfirmationPageComponent} from './confirmation-page/confirmation-page.component';
 import {PrivateFormComponent} from './private-form/private-form.component';
-import {PrivateService} from './services/private.service';
-import {BusinessService} from './services/business.service';
-import {LeaseService} from './services/lease.service';
 
 
 @NgModule(<NgModule>{
@@ -42,7 +39,7 @@ import {LeaseService} from './services/lease.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [VehicleService, PrivateService, BusinessService, LeaseService],
+  providers: [VehicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
