@@ -17,6 +17,8 @@ export class PrivateFormComponent implements OnInit {
   phoneNumberRegex = '^[0-9]{11}';
   personalIDRegex = '^[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}$';
   nameRegex = '^[a-zA-ZąčęėįųūšžĄČĖĘĮŲŪČŠŽ ,.\'-]+$';
+  showErrorMessages = false;
+  isCheckboxChecked = false;
 
   @Input() showElement;
 
@@ -40,18 +42,24 @@ export class PrivateFormComponent implements OnInit {
   @Output() privateBackToSummary = new EventEmitter<Object>();
 
   submit() {
-    const privateCustomerObject = {
-      firstName: this.privateForm.get('firstName').value,
-      lastName: this.privateForm.get('lastName').value,
-      email: this.privateForm.get('email').value,
-      phoneNumber: this.privateForm.get('phoneNumber').value,
-      street: this.privateForm.get('street').value,
-      city: this.privateForm.get('city').value,
-      postCode: this.privateForm.get('postCode').value,
-      country: this.privateForm.get('country').value
-    };
-    this.vehicleService.customerObject = privateCustomerObject;
-    this.privateSubmitted.emit(privateCustomerObject);
+    if (this.privateForm.valid && this.isCheckboxChecked) {
+      const privateCustomerObject = {
+        firstName: this.privateForm.get('firstName').value,
+        lastName: this.privateForm.get('lastName').value,
+        email: this.privateForm.get('email').value,
+        phoneNumber: this.privateForm.get('phoneNumber').value,
+        street: this.privateForm.get('street').value,
+        city: this.privateForm.get('city').value,
+        postCode: this.privateForm.get('postCode').value,
+        country: this.privateForm.get('country').value
+      };
+      this.vehicleService.customerObject = privateCustomerObject;
+      this.privateSubmitted.emit();
+    }
+
+    else {
+      this.showErrorMessages = true;
+    }
   }
 
   goBackToSummary() {
