@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {VehicleService} from '../../services/vehicle.service';
+import {VehicleService} from '../services/vehicle.service';
 
 @Component({
   selector: 'app-business-form',
@@ -18,7 +18,6 @@ export class BusinessFormComponent implements OnInit {
   phoneNumberRegex = '^[0-9]{11}';
   onlyNumbersRegex = '^[0-9]{9}$';
   businessCustomerForm: FormGroup;
-  showErrorMessages = false;
 
   @Input() showElement;
 
@@ -51,24 +50,19 @@ export class BusinessFormComponent implements OnInit {
   @Output() businessBackToSummary = new EventEmitter<Object>();
 
   submit() {
-    if (this.businessCustomerForm.valid) {
-      const businessCustomerObject = {
-        companyName: this.businessCustomerForm.get('companyName').value,
-        companyCode: this.businessCustomerForm.get('companyCode').value,
-        email: this.businessCustomerForm.get('email').value,
-        phoneNumber: this.businessCustomerForm.get('phoneNumber').value,
-        street: this.businessCustomerForm.get('street').value,
-        city: this.businessCustomerForm.get('city').value,
-        postCode: this.businessCustomerForm.get('postCode').value,
-        country: this.businessCustomerForm.get('country').value
-      }
+    const businessCustomerObject = {
+      companyName: this.businessCustomerForm.get('companyName').value,
+      companyCode: this.businessCustomerForm.get('companyCode').value,
+      email: this.businessCustomerForm.get('email').value,
+      phoneNumber: this.businessCustomerForm.get('phoneNumber').value,
+      street: this.businessCustomerForm.get('street').value,
+      city: this.businessCustomerForm.get('city').value,
+      postCode: this.businessCustomerForm.get('postCode').value,
+      country: this.businessCustomerForm.get('country').value
+    }
 
-      this.vehicleService.customerObject = businessCustomerObject;
-      this.businessSubmitted.emit(businessCustomerObject);
-    }
-    else{
-      this.showErrorMessages = true;
-    }
+    this.vehicleService.customerObject = businessCustomerObject;
+    this.businessSubmitted.emit(businessCustomerObject);
   }
 
   goBackToSummary() {
