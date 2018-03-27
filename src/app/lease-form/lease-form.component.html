@@ -3,6 +3,10 @@
     <div class="col-xs-6" >
       <div class="form-group notBorder type">
         <label for="customerType" class=" typetext col-xs-12">CUSTOMER TYPE</label>
+
+        <span class="col-xs-8" *ngIf="leaseForm.get('customerType').invalid && showErrorMessages"
+              class="label label-warning">Required field.</span>
+
         <div class="col-xs-6">
           <label class="radioBlock" *ngFor="let customerType of customerTypes">
             <input
@@ -17,6 +21,8 @@
       </div>
       <div class="form-group notBorder">
         <label for="assetType" class="col-xs-12">ASSET TYPE</label>
+        <span class="col-xs-8" *ngIf="leaseForm.get('assetType').invalid && showErrorMessages"
+              class="label label-warning">Required field.</span>
         <div class="col-xs-6">
           <label class="radioBlock" *ngFor="let assetType of assetTypes">
             <input
@@ -30,6 +36,8 @@
       </div>
       <div class="form-group dropDown">
         <label for="brand" class="col-xs-6">BRAND</label>
+        <span class="col-xs-8" *ngIf="leaseForm.get('brand').invalid && showErrorMessages"
+              class="label label-warning">Required field.</span>
         <div class="col-xs-6">
           <select [formControlName]="'brand'" [(ngModel)]="selectedBrand" (ngModelChange)="getCarModelsByBrand($event)"
                   id="brand" name="brand"
@@ -41,6 +49,8 @@
       </div>
       <div class="form-group dropDown">
         <label for="model" class="col-xs-6">MODEL</label>
+        <span class="col-xs-8" *ngIf="leaseForm.get('model').invalid && showErrorMessages"
+              class="label label-warning">Required field.</span>
         <div class="col-xs-6">
           <select [formControlName]="'model'" [(ngModel)]="selectedModel" id="model" name="model"
                   class="select form-control">
@@ -51,6 +61,8 @@
       </div>
       <div class="form-group dropDown">
         <label for="year" class="col-xs-6">YEAR</label>
+        <span class="col-xs-8" *ngIf="leaseForm.get('year').invalid && showErrorMessages"
+              class="label label-warning">Required field.</span>
         <div class="col-xs-6">
           <select [formControlName]="'year'" [(ngModel)]="selectedYear" id="year" name="year"
                   class="select form-control">
@@ -61,7 +73,7 @@
       </div>
       <div class="form-group">
         <label for="enginePower" class="col-xs-6">ENGINE POWER kW</label>
-        <span class="col-xs-6" *ngIf="leaseForm.get('enginePower').invalid && leaseForm.get('enginePower').touched"
+        <span class="col-xs-6" *ngIf="leaseForm.get('enginePower').invalid && (leaseForm.get('enginePower').touched || showErrorMessages)"
               class="label label-warning">Only numeric values. Required field.</span>
         <div class="col-xs-12">
           <input
@@ -75,11 +87,13 @@
     <div class="col-xs-6" >
       <div class="form-group">
         <label for="assetPrice" class="col-xs-4">ASSET PRICE €</label>
-        <span class="col-xs-8" *ngIf="leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched && leaseForm.get('customerType').value == null"
+        <span class="col-xs-8"
+              *ngIf="(leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched || showErrorMessages)
+               && leaseForm.get('customerType').value == null)"
               class="label label-warning">Only numeric values. Required field.</span>
-        <span class="col-xs-8" *ngIf="leaseForm.get('customerType').value == 'Private' && leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
+        <span class="col-xs-8" *ngIf="leaseForm.get('customerType').value == 'Private' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched || showErrorMessages)"
               class="label label-warning">Lowest asset price for private customers is 5000.</span>
-        <span class="col-xs-6" *ngIf="leaseForm.get('customerType').value == 'Business' && leaseForm.get('assetPrice').invalid && leaseForm.get('assetPrice').touched"
+        <span class="col-xs-6" *ngIf="leaseForm.get('customerType').value == 'Business' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched  || showErrorMessages)"
               class="label label-warning">Lowest asset price for business customers is 10000.</span>
         <div class="col-xs-12">
           <input
@@ -92,7 +106,8 @@
       <div class="form-group">
         <label for="advancePaymentPercentage" class="col-xs-7">ADVANCE PAYMENT PERCENTAGE</label>
         <span class="col-xs-5" style="padding:0%;margin:0%;"
-              *ngIf="leaseForm.get('advancePaymentPercentage').invalid && leaseForm.get('advancePaymentPercentage').touched"
+              *ngIf="leaseForm.get('advancePaymentPercentage').invalid && (leaseForm.get('advancePaymentPercentage').touched
+              || showErrorMessages)"
               class="label label-warning">Enter number between 10 and 100.</span>
         <div class="col-xs-12">
           <input
@@ -105,7 +120,7 @@
       </div>
       <div class="form-group">
         <label for="advancePaymentAmount" class="col-xs-7">ADVANCE PAYMENT AMOUNT €</label>
-        <span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"
+        <span *ngIf="leaseForm.get('advancePaymentAmount').invalid && (leaseForm.get('advancePaymentAmount').touched || showErrorMessages)"
               class="label label-warning">Only numeric values. Required field.</span>
         <div class="col-xs-12">
           <input
@@ -134,7 +149,7 @@
 
       <div class="form-group">
         <label for="margin" class="col-xs-6">MARGIN %</label>
-        <span class="col-xs-6" *ngIf="leaseForm.get('margin').invalid && leaseForm.get('margin').touched"
+        <span class="col-xs-6" *ngIf="leaseForm.get('margin').invalid && (leaseForm.get('margin').touched || showErrorMessages)"
               class="label label-warning">Enter number between 3.2 and 100.</span>
         <div class="col-xs-12">
           <input
@@ -157,6 +172,8 @@
       </div>
       <div class="form-group notBorder">
         <label for="paymentDate" class="col-xs-6">PAYMENT DATE</label>
+        <span class="col-xs-8" *ngIf="leaseForm.get('paymentDate').invalid && showErrorMessages"
+              class="label label-warning">Required field.</span>
         <div class="col-xs-12">
           <label class="radioInline" *ngFor="let paymentDate of paymentDates">
             <input
@@ -171,7 +188,6 @@
       <div class="form-group row notBorder">
         <div class="col-xs-offset-9 col-xs-3">
           <button
-            [disabled]="!leaseForm.valid"
             name="submit"
             type="button"
             (click)="goToSummary()"
@@ -182,3 +198,5 @@
     </div>
   </form>
 </div>
+
+<!--[disabled]="!leaseForm.valid"-->

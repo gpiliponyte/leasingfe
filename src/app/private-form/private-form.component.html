@@ -15,7 +15,7 @@
             class="form-control"
             type="text">
         </div>
-        <span class="col-xs-3" *ngIf="privateForm.get('firstName').invalid && privateForm.get('firstName').touched"
+        <span class="col-xs-3" *ngIf="privateForm.get('firstName').invalid && (privateForm.get('firstName').touched || showErrorMessages)"
               class="label label-warning">Only alphabetic values. Required field.</span>
 
       </div>
@@ -30,7 +30,7 @@
             type="text">
 
         </div>
-        <span class="col-xs-3" *ngIf="privateForm.get('lastName').invalid && privateForm.get('lastName').touched"
+        <span class="col-xs-3" *ngIf="privateForm.get('lastName').invalid && (privateForm.get('lastName').touched || showErrorMessages)"
               class="label label-warning">Only alphabetic values. Required field.</span>
       </div>
 
@@ -43,7 +43,7 @@
             class="form-control"
             type="text">
         </div>
-        <span class="col-xs-3" *ngIf="privateForm.get('personalID').invalid && privateForm.get('personalID').touched"
+        <span class="col-xs-3" *ngIf="privateForm.get('personalID').invalid && (privateForm.get('personalID').touched || showErrorMessages )"
               class="label label-warning">Only numeric values. Required field.</span>
       </div>
 
@@ -56,7 +56,7 @@
             class="form-control"
             type="text">
         </div>
-        <span class="col-xs-3" *ngIf="privateForm.get('email').invalid && privateForm.get('email').touched"
+        <span class="col-xs-3" *ngIf="privateForm.get('email').invalid && (privateForm.get('email').touched || showErrorMessages )"
               class="label label-warning">Invalid email. Required field.</span>
       </div>
 
@@ -73,7 +73,7 @@
               type="text">
           </div>
         </div>
-        <span class="col-xs-3" *ngIf="privateForm.get('phoneNumber').invalid && privateForm.get('phoneNumber').touched"
+        <span class="col-xs-3" *ngIf="privateForm.get('phoneNumber').invalid && (privateForm.get('phoneNumber').touched || showErrorMessages)"
               class="label label-warning">Only numeric values. Required field.</span>
       </div>
 
@@ -91,7 +91,7 @@
             type="text">
 
         </div>
-        <span class="col-xs-3" *ngIf="privateForm.get('street').invalid && privateForm.get('street').touched"
+        <span class="col-xs-3" *ngIf="privateForm.get('street').invalid && (privateForm.get('street').touched || showErrorMessages)"
               class="label label-warning">Invalid street. Required field.</span>
       </div>
 
@@ -105,7 +105,7 @@
             type="text">
 
         </div>
-        <span class="col-xs-3" *ngIf="privateForm.get('city').invalid && privateForm.get('city').touched"
+        <span class="col-xs-3" *ngIf="privateForm.get('city').invalid && (privateForm.get('city').touched || showErrorMessages) "
               class="label label-warning">Invalid city. Required field.</span>
       </div>
 
@@ -120,7 +120,7 @@
             type="text">
 
         </div>
-        <span class="col-xs-3" *ngIf="privateForm.get('postCode').invalid && privateForm.get('postCode').touched"
+        <span class="col-xs-3" *ngIf="privateForm.get('postCode').invalid && (privateForm.get('postCode').touched || showErrorMessages) "
               class="label label-warning">Invalid post code, eg. LTxxxxx Required field.</span>
       </div>
 
@@ -133,7 +133,7 @@
             class="form-control"
             type="text">
         </div>
-        <span class="col-xs-3" *ngIf="privateForm.get('country').invalid && privateForm.get('country').touched"
+        <span class="col-xs-3" *ngIf="privateForm.get('country').invalid && (privateForm.get('country').touched || showErrorMessages) "
               class="label label-warning">Invalid country. Required field.</span>
       </div>
 
@@ -146,7 +146,7 @@
                id="checkbox"
                [(ngModel)]="isCheckboxChecked">
         <label for="checkbox" class="form-check-label">I accept terms and conditions</label>
-        <span class="col-xs-3" *ngIf="privateForm.get('checkbox').touched && !isCheckboxChecked"
+        <span class="col-xs-3" *ngIf="(privateForm.get('checkbox').touched || showErrorMessages) && !isCheckboxChecked"
               class="label label-warning">You must accept terms and conditions</span>
       </div>
       <!-- <div class="form-group button-group row" >
@@ -162,7 +162,7 @@
         <button  (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
       </div>
       <div class="col-xs-offset-9 col-xs-2 SummaryButtons"  style="border-bottom:none; margin-top:2%;">
-        <button style="margin-left:38%;"  (click)="submit()" [disabled]="!privateForm.valid || !isCheckboxChecked" name="submit2" type="submit" class="btn">Submit</button>
+        <button style="margin-left:38%;"  (click)="submit()" name="submit2" type="submit" class="btn">Submit</button>
       </div>
     </div>
   </div>
