@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {VehicleService} from '../services/vehicle.service';
+import {VehicleService} from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-lease-form',
@@ -25,6 +25,7 @@ export class LeaseFormComponent implements OnInit {
   temp1;
   temp2;
   modelsBySelectedBrand;
+  showErrorMessages = false;
 
   @Input() showElement;
   @Input() resetModels;
@@ -45,7 +46,7 @@ export class LeaseFormComponent implements OnInit {
       'advancePaymentPercentage': new FormControl(10,
         [Validators.required, Validators.pattern(this.validationRegex), Validators.max(100),
           Validators.min(10)]),
-      'advancePaymentAmount': new FormControl(null),
+      'advancePaymentAmount': new FormControl(null, [Validators.pattern(this.validationRegex), Validators.required]),
       'leasePeriod': new FormControl(6, Validators.required),
       'margin': new FormControl(3.2,
         [Validators.required, Validators.pattern(this.validationRegex), Validators.max(100),
@@ -97,24 +98,33 @@ export class LeaseFormComponent implements OnInit {
   @Output() nextToSummary = new EventEmitter<Object>();
 
   goToSummary() {
-    const leaseFormObject = {
-      customerType: this.leaseForm.get('customerType').value,
-      assetType: this.leaseForm.get('assetType').value,
-      vehicleBrand: this.leaseForm.get('brand').value,
-      model: this.leaseForm.get('model').value,
-      year: this.leaseForm.get('year').value,
-      enginePower: this.leaseForm.get('enginePower').value,
-      assetPrice: this.leaseForm.get('assetPrice').value,
-      advancePaymentPercentage: this.leaseForm.get('advancePaymentPercentage').value,
-      advancePaymentAmount: this.leaseForm.get('advancePaymentAmount').value,
-      leasePeriod: this.leaseForm.get('leasePeriod').value,
-      margin: this.leaseForm.get('margin').value,
-      contractFee: this.leaseForm.get('contractFee').value,
-      paymentDate: this.leaseForm.get('paymentDate').value,
-    };
 
-    this.vehicleService.leaseObject = leaseFormObject;
-    this.nextToSummary.emit();
+    if (this.leaseForm.valid) {
+      this.showErrorMessages  = false;
+      const leaseFormObject = {
+        customerType: this.leaseForm.get('customerType').value,
+        assetType: this.leaseForm.get('assetType').value,
+        vehicleBrand: this.leaseForm.get('brand').value,
+        model: this.leaseForm.get('model').value,
+        year: this.leaseForm.get('year').value,
+        enginePower: this.leaseForm.get('enginePower').value,
+        assetPrice: this.leaseForm.get('assetPrice').value,
+        advancePaymentPercentage: this.leaseForm.get('advancePaymentPercentage').value,
+        advancePaymentAmount: this.leaseForm.get('advancePaymentAmount').value,
+        leasePeriod: this.leaseForm.get('leasePeriod').value,
+        margin: this.leaseForm.get('margin').value,
+        contractFee: this.leaseForm.get('contractFee').value,
+        paymentDate: this.leaseForm.get('paymentDate').value,
+      };
+
+      this.vehicleService.leaseObject = leaseFormObject;
+      this.nextToSummary.emit();
+    }
+
+    else {
+      this.showErrorMessages = true;
+    }
+
   }
 
   onChanges() {
