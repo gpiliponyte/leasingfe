@@ -37,7 +37,7 @@ export class LeasingApplicationComponent implements OnInit {
   }
 
   onSubmitted() {
-    console.log(this.vehicleService.customerObject)
+    console.log(this.leaseService.customerObject)
     this.leaseService.submitLease().then(data => {
       console.log(data);
       this.showCustomerForm = false;

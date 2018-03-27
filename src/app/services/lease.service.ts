@@ -37,7 +37,7 @@ export class LeaseService {
     };
 
     return this.http
-      .post('http://localhost:8080/addLease', lease)
+      .post('https://leasingbe.herokuapp.com/addLease', lease)
       .toPromise();
   }
 }

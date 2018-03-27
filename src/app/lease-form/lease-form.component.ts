@@ -117,7 +117,7 @@ export class LeaseFormComponent implements OnInit {
         paymentDate: this.leaseForm.get('paymentDate').value,
       };
 
-      this.vehicleService.leaseObject = leaseFormObject;
+      this.leaseService.leaseObject = leaseFormObject;
       this.nextToSummary.emit();
     }
 

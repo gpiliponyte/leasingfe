@@ -4,8 +4,6 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class VehicleService {
   changeScrollValue = true;
-  leaseObject;
-  customerObject;
 
   constructor(private http: HttpClient) { }
 
