@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleService} from '../services/vehicle.service';
+import {LeaseService} from '../services/lease.service';
 
 @Component({
   selector: 'app-lease-form',
@@ -29,7 +30,7 @@ export class LeaseFormComponent implements OnInit {
   @Input() showElement;
   @Input() resetModels;
 
-  constructor(private vehicleService: VehicleService) {
+  constructor(private vehicleService: VehicleService, protected leaseService: LeaseService) {
   }
 
   ngOnInit() {
@@ -113,7 +114,7 @@ export class LeaseFormComponent implements OnInit {
       paymentDate: this.leaseForm.get('paymentDate').value,
     };
 
-    this.vehicleService.leaseObject = leaseFormObject;
+    this.leaseService.leaseObject = leaseFormObject;
     this.nextToSummary.emit();
   }
 

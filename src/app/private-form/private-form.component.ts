@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleService} from '../services/vehicle.service';
+import {LeaseService} from '../services/lease.service';
 
 @Component({
   selector: 'app-private-form',
@@ -20,7 +21,7 @@ export class PrivateFormComponent implements OnInit {
 
   @Input() showElement;
 
-  constructor(protected vehicleService: VehicleService) { }
+  constructor(protected vehicleService: VehicleService, protected leaseService: LeaseService) { }
 
   ngOnInit() {
 
@@ -50,19 +51,20 @@ export class PrivateFormComponent implements OnInit {
       postCode: this.privateForm.get('postCode').value,
       country: this.privateForm.get('country').value
     };
-    this.vehicleService.customerObject = privateCustomerObject;
+    this.leaseService.customerObject = privateCustomerObject;
     this.privateSubmitted.emit(privateCustomerObject);
+    // this.leaseService.submitLease();
   }
 
   goBackToSummary() {
-    // this.vehicleService.firstName;
-    // this.vehicleService.lastName;
-    // this.vehicleService.privateEmail;
-    // this.vehicleService.privatePhoneNumber;
-    // this.vehicleService.privateStreet;
-    // this.vehicleService.privateCity;
-    // this.vehicleService.privatePostCode;
-    // this.vehicleService.privateCountry;
+    // this.leaseService.firstName;
+    // this.leaseService.lastName;
+    // this.leaseService.privateEmail;
+    // this.leaseService.privatePhoneNumber;
+    // this.leaseService.privateStreet;
+    // this.leaseService.privateCity;
+    // this.leaseService.privatePostCode;
+    // this.leaseService.privateCountry;
     this.privateBackToSummary.emit();
   }
 

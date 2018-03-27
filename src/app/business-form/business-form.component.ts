@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleService} from '../services/vehicle.service';
+import {LeaseService} from '../services/lease.service';
 
 @Component({
   selector: 'app-business-form',
@@ -21,7 +22,7 @@ export class BusinessFormComponent implements OnInit {
 
   @Input() showElement;
 
-  constructor(protected vehicleService: VehicleService) { }
+  constructor(protected leaseService: LeaseService) { }
 
   ngOnInit() {
 
@@ -61,7 +62,7 @@ export class BusinessFormComponent implements OnInit {
       country: this.businessCustomerForm.get('country').value
     }
 
-    this.vehicleService.customerObject = businessCustomerObject;
+    this.leaseService.customerObject = businessCustomerObject;
     this.businessSubmitted.emit(businessCustomerObject);
   }
 

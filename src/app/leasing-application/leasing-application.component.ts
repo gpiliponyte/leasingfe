@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {VehicleService} from '../services/vehicle.service';
+import {LeaseService} from '../services/lease.service';
 
 @Component({
   selector: 'app-leasing-application',
@@ -14,7 +15,7 @@ export class LeasingApplicationComponent implements OnInit {
   showConfirmationPage = false;
   customerObject;
 
-  constructor(private vehicleService: VehicleService) { }
+  constructor(private vehicleService: VehicleService, protected leaseService: LeaseService) { }
 
   ngOnInit() {
   }
@@ -36,9 +37,17 @@ export class LeasingApplicationComponent implements OnInit {
   }
 
   onSubmitted(customerObject) {
-    this.showCustomerForm = false;
-    this.showConfirmationPage = true;
-    this.customerObject = customerObject;
+    this.leaseService.submitLease().then(data => {
+      console.log('subscribe');
+      this.showCustomerForm = false;
+      this.showConfirmationPage = true;
+      this.customerObject = customerObject;
+    });
+
+
+    // this.showCustomerForm = false;
+    // this.showConfirmationPage = true;
+    // this.customerObject = customerObject;
   }
 
   onBackToSummary() {
