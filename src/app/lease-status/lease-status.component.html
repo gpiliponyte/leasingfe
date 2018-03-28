@@ -1,0 +1,13 @@
+<form class="navbar-form">
+  <label>Your application ID : </label>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="leaseID" name="leaseID" class="form-control">
+  </div>
+  <button type="submit" (click)="onSearchClick()" class="btn btn-default">Search</button>
+</form>
+
+<div id="status_div" *ngIf="infoIsShown">
+ <h3><b>Status:  </b> {{response}}</h3>
+</div>
+
+

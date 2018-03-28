@@ -40,4 +40,11 @@ export class LeaseService {
       .post('https://leasingbe.herokuapp.com/addLease', lease)
       .toPromise();
   }
+
+  getLeaseByUniqueId(id: string) {
+    return this.http
+      .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
+      .toPromise();
+}
+
 }
