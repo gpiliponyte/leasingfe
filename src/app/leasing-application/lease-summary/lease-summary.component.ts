@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {VehicleService} from '../services/vehicle.service';
-import {LeaseService} from '../services/lease.service';
+import {VehicleService} from '../../services/vehicle.service';
+import {LeaseService} from '../../services/lease.service';
 
 @Component({
   selector: 'app-lease-summary',

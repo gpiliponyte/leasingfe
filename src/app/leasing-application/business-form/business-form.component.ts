@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {LeaseService} from '../services/lease.service';
+import {LeaseService} from '../../services/lease.service';
 
 @Component({
   selector: 'app-business-form',

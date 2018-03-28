@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {VehicleService} from '../services/vehicle.service';
-import {LeaseService} from '../services/lease.service';
+import {VehicleService} from '../../services/vehicle.service';
+import {LeaseService} from '../../services/lease.service';
 
 @Component({
   selector: 'app-lease-form',
@@ -27,6 +27,9 @@ export class LeaseFormComponent implements OnInit {
   temp2;
   modelsBySelectedBrand;
   showErrorMessages = false;
+  financingAmount;
+  totalInterest;
+  totalMonthlyPayment;
 
   @Input() showElement;
   @Input() resetModels;
@@ -121,9 +124,7 @@ export class LeaseFormComponent implements OnInit {
 
       this.leaseService.leaseObject = leaseFormObject;
       this.nextToSummary.emit();
-    }
-
-    else {
+    } else {
       this.showErrorMessages = true;
     }
   }
@@ -182,6 +183,22 @@ export class LeaseFormComponent implements OnInit {
       this.leaseForm.get('advancePaymentPercentage').setValue(10);
       this.leaseForm.get('advancePaymentAmount').setValue(this.temp1.toFixed(2));
     }
+  }
+
+  calculatePreliminaryLeasingAmount() {
+    this.financingAmount = this.leaseForm.get('assetPrice').value
+      - this.leaseForm.get('advancePaymentAmount').value;
+    this.totalInterest = this.leaseForm.get('assetPrice').value
+      * (this.leaseForm.get('margin').value / 100);
+    this.totalMonthlyPayment = (this.totalInterest + this.financingAmount
+      + this.leaseForm.get('contractFee').value + (0.7 * this.leaseForm.get('leasePeriod').value))
+      / this.leaseForm.get('leasePeriod').value;
+    this.totalMonthlyPayment = this.totalMonthlyPayment.toFixed(2);
+    this.totalInterest = this.totalInterest.toFixed(2);
+    this.financingAmount = this.financingAmount.toFixed(2);
+    console.log('financing amount: ' + this.financingAmount);
+    console.log('total interest: ' + this.totalInterest);
+    console.log('total monthly payment: ' + this.totalMonthlyPayment);
   }
 
 }

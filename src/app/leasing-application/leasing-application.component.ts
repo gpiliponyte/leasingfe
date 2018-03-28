@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {VehicleService} from '../services/vehicle.service';
 import {LeaseService} from '../services/lease.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
-import {ErrorModuleComponent} from '../error-module/error-module.component';
+import {ErrorModuleComponent} from './error-module/error-module.component';
 
 @Component({
   selector: 'app-leasing-application',

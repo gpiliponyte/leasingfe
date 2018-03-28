@@ -199,4 +199,59 @@
   </form>
 </div>
 
+<div>
+  <label for="calculatorFinancingAmount" class="col-xs-6">Financing amount:</label>
+  <div class="col-xs-12">
+    <input
+      readonly
+      (ngModel)="financingAmount"
+      name="financingAmount"
+      value="{{financingAmount}}"
+      formControlName="financingAmount"
+      id="calculatorFinancingAmount"
+      class="calculator-control form-control"
+      type="text">
+  </div>
+  <label for="calculatorContractFee" class="col-xs-6">Contract fee:</label>
+  <div class="col-xs-12">
+    <input
+      readonly
+      value="{{leaseForm.get('contractFee').value}}"
+      formControlName="contractFee"
+      id="calculatorContractFee"
+      class="calculator-control form-control"
+      type="text">
+  </div>
+  <label for="calculatorTotalInterest" class="col-xs-6">Total interest:</label>
+  <div class="col-xs-12">
+    <input
+      readonly
+      ngModel="totalInterest"
+      name="totalInterest"
+      value={{totalInterest}}
+      formControlName="totalInterest"
+      id="calculatorTotalInterest"
+      class="calculator-control form-control"
+      type="text">
+  </div>
+  <label for="calculatorTotalMonthlyPayment" class="col-xs-6">Total monthly payment:</label>
+  <div class="col-xs-12">
+    <input
+      (ngModel)="totalMonthlyPayment"
+      value={{totalMonthlyPayment}}
+      readonly
+      name="totalMonthlyPayment"
+      formControlName="totalMonthlyPayment"
+      id="calculatorTotalMonthlyPayment"
+      class="calculator-control form-control"
+      type="text">
+  </div>
+</div>
+<button
+  [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid"
+  (click)="calculatePreliminaryLeasingAmount()"
+  class="btn btn-dark">Calculate
+
+</button>
+
 <!--[disabled]="!leaseForm.valid"-->
