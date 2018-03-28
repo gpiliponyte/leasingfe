@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LeaseService} from '../../services/lease.service';
 
 @Component({
   selector: 'app-confirmation-page',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmationPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected leaseService: LeaseService) { }
 
   ngOnInit() {
   }
+
+
 
 }
