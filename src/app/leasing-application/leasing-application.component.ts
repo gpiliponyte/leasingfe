@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {VehicleService} from '../services/vehicle.service';
 import {LeaseService} from '../services/lease.service';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {ErrorModuleComponent} from '../error-module/error-module.component';
 
 @Component({
   selector: 'app-leasing-application',
@@ -9,13 +11,15 @@ import {LeaseService} from '../services/lease.service';
 })
 export class LeasingApplicationComponent implements OnInit {
 
+  modalRef: BsModalRef;
   showForm = true;
   showSummary = false;
   showCustomerForm = false;
   showConfirmationPage = false;
-  customerObject;
+  //Is set to show error message for testing purposes
+  isError = false;
 
-  constructor(private vehicleService: VehicleService, protected leaseService: LeaseService) { }
+  constructor(private vehicleService: VehicleService, protected leaseService: LeaseService, private modalService: BsModalService) { }
 
   ngOnInit() {
   }
@@ -37,11 +41,17 @@ export class LeasingApplicationComponent implements OnInit {
   }
 
   onSubmitted() {
-    console.log(this.leaseService.customerObject)
     this.leaseService.submitLease().then(data => {
-      console.log(data);
-      this.showCustomerForm = false;
-      this.showConfirmationPage = true;
+      if (this.isError) {
+        this.modalRef = this.modalService.show(ErrorModuleComponent);
+        this.modalRef.content.onClose.subscribe(result => {
+          console.log('results', result);
+        });
+      }
+      else {
+        this.showCustomerForm = false;
+        this.showConfirmationPage = true;
+      }
     });
 
 
