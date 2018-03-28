@@ -90,7 +90,6 @@ export class LeaseFormComponent implements OnInit {
   }
 
 
-
   loadVehicles() {
     this.vehicleService.getAllVehicleInfo()
       .then(data => {
@@ -105,7 +104,7 @@ export class LeaseFormComponent implements OnInit {
 
   goToSummary() {
     if (this.leaseForm.valid) {
-      this.showErrorMessages  = false;
+      this.showErrorMessages = false;
       const leaseFormObject = {
         customerType: this.leaseForm.get('customerType').value,
         assetType: this.leaseForm.get('assetType').value,
@@ -130,14 +129,6 @@ export class LeaseFormComponent implements OnInit {
   }
 
   onChanges() {
-    // this.leaseForm.get('advancePaymentPercentage').valueChanges.subscribe(val => {
-    //   if (this.leaseForm.get('advancePaymentPercentage').valid) {
-    //     this.value = this.leaseForm.get('assetPrice').value * (parseFloat(val) / 100);
-    //     this.leaseForm.get('advancePaymentAmount').patchValue(this.value.toFixed(2));
-    //   } else {
-    //     this.leaseForm.get('advancePaymentAmount').patchValue('');
-    //   }
-    // });
     this.leaseForm.get('assetPrice').valueChanges.subscribe(val => {
       if (this.leaseForm.get('assetPrice').valid) {
         this.value = val * (1 / 100);
@@ -174,7 +165,7 @@ export class LeaseFormComponent implements OnInit {
 
   keyUpAdvancePaymentPercentage() {
     this.temp2 = this.leaseForm.get('advancePaymentAmount').value;
-    this.temp  = ((this.leaseForm.get('advancePaymentAmount').value / this.leaseForm.get('assetPrice').value) * 100);
+    this.temp = ((this.leaseForm.get('advancePaymentAmount').value / this.leaseForm.get('assetPrice').value) * 100);
     this.temp1 = (this.leaseForm.get('assetPrice').value * 0.1);
     if (this.temp <= 100 || this.temp >= 10) {
       this.leaseForm.get('advancePaymentPercentage').setValue(this.temp.toFixed(2));
@@ -186,19 +177,16 @@ export class LeaseFormComponent implements OnInit {
   }
 
   calculatePreliminaryLeasingAmount() {
-    this.financingAmount = this.leaseForm.get('assetPrice').value
-      - this.leaseForm.get('advancePaymentAmount').value;
-    this.totalInterest = this.leaseForm.get('assetPrice').value
-      * (this.leaseForm.get('margin').value / 100);
-    this.totalMonthlyPayment = (this.totalInterest + this.financingAmount
-      + this.leaseForm.get('contractFee').value + (0.7 * this.leaseForm.get('leasePeriod').value))
-      / this.leaseForm.get('leasePeriod').value;
+    this.financingAmount = parseFloat(this.leaseForm.get('assetPrice').value)
+      - parseFloat(this.leaseForm.get('advancePaymentAmount').value);
+    this.totalInterest = parseFloat(this.leaseForm.get('assetPrice').value)
+      * parseFloat(this.leaseForm.get('margin').value) / 100;
+    this.totalMonthlyPayment = (parseFloat(this.totalInterest) + parseFloat(this.financingAmount)
+      + parseFloat(this.leaseForm.get('contractFee').value) + (0.7 * parseFloat(this.leaseForm.get('leasePeriod').value)))
+      / parseFloat(this.leaseForm.get('leasePeriod').value);
     this.totalMonthlyPayment = this.totalMonthlyPayment.toFixed(2);
     this.totalInterest = this.totalInterest.toFixed(2);
     this.financingAmount = this.financingAmount.toFixed(2);
-    console.log('financing amount: ' + this.financingAmount);
-    console.log('total interest: ' + this.totalInterest);
-    console.log('total monthly payment: ' + this.totalMonthlyPayment);
   }
 
 }
