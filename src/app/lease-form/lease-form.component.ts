@@ -180,7 +180,7 @@ export class LeaseFormComponent implements OnInit {
     }
     if (this.temp > 100 || this.temp < 10) {
       this.leaseForm.get('advancePaymentPercentage').setValue(10);
-      this.leaseForm.get('advancePaymentAmount').setValue(this.temp1);
+      this.leaseForm.get('advancePaymentAmount').setValue(this.temp1.toFixed(2));
     }
   }
 
