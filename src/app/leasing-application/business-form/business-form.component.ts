@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {VehicleService} from '../services/vehicle.service';
+import {VehicleService} from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-business-form',

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {VehicleService} from '../services/vehicle.service';
+import {VehicleService} from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-lease-form',
@@ -10,6 +10,7 @@ import {VehicleService} from '../services/vehicle.service';
 export class LeaseFormComponent implements OnInit {
 
   leaseForm: FormGroup;
+  preliminaryLeasingAmountForm: FormGroup;
   validationRegex = '^([1-9])\\d*(?:\\.\\d{1,2})?\\s*$';
   listVehicle;
   brands;
@@ -20,9 +21,9 @@ export class LeaseFormComponent implements OnInit {
   selectedBrand;
   selectedModel;
   selectedYear;
-  financingAmount: number;
-  totalInterest: number;
-  totalMonthlyPayment: number;
+  financingAmount;
+  totalInterest;
+  totalMonthlyPayment;
   value;
   temp: number;
   temp1;
@@ -55,7 +56,7 @@ export class LeaseFormComponent implements OnInit {
       'margin': new FormControl(3.2,
         [Validators.required, Validators.pattern(this.validationRegex), Validators.max(100),
           Validators.min(3.2)]),
-      'contractFee': new FormControl(200, Validators.required),
+      'contractFee': new FormControl(200.00, Validators.required),
       'paymentDate': new FormControl(null, Validators.required)
     });
 
@@ -137,7 +138,7 @@ export class LeaseFormComponent implements OnInit {
         if (this.value > 200) {
           this.leaseForm.get('contractFee').patchValue(this.value.toFixed(2));
         } else {
-          this.leaseForm.get('contractFee').patchValue(200);
+          this.leaseForm.get('contractFee').patchValue(200.00);
         }
         if (this.leaseForm.get('assetPrice').valid) {
           this.leaseForm.get('advancePaymentAmount').patchValue((
@@ -147,7 +148,7 @@ export class LeaseFormComponent implements OnInit {
           this.leaseForm.get('advancePaymentAmount').patchValue('');
         }
       } else {
-        this.leaseForm.get('contractFee').patchValue(200);
+        this.leaseForm.get('contractFee').patchValue(200.00);
         this.leaseForm.get('advancePaymentAmount').patchValue('');
       }
     });
@@ -183,6 +184,9 @@ export class LeaseFormComponent implements OnInit {
     this.totalMonthlyPayment = (this.totalInterest + this.financingAmount
       + this.leaseForm.get('contractFee').value + (0.7 * this.leaseForm.get('leasePeriod').value))
       / this.leaseForm.get('leasePeriod').value;
+    this.totalMonthlyPayment = this.totalMonthlyPayment.toFixed(2);
+    this.totalInterest = this.totalInterest.toFixed(2);
+    this.financingAmount = this.financingAmount.toFixed(2);
     console.log('financing amount: ' + this.financingAmount);
     console.log('total interest: ' + this.totalInterest);
     console.log('total monthly payment: ' + this.totalMonthlyPayment);
