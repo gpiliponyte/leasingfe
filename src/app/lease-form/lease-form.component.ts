@@ -63,11 +63,13 @@ export class LeaseFormComponent implements OnInit {
   getCarModelsByBrand(brand) {
     this.vehicleService.changeScrollValue ? this.selectedModel = '' : this.vehicleService.changeScrollValue = true;
     this.modelsBySelectedBrand = [];
-    this.listVehicle.forEach(data => {
-      if (data['groupValue'] === brand) {
-        this.modelsBySelectedBrand.push(data['text']);
-      }
-    });
+    if (this.listVehicle != null) {
+      this.listVehicle.forEach(data => {
+        if (data['groupValue'] === brand) {
+          this.modelsBySelectedBrand.push(data['text']);
+        }
+      });
+    }
   }
 
   onCustomerTypeChange() {
