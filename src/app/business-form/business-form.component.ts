@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleService} from '../services/vehicle.service';
 import {LeaseService} from '../services/lease.service';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {ErrorModuleComponent} from '../error-module/error-module.component';
 
 @Component({
   selector: 'app-business-form',
@@ -20,10 +22,11 @@ export class BusinessFormComponent implements OnInit {
   onlyNumbersRegex = '^[0-9]{9}$';
   businessCustomerForm: FormGroup;
   showErrorMessages = false;
+  modalRef: BsModalRef;
 
   @Input() showElement;
 
-  constructor(protected leaseService: LeaseService) { }
+  constructor(protected leaseService: LeaseService, private modalService: BsModalService) { }
 
   ngOnInit() {
 
@@ -47,6 +50,14 @@ export class BusinessFormComponent implements OnInit {
     });
 
   }
+
+  openErrorDialog() {
+    this.modalRef = this.modalService.show(ErrorModuleComponent);
+    this.modalRef.content.onClose.subscribe(result => {
+      console.log('results', result);
+    });
+  }
+
 
   @Output() businessSubmitted = new EventEmitter<Object>();
   @Output() businessBackToSummary = new EventEmitter<Object>();

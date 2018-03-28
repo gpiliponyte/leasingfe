@@ -18,6 +18,7 @@ import {ConfirmationPageComponent} from './confirmation-page/confirmation-page.c
 import {PrivateFormComponent} from './private-form/private-form.component';
 import {LeaseService} from './services/lease.service';
 import { LeaseCalculateBoxComponent } from './lease-calculate-box/lease-calculate-box.component';
+import {ErrorModuleComponent} from './error-module/error-module.component';
 
 
 @NgModule(<NgModule>{
@@ -30,7 +31,8 @@ import { LeaseCalculateBoxComponent } from './lease-calculate-box/lease-calculat
     BusinessFormComponent,
     ConfirmationPageComponent,
     PrivateFormComponent,
-    LeaseCalculateBoxComponent
+    LeaseCalculateBoxComponent,
+    ErrorModuleComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +42,11 @@ import { LeaseCalculateBoxComponent } from './lease-calculate-box/lease-calculat
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [VehicleService, LeaseService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorModuleComponent]
 })
 export class AppModule { }
