@@ -10,7 +10,7 @@ describe('leasingfe App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to Lease Calculator!');
+    expect(page.getParagraphText()).toEqual('Vehicle Leasing');
   });
   /*
   *****TEMPLATE FOR FILL FORM******
@@ -45,6 +45,7 @@ describe('leasingfe App', () => {
   expect(page.getSummaryPaymentDateValue()).toEqual('Payment date : 15');
   */
  /*****FALSE-TESTS*******/
+ /*
   it('shouldnt be able to click next when nothing is filled', () => {
     page.navigateTo();
     expect(page.getFormNextButton().isEnabled()).toBe(false);
@@ -199,6 +200,7 @@ describe('leasingfe App', () => {
     expect(page.getFormErrorElement().isEnabled()).toBe(true);
   });
   /*****TRUE-TESTS*******/
+  /*
   it('should change brand to LADA and model to ', () => {
     page.navigateTo();
     page.chooseBrand('[value="LADA"]');
@@ -233,6 +235,7 @@ describe('leasingfe App', () => {
 
     expect(page.getSummaryConfimationText()).toEqual('Vehicle lease summary :');
   });
+  */
   it('should see same summary values as entered', () => {
     page.navigateTo();
     page.chooseCustomerType('Business');
@@ -242,12 +245,15 @@ describe('leasingfe App', () => {
     page.chooseYear('[value="2000"]');
     page.enterEnginePower('500');
     page.enterAssetPrice('5000');
-    page.enterAdvancePaymentPercentage('20');
-    page.changeLeasePeriod(0.5);//procentais pvz: puse baro 0.5
-    page.enterMargin('3.2');
+    //page.enterAdvancePaymentPercentage('20');
+    //page.changeLeasePeriod(0.5);//procentais pvz: puse baro 0.5
+    //page.enterMargin('3.2');
     page.choosePaymentDate(30);
-    page.clickNext();
-
+    //page.clickNext();
+    
+    browser.sleep(900000);
+    expect(page.getParagraphText()).toEqual('Vehicle Leasing');
+/*
     expect(page.getSummaryCustomerTypeValue()).toEqual('Customer type : Business');
     expect(page.getSummaryAssetTypeValue()).toEqual('Asset type : Used');
     expect(page.getSummaryBrandValue()).toEqual('Brand : BMW');
@@ -260,6 +266,6 @@ describe('leasingfe App', () => {
     expect(page.getSummaryLeasePeriodValue()).toEqual('Lease period : 42');
     expect(page.getSummaryMarginValue()).toEqual('Margin (%) : 3.2');
     expect(page.getSummaryContractFeeValue()).toEqual('Contract fee (€) : 200');
-    expect(page.getSummaryPaymentDateValue()).toEqual('Payment date : 30');
+    expect(page.getSummaryPaymentDateValue()).toEqual('Payment date : 30');*/
   });
 });
