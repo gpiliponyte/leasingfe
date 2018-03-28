@@ -16,7 +16,6 @@ import {LeaseSummaryComponent} from './lease-summary/lease-summary.component';
 import {BusinessFormComponent} from './business-form/business-form.component';
 import {ConfirmationPageComponent} from './confirmation-page/confirmation-page.component';
 import {PrivateFormComponent} from './private-form/private-form.component';
-import { LeaseCalculateBoxComponent } from './lease-calculate-box/lease-calculate-box.component';
 
 
 
@@ -29,8 +28,7 @@ import { LeaseCalculateBoxComponent } from './lease-calculate-box/lease-calculat
     LeaseSummaryComponent,
     BusinessFormComponent,
     ConfirmationPageComponent,
-    PrivateFormComponent,
-    LeaseCalculateBoxComponent
+    PrivateFormComponent
   ],
   imports: [
     BrowserModule,
