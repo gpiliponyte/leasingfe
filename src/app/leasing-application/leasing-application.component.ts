@@ -42,6 +42,7 @@ export class LeasingApplicationComponent implements OnInit {
 
   onSubmitted() {
     this.leaseService.submitLease().then(data => {
+      console.log(data);
       if (this.isError) {
         this.modalRef = this.modalService.show(ErrorModuleComponent);
         this.modalRef.content.onClose.subscribe(result => {

@@ -27,7 +27,7 @@ export class LeaseService {
       companyCode: this.customerObject.companyCode,
       firstName: this.customerObject.firstName,
       lastName: this.customerObject.lastName,
-      idCode: this.customerObject.idCode,
+      personalCode: this.customerObject.personalCode,
       email: this.customerObject.email,
       phoneNumber: this.customerObject.phoneNumber,
       street: this.customerObject.street,
@@ -35,6 +35,8 @@ export class LeaseService {
       postCode: this.customerObject.postCode,
       country: this.customerObject.country
     };
+
+    console.log(lease);
 
     return this.http
       .post('https://leasingbe.herokuapp.com/addLease', lease)

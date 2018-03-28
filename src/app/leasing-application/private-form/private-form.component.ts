@@ -51,6 +51,7 @@ export class PrivateFormComponent implements OnInit {
         phoneNumber: this.privateForm.get('phoneNumber').value,
         street: this.privateForm.get('street').value,
         city: this.privateForm.get('city').value,
+        personalCode: this.privateForm.get('personalID').value,
         postCode: this.privateForm.get('postCode').value,
         country: this.privateForm.get('country').value
       };
