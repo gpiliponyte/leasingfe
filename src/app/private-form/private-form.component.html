@@ -1,4 +1,4 @@
-<div class="privatePersonalInfo" *ngIf="showElement && vehicleService.leaseObject.customerType === 'Private'">
+<div class="privatePersonalInfo" *ngIf="showElement && leaseService.leaseObject.customerType === 'Private'">
   <!-- <div class="container" *ngIf="showCustomerForm && leaseForm.get('customerType').value === 'Private'"> -->
   <div class="container">
     <form class="form-horizontal" [formGroup]="privateForm">

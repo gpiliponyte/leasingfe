@@ -1,0 +1,14 @@
+<div class="alert-box">
+  <div class="modal-header">
+    <h4 class="modal-title">ERROR</h4>
+    <button type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    The application was not submitted due to server technical error. Please try agan later.
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onOkay()">Okay</button>
+  </div>
+</div>

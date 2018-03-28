@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleService} from '../services/vehicle.service';
+import {LeaseService} from '../services/lease.service';
 
 @Component({
   selector: 'app-lease-form',
@@ -30,7 +31,7 @@ export class LeaseFormComponent implements OnInit {
   @Input() showElement;
   @Input() resetModels;
 
-  constructor(private vehicleService: VehicleService) {
+  constructor(private vehicleService: VehicleService, protected leaseService: LeaseService) {
   }
 
   ngOnInit() {
@@ -62,11 +63,13 @@ export class LeaseFormComponent implements OnInit {
   getCarModelsByBrand(brand) {
     this.vehicleService.changeScrollValue ? this.selectedModel = '' : this.vehicleService.changeScrollValue = true;
     this.modelsBySelectedBrand = [];
-    this.listVehicle.forEach(data => {
-      if (data['groupValue'] === brand) {
-        this.modelsBySelectedBrand.push(data['text']);
-      }
-    });
+    if (this.listVehicle != null) {
+      this.listVehicle.forEach(data => {
+        if (data['groupValue'] === brand) {
+          this.modelsBySelectedBrand.push(data['text']);
+        }
+      });
+    }
   }
 
   onCustomerTypeChange() {
@@ -98,7 +101,6 @@ export class LeaseFormComponent implements OnInit {
   @Output() nextToSummary = new EventEmitter<Object>();
 
   goToSummary() {
-
     if (this.leaseForm.valid) {
       this.showErrorMessages  = false;
       const leaseFormObject = {
@@ -117,14 +119,13 @@ export class LeaseFormComponent implements OnInit {
         paymentDate: this.leaseForm.get('paymentDate').value,
       };
 
-      this.vehicleService.leaseObject = leaseFormObject;
+      this.leaseService.leaseObject = leaseFormObject;
       this.nextToSummary.emit();
     }
 
     else {
       this.showErrorMessages = true;
     }
-
   }
 
   onChanges() {
@@ -179,7 +180,7 @@ export class LeaseFormComponent implements OnInit {
     }
     if (this.temp > 100 || this.temp < 10) {
       this.leaseForm.get('advancePaymentPercentage').setValue(10);
-      this.leaseForm.get('advancePaymentAmount').setValue(this.temp1);
+      this.leaseForm.get('advancePaymentAmount').setValue(this.temp1.toFixed(2));
     }
   }
 
