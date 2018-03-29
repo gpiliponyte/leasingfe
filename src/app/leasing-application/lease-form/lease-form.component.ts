@@ -40,7 +40,7 @@ export class LeaseFormComponent implements OnInit {
   ngOnInit() {
     this.leaseForm = new FormGroup({
       'customerType': new FormControl(null, Validators.required),
-      'assetType': new FormControl(null, Validators.required),
+      'assetType': new FormControl(null),
       'brand': new FormControl(null, Validators.required),
       'model': new FormControl(null, Validators.required),
       'year': new FormControl(null, Validators.required),
