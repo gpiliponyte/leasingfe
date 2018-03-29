@@ -95,46 +95,46 @@ export class AppPage {
   }
 
   //Summary methods  
-  getSummaryConfimationText(){
-    return element(by.css('h3:first-child :first-child')).getText();
+  getSummaryPragraphMessageElement(){
+    return element(by.css('[class="col-xs-12 title"] h3'));
   }
   getSummaryCustomerTypeValue(){
-    return element.all(by.css('div p')).get(0).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(0).getText();
   }
   getSummaryAssetTypeValue(){
-    return element.all(by.css('div p')).get(1).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(1).getText();
   }
   getSummaryBrandValue(){
-    return element.all(by.css('div p')).get(2).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(2).getText();
   }
   getSummaryModelValue(){
-    return element.all(by.css('div p')).get(3).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(3).getText();
   }
   getSummaryYearValue(){
-    return element.all(by.css('div p')).get(4).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(4).getText();
   }
   getSummaryEnginePowerValue(){
-    return element.all(by.css('div p')).get(5).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(5).getText();
   }
   getSummaryAssetPriceValue(){
-    return element.all(by.css('div p')).get(6).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(6).getText();
   }
   getSummaryAdvancePaymentPercentageValue(){
-    return element.all(by.css('div p')).get(7).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(7).getText();
   }
   getSummaryAdvancePaymentAmountValue(){
-    return element.all(by.css('div p')).get(8).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(8).getText();
   }
   getSummaryLeasePeriodValue(){
-    return element.all(by.css('div p')).get(9).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(9).getText();
   }
   getSummaryMarginValue(){
-    return element.all(by.css('div p')).get(10).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(10).getText();
   }
   getSummaryContractFeeValue(){
-    return element.all(by.css('div p')).get(11).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(11).getText();
   }
   getSummaryPaymentDateValue(){
-    return element.all(by.css('div p')).get(12).getText();
+    return element.all(by.css('[class="summary"] [class="col-xs-7 borderdiv"]')).get(12).getText();
   }
 }
