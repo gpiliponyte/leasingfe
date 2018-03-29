@@ -1,11 +1,23 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active"><a routerLink="home" routerLinkActive="active">Home</a></li>
+      <li routerLinkActive="active"><a routerLink="leaseForm" >Lease Form</a></li>
+      <li routerLinkActive="active"><a href="#">Search Lease</a></li>
+    </ul>
+    <!--<ul class="nav navbar-nav navbar-right">-->
+      <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+      <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+    <!--</ul>-->
+  </div>
+</nav>
 <div>
     <h1>
         Vehicle Leasing
     </h1>
   </div>
-  <!--<app-leasing-form ></app-leasing-form>-->
-
-<app-leasing-application></app-leasing-application>
+<!--<app-leasing-application></app-leasing-application>-->
   <router-outlet></router-outlet>
