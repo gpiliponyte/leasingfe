@@ -5,7 +5,7 @@ import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   {path: 'leaseForm', component: LeasingApplicationComponent},
-  {path: 'home', component: HomeComponent},
+  // {path: 'home', component: HomeComponent},
   // {path: 'leaseStatus', component: LeaseStatusComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
 ];

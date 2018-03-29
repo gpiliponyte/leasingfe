@@ -18,7 +18,6 @@ import {ConfirmationPageComponent} from './leasing-application/confirmation-page
 import {PrivateFormComponent} from './leasing-application/private-form/private-form.component';
 import {LeaseService} from './services/lease.service';
 import {ErrorModuleComponent} from './leasing-application/error-module/error-module.component';
-import {HomeComponent} from './home/home.component';
 
 
 @NgModule(<NgModule>{
@@ -31,8 +30,7 @@ import {HomeComponent} from './home/home.component';
     BusinessFormComponent,
     ConfirmationPageComponent,
     PrivateFormComponent,
-    ErrorModuleComponent,
-    HomeComponent
+    ErrorModuleComponent
   ],
   imports: [
     BrowserModule,
