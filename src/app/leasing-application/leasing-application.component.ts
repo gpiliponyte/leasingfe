@@ -43,6 +43,7 @@ export class LeasingApplicationComponent implements OnInit {
     this.leaseService.submitLease().then((data) => {
       this.showCustomerForm = false;
       this.showConfirmationPage = true;
+      this.leaseService.response = data;
     }, (error) => {
       this.modalRef = this.modalService.show(ErrorModuleComponent);
     });

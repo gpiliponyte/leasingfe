@@ -8,7 +8,8 @@ const routes: Routes = [
    {path: 'leaseStatus', component: LeaseStatusComponent},
   // {path: 'home', component: HomeComponent},
   // {path: 'leaseStatus', component: LeaseStatusComponent},
-  {path: '', redirectTo: 'leaseForm', pathMatch: 'full'}
+  {path: '', redirectTo: 'leaseForm', pathMatch: 'full'},
+  {path: 'leaseForm/leaseStatus', redirectTo: 'leaseStatus', pathMatch: 'full'}
 ];
 
 @NgModule({
