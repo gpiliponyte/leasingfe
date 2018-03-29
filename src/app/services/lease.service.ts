@@ -5,6 +5,7 @@ export class LeaseService {
 
   leaseObject;
   customerObject;
+  response;
 
   constructor(private http: HttpClient) { }
 
@@ -35,8 +36,6 @@ export class LeaseService {
       postCode: this.customerObject.postCode,
       country: this.customerObject.country
     };
-
-    console.log(lease);
 
     return this.http
       .post('https://leasingbe.herokuapp.com/addLease', lease)
