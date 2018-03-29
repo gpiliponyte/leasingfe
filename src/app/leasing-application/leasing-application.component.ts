@@ -17,7 +17,7 @@ export class LeasingApplicationComponent implements OnInit {
   showCustomerForm = false;
   showConfirmationPage = false;
   //Is set to show error message for testing purposes
-  isError = false;
+  isError = true;
 
   constructor(private vehicleService: VehicleService, protected leaseService: LeaseService, private modalService: BsModalService) { }
 
