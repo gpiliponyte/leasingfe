@@ -5,7 +5,7 @@ import {LeasingApplicationComponent} from './leasing-application/leasing-applica
 const routes: Routes = [
   {path: 'leaseForm', component: LeasingApplicationComponent},
   // {path: 'home', component: HomeComponent},
-  {path: 'leaseStatus', component: LeaseStatusComponent},
+  // {path: 'leaseStatus', component: LeaseStatusComponent},
   {path: '', redirectTo: 'leaseForm', pathMatch: 'full'},
 ];
 
