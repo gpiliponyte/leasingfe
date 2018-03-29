@@ -9,20 +9,21 @@ import {LeaseService} from '../../services/lease.service';
 })
 export class LeaseSummaryComponent implements OnInit {
 
-  constructor(protected leaseService: LeaseService) { }
+  @Output() backToForm1 = new EventEmitter<Object>();
+  @Output() nextToForm2 = new EventEmitter<Object>();
+
+  constructor(protected leaseService: LeaseService) {
+  }
 
   ngOnInit() {
   }
 
-  @Output() backToForm1 = new EventEmitter<Object>();
-  @Output() nextToForm2  = new EventEmitter<Object>();
-
   goBackToForm1() {
     this.backToForm1.emit();
-}
+  }
 
   goNextToForm2() {
     this.nextToForm2.emit();
-}
+  }
 
 }

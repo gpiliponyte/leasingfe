@@ -13,7 +13,7 @@ export class BusinessFormComponent implements OnInit {
   emailRegex = '^(([^<>()[\\]\\\\.,;:\\s@\\"]+' +
     '(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
   cityRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]+$';
-  postCodeRegex = '[LT]{2}\\d{5}';
+  postCodeRegex = '[a-zA-Z0-9\\-]*';
   streetRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž0-9\\s\\.\\-]+$';
   phoneNumberRegex = '^[0-9]{11}';
   onlyNumbersRegex = '^[0-9]{9}$';

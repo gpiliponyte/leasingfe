@@ -5,8 +5,10 @@ import {LeaseStatusComponent} from './lease-status/lease-status.component';
 
 const routes: Routes = [
   {path: 'leaseForm', component: LeasingApplicationComponent},
-  {path: 'leaseStatus', component: LeaseStatusComponent},
-  {path: '', redirectTo: '/leaseForm', pathMatch: 'full'},
+   {path: 'leaseStatus', component: LeaseStatusComponent},
+  // {path: 'home', component: HomeComponent},
+  // {path: 'leaseStatus', component: LeaseStatusComponent},
+  {path: '', redirectTo: 'leaseForm', pathMatch: 'full'}
 ];
 
 @NgModule({

@@ -13,7 +13,7 @@ export class PrivateFormComponent implements OnInit {
   privateForm: FormGroup;
   emailRegex = '^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
   cityRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]+$';
-  postCodeRegex = '[LT]{2}\\d{5}';
+  postCodeRegex = '[a-zA-Z0-9\\-]*';
   streetRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž0-9\\s\\.\\-]+$';
   phoneNumberRegex = '^[0-9]{11}';
   personalIDRegex = '^[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}$';
@@ -51,6 +51,7 @@ export class PrivateFormComponent implements OnInit {
         phoneNumber: this.privateForm.get('phoneNumber').value,
         street: this.privateForm.get('street').value,
         city: this.privateForm.get('city').value,
+        personalCode: this.privateForm.get('personalID').value,
         postCode: this.privateForm.get('postCode').value,
         country: this.privateForm.get('country').value
       };

@@ -207,7 +207,6 @@
       (ngModel)="financingAmount"
       name="financingAmount"
       value="{{financingAmount}}"
-      formControlName="financingAmount"
       id="calculatorFinancingAmount"
       class="calculator-control form-control"
       type="text">
@@ -217,7 +216,6 @@
     <input
       readonly
       value="{{leaseForm.get('contractFee').value}}"
-      formControlName="contractFee"
       id="calculatorContractFee"
       class="calculator-control form-control"
       type="text">
@@ -226,10 +224,9 @@
   <div class="col-xs-12">
     <input
       readonly
-      ngModel="totalInterest"
+      (ngModel)="totalInterest"
       name="totalInterest"
       value={{totalInterest}}
-      formControlName="totalInterest"
       id="calculatorTotalInterest"
       class="calculator-control form-control"
       type="text">
@@ -241,7 +238,6 @@
       value={{totalMonthlyPayment}}
       readonly
       name="totalMonthlyPayment"
-      formControlName="totalMonthlyPayment"
       id="calculatorTotalMonthlyPayment"
       class="calculator-control form-control"
       type="text">
