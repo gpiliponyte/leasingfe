@@ -16,8 +16,6 @@ export class LeasingApplicationComponent implements OnInit {
   showSummary = false;
   showCustomerForm = false;
   showConfirmationPage = false;
-  //Is set to show error message for testing purposes
-  isError = true;
 
   constructor(private vehicleService: VehicleService, protected leaseService: LeaseService, private modalService: BsModalService) { }
 
@@ -41,24 +39,14 @@ export class LeasingApplicationComponent implements OnInit {
   }
 
   onSubmitted() {
-    this.leaseService.submitLease().then(data => {
-      console.log(data);
-      if (this.isError) {
-        this.modalRef = this.modalService.show(ErrorModuleComponent);
-        this.modalRef.content.onClose.subscribe(result => {
-          console.log('results', result);
-        });
-      }
-      else {
-        this.showCustomerForm = false;
-        this.showConfirmationPage = true;
-      }
+
+    this.leaseService.submitLease().then((data) => {
+      this.showCustomerForm = false;
+      this.showConfirmationPage = true;
+    }, (error) => {
+      this.modalRef = this.modalService.show(ErrorModuleComponent);
     });
 
-
-    // this.showCustomerForm = false;
-    // this.showConfirmationPage = true;
-    // this.customerObject = customerObject;
   }
 
   onBackToSummary() {
