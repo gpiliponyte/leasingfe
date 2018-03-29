@@ -20,6 +20,7 @@ export class LeaseStatusComponent implements OnInit {
   onSearchClick() {
     this.infoIsShown = true;
     this.leaseService.getLeaseByUniqueId(this.leaseID).then(data => {
-      this.response = data.customerType;
+      this.response = data;
   });
+  }
 }

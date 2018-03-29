@@ -2,3 +2,10 @@
   display: block;
   margin-left: 20px;
 }
+h2{
+  margin-bottom: 30px;
+}
+
+hr{
+  color: black;
+}
