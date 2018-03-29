@@ -4,11 +4,11 @@ import {LeasingApplicationComponent} from './leasing-application/leasing-applica
 import {LeaseStatusComponent} from './lease-status/lease-status.component';
 
 const routes: Routes = [
-  {path: 'leaseForm', component: LeasingApplicationComponent},
-   {path: 'leaseStatus', component: LeaseStatusComponent},
+  {path: '', component: LeasingApplicationComponent},
+   {path: 'leaseStatus', component: LeaseStatusComponent}
   // {path: 'home', component: HomeComponent},
   // {path: 'leaseStatus', component: LeaseStatusComponent},
-  {path: '', redirectTo: 'leaseForm', pathMatch: 'full'}
+  // {path: '', redirectTo: 'leaseForm', pathMatch: 'full'}
 ];
 
 @NgModule({
