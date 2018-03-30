@@ -181,9 +181,9 @@ export class LeaseFormComponent implements OnInit {
       - parseFloat(this.leaseForm.get('advancePaymentAmount').value);
     this.totalInterest = parseFloat(this.leaseForm.get('assetPrice').value)
       * parseFloat(this.leaseForm.get('margin').value) / 100;
-    this.totalMonthlyPayment = (parseFloat(this.totalInterest) + parseFloat(this.financingAmount)
-      + parseFloat(this.leaseForm.get('contractFee').value) + (0.7 * parseFloat(this.leaseForm.get('leasePeriod').value)))
-      / parseFloat(this.leaseForm.get('leasePeriod').value);
+    this.totalMonthlyPayment = this.financingAmount / ((1 - (1 /
+      Math.pow((1 + ((parseFloat(this.leaseForm.get('margin').value) / 100) / 12)), (parseFloat(this.leaseForm.get('leasePeriod').value) - 1))))
+      / ((parseFloat(this.leaseForm.get('margin').value) / 100) / 12) + 1) ;
     this.totalMonthlyPayment = this.totalMonthlyPayment.toFixed(2);
     this.totalInterest = this.totalInterest.toFixed(2);
     this.financingAmount = this.financingAmount.toFixed(2);
