@@ -10,6 +10,7 @@ export class LeaseStatusComponent implements OnInit {
 
   leaseID;
   infoIsShown = false;
+  isError = false;
   response;
 
   constructor(private leaseService: LeaseService) { }
@@ -18,9 +19,13 @@ export class LeaseStatusComponent implements OnInit {
   }
 
   onSearchClick() {
-    this.infoIsShown = true;
     this.leaseService.getLeaseByUniqueId(this.leaseID).then(data => {
       this.response = data;
-  });
+      this.isError = false;
+      this.infoIsShown = true;
+  }, error => {
+      this.isError = true;
+      this.infoIsShown = true;
+    });
   }
 }
