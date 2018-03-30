@@ -45,10 +45,10 @@ export class LeaseFormComponent implements OnInit {
       'model': new FormControl(null, Validators.required),
       'year': new FormControl(null, Validators.required),
       'enginePower': new FormControl(null, [Validators.required, Validators.pattern(this.validationRegex),
-        Validators.min(1)]),
-      'assetPrice': new FormControl(null, [Validators.required, Validators.pattern(this.validationRegex)]),
+        Validators.min(10), Validators.max(1000)]),
+      'assetPrice': new FormControl(null, [Validators.required, Validators.max(1000000), Validators.pattern(this.validationRegex)]),
       'advancePaymentPercentage': new FormControl(10,
-        [Validators.required, Validators.pattern(this.validationRegex), Validators.max(100),
+        [Validators.required, Validators.pattern(this.validationRegex), Validators.max(30),
           Validators.min(10)]),
       'advancePaymentAmount': new FormControl(null, [Validators.pattern(this.validationRegex), Validators.required]),
       'leasePeriod': new FormControl(6, Validators.required),
@@ -79,12 +79,12 @@ export class LeaseFormComponent implements OnInit {
     if (this.leaseForm.get('customerType').value === 'Private') {
       this.leaseForm.get('assetPrice').clearValidators();
       this.leaseForm.get('assetPrice')
-        .setValidators([Validators.min(5000), Validators.required, Validators.pattern(this.validationRegex)]);
+        .setValidators([Validators.min(5000), Validators.max(1000000), Validators.required, Validators.pattern(this.validationRegex)]);
       this.leaseForm.get('assetPrice').updateValueAndValidity();
     } else {
       this.leaseForm.get('assetPrice').clearValidators();
       this.leaseForm.get('assetPrice')
-        .setValidators([Validators.min(10000), Validators.required, Validators.pattern(this.validationRegex)]);
+        .setValidators([Validators.min(10000), Validators.max(1000000), Validators.required, Validators.pattern(this.validationRegex)]);
       this.leaseForm.get('assetPrice').updateValueAndValidity();
     }
   }

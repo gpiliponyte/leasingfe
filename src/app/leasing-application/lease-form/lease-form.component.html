@@ -74,7 +74,7 @@
       <div class="form-group">
         <label for="enginePower" class="col-xs-6">ENGINE POWER kW</label>
         <span class="col-xs-6" *ngIf="leaseForm.get('enginePower').invalid && (leaseForm.get('enginePower').touched || showErrorMessages)"
-              class="label label-warning">Only numeric values. Required field.</span>
+              class="label label-warning">Only numeric values. Minimum 10, maximum 1000. Required field.</span>
         <div class="col-xs-12">
           <input
             formControlName="enginePower"
@@ -92,9 +92,9 @@
                && leaseForm.get('customerType').value == null)"
               class="label label-warning">Only numeric values. Required field.</span>
         <span class="col-xs-8" *ngIf="leaseForm.get('customerType').value == 'Private' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched || showErrorMessages)"
-              class="label label-warning">Lowest asset price for private customers is 5000.</span>
+              class="label label-warning">Lowest asset price for private customers is 5000. Maximum is 1000000.</span>
         <span class="col-xs-6" *ngIf="leaseForm.get('customerType').value == 'Business' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched  || showErrorMessages)"
-              class="label label-warning">Lowest asset price for business customers is 10000.</span>
+              class="label label-warning">Lowest asset price for business customers is 10000. Maximum is 1000000.</span>
         <div class="col-xs-12">
           <input
             formControlName="assetPrice"
@@ -108,7 +108,7 @@
         <span class="col-xs-5" style="padding:0%;margin:0%;"
               *ngIf="leaseForm.get('advancePaymentPercentage').invalid && (leaseForm.get('advancePaymentPercentage').touched
               || showErrorMessages)"
-              class="label label-warning">Enter number between 10 and 100.</span>
+              class="label label-warning">Enter number between 10 and 30.</span>
         <div class="col-xs-12">
           <input
             (change)="keyUpAdvancePaymentAmount()"
