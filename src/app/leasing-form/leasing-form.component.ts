@@ -67,7 +67,7 @@ export class LeasingFormComponent implements OnInit {
   constructor(private vehicleService: VehicleService, protected leaseService: LeaseService) {
   }
 
-  onCustomerTypeChange(){
+  onCustomerTypeChange() {
     if(this.leaseForm.get('customerType').value == 'Private') {
       console.log(1);
       this.leaseForm.get('assetPrice').clearValidators();
