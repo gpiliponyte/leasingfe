@@ -9,3 +9,44 @@ h1{
   font-family: 'Exo';
   font-size: 30px;
 }
+
+.logo{
+  height: 100px;
+  background-color: #4A8DB5;
+  /* padding-top: 5px; */
+}
+/* .logobackground{
+  height: 90px;
+  width: 90px;
+  border-radius: 100%;
+  
+  margin-left: 20px;
+  position: relative;
+  background-color: white;
+} */
+.logo img{
+  padding-left: 14px;
+  height: 100%;
+}
+
+a{
+  font-family: 'Exo';
+  /* color: #F35B1C; */
+}
+
+nav{
+  border-radius: 0%;
+}
+
+/* li:hover{
+  background-color: #CF8325;
+  color: #F35B1C;
+}
+
+.nav .open > a{
+  background-color: #CF8325;
+}
+
+li:focus{
+  background-color: #CF8325;
+} */

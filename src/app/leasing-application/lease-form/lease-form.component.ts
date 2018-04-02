@@ -30,6 +30,8 @@ export class LeaseFormComponent implements OnInit {
   financingAmount;
   totalInterest;
   totalMonthlyPayment;
+  showCalculation=false;
+  showBorderLine=false;
 
   @Input() showElement;
   @Input() resetModels;
@@ -187,6 +189,11 @@ export class LeaseFormComponent implements OnInit {
     this.totalMonthlyPayment = this.totalMonthlyPayment.toFixed(2);
     this.totalInterest = this.totalInterest.toFixed(2);
     this.financingAmount = this.financingAmount.toFixed(2);
+    this.showCalculation=true;
+    console.log(this.showCalculation);
   }
 
+  showBorder(){
+    this.showBorderLine=true;
+  }
 }
