@@ -23,7 +23,7 @@ export class PrivateFormComponent implements OnInit {
 
   @Input() showElement;
 
-  constructor(protected vehicleService: VehicleService, protected leaseService: LeaseService) { }
+  constructor(public vehicleService: VehicleService, public leaseService: LeaseService) { }
 
   ngOnInit() {
 

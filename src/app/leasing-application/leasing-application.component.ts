@@ -16,7 +16,7 @@ export class LeasingApplicationComponent implements OnInit {
   showSummary = false;
   showCustomerForm = false;
   showConfirmationPage = false;
-  changeScrollvalue = true;
+  changeScrollValue = true;
   constructor(public vehicleService: VehicleService, public leaseService: LeaseService, public modalService: BsModalService) { }
 
   ngOnInit() {

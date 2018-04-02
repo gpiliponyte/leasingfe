@@ -11,7 +11,7 @@ export class ErrorModuleComponent implements OnInit {
 
   public onClose: Subject<boolean>;
 
-  constructor(private _bsModalRef: BsModalRef) { }
+  constructor(public _bsModalRef: BsModalRef) { }
 
   public ngOnInit(): void {
     this.onClose = new Subject();
