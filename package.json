@@ -58,7 +58,3 @@
   }
 }
 
-// "preinstall": "npm install -g http-server",
-//"postinstall": "ng build && mv dist/* ."
-// "@angular/cli": "~1.7.3",
-//"@angular/compiler-cli": "^5.2.0",
