@@ -1,5 +1,10 @@
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css'); */
 input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
   /* border: 1px solid red; */
+}
+
+.calculator-control{
+  background-color: transparent;
 }
 
 .slider {
@@ -46,12 +51,25 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
 }
 
 .btn{
-  background-color: #F58321;
+  /* background-color: #F58321; */
+  background-color: #4A8DB5;
   color: white;
   min-width: 80px;
   font-family: 'Exo';
-  margin-left: 26%;
-  margin-bottom: 4%;
+  /* margin-left: 26%; */
+  margin-bottom: 5%;
+}
+
+.calculateContainer{
+  margin-top: 1%;
+  padding: 10px;
+  /* visibility: hidden; */
+  /* width: 50%; */
+  border-radius: 3%;
+  /* outline: 3px solid #F58321;  */
+  /* outline-offset: -6px; */
+  border: 3px solid #F58321;
+  /* background-color: #fbcda6; */
 }
 
 .button-group{
@@ -66,7 +84,8 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
 
 .container{
   margin-top: 1%;
-  width: 70%;
+  margin-bottom: 3%;
+  /* width: 50%; */
   border-radius: 1%;
   border: 3px solid #F58321;
   background-color: rgb(255, 255, 255);
@@ -77,7 +96,7 @@ form{
 }
 
 .customerType{
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .dropDown label{
@@ -86,7 +105,7 @@ form{
   font-weight: normal;
   margin: 0%;
   padding: 0%;
-  padding-top: 2.3%;
+  padding-top: 1.5%;
   /* height: auto; */
 }
 
@@ -113,13 +132,16 @@ input,select{
 }
 
 span{
-  float:right;
+  float:left;
 }
 .form-group {
   border-bottom: 1px solid #F58321;
   margin: 0%;
   padding-top:2%;
 
+}
+.form-group label{
+  padding-top: 1%;
 }
 
 .notBorder{

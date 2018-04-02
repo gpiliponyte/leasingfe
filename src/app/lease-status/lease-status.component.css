@@ -1,18 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 .status_div{
   display: block;
-  margin-left: 20px;
-}
-h2{
-  margin-bottom: 30px;
-}
-
-hr{
-  color: black;
-}
-h3{
-  margin-top: 30px;
+  color:white;
+  background-color: #E06822;
+  /* margin-left: 5%; */
+  /* background-color: tomato; */
 }
 
-.status_div{
-  background-color: white;
+.first{
+background-color: #DEEAF1;
+padding: 0%;
+padding-top: 0.5%;
+padding-bottom: 0.5%;
+
+}
+
+.second{
+  padding: 0%;
+  padding-top: 0.5%;
+padding-bottom: 0.5%;
+  /* background-color: #FF8A5B; */
+}
+
+.btn{
+  background-color: #4A8DB5;
+  color: white;
+  width: 100%;
+  font-family: 'Exo';
+  margin-bottom: 4%;
+}
+
+.id{
+  font-family: 'EXO';
+  font-size: 18px;
+  color: #F58321;
+  font-weight: normal;
+  margin-top: 2%;
+  float:left;
+  margin-left:0%;
+  
+}
+form div{
+  padding: 0%;
+  padding-right: 2%;
+}
+.allForm{
+  padding-right: 0%;
+}
+
+b{
+  font-family: 'Exo';
+  font-size: 18px;
+  color: #F58321;
+  font-weight: normal;
 }

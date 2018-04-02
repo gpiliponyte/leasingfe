@@ -1,72 +1,79 @@
-<form class="navbar-form">
-  <label>Your application ID : </label>
-  <div class="form-group">
+<form class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div  class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="padding:0%;">
+  <label class="id">Your application ID : </label>
+</div>
+  <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12">
     <input type="text" [(ngModel)]="leaseID" name="leaseID" class="form-control">
   </div>
+  <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
   <button type="submit" (click)="onSearchClick()" class="btn btn-default">Search</button>
+</div>
 </form>
-
-<div class="status_div" *ngIf="response!=null && infoIsShown && !isError">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div> -->
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allForm" *ngIf="response!=null && infoIsShown && !isError">
+    <!-- <div  class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="padding:0%;"></div> -->
   <h2 *ngIf="response.applicationStatus == null; then statusNull;else statusNotNull"></h2>
   <ng-template #statusNotNull><b>Status: </b>{{response.applicationStatus}}</ng-template>
   <ng-template #statusNull><b>Status: </b>not found</ng-template>
 
 <h4 *ngIf="response.customerType == 'Private'"><b>Customer: </b>{{response.firstName}} {{response.lastName}}</h4>
   <h4 *ngIf="response.customerType == 'Business'"><b>Customer: </b>{{response.companyName}} {{response.companyCode}}</h4>
-  <div class="row">
-    <div class="col-xs-5">CUSTOMER TYPE</div>
-    <div class="col-xs-7 borderdiv">{{response.customerType}}</div>
+  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">CUSTOMER TYPE</div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.customerType}}</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">ASSET TYPE</div>
-    <div class="col-xs-7 borderdiv">{{response.assetType}}</div>
+  <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">ASSET TYPE</div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.assetType}}</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">BRAND</div>
-    <div class="col-xs-7 borderdiv">{{response.brand}}</div>
+  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">BRAND</div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.brand}}</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">MODEL</div>
-    <div class="col-xs-7 borderdiv">{{response.model}}</div>
+  <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">MODEL</div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.model}}</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">YEAR</div>
-    <div class="col-xs-7 borderdiv">{{response.year}}</div>
+  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">YEAR</div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.year}}</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">ENGINE POWER  </div>
-    <div class="col-xs-7 borderdiv">{{response.enginePower}} kW</div>
+  <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">ENGINE POWER  </div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.enginePower}} kW</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">ASSET PRICE </div>
-    <div class="col-xs-7 borderdiv"> {{response.assetPrice}} €</div>
+  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">ASSET PRICE </div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv"> {{response.assetPrice}} €</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">ADVANCE PAYMENT PERCENTAGE</div>
-    <div class="col-xs-7 borderdiv">{{response.advancePaymentPercentage}} %</div>
+  <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">ADVANCE PAYMENT PERCENTAGE</div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.advancePaymentPercentage}} %</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">ADVANCE PAYMENT AMOUNT</div>
-    <div class="col-xs-7 borderdiv">{{response.advancePaymentAmount}} €</div>
+  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">ADVANCE PAYMENT AMOUNT</div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.advancePaymentAmount}} €</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">LEASE PERIOD </div>
-    <div class="col-xs-7 borderdiv">{{response.leasePeriod}}</div>
+  <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">LEASE PERIOD </div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.leasePeriod}}</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">MARGIN </div>
-    <div class="col-xs-7 borderdiv">{{response.margin}} %</div>
+  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">MARGIN </div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.margin}} %</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">CONTRACT FEE </div>
-    <div class="col-xs-7 borderdiv">{{response.contractFee}} €</div>
+  <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">CONTRACT FEE </div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.contractFee}} €</div>
   </div>
-  <div class="row">
-    <div class="col-xs-5">PAYMENT DATE </div>
-    <div class="col-xs-7 borderdiv">{{response.paymentDate}}</div>
+  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">PAYMENT DATE </div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.paymentDate}}</div>
   </div>
 </div>
-<div class="status_div" *ngIf="infoIsShown && isError">
+</div>
+<div class="status_div col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="infoIsShown && isError">
   <h3>Wrong lease id. Try again</h3>
 </div>
 

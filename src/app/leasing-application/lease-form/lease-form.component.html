@@ -1,13 +1,12 @@
-<div class="container" *ngIf="showElement">
-  <form class="form-horizontal" [formGroup]="leaseForm">
-    <div class="col-xs-6" >
+<!-- <div *ngIf="showElement"> -->
+  <div  *ngIf="showElement" class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
+  <form class=" container col-lg-10 col-md-8 col-sm-10 col-xs-10 form-horizontal " [formGroup]="leaseForm">
       <div class="form-group notBorder type">
-        <label for="customerType" class=" typetext col-xs-12">CUSTOMER TYPE</label>
-
-        <span class="col-xs-8" *ngIf="leaseForm.get('customerType').invalid && showErrorMessages"
-              class="label label-warning">Required field.</span>
-
-        <div class="col-xs-6">
+        <label for="customerType" class=" typetext col-lg-6 col-md-6 col-sm-12 col-xs-12">CUSTOMER TYPE</label>
+        
+<!-- class="label label-warning" -->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <label class="radioBlock" *ngFor="let customerType of customerTypes">
             <input
               (change) = "onCustomerTypeChange()"
@@ -18,12 +17,14 @@
             {{customerType}}
           </label>
         </div>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+         *ngIf="leaseForm.get('customerType').invalid && showErrorMessages" 
+         class="label label-danger"
+         >Required field.</span>
       </div>
       <div class="form-group notBorder">
-        <label for="assetType" class="col-xs-12">ASSET TYPE</label>
-        <span class="col-xs-8" *ngIf="leaseForm.get('assetType').invalid && showErrorMessages"
-              class="label label-warning">Required field.</span>
-        <div class="col-xs-6">
+        <label for="assetType" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ASSET TYPE</label>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <label class="radioBlock" *ngFor="let assetType of assetTypes">
             <input
               formControlName="assetType"
@@ -33,83 +34,95 @@
             {{assetType}}
           </label>
         </div>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        *ngIf="leaseForm.get('assetType').invalid && showErrorMessages"
+              class="label label-danger">Required field.</span>
       </div>
       <div class="form-group dropDown">
-        <label for="brand" class="col-xs-6">BRAND</label>
-        <span class="col-xs-8" *ngIf="leaseForm.get('brand').invalid && showErrorMessages"
-              class="label label-warning">Required field.</span>
-        <div class="col-xs-6">
+        <label for="brand" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">BRAND</label>
+        
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <select [formControlName]="'brand'" [(ngModel)]="selectedBrand" (ngModelChange)="getCarModelsByBrand($event)"
                   id="brand" name="brand"
-                  class="select form-control">
-            <option selected="" value="" selected disabled hidden></option>
+                  class="select form-control" data-style="btn-primary">
+            <option selected="" value="" selected disabled hidden >labas</option>
             <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
           </select>
         </div>
+        <span class="col-lg-10 col-md-10 col-sm-12 col-xs-12" 
+      *ngIf="leaseForm.get('brand').invalid && showErrorMessages"
+            class="label label-danger">Required field.</span>
+        <!--  class="selectpicker" data-style="btn-primary"-->
       </div>
+      
+      
       <div class="form-group dropDown">
-        <label for="model" class="col-xs-6">MODEL</label>
-        <span class="col-xs-8" *ngIf="leaseForm.get('model').invalid && showErrorMessages"
-              class="label label-warning">Required field.</span>
-        <div class="col-xs-6">
+        <label for="model" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">MODEL</label>
+        
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <select [formControlName]="'model'" [(ngModel)]="selectedModel" id="model" name="model"
                   class="select form-control">
             <option value="" selected disabled hidden></option>
             <option *ngFor="let model of modelsBySelectedBrand" [value]="model">{{model}}</option>
           </select>
         </div>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        *ngIf="leaseForm.get('model').invalid && showErrorMessages"
+              class="label label-danger">Required field.</span>
       </div>
+      
       <div class="form-group dropDown">
-        <label for="year" class="col-xs-6">YEAR</label>
-        <span class="col-xs-8" *ngIf="leaseForm.get('year').invalid && showErrorMessages"
-              class="label label-warning">Required field.</span>
-        <div class="col-xs-6">
+        <label for="year" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">YEAR</label>
+        
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <select [formControlName]="'year'" [(ngModel)]="selectedYear" id="year" name="year"
                   class="select form-control">
             <option value="" selected disabled hidden></option>
             <option *ngFor="let year of years" [value]="year">{{year}}</option>
           </select>
         </div>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        *ngIf="leaseForm.get('year').invalid && showErrorMessages"
+              class="label label-danger">Required field.</span>
       </div>
       <div class="form-group">
-        <label for="enginePower" class="col-xs-6">ENGINE POWER kW</label>
-        <span class="col-xs-6" *ngIf="leaseForm.get('enginePower').invalid && (leaseForm.get('enginePower').touched || showErrorMessages)"
-              class="label label-warning">Only numeric values. Minimum 10, maximum 1000. Required field.</span>
-        <div class="col-xs-12">
+        <label for="enginePower" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ENGINE POWER kW</label>
+        
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <input
             formControlName="enginePower"
             id="enginePower"
             class="form-control"
             type="text">
         </div>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        *ngIf="leaseForm.get('enginePower').invalid && (leaseForm.get('enginePower').touched || showErrorMessages)"
+              class="label label-danger">Only numeric values. Required field.</span>
       </div>
-    </div>
-    <div class="col-xs-6" >
+
+
       <div class="form-group">
-        <label for="assetPrice" class="col-xs-4">ASSET PRICE €</label>
-        <span class="col-xs-8"
-              *ngIf="(leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched || showErrorMessages)
-               && leaseForm.get('customerType').value == null)"
-              class="label label-warning">Only numeric values. Required field.</span>
-        <span class="col-xs-8" *ngIf="leaseForm.get('customerType').value == 'Private' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched || showErrorMessages)"
-              class="label label-warning">Lowest asset price for private customers is 5000. Maximum is 1000000.</span>
-        <span class="col-xs-6" *ngIf="leaseForm.get('customerType').value == 'Business' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched  || showErrorMessages)"
-              class="label label-warning">Lowest asset price for business customers is 10000. Maximum is 1000000.</span>
-        <div class="col-xs-12">
-          <input
+        <label for="assetPrice" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ASSET PRICE €</label>
+        
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <input 
             formControlName="assetPrice"
             id="assetPrice"
             class="form-control"
             type="text">
         </div>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+              *ngIf="(leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched || showErrorMessages)
+               && leaseForm.get('customerType').value == null)"
+              class="label label-danger">Only numeric values. Required field.</span>
+        <span class="col-lg-12 col-md-12 col-sm-12  col-xs-12" *ngIf="leaseForm.get('customerType').value == 'Private' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched || showErrorMessages)"
+              class="label label-danger">Lowest asset price for private customers is 5000.</span>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="leaseForm.get('customerType').value == 'Business' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched  || showErrorMessages)"
+              class="label label-danger">Lowest asset price for business customers is 10000.</span>
       </div>
       <div class="form-group">
-        <label for="advancePaymentPercentage" class="col-xs-7">ADVANCE PAYMENT PERCENTAGE</label>
-        <span class="col-xs-5" style="padding:0%;margin:0%;"
-              *ngIf="leaseForm.get('advancePaymentPercentage').invalid && (leaseForm.get('advancePaymentPercentage').touched
-              || showErrorMessages)"
-              class="label label-warning">Enter number between 10 and 30.</span>
-        <div class="col-xs-12">
+        <label for="advancePaymentPercentage" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ADVANCE PAYMENT PERCENTAGE</label>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <input
             (change)="keyUpAdvancePaymentAmount()"
             formControlName="advancePaymentPercentage"
@@ -117,12 +130,14 @@
             class="form-control"
             type="text">
         </div>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0%;margin:0%;"
+        *ngIf="leaseForm.get('advancePaymentPercentage').invalid && (leaseForm.get('advancePaymentPercentage').touched
+        || showErrorMessages)"
+        class="label label-danger">Enter number between 10 and 100.</span>
       </div>
       <div class="form-group">
-        <label for="advancePaymentAmount" class="col-xs-7">ADVANCE PAYMENT AMOUNT €</label>
-        <span *ngIf="leaseForm.get('advancePaymentAmount').invalid && (leaseForm.get('advancePaymentAmount').touched || showErrorMessages)"
-              class="label label-warning">Only numeric values. Required field.</span>
-        <div class="col-xs-12">
+        <label for="advancePaymentAmount" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ADVANCE PAYMENT AMOUNT €</label>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <input
             (change)="keyUpAdvancePaymentPercentage()"
             formControlName="advancePaymentAmount"
@@ -132,36 +147,49 @@
           <!--<span *ngIf="leaseForm.get('advancePaymentAmount').invalid && leaseForm.get('advancePaymentAmount').touched"-->
           <!--class="label label-warning">Only numeric values. Required field.</span>-->
         </div>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        *ngIf="leaseForm.get('advancePaymentAmount').invalid && (leaseForm.get('advancePaymentAmount').touched || showErrorMessages)"
+              class="label label-danger">Only numeric values. Required field.</span>
       </div>
       <div class="form-group">
-        <label  class="col-xs-6">LEASE PERIOD</label>
+        <label  class="col-lg-6 col-md-6 col-sm-12 col-xs-12">LEASE PERIOD</label>
 
-        <div class="col-xs-12">
-          <div class="col-xs-6">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <input style="margin-top:4%"  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue (input)="pitch($event)" value="6">
           </div>
-          <div class="col-xs-6">
-            <input style="background-color: white; margin-left:2%;" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <input style="background-color: white; margin-left:2%; margin-top:2%;" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">
           </div>
         </div>
 
       </div>
 
       <div class="form-group">
-        <label for="margin" class="col-xs-6">MARGIN %</label>
-        <span class="col-xs-6" *ngIf="leaseForm.get('margin').invalid && (leaseForm.get('margin').touched || showErrorMessages)"
-              class="label label-warning">Enter number between 3.2 and 100.</span>
-        <div class="col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label for="margin" class="">MARGIN %</label>
+            <!-- <span data-toggle="tooltip" data-placement="right" title="Hooray!"> -->
+              <img style="width:20px; color: red;" data-toggle="tooltip" data-placement="right" title="Only for preliminary calculation!" src=".\assets\information.png">
+            <!-- </span> -->
+      
+        </div>
+        <!-- <label for="margin" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">MARGIN %
+        <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="Hooray!"><img src=".\assets\information.png"></span>
+      </label> -->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <input
             formControlName="margin"
             id="margin"
             class="form-control"
             type="text">
         </div>
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        *ngIf="leaseForm.get('margin').invalid && (leaseForm.get('margin').touched || showErrorMessages)"
+              class="label label-danger">Enter number between 3.2 and 100.</span>
       </div>
       <div class="form-group">
-        <label for="contractFee" class="col-xs-6">CONTRACT FEE €</label>
-        <div class="col-xs-12">
+        <label for="contractFee" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">CONTRACT FEE €</label>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <input
             formControlName="contractFee"
             readonly
@@ -171,10 +199,8 @@
         </div>
       </div>
       <div class="form-group notBorder">
-        <label for="paymentDate" class="col-xs-6">PAYMENT DATE</label>
-        <span class="col-xs-8" *ngIf="leaseForm.get('paymentDate').invalid && showErrorMessages"
-              class="label label-warning">Required field.</span>
-        <div class="col-xs-12">
+        <label for="paymentDate" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">PAYMENT DATE</label>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <label class="radioInline" *ngFor="let paymentDate of paymentDates">
             <input
               formControlName="paymentDate"
@@ -184,10 +210,15 @@
             {{paymentDate}}
           </label>
         </div>
+        
       </div>
+      <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        *ngIf="leaseForm.get('paymentDate').invalid && showErrorMessages"
+              class="label label-danger">Required field.</span>
       <div class="form-group row notBorder">
-        <div class="col-xs-offset-9 col-xs-3">
+        <div class="col-lg-offset-9 col-lg-3 col-md-12 col-sm-12 col-xs-12" >
           <button
+          style="width: 100%;"
             name="submit"
             type="button"
             (click)="goToSummary()"
@@ -195,59 +226,73 @@
           </button>
         </div>
       </div>
-    </div>
+      <!-- </div> -->
   </form>
+  <div class="col-lg-0 col-md-2 col-sm-1 col-xs-1" ></div>
 </div>
 
-<div>
-  <label for="calculatorFinancingAmount" class="col-xs-6">Financing amount:</label>
-  <div class="col-xs-12">
-    <input
-      readonly
+<div *ngIf="showElement" class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="margin-top: 1%; ">
+  <div class="col-lg-1 col-md-2 col-sm-1 col-xs-1"></div>
+  <div class="col-lg-9 col-md-8 col-sm-10 col-xs-10">
+    <label style="font:18px 'Exo' ; margin-bottom:1%; COLOR:#F58321;">Preliminary leasing calculation</label>
+<button style="width:100%;"
+  [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid"
+  (click)="calculatePreliminaryLeasingAmount(); showBorder()"
+  value="kazkas"
+  class="btn btn-dark">Calculate
+</button>
+<!--  *ngIf="showCalculation"  -->
+<!-- <div  class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" > -->
+  <div *ngIf="showBorderLine" class="calculateContainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <label *ngIf="showCalculation" for="calculatorFinancingAmount" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">Financing amount:</label>
+  <input
+  *ngIf="showCalculation"
+  type="text"
+  readonly
       (ngModel)="financingAmount"
       name="financingAmount"
-      value="{{financingAmount}}"
       id="calculatorFinancingAmount"
-      class="calculator-control form-control"
-      type="text">
-  </div>
-  <label for="calculatorContractFee" class="col-xs-6">Contract fee:</label>
-  <div class="col-xs-12">
-    <input
-      readonly
-      value="{{leaseForm.get('contractFee').value}}"
-      id="calculatorContractFee"
-      class="calculator-control form-control"
-      type="text">
-  </div>
-  <label for="calculatorTotalInterest" class="col-xs-6">Total interest:</label>
-  <div class="col-xs-12">
-    <input
-      readonly
-      (ngModel)="totalInterest"
-      name="totalInterest"
-      value={{totalInterest}}
-      id="calculatorTotalInterest"
-      class="calculator-control form-control"
-      type="text">
-  </div>
-  <label for="calculatorTotalMonthlyPayment" class="col-xs-6">Total monthly payment:</label>
-  <div class="col-xs-12">
-    <input
-      (ngModel)="totalMonthlyPayment"
-      value={{totalMonthlyPayment}}
-      readonly
-      name="totalMonthlyPayment"
-      id="calculatorTotalMonthlyPayment"
-      class="calculator-control form-control"
-      type="text">
-  </div>
-</div>
-<button
-  [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid"
-  (click)="calculatePreliminaryLeasingAmount()"
-  class="btn btn-dark">Calculate
+      class="calculator-control col-lg-6 col-md-6 col-sm-12 col-xs-12"
+      value="{{financingAmount}}"
+    >
 
-</button>
+  <label *ngIf="showCalculation" for="calculatorContractFee" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">Contract fee:</label>
+  <input *ngIf="showCalculation"
+  type="text"
+  readonly
+      id="calculatorContractFee"
+      class="calculator-control col-lg-6 col-md-6 col-sm-12 col-xs-12"
+      value="{{leaseForm.get('contractFee').value}}"
+      >
+  <label *ngIf="showCalculation" for="calculatorTotalInterest" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">Total interest:</label>
+  <input
+  *ngIf="showCalculation"
+  type="text"
+  readonly
+  (ngModel)="totalInterest"
+  name="totalInterest"
+  id="calculatorTotalInterest"
+  class="calculator-control col-lg-6 col-md-6 col-sm-12 col-xs-12"
+  value="{{totalInterest}}"
+ >
+  <label *ngIf="showCalculation" for="calculatorTotalMonthlyPayment" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">Total monthly payment:</label>
+  <input
+  *ngIf="showCalculation"
+  type="text"
+  readonly
+  (ngModel)="totalMonthlyPayment"
+  name="totalMonthlyPayment"
+  id="calculatorTotalMonthlyPayment"
+  class="calculator-control col-lg-6 col-md-6 col-sm-12 col-xs-12"
+  value="{{totalMonthlyPayment}}"
+ >
+</div>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
+</div>
+<!-- </div> -->
 
 <!--[disabled]="!leaseForm.valid"-->
+
+<!-- </div> -->
