@@ -46,6 +46,7 @@ export class LeasingApplicationComponent implements OnInit {
       this.leaseService.response = data;
     }, (error) => {
       this.modalRef = this.modalService.show(ErrorModuleComponent);
+      console.log(error.message);
     });
 
   }
