@@ -30,8 +30,8 @@ export class LeaseFormComponent implements OnInit {
   financingAmount;
   totalInterest;
   totalMonthlyPayment;
-  showCalculation=false;
-  showBorderLine=false;
+  showCalculation = false;
+  showBorderLine = false;
 
   @Input() showElement;
   @Input() resetModels;
@@ -97,7 +97,7 @@ export class LeaseFormComponent implements OnInit {
       .then(data => {
         this.listVehicle = data;
         const temp = [];
-        this.listVehicle.forEach(data => temp.push(data['groupValue']));
+        this.listVehicle.forEach((data) => temp.push(data['groupValue']));
         this.brands = Array.from(new Set(temp));
       });
   }

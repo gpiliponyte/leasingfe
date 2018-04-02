@@ -4,7 +4,7 @@
   <form class=" container col-lg-10 col-md-8 col-sm-10 col-xs-10 form-horizontal " [formGroup]="leaseForm">
       <div class="form-group notBorder type">
         <label for="customerType" class=" typetext col-lg-6 col-md-6 col-sm-12 col-xs-12">CUSTOMER TYPE</label>
-        
+
 <!-- class="label label-warning" -->
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <label class="radioBlock" *ngFor="let customerType of customerTypes">
@@ -18,7 +18,7 @@
           </label>
         </div>
         <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-         *ngIf="leaseForm.get('customerType').invalid && showErrorMessages" 
+         *ngIf="leaseForm.get('customerType').invalid && showErrorMessages"
          class="label label-danger"
          >Required field.</span>
       </div>
@@ -40,7 +40,7 @@
       </div>
       <div class="form-group dropDown">
         <label for="brand" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">BRAND</label>
-        
+
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <select [formControlName]="'brand'" [(ngModel)]="selectedBrand" (ngModelChange)="getCarModelsByBrand($event)"
                   id="brand" name="brand"
@@ -49,16 +49,16 @@
             <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
           </select>
         </div>
-        <span class="col-lg-10 col-md-10 col-sm-12 col-xs-12" 
+        <span class="col-lg-10 col-md-10 col-sm-12 col-xs-12"
       *ngIf="leaseForm.get('brand').invalid && showErrorMessages"
             class="label label-danger">Required field.</span>
         <!--  class="selectpicker" data-style="btn-primary"-->
       </div>
-      
-      
+
+
       <div class="form-group dropDown">
         <label for="model" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">MODEL</label>
-        
+
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <select [formControlName]="'model'" [(ngModel)]="selectedModel" id="model" name="model"
                   class="select form-control">
@@ -70,10 +70,10 @@
         *ngIf="leaseForm.get('model').invalid && showErrorMessages"
               class="label label-danger">Required field.</span>
       </div>
-      
+
       <div class="form-group dropDown">
         <label for="year" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">YEAR</label>
-        
+
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <select [formControlName]="'year'" [(ngModel)]="selectedYear" id="year" name="year"
                   class="select form-control">
@@ -87,7 +87,7 @@
       </div>
       <div class="form-group">
         <label for="enginePower" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ENGINE POWER kW</label>
-        
+
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <input
             formControlName="enginePower"
@@ -97,15 +97,15 @@
         </div>
         <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
         *ngIf="leaseForm.get('enginePower').invalid && (leaseForm.get('enginePower').touched || showErrorMessages)"
-              class="label label-danger">Only numeric values. Required field.</span>
+              class="label label-danger">Only numeric values. Required field. Should not exceed 1000.</span>
       </div>
 
 
       <div class="form-group">
         <label for="assetPrice" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ASSET PRICE €</label>
-        
+
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <input 
+          <input
             formControlName="assetPrice"
             id="assetPrice"
             class="form-control"
@@ -116,9 +116,9 @@
                && leaseForm.get('customerType').value == null)"
               class="label label-danger">Only numeric values. Required field.</span>
         <span class="col-lg-12 col-md-12 col-sm-12  col-xs-12" *ngIf="leaseForm.get('customerType').value == 'Private' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched || showErrorMessages)"
-              class="label label-danger">Lowest asset price for private customers is 5000.</span>
+              class="label label-danger">Lowest asset price for private customers is 5000. Should not exceed 1000000.</span>
         <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="leaseForm.get('customerType').value == 'Business' && leaseForm.get('assetPrice').invalid && (leaseForm.get('assetPrice').touched  || showErrorMessages)"
-              class="label label-danger">Lowest asset price for business customers is 10000.</span>
+              class="label label-danger">Lowest asset price for business customers is 10000. Should not exceed 1000000.</span>
       </div>
       <div class="form-group">
         <label for="advancePaymentPercentage" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ADVANCE PAYMENT PERCENTAGE</label>
@@ -133,7 +133,7 @@
         <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0%;margin:0%;"
         *ngIf="leaseForm.get('advancePaymentPercentage').invalid && (leaseForm.get('advancePaymentPercentage').touched
         || showErrorMessages)"
-        class="label label-danger">Enter number between 10 and 100.</span>
+        class="label label-danger">Enter number between 10 and 30.</span>
       </div>
       <div class="form-group">
         <label for="advancePaymentAmount" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ADVANCE PAYMENT AMOUNT €</label>
@@ -171,7 +171,7 @@
             <!-- <span data-toggle="tooltip" data-placement="right" title="Hooray!"> -->
               <img style="width:20px; color: red;" data-toggle="tooltip" data-placement="right" title="Only for preliminary calculation!" src=".\assets\information.png">
             <!-- </span> -->
-      
+
         </div>
         <!-- <label for="margin" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">MARGIN %
         <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="Hooray!"><img src=".\assets\information.png"></span>
@@ -210,7 +210,7 @@
             {{paymentDate}}
           </label>
         </div>
-        
+
       </div>
       <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
         *ngIf="leaseForm.get('paymentDate').invalid && showErrorMessages"
