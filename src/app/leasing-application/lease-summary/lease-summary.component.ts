@@ -12,7 +12,7 @@ export class LeaseSummaryComponent implements OnInit {
   @Output() backToForm1 = new EventEmitter<Object>();
   @Output() nextToForm2 = new EventEmitter<Object>();
 
-  constructor(protected leaseService: LeaseService) {
+  constructor(public leaseService: LeaseService) {
   }
 
   ngOnInit() {

@@ -8,7 +8,7 @@ import {LeaseService} from '../../services/lease.service';
 })
 export class ConfirmationPageComponent implements OnInit {
 
-  constructor(protected leaseService: LeaseService) { }
+  constructor(public leaseService: LeaseService) { }
 
   ngOnInit() {
   }

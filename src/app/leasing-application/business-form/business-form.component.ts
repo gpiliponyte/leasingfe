@@ -22,7 +22,7 @@ export class BusinessFormComponent implements OnInit {
 
   @Input() showElement;
 
-  constructor(protected leaseService: LeaseService) { }
+  constructor(public leaseService: LeaseService) { }
 
   ngOnInit() {
 

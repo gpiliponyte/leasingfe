@@ -13,7 +13,7 @@ export class LeaseStatusComponent implements OnInit {
   isError = false;
   response;
 
-  constructor(private leaseService: LeaseService) { }
+  constructor(public leaseService: LeaseService) { }
 
   ngOnInit() {
   }

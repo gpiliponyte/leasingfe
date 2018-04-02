@@ -36,7 +36,7 @@ export class LeaseFormComponent implements OnInit {
   @Input() showElement;
   @Input() resetModels;
 
-  constructor(private vehicleService: VehicleService, protected leaseService: LeaseService) {
+  constructor(public vehicleService: VehicleService, public leaseService: LeaseService) {
   }
 
   ngOnInit() {
