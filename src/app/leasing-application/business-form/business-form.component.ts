@@ -15,8 +15,8 @@ export class BusinessFormComponent implements OnInit {
   cityRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]+$';
   postCodeRegex = '[a-zA-Z0-9\\-]*';
   streetRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž0-9\\s\\.\\-]+$';
-  phoneNumberRegex = '^[0-9]{11}';
-  onlyNumbersRegex = '^[0-9]{9}$';
+  phoneNumberRegex = '^[0-9]+$';
+  onlyNumbersRegex = '^[0-9]+$';
   businessCustomerForm: FormGroup;
   showErrorMessages = false;
 

@@ -15,7 +15,7 @@ export class PrivateFormComponent implements OnInit {
   cityRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]+$';
   postCodeRegex = '[a-zA-Z0-9\\-]*';
   streetRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž0-9\\s\\.\\-]+$';
-  phoneNumberRegex = '^[0-9]{11}';
+  phoneNumberRegex = '^[0-9]+$';
   personalIDRegex = '^[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}$';
   nameRegex = '^[a-zA-ZąčęėįųūšžĄČĖĘĮŲŪČŠŽ ,.\'-]+$';
   showErrorMessages = false;
