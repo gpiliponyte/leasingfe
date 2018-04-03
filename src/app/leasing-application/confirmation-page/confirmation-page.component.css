@@ -2,6 +2,17 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
   /* border: 1px solid red; */
 }
 
+.link-div{
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
 .slider {
   -webkit-appearance: none;
   width: 100%;
