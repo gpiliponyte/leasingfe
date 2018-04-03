@@ -56,7 +56,7 @@ export class LeaseFormComponent implements OnInit {
       'leasePeriod': new FormControl(6, Validators.required),
       'margin': new FormControl(3.2,
         [Validators.required, Validators.pattern(this.validationRegex), Validators.max(100),
-          Validators.min(3.2)]),
+          Validators.min(1), Validators.max(25)]),
       'contractFee': new FormControl(200, Validators.required),
       'paymentDate': new FormControl(null, Validators.required)
     });
@@ -193,7 +193,7 @@ export class LeaseFormComponent implements OnInit {
     console.log(this.showCalculation);
   }
 
-  showBorder(){
-    this.showBorderLine=true;
+  showBorder() {
+    this.showBorderLine = true;
   }
 }
