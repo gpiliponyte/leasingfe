@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from './services/vehicle.service';
+import { LoginComponent } from './login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,8 @@ import { VehicleService } from './services/vehicle.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent{
+export class AppComponent {
   title = 'Lease Calculator';
+
 }
+

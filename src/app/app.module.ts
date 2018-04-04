@@ -4,8 +4,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LeasingFormComponent } from './leasing-form/leasing-form.component';
@@ -19,6 +18,19 @@ import {PrivateFormComponent} from './leasing-application/private-form/private-f
 import {LeaseService} from './services/lease.service';
 import {ErrorModuleComponent} from './leasing-application/error-module/error-module.component';
 import {LeaseStatusComponent} from './lease-status/lease-status.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {AlertService} from './services/alert.service';
+import {AuthenticationService} from './services/authentication.service';
+import {UserService} from './services/user.service';
+import {JwtInterceptor} from './_helpers/jwt.interceptor';
+import {fakeBackendProvider} from './_helpers/fake-backend';
+import {AuthGuard} from './_guards/auth.guard';
+import {AlertComponent} from './_directives/alert.component';
+import {LeasingOfficerComponent} from './leasing-officer/leasing-officer.component';
+
+
+
 
 
 @NgModule(<NgModule>{
@@ -32,7 +44,11 @@ import {LeaseStatusComponent} from './lease-status/lease-status.component';
     ConfirmationPageComponent,
     PrivateFormComponent,
     ErrorModuleComponent,
-    LeaseStatusComponent
+    LeaseStatusComponent,
+    LoginComponent,
+    RegisterComponent,
+    AlertComponent,
+    LeasingOfficerComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +61,21 @@ import {LeaseStatusComponent} from './lease-status/lease-status.component';
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [VehicleService, LeaseService],
+  providers: [VehicleService,
+    LeaseService,
+    AuthGuard,
+    AlertService,
+    AuthenticationService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+    ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorModuleComponent]
 })

@@ -2,12 +2,13 @@
 <div class="logo" style="background-color: 2274A5;">
  <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a>
 </div>
-<nav class="navbar navbar-default" >
+
+<nav class="navbar navbar-default navClass" *ngIf="this.currentRoute!=='admin'">
   <div class="container-fluid">
     <div class="navbar-header">
       <a style="color: #4A8DB5;" class="navbar-brand" href="#">Vehicle Leasing</a>
     </div>
-  
+
     <ul class="nav navbar-nav">
       <!--<li routerLinkActive="active"><a routerLink="home" routerLinkActive="active">Home</a></li>-->
       <li routerLinkActive="active"><a routerLink="leaseForm" >Lease Form</a></li>
@@ -29,4 +30,5 @@
   <!--<app-leasing-form ></app-leasing-form>-->
 
 <!--<app-leasing-application></app-leasing-application>-->
+
   <router-outlet></router-outlet>
