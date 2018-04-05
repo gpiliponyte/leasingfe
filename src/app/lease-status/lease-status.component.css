@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+h3{
+  color: #F58321;
+}
+#summary_div{
+  margin: 30px 0;
+}
+#calendar_div{
+  margin-top: 20px;
+}
 .status_div{
   display: block;
   color:white;
@@ -38,7 +48,7 @@ padding-bottom: 0.5%;
   margin-top: 2%;
   float:left;
   margin-left:0%;
-  
+
 }
 form div{
   padding: 0%;

@@ -9,24 +9,31 @@
   <button type="submit" (click)="onSearchClick()" class="btn btn-default">Search</button>
 </div>
 </form>
+
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div> -->
+
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allForm" *ngIf="response!=null && infoIsShown && !isError">
-    <!-- <div  class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="padding:0%;"></div> -->
-  <h2 *ngIf="response.applicationStatus == null; then statusNull;else statusNotNull"></h2>
+
+
+  <h2 *ngIf="response.applicationStatus == null; then statusNull else statusNotNull"></h2>
   <ng-template #statusNotNull><b>Status: </b>{{response.applicationStatus}}</ng-template>
   <ng-template #statusNull><b>Status: </b>not found</ng-template>
 
 <h4 *ngIf="response.customerType == 'Private'"><b>Customer: </b>{{response.firstName}} {{response.lastName}}</h4>
   <h4 *ngIf="response.customerType == 'Business'"><b>Customer: </b>{{response.companyName}} {{response.companyCode}}</h4>
+
+  <div id="summary_div" class="container">
+
   <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">CUSTOMER TYPE</div>
     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.customerType}}</div>
   </div>
+
   <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">ASSET TYPE</div>
     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.assetType}}</div>
   </div>
+
   <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">BRAND</div>
     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.brand}}</div>
@@ -71,8 +78,41 @@
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">PAYMENT DATE </div>
     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.paymentDate}}</div>
   </div>
+  </div>
+
+  <h3 *ngIf="response.applicationStatus == 'Application is being processed' && !isCalendarError && calendarResponse != null">Payment schedule :</h3>
+
+  <div id="calendar_div" class="container" *ngIf="response.applicationStatus == 'Application is being processed' && !isCalendarError && calendarResponse != null">
+
+    <table class="table table-dark">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Date</th>
+        <th scope="col">Unpaid Asset Amount</th>
+        <th scope="col">Unpaid Asset Repayment Amount</th>
+        <th scope="col">Interest Amount</th>
+        <th scope="col">Total Payment Amount</th>
+      </tr>
+      </thead>
+
+      <tbody *ngFor="let payment of calendarResponse.payments">
+      <tr>
+        <th scope="row"></th>
+        <td>{{payment.date.substring(0, 10)}}</td>
+        <td>{{payment.unpaidAssetAmount}}</td>
+        <td>{{payment.unpaidAssetRepaymentAmount}}</td>
+        <td>{{payment.interestAmount}}</td>
+        <td>{{payment.totalPaymentAmount}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+
 </div>
 </div>
+
 <div class="status_div col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="infoIsShown && isError">
   <h3>Application not found.</h3>
 </div>
