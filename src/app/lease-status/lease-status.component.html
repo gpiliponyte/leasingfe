@@ -10,10 +10,11 @@
 </div>
 </form>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div> -->
+
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allForm" *ngIf="response!=null && infoIsShown && !isError">
-    <!-- <div  class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="padding:0%;"></div> -->
-  <h2 *ngIf="response.applicationStatus == null; then statusNull;else statusNotNull"></h2>
+
+
+  <h2 *ngIf="response.applicationStatus == null; then statusNull else statusNotNull"></h2>
   <ng-template #statusNotNull><b>Status: </b>{{response.applicationStatus}}</ng-template>
   <ng-template #statusNull><b>Status: </b>not found</ng-template>
 
