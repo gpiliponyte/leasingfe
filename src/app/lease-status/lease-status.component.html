@@ -80,9 +80,9 @@
   </div>
   </div>
 
-  <h3 *ngIf="response.applicationStatus == 'Application is being processed' && !isCalendarError && calendarResponse != null">Payment schedule :</h3>
+  <h3 *ngIf="response.applicationStatus == 'Application is being processed'">Payment schedule :</h3>
 
-  <div id="calendar_div" class="container" *ngIf="response.applicationStatus == 'Application is being processed' && !isCalendarError && calendarResponse != null">
+  <div id="calendar_div" class="container" *ngIf="response.applicationStatus == 'Application is being processed'">
 
     <table class="table table-dark">
       <thead>
@@ -96,7 +96,7 @@
       </tr>
       </thead>
 
-      <tbody *ngFor="let payment of calendarResponse.payments">
+      <tbody *ngFor="let payment of response.payments">
       <tr>
         <th scope="row"></th>
         <td>{{payment.date.substring(0, 10)}}</td>
