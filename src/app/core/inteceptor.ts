@@ -22,6 +22,7 @@ export class Interceptor implements HttpInterceptor {
     return next.handle(authReq).do(
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
+            console.log('erroras');
             console.log(err);
             console.log('req url :: ' + req.url);
             if (err.status === 401) {

@@ -22,7 +22,8 @@ export class BusinessFormComponent implements OnInit {
 
   @Input() showElement;
 
-  constructor(public leaseService: LeaseService) { }
+  constructor(public leaseService: LeaseService) {
+  }
 
   ngOnInit() {
 
@@ -62,12 +63,11 @@ export class BusinessFormComponent implements OnInit {
         city: this.businessCustomerForm.get('city').value,
         postCode: this.businessCustomerForm.get('postCode').value,
         country: this.businessCustomerForm.get('country').value
-      }
+      };
 
-    this.leaseService.customerObject = businessCustomerObject;
-    this.businessSubmitted.emit(businessCustomerObject);
-    }
-    else{
+      this.leaseService.customerObject = businessCustomerObject;
+      this.businessSubmitted.emit(businessCustomerObject);
+    } else {
       this.showErrorMessages = true;
     }
   }

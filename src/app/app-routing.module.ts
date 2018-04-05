@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'leaseForm', component: LeasingApplicationComponent},
   {path: 'leaseStatus', component: LeaseStatusComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'leasingOfficer', component: LeasingOfficerComponent},
+  {path: 'leasingOfficer', component: LeasingOfficerComponent, canActivate: [AuthGuard]},
   // {path: 'home', component: HomeComponent},
   // {path: 'leaseStatus', component: LeaseStatusComponent},
   {path: '', redirectTo: 'leaseForm', pathMatch: 'full'},

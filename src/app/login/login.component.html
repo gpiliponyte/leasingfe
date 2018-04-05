@@ -1,24 +1,36 @@
-<div class="col-md-6 col-md-offset-3">
-  <h2>Login</h2>
-  <form name="form">
-      <label for="username">Username</label>
+<!--<script src="https://use.typekit.net/ayg4pcz.js"></script>-->
+<!--<script>try{Typekit.load({ async: true });}catch(e){}</script>-->
+
+<div class="container">
+  <h5 class="welcome text-center"><img  src=".\assets\swedbanko logo.png"></h5>
+  <div class="card card-container">
+    <h2 class='login_title text-center'>Leasing admin</h2>
+    <hr>
+
+    <form class="form-signin">
+      <span id="reauth-email" class="reauth-email"></span>
+      <p class="input_title">Username</p>
       <input type="text"
-             class="form-control"
+             id="inputUsername"
+             class="login_box"
+             placeholder="Username"
              name="username"
              [(ngModel)]="username"
-             required />
-      <label for="password">Password</label>
+             required
+             autofocus>
+      <p class="input_title">Password</p>
       <input type="password"
-             class="form-control"
+             id="inputPassword"
+             class="login_box"
+             placeholder="Password"
              name="password"
              [(ngModel)]="password"
-             required />
-    <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary" (click)="login()">Login</button>
-      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-      <a [routerLink]="['/register']" class="btn btn-link">Register</a>
-    </div>
-  </form>
-</div>
-{{username}}
-{{password}}
+             required>
+      <div id="remember" class="checkbox">
+        <label>
+
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary" type="submit" (click)="login()">Login</button>
+    </form><!-- /form -->
+  </div><!-- /card-container -->
