@@ -6,6 +6,7 @@ export class LeaseService {
   leaseObject;
   customerObject;
   response;
+  listOfLeases
 
   constructor(private http: HttpClient) { }
 
@@ -46,6 +47,29 @@ export class LeaseService {
     return this.http
       .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
       .toPromise();
-}
+  }
 
+  getAllPendingLeases() {
+    if (status === 'pending') {
+      return this.http
+      .get('https://leasingbe.herokuapp.com/leaseStatus' + status)
+      .toPromise();
+    }
+  }
+
+  getAllApprovedLeases() {
+    if (status === 'approved') {
+      return this.http
+        .get('https://leasingbe.herokuapp.com/leaseStatus' + status)
+        .toPromise();
+    }
+  }
+
+  getAllDeniedLeases() {
+    if (status === 'denied') {
+      return this.http
+        .get('https://leasingbe.herokuapp.com/leaseStatus' + status)
+        .toPromise();
+    }
+  }
 }

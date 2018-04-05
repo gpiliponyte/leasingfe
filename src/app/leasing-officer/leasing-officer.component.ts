@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LeaseService} from '../services/lease.service';
 
 @Component({
   selector: 'app-leasing-officer',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeasingOfficerComponent implements OnInit {
 
-  constructor() { }
+  listOfLeases;
+
+  constructor(private leaseService: LeaseService) { }
 
   ngOnInit() {
+
   }
 
+  pendingLeases() {
+    this.leaseService.getAllPendingLeases()
+      .then(data => {
+        console.log('subscribe')
+        this.listOfLeases = data;
+      });
+  }
+  approvedLeases() {
+    this.leaseService.getAllApprovedLeases()
+      .then(data => {
+        console.log('subscribe')
+        this.listOfLeases = data;
+      });
+  }
+  deniedLeases() {
+    this.leaseService.getAllDeniedLeases()
+      .then(data => {
+        console.log('subscribe')
+        this.listOfLeases = data;
+      });
+  }
 }
