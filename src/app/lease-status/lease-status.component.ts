@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {LeaseService} from '../services/lease.service';
-import {CalendarService} from '../services/calendar.service';
 
 @Component({
   selector: 'app-lease-status',
