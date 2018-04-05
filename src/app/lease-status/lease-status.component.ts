@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {LeaseService} from '../services/lease.service';
-import {CalendarService} from '../services/calendar.service';
 
 @Component({
   selector: 'app-lease-status',
@@ -12,11 +11,9 @@ export class LeaseStatusComponent implements OnInit {
   leaseID;
   infoIsShown = false;
   isError = false;
-  isCalendarError = false;
   response;
-  calendarResponse;
 
-  constructor(public leaseService: LeaseService, public calendarService: CalendarService) { }
+  constructor(public leaseService: LeaseService) { }
 
   ngOnInit() {
   }
@@ -26,12 +23,6 @@ export class LeaseStatusComponent implements OnInit {
       this.response = data;
       this.isError = false;
       this.infoIsShown = true;
-      this.calendarService.getCalendarByUniqueId(this.leaseID).then(calendarData => {
-        this.calendarResponse = calendarData;
-        this.isCalendarError = true;
-      }, calendarError => {
-        this.isCalendarError = true;
-      });
   }, error => {
       this.isError = true;
       this.infoIsShown = true;
