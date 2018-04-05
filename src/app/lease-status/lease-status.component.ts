@@ -21,7 +21,6 @@ export class LeaseStatusComponent implements OnInit {
   }
 
   onSearchClick() {
-//
     this.leaseService.getLeaseByUniqueId(this.leaseID).then(data => {
       this.response = data;
       this.isError = false;
