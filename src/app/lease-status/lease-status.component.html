@@ -87,7 +87,6 @@
     <table class="table table-dark">
       <thead>
       <tr>
-        <th scope="col"></th>
         <th scope="col">Date</th>
         <th scope="col">Unpaid Asset Amount</th>
         <th scope="col">Unpaid Asset Repayment Amount</th>
@@ -97,16 +96,28 @@
       </thead>
 
       <tbody *ngFor="let payment of response.payments">
-      <tr>
-        <th scope="row"></th>
-        <td>{{payment.date.substring(0, 10)}}</td>
-        <td>{{payment.unpaidAssetAmount}}</td>
-        <td>{{payment.unpaidAssetRepaymentAmount}}</td>
-        <td>{{payment.interestAmount}}</td>
-        <td>{{payment.totalPaymentAmount}}</td>
-      </tr>
+
+        <tr>
+          <td>{{payment.date.substring(0, 10)}}</td>
+          <td>{{payment.unpaidAssetAmount.toFixed(2)}}</td>
+          <td>{{payment.unpaidAssetRepaymentAmount.toFixed(2)}}</td>
+          <td>{{payment.interestAmount.toFixed(2)}}</td>
+          <td>{{payment.totalPaymentAmount.toFixed(2)}}</td>
+        </tr>
+
 
       </tbody>
+
+    <tbody>
+    <tr>
+      <th scope="row">Total</th>
+      <td></td>
+      <td>{{response.payments[0].unpaidAssetAmount.toFixed(2)}}</td>
+      <td>{{response.totalInterestAmount.toFixed(2)}}</td>
+      <td>{{(response.payments[0].unpaidAssetAmount + response.totalInterestAmount).toFixed(2)}}</td>
+    </tr>
+    </tbody>
+
     </table>
   </div>
 
