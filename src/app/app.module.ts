@@ -19,6 +19,11 @@ import {PrivateFormComponent} from './leasing-application/private-form/private-f
 import {LeaseService} from './services/lease.service';
 import {ErrorModuleComponent} from './leasing-application/error-module/error-module.component';
 import {LeaseStatusComponent} from './lease-status/lease-status.component';
+import {LeasingOfficerComponent} from './leasing-officer/leasing-officer.component';
+import {LoginComponent} from './login/login.component';
+import {AuthService} from './core/auth.service';
+import {TokenStorage} from './core/token.storage';
+import {AuthGuard} from './core/auth.guard';
 
 
 @NgModule(<NgModule>{
@@ -32,7 +37,9 @@ import {LeaseStatusComponent} from './lease-status/lease-status.component';
     ConfirmationPageComponent,
     PrivateFormComponent,
     ErrorModuleComponent,
-    LeaseStatusComponent
+    LeaseStatusComponent,
+    LeasingOfficerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,7 @@ import {LeaseStatusComponent} from './lease-status/lease-status.component';
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [VehicleService, LeaseService],
+  providers: [VehicleService, LeaseService, AuthService, TokenStorage, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [ErrorModuleComponent]
 })
