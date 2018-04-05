@@ -16,7 +16,7 @@ export class LeaseStatusComponent implements OnInit {
   response;
   calendarResponse;
 
-  constructor(public leaseService: LeaseService, public calendarService: CalendarService) { }
+  constructor(public leaseService: LeaseService) { }
 
   ngOnInit() {
   }
@@ -27,12 +27,12 @@ export class LeaseStatusComponent implements OnInit {
       this.response = data;
       this.isError = false;
       this.infoIsShown = true;
-      this.calendarService.getCalendarByUniqueId(this.leaseID).then(calendarData => {
-        this.calendarResponse = calendarData;
-        this.isCalendarError = false;
-      }, calendarError => {
-        this.isCalendarError = true;
-      });
+      // this.calendarService.getCalendarByUniqueId(this.leaseID).then(calendarData => {
+      //   this.calendarResponse = calendarData;
+      //   this.isCalendarError = false;
+      // }, calendarError => {
+      //   this.isCalendarError = true;
+      // });
     }, error => {
       this.isError = true;
       this.infoIsShown = true;

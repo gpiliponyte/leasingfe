@@ -19,7 +19,6 @@ import {PrivateFormComponent} from './leasing-application/private-form/private-f
 import {LeaseService} from './services/lease.service';
 import {ErrorModuleComponent} from './leasing-application/error-module/error-module.component';
 import {LeaseStatusComponent} from './lease-status/lease-status.component';
-import {CalendarService} from './services/calendar.service';
 
 
 @NgModule(<NgModule>{
@@ -46,7 +45,7 @@ import {CalendarService} from './services/calendar.service';
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [VehicleService, LeaseService, CalendarService],
+  providers: [VehicleService, LeaseService],
   bootstrap: [AppComponent],
   entryComponents: [ErrorModuleComponent]
 })
