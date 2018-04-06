@@ -17,7 +17,7 @@ export class ScheduleService {
     };
 
     return this.http
-      .post('http://localhost:8080/getCalendar', calendarInfo)
+      .post('https://leasingbe.herokuapp.com/getCalendar', calendarInfo)
       .toPromise();
   }
 
