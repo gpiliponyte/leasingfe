@@ -287,6 +287,49 @@
   value="{{totalMonthlyPayment}}"
  >
 </div>
+    <button style="width:100%;"
+            [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid || !leaseForm.get('paymentDate').valid"
+            (click)="getPreliminarySchedule(); showScheduleBorder()"
+            value="kazkas"
+            class="btn btn-dark">Preliminary payment schedule
+    </button>
+    <div *ngIf="showScheduleBorderLine" class=" pre-scrollable calculateContainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <table *ngIf="showPreliminarySchedule"  class="col-lg-7 col-md-7 col-sm-12 col-xs-12 table table-dark">
+        <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Unpaid Asset Amount</th>
+          <th scope="col">Unpaid Asset Repayment Amount</th>
+          <th scope="col">Interest Amount</th>
+          <th scope="col">Total Payment Amount</th>
+        </tr>
+        </thead>
+
+        <tbody *ngFor="let payment of scheduleResponse">
+
+        <tr>
+          <td>{{payment.date.substring(0, 10)}}</td>
+          <td>{{payment.unpaidAssetAmount.toFixed(2)}}</td>
+          <td>{{payment.unpaidAssetRepaymentAmount.toFixed(2)}}</td>
+          <td>{{payment.interestAmount.toFixed(2)}}</td>
+          <td>{{payment.totalPaymentAmount.toFixed(2)}}</td>
+        </tr>
+
+
+        </tbody>
+
+        <tbody>
+        <tr>
+          <th scope="row">Total</th>
+          <td></td>
+          <td>{{scheduleResponse[0].unpaidAssetAmount.toFixed(2)}}</td>
+          <td>{{scheduleService.getTotalInterestAmount(scheduleResponse).toFixed(2)}}</td>
+          <td>{{(scheduleResponse[0].unpaidAssetAmount + scheduleService.getTotalInterestAmount(scheduleResponse)).toFixed(2)}}</td>
+        </tr>
+        </tbody>
+
+      </table>
+
 </div>
 
 <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>

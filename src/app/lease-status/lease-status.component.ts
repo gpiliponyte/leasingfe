@@ -15,9 +15,7 @@ export class LeaseStatusComponent implements OnInit {
   isScheduleError = false;
   response;
   scheduleResponse;
-  totalInterest;
-  totalSum;
-
+  margin = 4.27;
   constructor(public leaseService: LeaseService, public scheduleService: ScheduleService) { }
 
   ngOnInit() {
@@ -30,7 +28,7 @@ export class LeaseStatusComponent implements OnInit {
       this.infoIsShown = true;
       this.scheduleService.getSchedule
       (this.response.advancePaymentAmount, this.response.assetPrice, this.response.date,
-        this.response.leasePeriod, this.response.paymentDate, this.response.margin)
+        this.response.leasePeriod, this.response.paymentDate, this.margin)
         .then(scheduleData => {
           this.scheduleResponse = scheduleData;
           this.isScheduleError = false;
