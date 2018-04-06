@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LeaseService} from '../services/lease.service';
 import {ScheduleService} from '../services/schedule.service';
 
+
 @Component({
   selector: 'app-lease-status',
   templateUrl: './lease-status.component.html',
