@@ -41,7 +41,7 @@ export class LeaseService {
     //   .post('https://leasingbe.herokuapp.com/addLease', lease)
     //   .toPromise();
     return this.http
-      .post('http://localhost:8080/addLease', lease)
+      .post('https://leasingbe.herokuapp.com/addLease', lease)
       .toPromise();
   }
 
@@ -50,7 +50,7 @@ export class LeaseService {
     //   .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
     //   .toPromise();
     return this.http
-      .get('http://localhost:8080/uniqueId/' + id)
+      .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
       .toPromise();
 }
 
