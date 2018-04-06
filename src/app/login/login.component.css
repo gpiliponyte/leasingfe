@@ -18,7 +18,10 @@ img {
 
 .login_box{
   background:#f7f7f7;
-  border:3px solid #F4F4F4;
+  /*Old*/
+  /*border:3px solid #F4F4F4;*/
+  /*New*/
+  border:1px solid #5d6066;
   padding-left: 15px;
   margin-bottom:25px;
 }
@@ -44,7 +47,7 @@ hr{
   font-family: "myriad-pro",sans-serif;
   font-style: normal;
   font-weight: 100;
-  color:rgba(164, 164, 164, 0.44);
+  color:rgba(164, 164, 164, 1);
 }
 
 .card-container.card {
