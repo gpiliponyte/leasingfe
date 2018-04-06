@@ -24,6 +24,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthService} from './core/auth.service';
 import {TokenStorage} from './core/token.storage';
 import {AuthGuard} from './core/auth.guard';
+import {LeasingSummaryComponent} from './leasing-officer/leasing-summary/leasing-summary.component';
 
 
 @NgModule(<NgModule>{
@@ -39,7 +40,8 @@ import {AuthGuard} from './core/auth.guard';
     ErrorModuleComponent,
     LeaseStatusComponent,
     LeasingOfficerComponent,
-    LoginComponent
+    LoginComponent,
+    LeasingSummaryComponent
   ],
   imports: [
     BrowserModule,

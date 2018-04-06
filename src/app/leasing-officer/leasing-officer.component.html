@@ -1,11 +1,31 @@
+<button (click)="logout()" class="btn">Logout</button>
+
 <ul class="nav nav-pills">
-  <button [listOfLeases]='listOfLeases' (click)="pendingLeases()" class="btn">Pending</button>
+  <button  (click)="pendingLeases()" class="btn">Pending</button>
 </ul>
 <ul class="nav nav-pills">
-  <button [listOfLeases]='listOfLeases' (click)="approvedLeases()" class="btn">Approved</button>
+  <button  (click)="approvedLeases()" class="btn">Approved</button>
 </ul>
 <ul class="nav nav-pills">
-  <button [listOfLeases]='listOfLeases' (click)="deniedLeases()" class="btn">Denied</button>
+  <button    (click)="deniedLeases()" class="btn">Denied</button>
 </ul>
 
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <th>ID</th>
+    <th>Person/Business</th>
+    <th>Status</th>
+  </tr>
 
+  <tr *ngFor="let lease of listOfLeases">
+    <td>{{lease.date | date: 'yyyy/MM/dd'}} </td>
+    <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="leasingSummary" >{{lease.uniqueId}}</a> </td>
+    <td *ngIf="lease.customerType === 'Business'" >{{lease.companyName}} </td>
+    <td *ngIf="lease.customerType === 'Private'">  {{lease.firstName }} {{lease.lastName }}</td>
+    <td>{{lease.applicationStatus}}</td>
+  </tr>
+
+</table>
+<!--<app-lease-summary [showElement] = "showForm" (nextToSummary)="showSummaryForLeasingOfficer()"></app-lease-summary>-->
+<!--<router-outlet></router-outlet>-->
