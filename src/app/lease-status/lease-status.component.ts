@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LeaseService} from '../services/lease.service';
-import {CalendarService} from '../services/calendar.service';
+import {ScheduleService} from '../services/schedule.service';
 
 @Component({
   selector: 'app-lease-status',
@@ -12,11 +12,13 @@ export class LeaseStatusComponent implements OnInit {
   leaseID;
   infoIsShown = false;
   isError = false;
-  isCalendarError = false;
+  isScheduleError = false;
   response;
-  calendarResponse;
+  scheduleResponse;
+  totalInterest;
+  totalSum;
 
-  constructor(public leaseService: LeaseService) { }
+  constructor(public leaseService: LeaseService, public scheduleService: ScheduleService) { }
 
   ngOnInit() {
   }
@@ -26,12 +28,15 @@ export class LeaseStatusComponent implements OnInit {
       this.response = data;
       this.isError = false;
       this.infoIsShown = true;
-      // this.calendarService.getCalendarByUniqueId(this.leaseID).then(calendarData => {
-      //   this.calendarResponse = calendarData;
-      //   this.isCalendarError = false;
-      // }, calendarError => {
-      //   this.isCalendarError = true;
-      // });
+      this.scheduleService.getSchedule
+      (this.response.advancePaymentAmount, this.response.assetPrice, this.response.date,
+        this.response.leasePeriod, this.response.paymentDate, this.response.margin)
+        .then(scheduleData => {
+          this.scheduleResponse = scheduleData;
+          this.isScheduleError = false;
+      }, scheduleError => {
+          this.isScheduleError = true;
+      });
     }, error => {
       this.isError = true;
       this.infoIsShown = true;
