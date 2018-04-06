@@ -1,4 +1,4 @@
-<button (click)="logout()" class="btn">Logout</button>
+<button class="btn btn-lg btn-primary" type="submit" (click)="logout()">Logout</button>
 
 <ul class="nav nav-pills">
   <button  (click)="pendingLeases()" class="btn">Pending</button>
@@ -20,7 +20,7 @@
 
   <tr *ngFor="let lease of listOfLeases">
     <td>{{lease.date | date: 'yyyy/MM/dd'}} </td>
-    <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="leasingSummary" >{{lease.uniqueId}}</a> </td>
+    <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="/leasingOfficer/leasingSummary/{{lease.uniqueId}}">{{lease.uniqueId}}</a> </td>
     <td *ngIf="lease.customerType === 'Business'" >{{lease.companyName}} </td>
     <td *ngIf="lease.customerType === 'Private'">  {{lease.firstName }} {{lease.lastName }}</td>
     <td>{{lease.applicationStatus}}</td>
@@ -28,4 +28,4 @@
 
 </table>
 <!--<app-lease-summary [showElement] = "showForm" (nextToSummary)="showSummaryForLeasingOfficer()"></app-lease-summary>-->
-<!--<router-outlet></router-outlet>-->
+<router-outlet></router-outlet>

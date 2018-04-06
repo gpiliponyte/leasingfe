@@ -2,6 +2,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {LeaseService} from '../services/lease.service';
 import {ErrorModuleComponent} from '../leasing-application/error-module/error-module.component';
 import {LeasingSummaryComponent} from './leasing-summary/leasing-summary.component';
+import {TokenStorage} from '../core/token.storage';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,9 +14,8 @@ import {LeasingSummaryComponent} from './leasing-summary/leasing-summary.compone
 export class LeasingOfficerComponent implements OnInit {
 
   listOfLeases;
-
   @Output() toSummary = new EventEmitter<Object>();
-  constructor(private leaseService: LeaseService) { }
+  constructor(private leaseService: LeaseService, private token: TokenStorage, private router: Router) { }
 
   ngOnInit() {
     this.pendingLeases();
@@ -47,5 +48,9 @@ export class LeasingOfficerComponent implements OnInit {
       .then( data => {
         this.leaseService.leaseInfo = data;
       });
+  }
+  logout(): void {
+    this.token.signOut();
+    this.router.navigate(['login']);
   }
 }

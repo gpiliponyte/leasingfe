@@ -67,16 +67,7 @@ export class LeaseService {
         .get('http://localhost:8080/leaseStatus/' + 'denied')
         .toPromise();
   }
-  getAllLeases() {
-      return this.http
-        .get('http://localhost:8080/')
-        .toPromise();
+  updateLease(id: string, lease){
+    return this.http.get('http://localhost:8080/update' + id, lease).toPromise();
   }
-  // getAllLeasesByStatus() {
-  //   // if (status === 'pending') {
-  //     return this.http
-  //       .get('http://localhost:8080/leaseStatus' + status)
-  //       .toPromise();
-  //   // }
-  // }
 }
