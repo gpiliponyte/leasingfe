@@ -25,6 +25,8 @@ import {AuthService} from './core/auth.service';
 import {TokenStorage} from './core/token.storage';
 import {AuthGuard} from './core/auth.guard';
 import {LeasingSummaryComponent} from './leasing-officer/leasing-summary/leasing-summary.component';
+import {ApproveModuleComponent} from './leasing-officer/approve-module/approve-module.component';
+import {DeclineModuleComponent} from './leasing-officer/decline-module/decline-module.component';
 
 
 @NgModule(<NgModule>{
@@ -41,7 +43,9 @@ import {LeasingSummaryComponent} from './leasing-officer/leasing-summary/leasing
     LeaseStatusComponent,
     LeasingOfficerComponent,
     LoginComponent,
-    LeasingSummaryComponent
+    LeasingSummaryComponent,
+    ApproveModuleComponent,
+    DeclineModuleComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,6 @@ import {LeasingSummaryComponent} from './leasing-officer/leasing-summary/leasing
   ],
   providers: [VehicleService, LeaseService, AuthService, TokenStorage, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorModuleComponent]
+  entryComponents: [ErrorModuleComponent, ApproveModuleComponent, DeclineModuleComponent]
 })
 export class AppModule { }

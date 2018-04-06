@@ -1,7 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LeaseService} from '../../services/lease.service';
 import {LeasingOfficerServiceService} from '../../services/leasing-officer-service.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {ApproveModuleComponent} from '../approve-module/approve-module.component';
+import {DeclineModuleComponent} from '../decline-module/decline-module.component';
 
 @Component({
   selector: 'app-leasing-summary',
@@ -14,38 +17,46 @@ export class LeasingSummaryComponent implements OnInit {
   private sub: any;
   response;
   showSummary = false;
-  constructor(private route: ActivatedRoute, private leaseService: LeaseService) {
+  public approveModalRef: BsModalRef;
+  public declineModalRef: BsModalRef;
+
+  constructor(private route: ActivatedRoute, private leaseService: LeaseService, private modalService: BsModalService, private router: Router) {
   }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params =>{
+    this.sub = this.route.params.subscribe(params => {
       this.id = params['uniqueId'];
-      console.log('CIA YRA ID' + this.id);
       this.leaseService.getLeaseByUniqueId(this.id)
         .then(data => {
-
-          console.log(this.response);
           this.response = data;
-          console.log(data);
-          console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa');
-          this.showSummary=true;
+          this.showSummary = true;
         });
     });
   }
 
-  approveLease(){
-    this.response = 'Application is approved';
-
-    this.leaseService.updateLease(this.id, this.response).then(data =>
-    {
-    }, error => {
+  approveLease() {
+    this.approveModalRef = this.modalService.show(ApproveModuleComponent);
+    this.approveModalRef.content.onClose.subscribe(result => {
+      if(result) {
+        this.response.applicationStatus = 'approved';
+        this.leaseService.updateLease(this.response.id, this.response).then(data =>
+        {
+          this.router.navigateByUrl('/leasingOfficer');
+        }, error => {});
+      }
     });
   }
-  declineLease(){
-    this.response = 'Application is declined';
-    this.leaseService.updateLease(this.id, this.response).then(data =>
-    {
-    }, error => {
+
+  declineLease() {
+    this.declineModalRef = this.modalService.show(DeclineModuleComponent);
+    this.declineModalRef.content.onClose.subscribe(result => {
+      if (result) {
+        this.response.applicationStatus = 'declined';
+        this.leaseService.updateLease(this.response.id, this.response).then(data =>
+        {
+          this.router.navigateByUrl('/leasingOfficer');
+        }, error => {});
+      }
     });
   }
   // a

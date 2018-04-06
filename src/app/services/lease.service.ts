@@ -67,7 +67,7 @@ export class LeaseService {
         .get('http://localhost:8080/leaseStatus/' + 'denied')
         .toPromise();
   }
-  updateLease(id: string, lease){
-    return this.http.get('http://localhost:8080/update' + id, lease).toPromise();
+  updateLease(id: string, lease) {
+    return this.http.put('http://localhost:8080/update/' + id, lease).toPromise();
   }
 }
