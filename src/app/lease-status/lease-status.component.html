@@ -95,7 +95,7 @@
       </tr>
       </thead>
 
-      <tbody *ngFor="let payment of response.payments">
+      <tbody *ngFor="let payment of scheduleResponse">
 
         <tr>
           <td>{{payment.date.substring(0, 10)}}</td>
@@ -112,9 +112,9 @@
     <tr>
       <th scope="row">Total</th>
       <td></td>
-      <td>{{response.payments[0].unpaidAssetAmount.toFixed(2)}}</td>
-      <td>{{response.totalInterestAmount.toFixed(2)}}</td>
-      <td>{{(response.payments[0].unpaidAssetAmount + response.totalInterestAmount).toFixed(2)}}</td>
+      <td>{{scheduleResponse[0].unpaidAssetAmount.toFixed(2)}}</td>
+      <td>{{scheduleService.getTotalInterestAmount(scheduleResponse).toFixed(2)}}</td>
+      <td>{{(scheduleResponse[0].unpaidAssetAmount + scheduleService.getTotalInterestAmount(scheduleResponse)).toFixed(2)}}</td>
     </tr>
     </tbody>
 

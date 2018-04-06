@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleService} from '../../services/vehicle.service';
 import {LeaseService} from '../../services/lease.service';
+import {ScheduleService} from '../../services/schedule.service';
 
 @Component({
   selector: 'app-lease-form',
@@ -32,11 +33,14 @@ export class LeaseFormComponent implements OnInit {
   totalMonthlyPayment;
   showCalculation = false;
   showBorderLine = false;
+  scheduleResponse;
+  showPreliminarySchedule = false;
+  showScheduleBorderLine = false;
 
   @Input() showElement;
   @Input() resetModels;
 
-  constructor(public vehicleService: VehicleService, public leaseService: LeaseService) {
+  constructor(public vehicleService: VehicleService, public leaseService: LeaseService, public scheduleService: ScheduleService) {
   }
 
   ngOnInit() {
@@ -178,6 +182,17 @@ export class LeaseFormComponent implements OnInit {
     }
   }
 
+  getPreliminarySchedule() {
+    this.scheduleService.getSchedule(this.leaseForm.get('advancePaymentAmount').value,
+      this.leaseForm.get('assetPrice').value, new Date(), this.leaseForm.get('leasePeriod').value,
+      this.leaseForm.get('paymentDate').value, this.leaseForm.get('margin').value).then( data => {
+      this.scheduleResponse = data;
+      this.showPreliminarySchedule = true;
+    }, error => {
+        this.showPreliminarySchedule = false;
+    });
+  }
+
   calculatePreliminaryLeasingAmount() {
     this.financingAmount = parseFloat(this.leaseForm.get('assetPrice').value)
       - parseFloat(this.leaseForm.get('advancePaymentAmount').value);
@@ -195,5 +210,9 @@ export class LeaseFormComponent implements OnInit {
 
   showBorder() {
     this.showBorderLine = true;
+  }
+
+  showScheduleBorder() {
+    this.showScheduleBorderLine = true;
   }
 }
