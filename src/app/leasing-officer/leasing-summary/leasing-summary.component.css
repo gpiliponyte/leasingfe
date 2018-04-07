@@ -1,0 +1,21 @@
+#approve {
+  background-color: green;
+}
+#deny {
+  background-color: red;
+}
+.btn {
+  margin-top: 20px;
+  margin-left: 50px;
+  width: 150px;
+}
+.back {
+  text-align: left;
+}
+
+.container {
+  position: center;
+  margin-left: 400px;
+  /*text-align: center;*/
+}
+

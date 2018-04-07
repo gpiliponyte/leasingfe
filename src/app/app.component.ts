@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { VehicleService } from './services/vehicle.service';
+import { Component } from '@angular/core';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +9,9 @@ import { VehicleService } from './services/vehicle.service';
 
 export class AppComponent{
   title = 'Lease Calculator';
+  showNavbar = true;
+  constructor( public router: Router) {
+    this.router = router;
+
+  }
 }

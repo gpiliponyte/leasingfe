@@ -32,7 +32,6 @@ export class LeasingFormComponent implements OnInit {
   onlyNumbersRegex = '^[0-9]{9}$';
   //emailRegex = '^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
   //nameRegex = '/^(?=.{1,50}$)[a-z]+(?:[\'_.\\s][a-z]+)*$/i';
-
   customerType;
   assetType;
   brand;

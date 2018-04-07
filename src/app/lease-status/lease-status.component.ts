@@ -7,11 +7,11 @@ import {LeaseService} from '../services/lease.service';
   styleUrls: ['./lease-status.component.css']
 })
 export class LeaseStatusComponent implements OnInit {
-
   leaseID;
   infoIsShown = false;
   isError = false;
   response;
+  // showNavbar = false;
 
   constructor(public leaseService: LeaseService) { }
 

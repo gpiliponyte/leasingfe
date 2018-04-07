@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LeaseService} from '../../services/lease.service';
-import {LeasingOfficerServiceService} from '../../services/leasing-officer-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {ApproveModuleComponent} from '../approve-module/approve-module.component';
@@ -37,7 +36,7 @@ export class LeasingSummaryComponent implements OnInit {
   approveLease() {
     this.approveModalRef = this.modalService.show(ApproveModuleComponent);
     this.approveModalRef.content.onClose.subscribe(result => {
-      if(result) {
+      if (result) {
         this.response.applicationStatus = 'approved';
         this.leaseService.updateLease(this.response.id, this.response).then(data =>
         {
@@ -51,7 +50,7 @@ export class LeasingSummaryComponent implements OnInit {
     this.declineModalRef = this.modalService.show(DeclineModuleComponent);
     this.declineModalRef.content.onClose.subscribe(result => {
       if (result) {
-        this.response.applicationStatus = 'declined';
+        this.response.applicationStatus = 'denied';
         this.leaseService.updateLease(this.response.id, this.response).then(data =>
         {
           this.router.navigateByUrl('/leasingOfficer');
@@ -59,15 +58,4 @@ export class LeasingSummaryComponent implements OnInit {
       }
     });
   }
-  // a
-  // a
-// o
-// i
-  // leaseInfo1(){
-  //   this.leaseInfo.getAllLeases()
-  //     .then(data => {
-  //       console.log('subscribe')
-  //       this.leaseInfo = data;
-  //       console.log(data);
-  //     });
 }

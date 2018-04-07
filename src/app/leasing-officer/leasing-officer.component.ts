@@ -25,12 +25,12 @@ export class LeasingOfficerComponent implements OnInit {
     if (this.globals.status === 'approved') {
       this.approvedLeases();
     }
-    if (this.globals.status === 'declined') {
+    if (this.globals.status === 'denied') {
       this.deniedLeases();
     }
     //this.pendingLeases();
   }
-
+// a
   pendingLeases() {
     this.leaseService.getAllPendingLeases()
       .then(data => {
@@ -49,7 +49,7 @@ export class LeasingOfficerComponent implements OnInit {
     this.leaseService.getAllDeniedLeases()
       .then(data => {
         this.listOfLeases = data;
-        this.globals.status = 'declined';
+        this.globals.status = 'denied';
       });
   }
   getSummary(uniqueId) {

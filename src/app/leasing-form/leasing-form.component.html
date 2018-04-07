@@ -1,5 +1,6 @@
 
-<div class="container" *ngIf="showForm">
+<div class="container" *ngIf="showForm ">
+
     <form class="form-horizontal" [formGroup]="leaseForm" (ngSubmit)="onSubmit()">
       <div class="col-xs-6" >
       <div class="form-group notBorder type">
@@ -550,4 +551,5 @@
   <div class="container" *ngIf="showOK">
     <h3 class="text-center">Lease request was successfully accepted.</h3>
   </div>
+
   </div>

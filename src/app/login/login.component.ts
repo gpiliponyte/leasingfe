@@ -9,7 +9,7 @@ import {TokenStorage} from '../core/token.storage';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  showNavbar = false;
   username: string;
   password: string;
   errorMessage: boolean;
