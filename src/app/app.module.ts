@@ -27,6 +27,7 @@ import {AuthGuard} from './core/auth.guard';
 import {LeasingSummaryComponent} from './leasing-officer/leasing-summary/leasing-summary.component';
 import {ApproveModuleComponent} from './leasing-officer/approve-module/approve-module.component';
 import {DeclineModuleComponent} from './leasing-officer/decline-module/decline-module.component';
+import {Globals} from './services/globals';
 
 
 @NgModule(<NgModule>{
@@ -58,7 +59,7 @@ import {DeclineModuleComponent} from './leasing-officer/decline-module/decline-m
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [VehicleService, LeaseService, AuthService, TokenStorage, AuthGuard],
+  providers: [VehicleService, LeaseService, AuthService, TokenStorage, AuthGuard, Globals],
   bootstrap: [AppComponent],
   entryComponents: [ErrorModuleComponent, ApproveModuleComponent, DeclineModuleComponent]
 })

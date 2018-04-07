@@ -20,7 +20,7 @@
 
   <tr *ngFor="let lease of listOfLeases">
     <td>{{lease.date | date: 'yyyy/MM/dd'}} </td>
-    <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="/leasingOfficer/{{lease.uniqueId}}">{{lease.uniqueId}}</a> </td>
+    <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="/leasingOfficer/leasingSummary/{{lease.uniqueId}}">{{lease.uniqueId}}</a> </td>
     <td *ngIf="lease.customerType === 'Business'" >{{lease.companyName}} </td>
     <td *ngIf="lease.customerType === 'Private'">  {{lease.firstName }} {{lease.lastName }}</td>
     <td>{{lease.applicationStatus}}</td>

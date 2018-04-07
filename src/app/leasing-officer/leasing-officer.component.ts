@@ -4,6 +4,7 @@ import {ErrorModuleComponent} from '../leasing-application/error-module/error-mo
 import {LeasingSummaryComponent} from './leasing-summary/leasing-summary.component';
 import {TokenStorage} from '../core/token.storage';
 import {Router} from '@angular/router';
+import {Globals} from '../services/globals';
 
 
 @Component({
@@ -15,35 +16,43 @@ export class LeasingOfficerComponent implements OnInit {
 
   listOfLeases;
   @Output() toSummary = new EventEmitter<Object>();
-  constructor(private leaseService: LeaseService, private token: TokenStorage, private router: Router) { }
+  constructor(private leaseService: LeaseService, private token: TokenStorage, private router: Router, private globals: Globals) { }
 
   ngOnInit() {
-    this.pendingLeases();
+    if (this.globals.status === 'pending') {
+      this.pendingLeases();
+    }
+    if (this.globals.status === 'approved') {
+      this.approvedLeases();
+    }
+    if (this.globals.status === 'declined') {
+      this.deniedLeases();
+    }
+    //this.pendingLeases();
   }
 
   pendingLeases() {
     this.leaseService.getAllPendingLeases()
       .then(data => {
-        console.log('subscribe')
         this.listOfLeases = data;
-        console.log(data);
+        this.globals.status = 'pending';
       });
   }
   approvedLeases() {
     this.leaseService.getAllApprovedLeases()
       .then(data => {
-        console.log('subscribe');
         this.listOfLeases = data;
+        this.globals.status = 'approved';
       });
   }
   deniedLeases() {
     this.leaseService.getAllDeniedLeases()
       .then(data => {
-        console.log('subscribe')
         this.listOfLeases = data;
+        this.globals.status = 'declined';
       });
   }
-  getSummary(uniqueId){
+  getSummary(uniqueId) {
     this.leaseService.getLeaseByUniqueId(uniqueId)
       .then( data => {
         this.leaseService.leaseInfo = data;
