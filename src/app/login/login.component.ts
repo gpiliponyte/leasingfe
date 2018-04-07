@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         this.token.saveToken(data.token);
         this.router.navigate(['leasingOfficer']);
       }, error2 => {
+        console.log(error2);
         this.errorMessage = true;
       }
     );

@@ -8,8 +8,8 @@ import {AuthGuard} from './core/auth.guard';
 import {LeasingSummaryComponent} from './leasing-officer/leasing-summary/leasing-summary.component';
 
 const routes: Routes = [
-  {path: 'leasingOfficer', component: LeasingOfficerComponent},
-  {path: 'leasingOfficer/leasingSummary/:uniqueId', component: LeasingSummaryComponent},
+  {path: 'leasingOfficer', component: LeasingOfficerComponent, canActivate: [AuthGuard]},
+  {path: 'leasingOfficer/leasingSummary/:uniqueId', component: LeasingSummaryComponent, canActivate: [AuthGuard]},
   {path: 'leaseForm', component: LeasingApplicationComponent},
   {path: 'leaseStatus', component: LeaseStatusComponent},
   {path: 'login', component: LoginComponent},
