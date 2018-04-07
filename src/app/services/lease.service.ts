@@ -74,6 +74,6 @@ export class LeaseService {
         .toPromise();
   }
   updateLease(id: string, lease) {
-    return this.http.put('https://leasingbe.herokuapp.com/update/' + id, lease).toPromise();
+    return this.http.put('https://leasingbe.herokuapp.com/update/' + id, lease.applicationStatus).toPromise();
   }
 }
