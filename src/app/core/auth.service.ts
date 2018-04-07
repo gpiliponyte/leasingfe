@@ -16,4 +16,10 @@ export class AuthService {
     console.log('attempAuth ::');
     return this.http.post<any>('http://localhost:8080/token/generate-token', credentials);
   }
+
+  refreshToken(ussername: string): Observable<any> {
+    const credentials = {username: ussername};
+    console.log('refresh ::');
+    return this.http.post<any>('http://localhost:8080/token/refresh-token', credentials);
+  }
 }

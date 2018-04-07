@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class LeasingOfficerServiceService {
   leaseObject;
   customerObject;
-  leaseInfo
+  leaseInfo;
 
   constructor() { }
 
