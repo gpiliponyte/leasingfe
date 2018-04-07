@@ -29,7 +29,7 @@ import {ApproveModuleComponent} from './leasing-officer/approve-module/approve-m
 import {DeclineModuleComponent} from './leasing-officer/decline-module/decline-module.component';
 import {Globals} from './services/globals';
 import {Interceptor} from './core/inteceptor';
-
+import {ScheduleService} from './services/schedule.service';
 
 @NgModule(<NgModule>{
   declarations: [
@@ -60,7 +60,8 @@ import {Interceptor} from './core/inteceptor';
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [VehicleService, LeaseService, AuthService, TokenStorage, AuthGuard, Globals,
+
+  providers: [VehicleService, ScheduleService, LeaseService, AuthService, TokenStorage, AuthGuard, Globals,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

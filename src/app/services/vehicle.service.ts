@@ -8,9 +8,13 @@ export class VehicleService {
   constructor(private http: HttpClient) { }
 
   getAllVehicleInfo() {
+    // return this.http
+    // .get('https://leasingbe.herokuapp.com/vehicles')
+    // .toPromise();
+
     return this.http
-    .get('https://leasingbe.herokuapp.com/vehicles')
-    .toPromise();
+      .get('https://leasingbe.herokuapp.com/vehicles')
+      .toPromise();
   }
 
 }

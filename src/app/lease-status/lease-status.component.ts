@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LeaseService} from '../services/lease.service';
+import {ScheduleService} from '../services/schedule.service';
+
 
 @Component({
   selector: 'app-lease-status',
@@ -10,10 +12,12 @@ export class LeaseStatusComponent implements OnInit {
   leaseID;
   infoIsShown = false;
   isError = false;
+  isScheduleError = false;
   response;
-  // showNavbar = false;
+  scheduleResponse;
+  margin = 4.27;
+  constructor(public leaseService: LeaseService, public scheduleService: ScheduleService) { }
 
-  constructor(public leaseService: LeaseService) { }
 
   ngOnInit() {
   }
@@ -23,7 +27,16 @@ export class LeaseStatusComponent implements OnInit {
       this.response = data;
       this.isError = false;
       this.infoIsShown = true;
-  }, error => {
+      this.scheduleService.getSchedule
+      (this.response.advancePaymentAmount, this.response.assetPrice, this.response.date,
+        this.response.leasePeriod, this.response.paymentDate, this.margin)
+        .then(scheduleData => {
+          this.scheduleResponse = scheduleData;
+          this.isScheduleError = false;
+      }, scheduleError => {
+          this.isScheduleError = true;
+      });
+    }, error => {
       this.isError = true;
       this.infoIsShown = true;
     });

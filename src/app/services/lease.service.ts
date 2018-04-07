@@ -39,12 +39,18 @@ export class LeaseService {
       country: this.customerObject.country
     };
 
+    // return this.http
+    //   .post('https://leasingbe.herokuapp.com/addLease', lease)
+    //   .toPromise();
     return this.http
       .post('http://localhost:8080/addLease', lease)
       .toPromise();
   }
 
   getLeaseByUniqueId(id: string) {
+    // return this.http
+    //   .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
+    //   .toPromise();
     return this.http
       .get('http://localhost:8080/uniqueId/' + id)
       .toPromise();
