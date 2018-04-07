@@ -39,41 +39,41 @@ export class LeaseService {
       country: this.customerObject.country
     };
 
-    // return this.http
-    //   .post('https://leasingbe.herokuapp.com/addLease', lease)
-    //   .toPromise();
     return this.http
-      .post('http://localhost:8080/addLease', lease)
+      .post('https://leasingbe.herokuapp.com/addLease', lease)
       .toPromise();
-  }
+  //   return this.http
+  //     .post('http://localhost:8080/addLease', lease)
+  //     .toPromise();
+   }
 
   getLeaseByUniqueId(id: string) {
-    // return this.http
-    //   .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
-    //   .toPromise();
     return this.http
-      .get('http://localhost:8080/uniqueId/' + id)
+      .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
       .toPromise();
-  }
+  //   return this.http
+  //     .get('http://localhost:8080/uniqueId/' + id)
+  //     .toPromise();
+   }
 
   getAllPendingLeases() {
       return this.http
-      .get('http://localhost:8080/leaseStatus/' + 'pending')
+      .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'pending')
       .toPromise();
   }
 
   getAllApprovedLeases() {
       return this.http
-        .get('http://localhost:8080/leaseStatus/' + 'approved')
+        .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'approved')
         .toPromise();
   }
 
   getAllDeniedLeases() {
       return this.http
-        .get('http://localhost:8080/leaseStatus/' + 'denied')
+        .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'denied')
         .toPromise();
   }
   updateLease(id: string, lease) {
-    return this.http.put('http://localhost:8080/update/' + id, lease).toPromise();
+    return this.http.put('https://leasingbe.herokuapp.com/update/' + id, lease).toPromise();
   }
 }
