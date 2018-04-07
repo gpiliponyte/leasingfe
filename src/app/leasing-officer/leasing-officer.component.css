@@ -1,0 +1,25 @@
+.btn {
+  font-weight: 700;
+  height: 36px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+  border-radius:0;
+  background:#43A6EB;
+  height: 55px;
+  margin-bottom:10px;
+  background-color: #7a1238;
+  width: 150px;
+  margin-left: 40px;
+}
+.buttons {
+  text-align: center;
+}
+.logout {
+  margin-bottom: 10px;
+  text-align: right;
+}
+#button {
+  background-color: black;
+}

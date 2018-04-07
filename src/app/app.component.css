@@ -19,7 +19,7 @@ h1{
   height: 90px;
   width: 90px;
   border-radius: 100%;
-  
+
   margin-left: 20px;
   position: relative;
   background-color: white;
@@ -50,3 +50,13 @@ nav{
 li:focus{
   background-color: #CF8325;
 } */
+/*#mgt {*/
+  /*!*margin-bottom: 10px;*!*/
+  /*text-align: right !important;*/
+/*}*/
+.b {
+  background-color: red;
+  text-align: right;
+  box-sizing: border-box;
+}
+

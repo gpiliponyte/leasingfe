@@ -6,6 +6,8 @@ export class LeaseService {
   leaseObject;
   customerObject;
   response;
+  listOfLeases;
+  leaseInfo;
 
   constructor(private http: HttpClient) { }
 
@@ -41,7 +43,7 @@ export class LeaseService {
     //   .post('https://leasingbe.herokuapp.com/addLease', lease)
     //   .toPromise();
     return this.http
-      .post('https://leasingbe.herokuapp.com/addLease', lease)
+      .post('http://localhost:8080/addLease', lease)
       .toPromise();
   }
 
@@ -50,8 +52,28 @@ export class LeaseService {
     //   .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
     //   .toPromise();
     return this.http
-      .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
+      .get('http://localhost:8080/uniqueId/' + id)
       .toPromise();
-}
+  }
 
+  getAllPendingLeases() {
+      return this.http
+      .get('http://localhost:8080/leaseStatus/' + 'pending')
+      .toPromise();
+  }
+
+  getAllApprovedLeases() {
+      return this.http
+        .get('http://localhost:8080/leaseStatus/' + 'approved')
+        .toPromise();
+  }
+
+  getAllDeniedLeases() {
+      return this.http
+        .get('http://localhost:8080/leaseStatus/' + 'denied')
+        .toPromise();
+  }
+  updateLease(id: string, lease) {
+    return this.http.put('http://localhost:8080/update/' + id, lease).toPromise();
+  }
 }

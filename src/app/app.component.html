@@ -1,13 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="logo" style="background-color: 2274A5;">
- <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a>
+
+<div class="logo" style="background-color: 2274A5;" >
+  <!--<div class="b">-->
+  <!--<button *ngIf="router.url === '/leasingOfficer' && showLogout" id="mgt" class="btn btn-lg btn-primary" type="submit" (click)="logout()">Logout</button>-->
+  <!--</div>-->
+    <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a>
 </div>
-<nav class="navbar navbar-default" >
+
+<nav  class="navbar navbar-default" *ngIf="router.url.split('/leasingOfficer').length==1 && showNavbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <a style="color: #4A8DB5;" class="navbar-brand" href="#">Vehicle Leasing</a>
     </div>
-  
+
     <ul class="nav navbar-nav">
       <!--<li routerLinkActive="active"><a routerLink="home" routerLinkActive="active">Home</a></li>-->
       <li routerLinkActive="active"><a routerLink="leaseForm" >Lease Form</a></li>
@@ -19,6 +24,7 @@
     <!--</ul>-->
   </div>
 </nav>
+
 
 
 <!-- <div>

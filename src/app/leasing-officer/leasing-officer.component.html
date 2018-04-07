@@ -1,0 +1,33 @@
+
+<div class="logout">
+<button id="button" class="btn btn-lg btn-primary" type="submit" (click)="logout()">Logout</button>
+</div>
+<div class="buttons">
+  <button class="btn btn-lg btn-primary" type="submit" (click)="pendingLeases()" >Pending</button>
+
+  <button class="btn btn-lg btn-primary" type="submit" (click)="approvedLeases()" >Approved</button>
+
+  <button  class="btn btn-lg btn-primary" type="submit"  (click)="deniedLeases()" >Denied</button>
+</div>
+
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <th>ID</th>
+    <th>Person/Business</th>
+    <th>Status</th>
+  </tr>
+
+  <tr *ngFor="let lease of listOfLeases">
+    <td>{{lease.date | date: 'yyyy/MM/dd'}} </td>
+    <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="/leasingOfficer/leasingSummary/{{lease.uniqueId}}">{{lease.uniqueId}}</a> </td>
+    <td *ngIf="lease.customerType === 'Business'" >{{lease.companyName}} </td>
+    <td *ngIf="lease.customerType === 'Private'">  {{lease.firstName }} {{lease.lastName }}</td>
+    <td>{{lease.applicationStatus}}</td>
+  </tr>
+
+</table>
+
+<!--<app-lease-summary [showElement] = "showForm" (nextToSummary)="showSummaryForLeasingOfficer()"></app-lease-summary>-->
+<router-outlet></router-outlet>
+

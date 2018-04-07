@@ -9,7 +9,6 @@ import {ScheduleService} from '../services/schedule.service';
   styleUrls: ['./lease-status.component.css']
 })
 export class LeaseStatusComponent implements OnInit {
-
   leaseID;
   infoIsShown = false;
   isError = false;
@@ -18,6 +17,7 @@ export class LeaseStatusComponent implements OnInit {
   scheduleResponse;
   margin = 4.27;
   constructor(public leaseService: LeaseService, public scheduleService: ScheduleService) { }
+
 
   ngOnInit() {
   }

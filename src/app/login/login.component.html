@@ -1,0 +1,34 @@
+<!--<script src="https://use.typekit.net/ayg4pcz.js"></script>-->
+<!--<script>try{Typekit.load({ async: true });}catch(e){}</script>-->
+
+<div class="container">
+  <h5 class="welcome text-center"><img  src=".\assets\swedbanko logo.png"></h5>
+  <div class="card card-container">
+    <h2 class='login_title text-center'>Leasing admin</h2>
+    <hr>
+
+    <form class="form-signin">
+      <span id="reauth-email" class="reauth-email"></span>
+      <p class="input_title">Username</p>
+      <input type="text"
+             id="inputUsername"
+             class="login_box"
+             placeholder="Username"
+             name="username"
+             [(ngModel)]="username"
+             required
+             autofocus>
+      <p class="input_title">Password</p>
+      <input type="password"
+             id="inputPassword"
+             class="login_box"
+             placeholder="Password"
+             name="password"
+             [(ngModel)]="password"
+             required>
+      <div class="center-text">
+        <span class="error" *ngIf="errorMessage">Invalid username or password.</span>
+      </div>
+      <button class="btn btn-lg btn-primary" type="submit" (click)="login()">Login</button>
+    </form><!-- /form -->
+  </div><!-- /card-container -->
