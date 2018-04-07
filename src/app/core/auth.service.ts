@@ -14,12 +14,12 @@ export class AuthService {
   attemptAuth(ussername: string, password: string): Observable<any> {
     const credentials = {username: ussername, password: password};
     console.log('attempAuth ::');
-    return this.http.post<any>('http://localhost:8080/token/generate-token', credentials);
+    return this.http.post<any>('https://leasingbe.herokuapp.com/token/generate-token', credentials);
   }
 
   refreshToken(ussername: string): Observable<any> {
     const credentials = {username: ussername};
     console.log('refresh ::');
-    return this.http.post<any>('http://localhost:8080/token/refresh-token', credentials);
+    return this.http.post<any>('https://leasingbe.herokuapp.com/token/refresh-token', credentials);
   }
 }
