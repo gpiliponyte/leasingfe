@@ -14,12 +14,23 @@
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allForm" *ngIf="response!=null && infoIsShown && !isError">
 
-
+  <div *ngIf="response.applicationStatus == 'pending'">
   <h2 *ngIf="response.applicationStatus == null; then statusNull else statusNotNull"></h2>
-  <ng-template #statusNotNull><b *ngIf="response.applicationStatus == 'pending'">Status: </b>Application is being processed</ng-template>
-  <ng-template #statusNotNull><b *ngIf="response.applicationStatus == 'approved'">Status: </b>Application is approved</ng-template>
-  <ng-template #statusNotNull><b *ngIf="response.applicationStatus == 'denied'">Status: </b>Application is denied</ng-template>
+  <ng-template #statusNotNull ><b>Status: </b>Application is being processed</ng-template>
   <ng-template #statusNull><b>Status: </b>not found</ng-template>
+  </div>
+
+  <div *ngIf="response.applicationStatus == 'approved'">
+    <h2 *ngIf="response.applicationStatus == null; then statusNull else statusNotNull"></h2>
+    <ng-template #statusNotNull ><b>Status: </b>Application is approved</ng-template>
+    <ng-template #statusNull><b>Status: </b>not found</ng-template>
+  </div>
+
+  <div *ngIf="response.applicationStatus == 'denied'">
+    <h2 *ngIf="response.applicationStatus == null; then statusNull else statusNotNull"></h2>
+    <ng-template #statusNotNull ><b>Status: </b>Application is denied</ng-template>
+    <ng-template #statusNull><b>Status: </b>not found</ng-template>
+  </div>
 
 <h4 *ngIf="response.customerType == 'Private'"><b>Customer: </b>{{response.firstName}} {{response.lastName}}</h4>
   <h4 *ngIf="response.customerType == 'Business'"><b>Customer: </b>{{response.companyName}} {{response.companyCode}}</h4>
