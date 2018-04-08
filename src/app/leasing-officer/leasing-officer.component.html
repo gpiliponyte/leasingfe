@@ -75,16 +75,16 @@
   <!-- Navigation Buttons -->
   <div class="col-md-3">
     <ul class="nav nav-pills nav-stacked red" id="myTabs">
-      <li class="active"><a href="#pending" data-toggle="pill" (click)="pendingLeases()" >Pending</a></li>
-      <li ><a href="#approved" data-toggle="pill" (click)="approvedLeases()" >Approved</a></li>
-      <li id="3"><a href="#declined" data-toggle="pill" (click)="declinedLeases()" >Declined</a></li>
+      <li [ngClass]="{'active': isPendingActive}"><a  data-toggle="pill" (click)="pendingLeases()" >Pending</a></li>
+      <li [ngClass]="{'active': isApprovedActive}"><a  data-toggle="pill" (click)="approvedLeases()" >Approved</a></li>
+      <li [ngClass]="{'active': isDeclinedActive}" id="3"><a  data-toggle="pill" (click)="declinedLeases()" >Declined</a></li>
     </ul>
   </div>
 
   <!-- Content -->
   <div class="col-md-9">
     <div class="tab-content" >
-      <div class="tab-pane active" id="pending" >
+      <div class="tab-pane active"  >
         <table class="table">
         <tr>
           <th>Date</th>
@@ -105,48 +105,7 @@
 
       </table>
       </div>
-      <div class="tab-pane" id="approved" >
-        <table class="table">
-        <tr>
-          <th>Date</th>
-          <th>ID</th>
-          <th>Person/Business</th>
-          <th>Status</th>
-        </tr>
 
-        <tr *ngFor="let lease of listOfLeases">
-          <td>{{lease.date | date: 'yyyy/MM/dd'}} </td>
-          <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="/leasingOfficer/leasingSummary/{{lease.uniqueId}}">{{lease.uniqueId}}</a> </td>
-          <td *ngIf="lease.customerType === 'Business'" >{{lease.companyName}} </td>
-          <td *ngIf="lease.customerType === 'Private'">  {{lease.firstName }} {{lease.lastName }}</td>
-          <td *ngIf="lease.applicationStatus == 'approved'">Application has been approved</td>
-          <td *ngIf="lease.applicationStatus != 'approved' && lease.applicationStatus != 'pending'">Application has been declined</td>
-          <td *ngIf="lease.applicationStatus == 'pending'">Application is being processed</td>
-        </tr>
-
-      </table>
-      </div>
-      <div class="tab-pane" id="declined">
-        <table class="table">
-        <tr>
-          <th>Date</th>
-          <th>ID</th>
-          <th>Person/Business</th>
-          <th>Status</th>
-        </tr>
-
-        <tr *ngFor="let lease of listOfLeases">
-          <td>{{lease.date | date: 'yyyy/MM/dd'}} </td>
-          <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="/leasingOfficer/leasingSummary/{{lease.uniqueId}}">{{lease.uniqueId}}</a> </td>
-          <td *ngIf="lease.customerType === 'Business'" >{{lease.companyName}} </td>
-          <td *ngIf="lease.customerType === 'Private'">  {{lease.firstName }} {{lease.lastName }}</td>
-          <td *ngIf="lease.applicationStatus == 'approved'">Application has been approved</td>
-          <td *ngIf="lease.applicationStatus != 'approved' && lease.applicationStatus != 'pending'">Application has been declined</td>
-          <td *ngIf="lease.applicationStatus == 'pending'">Application is being processed</td>
-        </tr>
-
-      </table>
-      </div>
     </div>
   </div>
 

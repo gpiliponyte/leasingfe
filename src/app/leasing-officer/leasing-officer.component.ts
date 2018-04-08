@@ -29,6 +29,9 @@ export class LeasingOfficerComponent implements OnInit {
       this.pendingLeases();
     }
     if (this.globals.status === 'approved') {
+      this.isPendingActive = false;
+      this.isDeclinedActive = false;
+      this.isApprovedActive = true;
       this.approvedLeases();
     }
     if (this.globals.status === 'declined') {
