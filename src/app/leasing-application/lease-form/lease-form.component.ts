@@ -217,4 +217,5 @@ export class LeaseFormComponent implements OnInit {
   showScheduleBorder() {
     this.showScheduleBorderLine = true;
   }
+
 }

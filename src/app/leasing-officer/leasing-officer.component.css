@@ -22,11 +22,10 @@
 }
 #button {
   background-color: #550c27;
+  border-radius: 5px;
+  margin: 10px;
 }
-/*.nav:focus,*/
-/*.nav:active{*/
-  /*background-color: #550c27;*/
-/*}*/
+
 .red .active a,
 .red .active a:hover {
   background-color: #550c27;

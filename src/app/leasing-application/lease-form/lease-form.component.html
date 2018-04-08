@@ -156,7 +156,7 @@
 
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <input style="margin-top:4%"  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue (input)="pitch($event)" value="6">
+            <input style="margin-top:4%"  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue  value="6">
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <input style="background-color: white; margin-left:2%; margin-top:2%;" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">

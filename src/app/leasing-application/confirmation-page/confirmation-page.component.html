@@ -2,7 +2,7 @@
   <div *ngIf="leaseService.leaseObject.customerType == 'Private'" class="container">
       <h3 class="text-center">Dear customer,</h3>
       <h3 class="text-center">Your application has been accepted and is being processed right now. You should receive the decision within 3 days.</h3>
-      <h3 class="text-center">Your application indetification number is {{leaseService.response.uniqueId}}</h3>
+    <h3 class="text-center">Your application indetification number is <b>{{leaseService.response.uniqueId}}</b></h3>
     <div class="link-div">
       <h3 class="text-center">You can see your application status with this ID on
         <a href="https://leasingfe.herokuapp.com/leaseStatus">https://leasingfe.herokuapp.com/leaseStatus</a></h3>
@@ -12,7 +12,7 @@
     <h3 class="text-center">Dear customer,</h3>
     <h3 class="text-center">Your application has been accepted and is being processed right now. You should receive the decision within 5 days.</h3>
     <!--<h3 class="text-center">You should receive decision within 5 days.</h3>-->
-    <h3 class="text-center">Your application identification number is {{leaseService.response.uniqueId}}</h3>
+    <h3 class="text-center">Your application identification number is <b>{{leaseService.response.uniqueId}}</b></h3>
 
       <div class="link-div">
         <h3 class="text-center">You can see your application status with this ID on
