@@ -68,7 +68,7 @@ export class LeaseService {
         .toPromise();
   }
 
-  getAllDeniedLeases() {
+  getAllDeclinedLeases() {
       return this.http
         .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'denied')
         .toPromise();

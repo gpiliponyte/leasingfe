@@ -60,13 +60,44 @@
 </div>
 
 
-
   <div *ngIf="response.applicationStatus == 'pending'">
     <button id="approve" class="btn btn-lg btn-primary" type="submit" (click)="approveLease()">APPROVE</button>
     <button id="deny" class="btn btn-lg btn-primary" type="submit" (click)="declineLease()">DENY</button>
   </div>
 
 </div>
+
+<h3 *ngIf="!isScheduleError && response.applicationStatus == 'approved'" >Payment schedule :</h3>
+
+<div id="calendar_div" class=" pre-scrollable" *ngIf=" !isScheduleError && response.applicationStatus == 'approved'">
+
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Unpaid Asset Amount</th>
+      <th scope="col">Unpaid Asset Repayment Amount</th>
+      <th scope="col">Interest Amount</th>
+      <th scope="col">Total Payment Amount</th>
+    </tr>
+    </thead>
+
+    <tbody *ngFor="let payment of scheduleResponse">
+
+    <tr>
+      <td>{{payment.date.substring(0, 10)}}</td>
+      <td>{{payment.unpaidAssetAmount.toFixed(2)}}</td>
+      <td>{{payment.unpaidAssetRepaymentAmount.toFixed(2)}}</td>
+      <td>{{payment.interestAmount.toFixed(2)}}</td>
+      <td>{{payment.totalPaymentAmount.toFixed(2)}}</td>
+    </tr>
+
+
+    </tbody>
+
+  </table>
+</div>
+
 <div class="back">
   <button style="background-color: black" class="btn btn-lg btn-primary" routerLink='/leasingOfficer'>BACK</button>
 </div>

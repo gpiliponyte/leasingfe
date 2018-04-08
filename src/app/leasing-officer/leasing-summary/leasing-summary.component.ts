@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {ApproveModuleComponent} from '../approve-module/approve-module.component';
 import {DeclineModuleComponent} from '../decline-module/decline-module.component';
+import {ScheduleService} from '../../services/schedule.service';
 
 @Component({
   selector: 'app-leasing-summary',
@@ -16,10 +17,12 @@ export class LeasingSummaryComponent implements OnInit {
   private sub: any;
   response;
   showSummary = false;
+  isScheduleError = false;
+  scheduleResponse;
   public approveModalRef: BsModalRef;
   public declineModalRef: BsModalRef;
 
-  constructor(private route: ActivatedRoute, private leaseService: LeaseService, private modalService: BsModalService, private router: Router) {
+  constructor(private route: ActivatedRoute,  private scheduleService: ScheduleService, private leaseService: LeaseService, private modalService: BsModalService, private router: Router) {
   }
 
   ngOnInit() {
@@ -29,6 +32,15 @@ export class LeasingSummaryComponent implements OnInit {
         .then(data => {
           this.response = data;
           this.showSummary = true;
+          this.scheduleService.getSchedule
+          (this.response.advancePaymentAmount, this.response.assetPrice, this.response.date,
+            this.response.leasePeriod, this.response.paymentDate, this.response.margin)
+            .then(scheduleData => {
+              this.scheduleResponse = scheduleData;
+              this.isScheduleError = false;
+            }, scheduleError => {
+              this.isScheduleError = true;
+            });
         });
     });
   }

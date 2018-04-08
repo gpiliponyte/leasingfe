@@ -15,6 +15,9 @@ import {Globals} from '../services/globals';
 export class LeasingOfficerComponent implements OnInit {
 
   listOfLeases;
+  isPendingActive = true;
+  isApprovedActive = false;
+  isDeclinedActive = false;
   @Output() toSummary = new EventEmitter<Object>();
   constructor(private leaseService: LeaseService, private token: TokenStorage, private router: Router, private globals: Globals) { }
 
@@ -25,18 +28,20 @@ export class LeasingOfficerComponent implements OnInit {
     if (this.globals.status === 'approved') {
       this.approvedLeases();
     }
-    if (this.globals.status === 'denied') {
-      this.deniedLeases();
+    if (this.globals.status === 'declined') {
+      this.declinedLeases();
     }
-    //this.pendingLeases();
   }
-// a
+
   pendingLeases() {
     this.leaseService.getAllPendingLeases()
       .then(data => {
         this.listOfLeases = data;
         this.globals.status = 'pending';
       });
+    this.isPendingActive = true;
+    this.isDeclinedActive = false;
+    this.isApprovedActive = false;
   }
   approvedLeases() {
     this.leaseService.getAllApprovedLeases()
@@ -44,13 +49,19 @@ export class LeasingOfficerComponent implements OnInit {
         this.listOfLeases = data;
         this.globals.status = 'approved';
       });
+    this.isPendingActive = false;
+    this.isDeclinedActive = false;
+    this.isApprovedActive = true;
   }
-  deniedLeases() {
-    this.leaseService.getAllDeniedLeases()
+  declinedLeases() {
+    this.leaseService.getAllDeclinedLeases()
       .then(data => {
         this.listOfLeases = data;
-        this.globals.status = 'denied';
+        this.globals.status = 'declined';
       });
+    this.isPendingActive = false;
+    this.isDeclinedActive = true;
+    this.isApprovedActive = false;
   }
   getSummary(uniqueId) {
     this.leaseService.getLeaseByUniqueId(uniqueId)

@@ -14,10 +14,10 @@
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allForm" *ngIf="response!=null && infoIsShown && !isError">
 
-
-  <h2 *ngIf="response.applicationStatus == null; then statusNull else statusNotNull"></h2>
-  <ng-template #statusNotNull><b>Status: </b>{{response.applicationStatus}}</ng-template>
-  <ng-template #statusNull><b>Status: </b>not found</ng-template>
+  <h2 *ngIf="response.applicationStatus == null">Status: <b>Application status was not found</b></h2>
+  <h2 *ngIf="response.applicationStatus != null && response.applicationStatus == 'approved'">Status: <b>Application has been approved</b></h2>
+  <h2 *ngIf="response.applicationStatus != 'approved' && response.applicationStatus != 'pending'">Status: <b>Application has been declined</b></h2>
+  <h2 *ngIf="response.applicationStatus == 'pending'">Status: <b>Application is being processed</b></h2>
 
 <h4 *ngIf="response.customerType == 'Private'"><b>Customer: </b>{{response.firstName}} {{response.lastName}}</h4>
   <h4 *ngIf="response.customerType == 'Business'"><b>Customer: </b>{{response.companyName}} {{response.companyCode}}</h4>
@@ -80,9 +80,9 @@
   </div>
   </div>
 
-  <h3 *ngIf="response.applicationStatus == 'Application is being processed'">Payment schedule :</h3>
+  <h3 *ngIf="response.applicationStatus == 'approved'" >Payment schedule :</h3>
 
-  <div id="calendar_div" class="container" *ngIf="response.applicationStatus == 'Application is being processed'">
+  <div id="calendar_div" class="container pre-scrollable" *ngIf="response.applicationStatus == 'approved'">
 
     <table class="table table-dark">
       <thead>
@@ -107,16 +107,6 @@
 
 
       </tbody>
-
-    <!--<tbody>-->
-    <!--<tr>-->
-      <!--<th scope="row">Total</th>-->
-      <!--<td></td>-->
-      <!--<td>{{scheduleResponse[0].unpaidAssetAmount.toFixed(2)}}</td>-->
-      <!--<td>{{scheduleService.getTotalInterestAmount(scheduleResponse).toFixed(2)}}</td>-->
-      <!--<td>{{(scheduleResponse[0].unpaidAssetAmount + scheduleService.getTotalInterestAmount(scheduleResponse)).toFixed(2)}}</td>-->
-    <!--</tr>-->
-    <!--</tbody>-->
 
     </table>
   </div>
