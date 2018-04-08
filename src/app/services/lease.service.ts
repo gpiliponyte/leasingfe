@@ -78,7 +78,7 @@ export class LeaseService {
 
   getAllDeclinedLeases() {
     return this.http
-      .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'denied')
+      .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'declined')
       .toPromise()
       .catch((error: any) => {
         console.log('denied catch error');
