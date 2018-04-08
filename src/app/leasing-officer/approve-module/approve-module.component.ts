@@ -12,7 +12,7 @@ export class ApproveModuleComponent implements OnInit {
 
   public onClose: Subject<boolean>;
 
-  constructor(protected leasingOfficer: LeasingOfficerComponent, private _bsModalRef: BsModalRef) {
+  constructor( private _bsModalRef: BsModalRef) {
 
   }
 

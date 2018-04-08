@@ -63,7 +63,7 @@ export class LeasingSummaryComponent implements OnInit {
     this.declineModalRef = this.modalService.show(DeclineModuleComponent);
     this.declineModalRef.content.onClose.subscribe(result => {
       if (result) {
-        this.response.applicationStatus = 'denied';
+        this.response.applicationStatus = 'declined';
         this.leaseService.updateLease(this.response.id, this.response).then(data =>
         {
           this.router.navigateByUrl('/leasingOfficer');
