@@ -17,6 +17,7 @@ export class LeasingOfficerComponent implements OnInit {
   isPendingActive = true;
   isApprovedActive = false;
   isDeclinedActive = false;
+
   @Output() toSummary = new EventEmitter<Object>();
   constructor(private leaseService: LeaseService, private token: TokenStorage,
               private router: Router, private globals: Globals,
@@ -91,6 +92,7 @@ export class LeasingOfficerComponent implements OnInit {
       });
   }
   logout(): void {
+    this.globals.status = 'pending';
     this.token.signOut();
     this.router.navigate(['login']);
   }

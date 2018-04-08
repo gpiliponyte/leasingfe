@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../core/auth.service';
 import {TokenStorage} from '../core/token.storage';
+import {Globals} from '../services/globals';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   password: string;
   errorMessage: boolean;
 
-  constructor(private router: Router, private authService: AuthService, private token: TokenStorage) {
+  constructor(private router: Router,  private authService: AuthService, private token: TokenStorage) {
   }
 
   ngOnInit() {
