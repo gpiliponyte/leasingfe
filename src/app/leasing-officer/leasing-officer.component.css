@@ -21,5 +21,13 @@
   text-align: right;
 }
 #button {
-  background-color: black;
+  background-color: #550c27;
+}
+/*.nav:focus,*/
+/*.nav:active{*/
+  /*background-color: #550c27;*/
+/*}*/
+.red .active a,
+.red .active a:hover {
+  background-color: #550c27;
 }
