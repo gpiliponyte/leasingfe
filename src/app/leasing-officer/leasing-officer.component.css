@@ -26,6 +26,10 @@
   margin: 10px;
 }
 
+button{
+  border: 0px;
+}
+
 .red .active a,
 .red .active a:hover {
   background-color: #550c27;

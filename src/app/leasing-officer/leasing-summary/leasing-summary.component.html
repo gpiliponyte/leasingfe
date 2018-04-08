@@ -1,7 +1,8 @@
-
-<div class="container" *ngIf="showSummary">
-<h4  *ngIf="showSummary && response.customerType === 'Private'"><b>Customer: </b>{{response.firstName}} {{response.lastName}}</h4>
-<h4  *ngIf="showSummary && response.customerType === 'Business'"><b>Customer: </b>{{response.companyName}} {{response.companyCode}}</h4>
+<div *ngIf="response != null">
+<div class="summary container" *ngIf="showSummary">
+<h2  *ngIf="showSummary && response.customerType === 'Private'"><b>Customer: </b>{{response.firstName}} {{response.lastName}}</h2>
+<h2  *ngIf="showSummary && response.customerType === 'Business'"><b>Customer: </b>{{response.companyName}} {{response.companyCode}}</h2>
+  <div class="container" style="margin-bottom: 20px">
  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">CUSTOMER TYPE :</div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.customerType}}</div>
@@ -55,6 +56,7 @@
   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">PAYMENT DATE :</div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.paymentDate}}</div>
 </div>
+  </div>
 <div class="status_div col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="showSummary && infoIsShown && isError">
   <h3>Application not found.</h3>
 </div>
@@ -99,5 +101,6 @@
 </div>
 
 <div class="back">
-  <button style="background-color: black" class="btn btn-lg btn-primary" routerLink='/leasingOfficer'>BACK</button>
+  <button style="background-color: #550c27" class="btn btn-lg btn-primary" routerLink='/leasingOfficer'>BACK</button>
+</div>
 </div>
