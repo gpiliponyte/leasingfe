@@ -1,7 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {LeaseService} from '../services/lease.service';
-import {ErrorModuleComponent} from '../leasing-application/error-module/error-module.component';
-import {LeasingSummaryComponent} from './leasing-summary/leasing-summary.component';
 import {TokenStorage} from '../core/token.storage';
 import {Router} from '@angular/router';
 import {Globals} from '../services/globals';
@@ -34,6 +32,7 @@ export class LeasingOfficerComponent implements OnInit {
     if (this.globals.status === 'declined') {
       this.declinedLeases();
     }
+    this.pendingLeases();
   }
 
   pendingLeases() {

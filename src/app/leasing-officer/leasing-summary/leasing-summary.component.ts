@@ -5,6 +5,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {ApproveModuleComponent} from '../approve-module/approve-module.component';
 import {DeclineModuleComponent} from '../decline-module/decline-module.component';
 import {ScheduleService} from '../../services/schedule.service';
+import {LeasingOfficerComponent} from '../leasing-officer.component';
 
 @Component({
   selector: 'app-leasing-summary',

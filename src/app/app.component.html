@@ -7,7 +7,7 @@
     <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a>
 </div>
 
-<nav  class="navbar navbar-default" *ngIf="router.url.split('/leasingOfficer').length==1 && showNavbar">
+<nav  class="navbar navbar-default" *ngIf="router.url.split('/leasingOfficer').length==1 && router.url!='/login' && showNavbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <a style="color: #4A8DB5;" class="navbar-brand" href="#">Vehicle Leasing</a>

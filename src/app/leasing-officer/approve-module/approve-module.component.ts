@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import {LeasingOfficerComponent} from '../leasing-officer.component';
 
 @Component({
   selector: 'app-approve-module',
@@ -11,7 +12,7 @@ export class ApproveModuleComponent implements OnInit {
 
   public onClose: Subject<boolean>;
 
-  constructor(private _bsModalRef: BsModalRef) {
+  constructor(protected leasingOfficer: LeasingOfficerComponent, private _bsModalRef: BsModalRef) {
 
   }
 
