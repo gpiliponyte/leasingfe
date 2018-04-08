@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
 @Injectable()
 export class LeaseService {
 
@@ -9,7 +10,8 @@ export class LeaseService {
   listOfLeases;
   leaseInfo;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   submitLease() {
     const lease = {
@@ -42,38 +44,51 @@ export class LeaseService {
     return this.http
       .post('https://leasingbe.herokuapp.com/addLease', lease)
       .toPromise();
-  //   return this.http
-  //     .post('http://localhost:8080/addLease', lease)
-  //     .toPromise();
-   }
+    //   return this.http
+    //     .post('http://localhost:8080/addLease', lease)
+    //     .toPromise();
+  }
 
   getLeaseByUniqueId(id: string) {
     return this.http
       .get('https://leasingbe.herokuapp.com/uniqueId/' + id)
       .toPromise();
-  //   return this.http
-  //     .get('http://localhost:8080/uniqueId/' + id)
-  //     .toPromise();
-   }
+    //   return this.http
+    //     .get('http://localhost:8080/uniqueId/' + id)
+    //     .toPromise();
+  }
 
   getAllPendingLeases() {
-      return this.http
+    return this.http
       .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'pending')
-      .toPromise();
+      .toPromise()
+      .catch((error: any) => {
+        console.log('pending catch error');
+      });
   }
 
   getAllApprovedLeases() {
-      return this.http
-        .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'approved')
-        .toPromise();
+    return this.http
+      .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'approved')
+      .toPromise()
+      .catch((error: any) => {
+        console.log('approved catch error');
+      });
   }
 
   getAllDeclinedLeases() {
-      return this.http
-        .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'denied')
-        .toPromise();
+    return this.http
+      .get('https://leasingbe.herokuapp.com/leaseStatus/' + 'denied')
+      .toPromise()
+      .catch((error: any) => {
+        console.log('denied catch error');
+      });
   }
+
   updateLease(id: string, lease) {
-    return this.http.put('https://leasingbe.herokuapp.com/update/' + id, lease.applicationStatus).toPromise();
+    return this.http.put('https://leasingbe.herokuapp.com/update/' + id, lease.applicationStatus).toPromise()
+      .catch((error: any) => {
+        console.log('update catch error');
+      });
   }
 }

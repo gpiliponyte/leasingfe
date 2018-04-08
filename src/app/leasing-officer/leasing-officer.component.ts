@@ -5,6 +5,7 @@ import {LeasingSummaryComponent} from './leasing-summary/leasing-summary.compone
 import {TokenStorage} from '../core/token.storage';
 import {Router} from '@angular/router';
 import {Globals} from '../services/globals';
+import {AuthGuard} from '../core/auth.guard';
 
 
 @Component({
@@ -19,7 +20,9 @@ export class LeasingOfficerComponent implements OnInit {
   isApprovedActive = false;
   isDeclinedActive = false;
   @Output() toSummary = new EventEmitter<Object>();
-  constructor(private leaseService: LeaseService, private token: TokenStorage, private router: Router, private globals: Globals) { }
+  constructor(private leaseService: LeaseService, private token: TokenStorage,
+              private router: Router, private globals: Globals,
+              private guard: AuthGuard) { }
 
   ngOnInit() {
     if (this.globals.status === 'pending') {
@@ -38,6 +41,10 @@ export class LeasingOfficerComponent implements OnInit {
       .then(data => {
         this.listOfLeases = data;
         this.globals.status = 'pending';
+        this.guard.renewIfSessionExpired();
+      }, (error) => {
+        console.log('get all pending error');
+        console.log(error);
       });
     this.isPendingActive = true;
     this.isDeclinedActive = false;
@@ -48,6 +55,10 @@ export class LeasingOfficerComponent implements OnInit {
       .then(data => {
         this.listOfLeases = data;
         this.globals.status = 'approved';
+        this.guard.renewIfSessionExpired();
+      }, (error) => {
+        console.log('get all approved error');
+        console.log(error);
       });
     this.isPendingActive = false;
     this.isDeclinedActive = false;
@@ -58,6 +69,10 @@ export class LeasingOfficerComponent implements OnInit {
       .then(data => {
         this.listOfLeases = data;
         this.globals.status = 'declined';
+        this.guard.renewIfSessionExpired();
+      }, (error) => {
+        console.log('get all denied error');
+        console.log(error);
       });
     this.isPendingActive = false;
     this.isDeclinedActive = true;
@@ -67,6 +82,10 @@ export class LeasingOfficerComponent implements OnInit {
     this.leaseService.getLeaseByUniqueId(uniqueId)
       .then( data => {
         this.leaseService.leaseInfo = data;
+        this.guard.renewIfSessionExpired();
+      }, (error) => {
+        console.log('get one lease summary error');
+        console.log(error);
       });
   }
   logout(): void {
