@@ -22,7 +22,18 @@ h2{
   /*text-align: center;*/
 }
 
+#calendar_div{
+  margin: 15px;
+}
+
+button:focus{
+  outline: none !important;
+}
+
 button{
   border: 0px;
+  display: inline;
+  white-space:normal !important;
+  word-wrap: break-word;
 }
 

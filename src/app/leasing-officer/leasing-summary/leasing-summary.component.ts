@@ -20,6 +20,7 @@ export class LeasingSummaryComponent implements OnInit {
   showSummary = false;
   isScheduleError = false;
   scheduleResponse;
+  buttonText = 'Payment schedule';
   public approveModalRef: BsModalRef;
   public declineModalRef: BsModalRef;
 
@@ -44,6 +45,10 @@ export class LeasingSummaryComponent implements OnInit {
             });
         });
     });
+  }
+
+  onCalendarClick() {
+    this.buttonText = this.buttonText === 'Payment schedule' ? 'Collapse schedule' : 'Payment schedule';
   }
 
   approveLease() {
