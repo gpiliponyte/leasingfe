@@ -36,7 +36,6 @@ export class LeasingOfficerComponent implements OnInit {
     if (this.globals.status === 'declined') {
       this.declinedLeases();
     }
-    this.pendingLeases();
   }
 
   pendingLeases() {
@@ -74,8 +73,6 @@ export class LeasingOfficerComponent implements OnInit {
         this.globals.status = 'declined';
         this.guard.renewIfSessionExpired();
       }, (error) => {
-        console.log('get all denied error');
-        console.log(error);
       });
     this.isPendingActive = false;
     this.isDeclinedActive = true;
@@ -87,8 +84,6 @@ export class LeasingOfficerComponent implements OnInit {
         this.leaseService.leaseInfo = data;
         this.guard.renewIfSessionExpired();
       }, (error) => {
-        console.log('get one lease summary error');
-        console.log(error);
       });
   }
   logout(): void {
