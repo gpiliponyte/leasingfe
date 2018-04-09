@@ -57,6 +57,14 @@
   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>PAYMENT DAY </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.paymentDate}}</div>
 </div>
+          <div *ngIf="scheduleResponse != null && response.applicationStatus == 'approved'" class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>TOTAL MONTHLY PAYMENT </b></div>
+            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{scheduleResponse[0].totalPaymentAmount.toFixed(2)}}</div>
+          </div>
+    <div *ngIf="scheduleResponse != null && response.applicationStatus == 'pending'" class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>PROVISIONAL TOTAL MONTHLY PAYMENT </b></div>
+      <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{scheduleResponse[0].totalPaymentAmount.toFixed(2)}}</div>
+    </div>
   </div>
 <div class="status_div col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="showSummary && infoIsShown && isError">
   <h3>Application not found.</h3>

@@ -79,6 +79,14 @@
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">PAYMENT DAY </div>
     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.paymentDate}}</div>
   </div>
+  <div *ngIf="scheduleResponse!= null && response.applicationStatus == 'approved'" class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">TOTAL MONTHLY PAYMENT </div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{scheduleResponse[0].totalPaymentAmount}}</div>
+  </div>
+  <div *ngIf="scheduleResponse!= null && response.applicationStatus == 'pending'" class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">PROVISIONAL TOTAL MONTHLY PAYMENT </div>
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{scheduleResponse[0].totalPaymentAmount}}</div>
+  </div>
   </div>
   </div>
 
