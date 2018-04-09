@@ -6,17 +6,21 @@ import {LoginComponent} from './login/login.component';
 import {LeasingOfficerComponent} from './leasing-officer/leasing-officer.component';
 import {AuthGuard} from './core/auth.guard';
 import {LeasingSummaryComponent} from './leasing-officer/leasing-summary/leasing-summary.component';
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   {path: 'leasingOfficer', component: LeasingOfficerComponent, canActivate: [AuthGuard]},
   {path: 'leasingOfficer/leasingSummary/:uniqueId', component: LeasingSummaryComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: HomeComponent},
   {path: 'leaseForm', component: LeasingApplicationComponent},
   {path: 'leaseStatus', component: LeaseStatusComponent},
   {path: 'login', component: LoginComponent},
   // {path: 'home', component: HomeComponent},
   // {path: 'leaseStatus', component: LeaseStatusComponent},
-  {path: '', redirectTo: 'leaseForm', pathMatch: 'full'},
-  {path: 'leaseForm/leaseStatus', redirectTo: 'leaseStatus', pathMatch: 'full'}
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'leaseForm/leaseStatus', redirectTo: 'leaseStatus', pathMatch: 'full'},
+  {path: 'home/leaseForm', redirectTo: 'leaseForm', pathMatch: 'full'},
+  {path: 'home/leaseStatus', redirectTo: 'leaseStatus', pathMatch: 'full'}
 ];
 
 @NgModule({
