@@ -46,7 +46,7 @@ export class LeaseFormComponent implements OnInit {
   ngOnInit() {
     this.leaseForm = new FormGroup({
       'customerType': new FormControl(null, Validators.required),
-      'assetType': new FormControl(null),
+      'assetType': new FormControl(null, Validators.required),
       'brand': new FormControl(null, Validators.required),
       'model': new FormControl(null, Validators.required),
       'year': new FormControl(null, Validators.required),
@@ -207,7 +207,6 @@ export class LeaseFormComponent implements OnInit {
     this.totalInterest = this.totalInterest.toFixed(2);
     this.financingAmount = this.financingAmount.toFixed(2);
     this.showCalculation = true;
-    console.log(this.showCalculation);
   }
 
   showBorder() {

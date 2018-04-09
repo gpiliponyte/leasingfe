@@ -1,8 +1,8 @@
 <!-- <div *ngIf="showElement"> -->
-  <div  *ngIf="showElement" class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%; "> 
+  <div  *ngIf="showElement" class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%; ">
     <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
   <form class=" container col-lg-10 col-md-8 col-sm-10 col-xs-10 form-horizontal " [formGroup]="leaseForm">
-    <h2>Vehicle leasing form</h2>  
+    <h2>Vehicle leasing form</h2>
     <div class="form-group notBorder type">
         <label for="customerType" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">CUSTOMER TYPE</label>
 
@@ -199,7 +199,7 @@
         </div>
       </div>
       <div class="form-group notBorder">
-        <label for="paymentDate" class="col-lg-12 col-md-6 col-sm-12 col-xs-12">PAYMENT DATE</label>
+        <label for="paymentDate" class="col-lg-12 col-md-6 col-sm-12 col-xs-12">PAYMENT DAY</label>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <label class="radioInline" *ngFor="let paymentDate of paymentDates">
             <input
@@ -231,7 +231,9 @@
   <div class="col-lg-0 col-md-2 col-sm-1 col-xs-1" ></div>
 </div>
 
-<div *ngIf="showElement" class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%; ">
+>
+<div *ngIf="showElement" class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style=" margin-top: 2%; ">
+
   <div class="col-lg-1 col-md-2 col-sm-1 col-xs-1"></div>
   <div class="col-lg-9 col-md-8 col-sm-10 col-xs-10">
     <div style=" background-color:#981D28;width:100%; text-align:center;height:45px; padding-top:10px;">
