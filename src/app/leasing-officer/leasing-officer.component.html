@@ -29,9 +29,7 @@
           <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="/leasingOfficer/leasingSummary/{{lease.uniqueId}}">{{lease.uniqueId}}</a> </td>
           <td *ngIf="lease.customerType === 'Business'" >{{lease.companyName}} </td>
           <td *ngIf="lease.customerType === 'Private'">  {{lease.firstName }} {{lease.lastName }}</td>
-          <td *ngIf="lease.applicationStatus == 'approved'">Application has been approved</td>
-          <td *ngIf="lease.applicationStatus != 'approved' && lease.applicationStatus != 'pending'">Application has been declined</td>
-          <td *ngIf="lease.applicationStatus == 'pending'">Application is being processed</td>
+          <td>{{lease.applicationStatus}}</td>
         </tr>
 
       </table>

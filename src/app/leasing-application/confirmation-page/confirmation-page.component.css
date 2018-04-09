@@ -323,8 +323,8 @@ label:hover {
   #ok{
     font-family: "Exo";
   } */
-.OK .container{
-  margin-top: 10%;
+ .container{
+  margin-top: 30px;
   width: 70%;
   border-radius: 1%;
   border: 6px solid #981D28;

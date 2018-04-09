@@ -2,58 +2,59 @@
 <div class=" container" *ngIf="showSummary">
 <h2 style="text-align: center" *ngIf="showSummary && response.customerType === 'Private'"><b>Customer: </b>{{response.firstName}} {{response.lastName}}</h2>
 <h2 style="text-align: center" *ngIf="showSummary && response.customerType === 'Business'"><b>Customer: </b>{{response.companyName}} {{response.companyCode}}</h2>
+  <h3 style="text-align: center"><b>Application status: </b>{{response.applicationStatus}}</h3>
   <div  id="summary" class="col-md-offset-4  container" style="margin-bottom: 20px">
  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>CUSTOMER TYPE :</b></div>
+   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>CUSTOMER TYPE </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.customerType}}</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div  class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ASSET TYPE : </b></div>
+  <div  class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ASSET TYPE </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.assetType}}</div>
 </div>
 <!--a-->
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>BRAND : </b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>BRAND </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.brand}}</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>MODEL : </b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>MODEL </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.model}}</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>YEAR : </b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>YEAR </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.year}}</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ENGINE POWER : </b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ENGINE POWER </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.enginePower}} kW</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ASSET PRICE : </b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ASSET PRICE </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv"> {{response.assetPrice}} €</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ADVANCE PAYMENT PERCENTAGE :</b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ADVANCE PAYMENT PERCENTAGE </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.advancePaymentPercentage}} %</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ADVANCE PAYMENT AMOUNT :</b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>ADVANCE PAYMENT AMOUNT </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.advancePaymentAmount}} €</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>LEASE PERIOD :</b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>LEASE PERIOD </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.leasePeriod}}</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>MARGIN :</b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>MARGIN </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.margin}} %</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>CONTRACT FEE :</b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>CONTRACT FEE </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.contractFee}} €</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>PAYMENT DATE :</b></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>PAYMENT DAY </b></div>
   <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.paymentDate}}</div>
 </div>
   </div>
@@ -62,20 +63,15 @@
 </div>
 
 
-  <div style="text-align: center" *ngIf="response.applicationStatus == 'pending'">
-    <button id="approve" class="btn btn-lg btn-primary" type="submit" (click)="approveLease()">APPROVE</button>
-    <button id="deny" class="btn btn-lg btn-primary" type="submit" (click)="declineLease()">DECLINE</button>
-  </div>
-
 </div>
 
   <div style="text-align: center">
-    <button id="schedule_div" *ngIf="!isScheduleError && response.applicationStatus == 'approved'" style="background-color: #550c27" type="button" class="btn btn-lg btn-primary" (click)="onCalendarClick()" data-toggle="collapse" data-target="#calendar_div">{{buttonText}}</button>
+    <button id="schedule_div" *ngIf="!isScheduleError && (response.applicationStatus == 'pending' || response.applicationStatus == 'approved')" style="background-color: #550c27" type="button" class="btn btn-lg btn-primary" (click)="onCalendarClick()" data-toggle="collapse" data-target="#calendar_div">{{buttonText}}</button>
   </div>
 
 <!--<h3 *ngIf="!isScheduleError && response.applicationStatus == 'approved'" >Payment schedule :</h3>-->
 
-<div id="calendar_div" class="collapse pre-scrollable" *ngIf=" !isScheduleError && response.applicationStatus == 'approved'">
+<div id="calendar_div" class="collapse pre-scrollable" *ngIf=" !isScheduleError && (response.applicationStatus == 'pending' || response.applicationStatus == 'approved')">
 
   <table class="table table-dark">
     <thead>
@@ -104,7 +100,12 @@
   </table>
 </div>
 
+  <div style="text-align: center" *ngIf="response.applicationStatus == 'pending'">
+    <button id="approve" class="btn btn-lg btn-primary" type="submit" (click)="approveLease()">APPROVE</button>
+    <button id="deny" class="btn btn-lg btn-primary" type="submit" (click)="declineLease()">DECLINE</button>
+  </div>
+
 <div class="back">
-  <button style="background-color: #550c27" class="btn btn-lg btn-primary" routerLink='/leasingOfficer'>BACK</button>
+  <button style=" background-color: #550c27" class="btn btn-lg btn-primary" routerLink='/leasingOfficer'>BACK</button>
 </div>
 </div>
