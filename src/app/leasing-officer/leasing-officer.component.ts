@@ -54,7 +54,12 @@ export class LeasingOfficerComponent implements OnInit {
   approvedLeases() {
     this.leaseService.getAllApprovedLeases()
       .then(data => {
+        // this.listOfLeases = [];
+        // for (i = data.length - 1 ; i > -1 ; i--) {
+        //   this.listOfLeases.push(data[i]);
+        // }
         this.listOfLeases = data;
+        this.listOfLeases.reverse();
         this.globals.status = 'approved';
         this.guard.renewIfSessionExpired();
       }, (error) => {
@@ -67,6 +72,7 @@ export class LeasingOfficerComponent implements OnInit {
     this.leaseService.getAllDeclinedLeases()
       .then(data => {
         this.listOfLeases = data;
+        this.listOfLeases.reverse();
         this.globals.status = 'declined';
         this.guard.renewIfSessionExpired();
       }, (error) => {
