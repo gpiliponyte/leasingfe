@@ -18,10 +18,13 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
   -webkit-transition: .2s;
   transition: opacity .2s;
 }
-
+option:hover{
+  background-color: #bc1436;
+}
 .slider:hover {
   opacity: 1;
 }
+
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;

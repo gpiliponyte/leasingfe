@@ -16,13 +16,21 @@
 h2{
   margin: 30px 0;
 }
-.summary {
-  position: center;
-  margin-left: 400px;
-  /*text-align: center;*/
+
+#calendar_div{
+  margin: 15px;
+}
+
+#schedule_div{
+  width: 200px;
+}
+
+button:focus{
+  outline: none !important;
 }
 
 button{
   border: 0px;
+  display: inline;
 }
 
