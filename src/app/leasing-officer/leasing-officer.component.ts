@@ -24,6 +24,7 @@ export class LeasingOfficerComponent implements OnInit {
               private guard: AuthGuard) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     if (this.globals.status === 'pending') {
       this.pendingLeases();
     }

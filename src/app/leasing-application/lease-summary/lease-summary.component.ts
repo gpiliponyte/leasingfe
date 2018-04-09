@@ -16,6 +16,7 @@ export class LeaseSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
   goBackToForm1() {

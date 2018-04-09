@@ -20,6 +20,8 @@ export class LeasingApplicationComponent implements OnInit {
   constructor(public vehicleService: VehicleService, public leaseService: LeaseService, public modalService: BsModalService) { }
 
   ngOnInit() {
+    
+    window.scrollTo(0, 0);
   }
 
   onGoToSummary() {

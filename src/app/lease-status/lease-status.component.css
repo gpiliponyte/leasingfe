@@ -6,14 +6,23 @@ h3{
 }
 
 #summary_div{
-  margin: 30px 0;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  
+  /* margin-left: 6%; */
+  /* margin: 30px 0; */
 }
 #calendar_div{
+  padding-left: 0%;
   margin-top: 20px;
 }
 
 .first{
-background-color: #DEEAF1;
+/* background-color: #DEEAF1; */
+/* background-color: rgb(245, 239, 239); */
+background-color: rgb(235, 222, 222);
 padding: 0%;
 padding-top: 0.5%;
 padding-bottom: 0.5%;
@@ -28,7 +37,7 @@ padding-bottom: 0.5%;
 }
 
 .btn{
-  background-color: #9C5234;
+  background-color: #550C27;
   color: white;
   width: 100%;
   font-family: 'Exo';
@@ -53,9 +62,7 @@ form div{
   padding: 0%;
   margin-left: 2%;
 }
-.allForm{
-  padding-right: 0%;
-}
+
 
 input,select{
   font-family: 'Roboto';

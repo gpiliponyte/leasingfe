@@ -11,6 +11,7 @@ export class ConfirmationPageComponent implements OnInit {
   constructor(public leaseService: LeaseService) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
 

@@ -76,7 +76,7 @@ input:focus, button:focus{
   
   height: 55px;
   margin-bottom:10px;
-  background-color: #9C5234;
+  background-color: #550C27;
 }
 
 /*
@@ -197,9 +197,7 @@ input:focus, button:focus{
 }
 
 .btn:active {
-  /* background-color: #550c27; */
-  /* background-color: #9C5234; */
-  background-color: #8F483A;
+  background-color: #550c27;
 }
 .error {
   color: #bc1436;
