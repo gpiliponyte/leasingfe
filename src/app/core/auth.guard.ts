@@ -59,7 +59,7 @@ export class AuthGuard implements CanActivate {
         const date = this.getTokenExpirationDate(this.token.getToken());
         if (((date.valueOf() - new Date().valueOf()) / 1000) < 300) {
           this.token.signOut();
-          this.authService.refreshToken('green').subscribe(
+          this.authService.refreshToken('admin').subscribe(
             data => {
               this.token.saveToken(data.token);
             }, error2 => {
