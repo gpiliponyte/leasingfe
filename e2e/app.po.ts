@@ -1,5 +1,5 @@
-import { browser, by, element } from 'protractor';
-import { protractor } from 'protractor/built/ptor';
+import {browser, by, element} from 'protractor';
+import {protractor} from 'protractor/built/ptor';
 
 export class AppPage {
   navigateTo() {
@@ -9,25 +9,31 @@ export class AppPage {
   getParagraphText() {
     return element(by.css('app-root h1')).getText();
   }
-  getElementsWithTagFormGroupAndInput(){
+
+  getElementsWithTagFormGroupAndInput() {
     return element.all(by.css('div.form-group input'));
   }
+
   //Form methods
   //getFormCustomerTypeValue(){};
   //getFormAssetTypeValue(){};
-  getFormBrandValue(){
+  getFormBrandValue() {
     return element(by.id('brand')).getAttribute('ng-reflect-model');
   };
-  getFormModelValue(){
+
+  getFormModelValue() {
     return element(by.id('model')).getAttribute('ng-reflect-model');
   };
-  getFormYearValue(){
+
+  getFormYearValue() {
     return element(by.id('year')).getAttribute('ng-reflect-model');
   };
+
   //getFormEnginePowerValue(){};
-  getFormErrorElement(){
+  getFormErrorElement() {
     return element(by.css('div span'));
   }
+
   //getFormAssetPriceValue(){};
   //getFormAdvancePaymentPercentageValue(){};
   //getFormAdvancePaymentAmountValue(){};
@@ -35,109 +41,137 @@ export class AppPage {
   //getFormMarginValue(){};
   //getFormContractFeeValue(){};
   //getFormPaymentDateValue(){};
-  chooseCustomerType(customerType){
-    if(customerType=='Private'){
+  chooseCustomerType(customerType) {
+    if (customerType == 'Private') {
       this.getElementsWithTagFormGroupAndInput().get(0).click();
     }
-    else if(customerType=='Business'){
+    else if (customerType == 'Business') {
       this.getElementsWithTagFormGroupAndInput().get(1).click();
     }
   }
-  chooseAssetType(assetType){
-    if(assetType=='New'){
+
+  chooseAssetType(assetType) {
+    if (assetType == 'New') {
       this.getElementsWithTagFormGroupAndInput().get(2).click();
     }
-    else if(assetType=='Used'){
+    else if (assetType == 'Used') {
       this.getElementsWithTagFormGroupAndInput().get(3).click();
     }
   }
-  chooseBrand(brand){
+
+  chooseBrand(brand) {
     element(by.id('brand')).$(brand).click();
   }
-  chooseModel(model){
+
+  chooseModel(model) {
     element(by.id('model')).$(model).click();
   }
-  chooseYear(year){
+
+  chooseYear(year) {
     var select = element(by.id('year'));
     select.$(year).click();
   }
-  enterEnginePower(enginePower){
+
+  enterEnginePower(enginePower) {
     element(by.id('enginePower')).sendKeys(enginePower);
   }
-  enterAssetPrice(assetPrice){
+
+  enterAssetPrice(assetPrice) {
     element(by.id('assetPrice')).sendKeys(assetPrice);
   }
-  enterAdvancePaymentPercentage(advancePaymentPercentage){
+
+  enterAdvancePaymentPercentage(advancePaymentPercentage) {
     element(by.id('advancePaymentPercentage')).clear();
     element(by.id('advancePaymentPercentage')).sendKeys(advancePaymentPercentage);
   }
-  changeLeasePeriod(leasePeriod){
+
+  changeLeasePeriod(leasePeriod) {
     element(by.css('[ng-reflect-name=leasePeriod]')).getSize()
       .then((sizeObj) => {
-        browser.actions().mouseMove(element(by.css('[ng-reflect-name=leasePeriod]')),{x:(sizeObj.width*leasePeriod),y:0}).click().perform();
-    });
-  
+        browser.actions().mouseMove(element(by.css('[ng-reflect-name=leasePeriod]')), {
+          x: (sizeObj.width * leasePeriod),
+          y: 0
+        }).click().perform();
+      });
+
   }
-  enterMargin(margin){
+
+  enterMargin(margin) {
     element(by.id('margin')).clear();
     element(by.id('margin')).sendKeys(margin);
   }
-  choosePaymentDate(paymentDate){
-    if(paymentDate==15){
+
+  choosePaymentDate(paymentDate) {
+    if (paymentDate == 15) {
       this.getElementsWithTagFormGroupAndInput().get(12).click();
     }
-    else if(paymentDate==30){
+    else if (paymentDate == 30) {
       this.getElementsWithTagFormGroupAndInput().get(13).click();
     }
   }
-  clickNext(){
+
+  clickNext() {
     element(by.css('button[name]')).click();
   }
-  getFormNextButton(){
+
+  getFormNextButton() {
     return element(by.css('button[name]'));
   }
 
-  //Summary methods  
-  getSummaryConfimationText(){
+  //Summary methods
+  getSummaryConfimationText() {
     return element(by.css('h3:first-child :first-child')).getText();
   }
-  getSummaryCustomerTypeValue(){
+
+  getSummaryCustomerTypeValue() {
     return element.all(by.css('div p')).get(0).getText();
   }
-  getSummaryAssetTypeValue(){
+
+  getSummaryAssetTypeValue() {
     return element.all(by.css('div p')).get(1).getText();
   }
-  getSummaryBrandValue(){
+
+  getSummaryBrandValue() {
     return element.all(by.css('div p')).get(2).getText();
   }
-  getSummaryModelValue(){
+
+  getSummaryModelValue() {
     return element.all(by.css('div p')).get(3).getText();
   }
-  getSummaryYearValue(){
+
+  getSummaryYearValue() {
     return element.all(by.css('div p')).get(4).getText();
   }
-  getSummaryEnginePowerValue(){
+
+  getSummaryEnginePowerValue() {
     return element.all(by.css('div p')).get(5).getText();
   }
-  getSummaryAssetPriceValue(){
+
+  getSummaryAssetPriceValue() {
     return element.all(by.css('div p')).get(6).getText();
   }
-  getSummaryAdvancePaymentPercentageValue(){
+
+  getSummaryAdvancePaymentPercentageValue() {
     return element.all(by.css('div p')).get(7).getText();
   }
-  getSummaryAdvancePaymentAmountValue(){
+
+  getSummaryAdvancePaymentAmountValue() {
     return element.all(by.css('div p')).get(8).getText();
   }
-  getSummaryLeasePeriodValue(){
+
+  getSummaryLeasePeriodValue() {
     return element.all(by.css('div p')).get(9).getText();
   }
-  getSummaryMarginValue(){
+
+  getSummaryMarginValue() {
     return element.all(by.css('div p')).get(10).getText();
   }
-  getSummaryContractFeeValue(){
+
+  getSummaryContractFeeValue() {
     return element.all(by.css('div p')).get(11).getText();
   }
-  getSummaryPaymentDateValue(){
+
+  getSummaryPaymentDateValue() {
     return element.all(by.css('div p')).get(12).getText();
   }
 }

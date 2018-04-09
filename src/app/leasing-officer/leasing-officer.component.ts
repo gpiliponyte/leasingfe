@@ -46,8 +46,6 @@ export class LeasingOfficerComponent implements OnInit {
         this.globals.status = 'pending';
         this.guard.renewIfSessionExpired();
       }, (error) => {
-        console.log('get all pending error');
-        console.log(error);
       });
     this.isPendingActive = true;
     this.isDeclinedActive = false;
@@ -60,8 +58,6 @@ export class LeasingOfficerComponent implements OnInit {
         this.globals.status = 'approved';
         this.guard.renewIfSessionExpired();
       }, (error) => {
-        console.log('get all approved error');
-        console.log(error);
       });
     this.isPendingActive = false;
     this.isDeclinedActive = false;

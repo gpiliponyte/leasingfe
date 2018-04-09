@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(['login']);
         return false;
       }
-      console.log(this.isTokenExpired(this.token.getToken()));
       return true;
     }
     // not logged in so redirect to login page with the return url
@@ -55,30 +54,21 @@ export class AuthGuard implements CanActivate {
   }
 
   renewIfSessionExpired() {
-    console.log('checking if needed to renew');
     if (this.token.getToken() != null) {
       if (!this.isTokenExpired(this.token.getToken())) {
         const date = this.getTokenExpirationDate(this.token.getToken());
         if (((date.valueOf() - new Date().valueOf()) / 1000) < 300) {
-          console.log('about to expire');
           this.token.signOut();
           this.authService.refreshToken('green').subscribe(
             data => {
               this.token.saveToken(data.token);
             }, error2 => {
-              console.log('refresh error');
-              console.log(error2);
             }
           );
-        }
-        if (this.token.getToken() != null) {
-          console.log((date.valueOf() - new Date().valueOf()) / 1000);
-          console.log(this.getTokenExpirationDate(this.token.getToken()));
         }
       } else {
         this.token.signOut();
         this.router.navigate(['login']);
-        console.log('i am expired, sorry');
       }
     }
   }

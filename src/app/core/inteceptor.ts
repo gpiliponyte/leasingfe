@@ -28,7 +28,6 @@ export class Interceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
     let authReq = req;
-    console.log('intercepted');
     if (this.token.getToken() != null) {
       if (!this.guard.isTokenExpired(this.token.getToken())) {
         const date = this.guard.getTokenExpirationDate(this.token.getToken());
@@ -43,14 +42,9 @@ export class Interceptor implements HttpInterceptor {
         //     }
         //   );
         // }
-        if (this.token.getToken() != null) {
-          console.log((date.valueOf() - new Date().valueOf()) / 1000);
-          console.log(this.guard.getTokenExpirationDate(this.token.getToken()));
-        }
       } else {
         this.token.signOut();
         this.router.navigate(['login']);
-        console.log('i am expired, sorry');
       }
     }
     if (this.token.getToken() != null) {
@@ -59,9 +53,6 @@ export class Interceptor implements HttpInterceptor {
     return next.handle(authReq).do(
       (err: any) => {
         if (err instanceof HttpErrorResponse) {
-          console.log('erroras');
-          console.log(err);
-          console.log('req url :: ' + req.url);
           if (err.status === 401) {
             this.router.navigate(['login']);
           }
