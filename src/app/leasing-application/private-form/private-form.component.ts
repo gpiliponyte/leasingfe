@@ -26,7 +26,7 @@ export class PrivateFormComponent implements OnInit {
   constructor(public vehicleService: VehicleService, public leaseService: LeaseService) { }
 
   ngOnInit() {
-
+    window.scrollTo(0, 0);
     this.privateForm = new FormGroup({'firstName': new FormControl(null, [Validators.required, Validators.pattern(this.nameRegex)]),
       'lastName': new FormControl(null, [Validators.required, Validators.pattern(this.nameRegex)]),
       'personalID': new FormControl(null, [Validators.required, Validators.pattern(this.personalIDRegex)]),

@@ -30,6 +30,7 @@ import {DeclineModuleComponent} from './leasing-officer/decline-module/decline-m
 import {Globals} from './services/globals';
 import {Interceptor} from './core/inteceptor';
 import {ScheduleService} from './services/schedule.service';
+import {HomeComponent} from './home/home.component';
 
 @NgModule(<NgModule>{
   declarations: [
@@ -47,7 +48,8 @@ import {ScheduleService} from './services/schedule.service';
     LoginComponent,
     LeasingSummaryComponent,
     ApproveModuleComponent,
-    DeclineModuleComponent
+    DeclineModuleComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

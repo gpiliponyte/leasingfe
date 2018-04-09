@@ -1,11 +1,11 @@
-<form class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div  class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="padding:0%;">
+<form class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:3%;">
+  <div  class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="background-color:#981D28; text-align:center; margin-bottom:2%;">
   <label class="id">Your application ID : </label>
 </div>
-  <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12">
+  <div class="form-group col-lg-3 col-md-3 col-sm-12 col-xs-12" >
     <input type="text" [(ngModel)]="leaseID" name="leaseID" class="form-control">
   </div>
-  <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+  <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" >
   <button type="submit" (click)="onSearchClick()" class="btn btn-default">Search</button>
 </div>
 </form>
@@ -14,16 +14,17 @@
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allForm" *ngIf="response!=null && infoIsShown && !isError">
 
-  <h2 *ngIf="response.applicationStatus == null">Status: <b>Application status was not found</b></h2>
-  <h2 *ngIf="response.applicationStatus != null && response.applicationStatus == 'approved'">Status: <b>Application has been approved</b></h2>
-  <h2 *ngIf="response.applicationStatus != 'approved' && response.applicationStatus != 'pending'">Status: <b>Application has been declined</b></h2>
-  <h2 *ngIf="response.applicationStatus == 'pending'">Status: <b>Application is being processed</b></h2>
+  <h3 *ngIf="response.applicationStatus == null">Status: <b>Application status was not found</b></h3>
+  <h3 *ngIf="response.applicationStatus != null && response.applicationStatus == 'approved'">Status: <b>Application has been approved</b></h3>
+  <h3 *ngIf="response.applicationStatus != 'approved' && response.applicationStatus != 'pending'">Status: <b>Application has been declined</b></h3>
+  <h3 *ngIf="response.applicationStatus == 'pending'">Status: <b>Application is being processed</b></h3>
 
-<h4 *ngIf="response.customerType == 'Private'"><b>Customer: </b>{{response.firstName}} {{response.lastName}}</h4>
-  <h4 *ngIf="response.customerType == 'Business'"><b>Customer: </b>{{response.companyName}} {{response.companyCode}}</h4>
+<h3 *ngIf="response.customerType == 'Private'">Customer: <b>{{response.firstName}} {{response.lastName}}</b></h3>
+  <h3 *ngIf="response.customerType == 'Business'">Customer:<b>{{response.companyName}} {{response.companyCode}}</b></h3>
 
-  <div id="summary_div" class="container">
-
+  <div id="summary_div" class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+<div class="container col-lg-10 col-md-10 col-sm-10 col-xs-10" >
   <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">CUSTOMER TYPE</div>
     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.customerType}}</div>
@@ -79,12 +80,15 @@
     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.paymentDate}}</div>
   </div>
   </div>
+  </div>
 
-  <h3 *ngIf="response.applicationStatus == 'approved'" >Payment schedule :</h3>
+  
 
-  <div id="calendar_div" class="container pre-scrollable" *ngIf="response.applicationStatus == 'approved'">
-
-    <table class="table table-dark">
+  <div id="calendar_div" class="container pre-scrollable col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="response.applicationStatus == 'approved'">
+      <h3 *ngIf="response.applicationStatus == 'approved'" >Payment schedule :</h3>  
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+    <table class="table table-dark ">
       <thead>
       <tr>
         <th scope="col">Date</th>
@@ -110,11 +114,12 @@
 
     </table>
   </div>
+  </div>
 
 </div>
 </div>
 
-<div class="status_div col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="infoIsShown && isError">
+<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="infoIsShown && isError" style="padding-left:50px;">
   <h3>Application not found.</h3>
 </div>
 

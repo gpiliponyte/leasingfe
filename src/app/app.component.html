@@ -1,38 +1,46 @@
 <!--The content below is only a placeholder and can be replaced.-->
-
-<div *ngIf="router.url!='/login'" class="logo" style="background-color: 2274A5;" >
-  <!--<div class="b">-->
-  <!--<button *ngIf="router.url === '/leasingOfficer' && showLogout" id="mgt" class="btn btn-lg btn-primary" type="submit" (click)="logout()">Logout</button>-->
-  <!--</div>-->
-    <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a>
-</div>
-
-<nav  class="navbar navbar-default" *ngIf="router.url.split('/leasingOfficer').length==1 && router.url!='/login' && showNavbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a style="color: #4A8DB5;" class="navbar-brand" href="#">Vehicle Leasing</a>
-    </div>
-
-    <ul class="nav navbar-nav">
-      <!--<li routerLinkActive="active"><a routerLink="home" routerLinkActive="active">Home</a></li>-->
-      <li routerLinkActive="active"><a routerLink="leaseForm" >Lease Form</a></li>
-      <li routerLinkActive="active"><a routerLink="leaseStatus">Search Lease</a></li>
-    </ul>
-    <!--<ul class="nav navbar-nav navbar-right">-->
-    <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-    <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-    <!--</ul>-->
-  </div>
-</nav>
-
-
-
-<!-- <div>
-    <h1>
-        Vehicle Leasing
-    </h1>
+<div *ngIf="router.url!='/login'" style="overflow: hidden; background-color: #F8F8F8;">
+  <div class="paveikslelis" style="height:95px;  ">
+    <!-- <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a> -->
+    <img  src=".\assets\car2.jpg">
+   </div>
+   <div  class="logo2">
+     <!-- <div class="back"></div> -->
+      <!-- <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a> -->
+      <a  routerLink="home"> <img *ngIf="router.url!='/home'" src=".\assets\domologo2.png"></a>
+     </div>
+  <!-- <div class="logo" style="background-color: 2274A5;">
+   <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a>
   </div> -->
-  <!--<app-leasing-form ></app-leasing-form>-->
-
-<!--<app-leasing-application></app-leasing-application>-->
+  <nav class="navbar navbar-default" *ngIf="router.url.split('/leasingOfficer').length==1 && router.url!='/login' && showNavbar" >
+    <div class="container-fluid" >
+      <div class="navbar-header">
+          <!-- <a  class="logo" href="#"> <img  src=".\assets\swedbanko logo.png"></a> -->
+        <!-- <div class="logo"> -->
+            <!-- <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a> -->
+            <!-- <a  href="#"> <img  src=".\assets\logonew.png"></a>
+           </div> -->
+           <a style="color: #4b0808;" class="navbar-brand" routerLink="home">Home</a>
+      </div>
+    
+      <ul class="nav navbar-nav">
+        <!--<li routerLinkActive="active"><a routerLink="home" routerLinkActive="active">Home</a></li>-->
+        <li routerLinkActive="active"><a routerLink="leaseForm" >Lease Form</a></li>
+        <li routerLinkActive="active"><a routerLink="leaseStatus">Search Lease</a></li>
+      </ul>
+      <!--<ul class="nav navbar-nav navbar-right">-->
+      <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+      <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+      <!--</ul>-->
+    </div>
+  </nav>
+  </div>
   <router-outlet></router-outlet>
+<!-- <footer>
+  <div style="text-align:center; color:white; width:auto; font-weight: normal;">
+    <h6 style="text-align:center;">Green team</h6>
+    <h6 style="text-align:right;">Vilnius, Lithuania, 2018</h6> -->
+      <!-- <div style="text-align:right; color:white; width:auto;">Vilnius, Lithuania, 2018</div> -->
+  <!-- </div>
+  
+</footer> -->

@@ -26,7 +26,7 @@ export class BusinessFormComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    window.scrollTo(0, 0);
     this.businessCustomerForm = new FormGroup({
       'companyName': new FormControl(null, [Validators.required,
         Validators.pattern(this.lithuanianRegex)]),

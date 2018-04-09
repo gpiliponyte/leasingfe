@@ -1,13 +1,14 @@
 <!-- <div *ngIf="showElement"> -->
-  <div  *ngIf="showElement" class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+  <div  *ngIf="showElement" class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%; "> 
     <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
   <form class=" container col-lg-10 col-md-8 col-sm-10 col-xs-10 form-horizontal " [formGroup]="leaseForm">
-      <div class="form-group notBorder type">
-        <label for="customerType" class=" typetext col-lg-6 col-md-6 col-sm-12 col-xs-12">CUSTOMER TYPE</label>
+    <h2>Vehicle leasing form</h2>  
+    <div class="form-group notBorder type">
+        <label for="customerType" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">CUSTOMER TYPE</label>
 
 <!-- class="label label-warning" -->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <label class="radioBlock" *ngFor="let customerType of customerTypes">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <label class="radioInline" *ngFor="let customerType of customerTypes">
             <input
               (change) = "onCustomerTypeChange()"
               formControlName="customerType"
@@ -23,9 +24,9 @@
          >Required field.</span>
       </div>
       <div class="form-group notBorder">
-        <label for="assetType" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ASSET TYPE</label>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <label class="radioBlock" *ngFor="let assetType of assetTypes">
+        <label for="assetType" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">ASSET TYPE</label>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <label class="radioInline" *ngFor="let assetType of assetTypes">
             <input
               formControlName="assetType"
               type="radio"
@@ -39,17 +40,16 @@
               class="label label-danger">Required field.</span>
       </div>
       <div class="form-group dropDown">
-        <label for="brand" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">BRAND</label>
+        <label for="brand" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">BRAND</label>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <select [formControlName]="'brand'" [(ngModel)]="selectedBrand" (ngModelChange)="getCarModelsByBrand($event)"
                   id="brand" name="brand"
                   class="select form-control" data-style="btn-primary">
-            <option selected="" value="" selected disabled hidden >labas</option>
             <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
           </select>
         </div>
-        <span class="col-lg-10 col-md-10 col-sm-12 col-xs-12"
+        <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
       *ngIf="leaseForm.get('brand').invalid && showErrorMessages"
             class="label label-danger">Required field.</span>
         <!--  class="selectpicker" data-style="btn-primary"-->
@@ -57,9 +57,9 @@
 
 
       <div class="form-group dropDown">
-        <label for="model" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">MODEL</label>
+        <label for="model" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">MODEL</label>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <select [formControlName]="'model'" [(ngModel)]="selectedModel" id="model" name="model"
                   class="select form-control">
             <option value="" selected disabled hidden></option>
@@ -72,9 +72,9 @@
       </div>
 
       <div class="form-group dropDown">
-        <label for="year" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">YEAR</label>
+        <label for="year" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">YEAR</label>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <select [formControlName]="'year'" [(ngModel)]="selectedYear" id="year" name="year"
                   class="select form-control">
             <option value="" selected disabled hidden></option>
@@ -86,9 +86,9 @@
               class="label label-danger">Required field.</span>
       </div>
       <div class="form-group">
-        <label for="enginePower" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ENGINE POWER kW</label>
+        <label for="enginePower" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">ENGINE POWER kW</label>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <input
             formControlName="enginePower"
             id="enginePower"
@@ -102,9 +102,9 @@
 
 
       <div class="form-group">
-        <label for="assetPrice" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ASSET PRICE €</label>
+        <label for="assetPrice" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">ASSET PRICE €</label>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <input
             formControlName="assetPrice"
             id="assetPrice"
@@ -121,8 +121,8 @@
               class="label label-danger">Lowest asset price for business customers is 10000. Should not exceed 1000000.</span>
       </div>
       <div class="form-group">
-        <label for="advancePaymentPercentage" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ADVANCE PAYMENT PERCENTAGE</label>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label for="advancePaymentPercentage" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">ADVANCE PAYMENT PERCENTAGE</label>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <input
             (change)="keyUpAdvancePaymentAmount()"
             formControlName="advancePaymentPercentage"
@@ -136,8 +136,8 @@
         class="label label-danger">Enter number between 10 and 30.</span>
       </div>
       <div class="form-group">
-        <label for="advancePaymentAmount" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ADVANCE PAYMENT AMOUNT €</label>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label for="advancePaymentAmount" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">ADVANCE PAYMENT AMOUNT €</label>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <input
             (change)="keyUpAdvancePaymentPercentage()"
             formControlName="advancePaymentAmount"
@@ -152,21 +152,21 @@
               class="label label-danger">Only numeric values. Required field.</span>
       </div>
       <div class="form-group">
-        <label  class="col-lg-6 col-md-6 col-sm-12 col-xs-12">LEASE PERIOD</label>
+        <label  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">LEASE PERIOD</label>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <input style="margin-top:4%"  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue  value="6">
+            <input style="margin-top:4%; border:none;"  [formControlName]="'leasePeriod'" type="range" min="6" max="84"  step="6" class="slider" #rangevalue  value="6">
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <input style="background-color: white; margin-left:2%; margin-top:2%;" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">
+            <input style="background-color: white; margin-left:2%; margin-top:2%; border:none; box-shadow:none;" class="form-control" type="text" readonly value="{{ rangevalue.value }} months">
           </div>
         </div>
 
       </div>
 
       <div class="form-group">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <label for="margin" class="">MARGIN %</label>
             <!-- <span data-toggle="tooltip" data-placement="right" title="Hooray!"> -->
               <img style="width:20px; color: red;" data-toggle="tooltip" data-placement="right" title="Only for preliminary calculation!" src=".\assets\information.png">
@@ -176,7 +176,7 @@
         <!-- <label for="margin" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">MARGIN %
         <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="Hooray!"><img src=".\assets\information.png"></span>
       </label> -->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <input
             formControlName="margin"
             id="margin"
@@ -188,8 +188,8 @@
               class="label label-danger">Enter number between 1 and 25.</span>
       </div>
       <div class="form-group">
-        <label for="contractFee" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">CONTRACT FEE €</label>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label for="contractFee" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">CONTRACT FEE €</label>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <input
             formControlName="contractFee"
             readonly
@@ -199,8 +199,8 @@
         </div>
       </div>
       <div class="form-group notBorder">
-        <label for="paymentDate" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">PAYMENT DATE</label>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label for="paymentDate" class="col-lg-12 col-md-6 col-sm-12 col-xs-12">PAYMENT DATE</label>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <label class="radioInline" *ngFor="let paymentDate of paymentDates">
             <input
               formControlName="paymentDate"
@@ -231,11 +231,13 @@
   <div class="col-lg-0 col-md-2 col-sm-1 col-xs-1" ></div>
 </div>
 
-<div *ngIf="showElement" class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="margin-top: 1%; ">
+<div *ngIf="showElement" class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%; ">
   <div class="col-lg-1 col-md-2 col-sm-1 col-xs-1"></div>
   <div class="col-lg-9 col-md-8 col-sm-10 col-xs-10">
-    <label style="font:18px 'Exo' ; margin-bottom:1%; COLOR:#F58321;">Preliminary leasing calculation</label>
-<button style="width:100%;"
+    <div style=" background-color:#981D28;width:100%; text-align:center;height:45px; padding-top:10px;">
+        <label style="font:18px 'Exo' ; margin-bottom:1%; COLOR:white;">Preliminary leasing calculation</label>
+    </div>
+    <button style="width:100%; margin-top:10px; "
   [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid"
   (click)="calculatePreliminaryLeasingAmount(); showBorder()"
   value="kazkas"
@@ -244,7 +246,7 @@
 <!--  *ngIf="showCalculation"  -->
 <!-- <div  class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" > -->
   <div *ngIf="showBorderLine" class="calculateContainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <label *ngIf="showCalculation" for="calculatorFinancingAmount" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">Financing amount:</label>
+  <label *ngIf="showCalculation" for="calculatorFinancingAmount" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">FINANCING AMOUNT</label>
   <input
   *ngIf="showCalculation"
   type="text"
@@ -252,19 +254,20 @@
       (ngModel)="financingAmount"
       name="financingAmount"
       id="calculatorFinancingAmount"
-      class="calculator-control col-lg-6 col-md-6 col-sm-12 col-xs-12"
+      class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
       value="{{financingAmount}}"
     >
-
-  <label *ngIf="showCalculation" for="calculatorContractFee" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">Contract fee:</label>
+    <label class="col-lg-1 col-md-1 col-sm-1 col-xs-2" >€</label>
+  <label *ngIf="showCalculation" for="calculatorContractFee" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">CONTACT FEE</label>
   <input *ngIf="showCalculation"
   type="text"
   readonly
       id="calculatorContractFee"
-      class="calculator-control col-lg-6 col-md-6 col-sm-12 col-xs-12"
+      class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
       value="{{leaseForm.get('contractFee').value}}"
       >
-  <label *ngIf="showCalculation" for="calculatorTotalInterest" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">Total interest:</label>
+      <label class="col-lg-1 col-md-1 col-sm-1 col-xs-2" >€</label>
+  <label *ngIf="showCalculation" for="calculatorTotalInterest" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">TOTAL INTEREST</label>
   <input
   *ngIf="showCalculation"
   type="text"
@@ -272,10 +275,11 @@
   (ngModel)="totalInterest"
   name="totalInterest"
   id="calculatorTotalInterest"
-  class="calculator-control col-lg-6 col-md-6 col-sm-12 col-xs-12"
+  class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
   value="{{totalInterest}}"
  >
-  <label *ngIf="showCalculation" for="calculatorTotalMonthlyPayment" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">Total monthly payment:</label>
+ <label class="col-lg-1 col-md-1 col-sm-1 col-xs-2" >€</label>
+  <label *ngIf="showCalculation" for="calculatorTotalMonthlyPayment" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">TOTAL MONTHLY PAYMENT</label>
   <input
   *ngIf="showCalculation"
   type="text"
@@ -283,18 +287,19 @@
   (ngModel)="totalMonthlyPayment"
   name="totalMonthlyPayment"
   id="calculatorTotalMonthlyPayment"
-  class="calculator-control col-lg-6 col-md-6 col-sm-12 col-xs-12"
+  class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
   value="{{totalMonthlyPayment}}"
  >
+ <label class="col-lg-1 col-md-1 col-sm-1 col-xs-2" >€</label>
 </div>
-    <button style="width:100%;"
+    <button style="width:100%; margin-top:10px;"
             [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid || !leaseForm.get('paymentDate').valid"
             (click)="getPreliminarySchedule(); showScheduleBorder()"
             value="kazkas"
             class="btn btn-dark">Preliminary payment schedule
     </button>
     <div *ngIf="showScheduleBorderLine" class=" pre-scrollable calculateContainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <table *ngIf="showPreliminarySchedule"  class="col-lg-7 col-md-7 col-sm-12 col-xs-12 table table-dark">
+      <table *ngIf="showPreliminarySchedule"  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table table-dark">
         <thead>
         <tr>
           <th scope="col">Date</th>
@@ -331,7 +336,7 @@
       </table>
 
 </div>
-
+</div>
 <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
 </div>
 <!-- </div> -->

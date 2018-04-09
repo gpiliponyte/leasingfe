@@ -1,24 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 h3{
-  color: #F58321;
+  font-family: 'Exo';
+  color:#981D28;
 }
+
 #summary_div{
-  margin: 30px 0;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  
+  /* margin-left: 6%; */
+  /* margin: 30px 0; */
 }
 #calendar_div{
+  padding-left: 0%;
   margin-top: 20px;
-}
-.status_div{
-  display: block;
-  color:white;
-  background-color: #E06822;
-  /* margin-left: 5%; */
-  /* background-color: tomato; */
 }
 
 .first{
-background-color: #DEEAF1;
+/* background-color: #DEEAF1; */
+/* background-color: rgb(245, 239, 239); */
+background-color: rgb(235, 222, 222);
 padding: 0%;
 padding-top: 0.5%;
 padding-bottom: 0.5%;
@@ -33,34 +37,56 @@ padding-bottom: 0.5%;
 }
 
 .btn{
-  background-color: #4A8DB5;
+  background-color: #550C27;
   color: white;
   width: 100%;
   font-family: 'Exo';
   margin-bottom: 4%;
 }
-
+button:focus{
+  outline: none;
+  border: none;
+}
 .id{
   font-family: 'EXO';
   font-size: 18px;
-  color: #F58321;
+  color: white;
   font-weight: normal;
-  margin-top: 2%;
-  float:left;
-  margin-left:0%;
+  padding-top: 3px;
+  /* margin-top: 2%; */
+  /* float:left; */
+  /* margin-left:0%; */
 
 }
 form div{
   padding: 0%;
-  padding-right: 2%;
+  margin-left: 2%;
 }
-.allForm{
-  padding-right: 0%;
+
+
+input,select{
+  font-family: 'Roboto';
+  border: 1px solid #981D28;
+  /* border: none;
+  box-shadow: none; */
+  /* padding: 0%; */
+  border-radius: 0%;
+
+  /* height: 110%; */
+
+  /* font-size: 14px; */
+}
+
+.form-control:focus {
+  
+  border: 1px solid rgb(158, 54, 62);
+  -webkit-box-shadow: 0px 0px 10px rgb(158, 54, 62);
+  box-shadow: #981D28;
 }
 
 b{
-  font-family: 'Exo';
-  font-size: 18px;
-  color: #F58321;
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: black;
   font-weight: normal;
 }

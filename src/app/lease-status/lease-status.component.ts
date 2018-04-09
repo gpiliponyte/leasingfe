@@ -20,6 +20,7 @@ export class LeaseStatusComponent implements OnInit {
 
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
   onSearchClick() {
