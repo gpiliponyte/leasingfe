@@ -3,20 +3,8 @@
 
 @import "~font-awesome/css/font-awesome.css";
 
-app-root{
-    position: sticky;
-    width: 100%;
-}
-#back{
-    margin: 0%;
-    margin-left: 40%;
-    width: 60%;
+
+body{
     height: 100%;
-    max-height: 200%;
-    /* visibility: hidden; */
-    /* background: linear-gradient(to bottom right, #F58321, #FFCA13); */
-    /* background-color: #F1992D; */
-    padding-left: 50%;
-    position: absolute;
-    
+    min-height:100%;
 }
