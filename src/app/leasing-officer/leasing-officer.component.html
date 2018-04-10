@@ -3,20 +3,19 @@
 <button id="button" class="btn btn-lg btn-primary" type="submit" (click)="logout()">Logout</button>
 </div>
 
-  <!-- Navigation Buttons -->
-  <div class="col-md-3">
-    <ul class="nav nav-pills nav-stacked red" id="myTabs">
-      <li [ngClass]="{'active': isPendingActive}"><a  data-toggle="pill" (click)="pendingLeases()" >Pending</a></li>
-      <li [ngClass]="{'active': isApprovedActive}"><a  data-toggle="pill" (click)="approvedLeases()" >Approved</a></li>
-      <li [ngClass]="{'active': isDeclinedActive}" id="3"><a  data-toggle="pill" (click)="declinedLeases()" >Declined</a></li>
-    </ul>
-  </div>
+<div class="col-md-3">
+  <ul class="nav nav-pills nav-stacked red" id="myTabs">
+    <li [ngClass]="{'active': isPendingActive}"><a  data-toggle="pill" (click)="pendingLeases()" >Pending</a></li>
+    <li [ngClass]="{'active': isApprovedActive}"><a  data-toggle="pill" (click)="approvedLeases()" >Approved</a></li>
+    <li [ngClass]="{'active': isDeclinedActive}" id="3"><a  data-toggle="pill" (click)="declinedLeases()" >Declined</a></li>
+  </ul>
+</div>
 
-  <!-- Content -->
-  <div class="col-md-9">
-    <div class="tab-content" >
-      <div class="tab-pane active"  >
-        <table class="table">
+<!-- Content -->
+<div class="col-md-9">
+  <div class="tab-content" >
+    <div class="tab-pane active"  >
+      <table class="table">
         <tr>
           <th>Date</th>
           <th>ID</th>
@@ -29,9 +28,7 @@
           <td routerLinkActive="active"><a (click)="getSummary(lease.uniqueId)" routerLink="/leasingOfficer/leasingSummary/{{lease.uniqueId}}">{{lease.uniqueId}}</a> </td>
           <td *ngIf="lease.customerType === 'Business'" >{{lease.companyName}} </td>
           <td *ngIf="lease.customerType === 'Private'">  {{lease.firstName }} {{lease.lastName }}</td>
-          <td *ngIf="lease.applicationStatus == 'approved'">Application has been approved</td>
-          <td *ngIf="lease.applicationStatus != 'approved' && lease.applicationStatus != 'pending'">Application has been declined</td>
-          <td *ngIf="lease.applicationStatus == 'pending'">Application is being processed</td>
+          <td>{{lease.applicationStatus}}</td>
         </tr>
 
       </table>

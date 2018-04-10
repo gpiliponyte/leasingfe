@@ -165,7 +165,8 @@
                  class="filled-in form-check-input"
                  id="checkbox"
                  [(ngModel)]="isCheckboxChecked">
-          <label for="checkbox" class="form-check-label">I accept terms and conditions</label>
+          <label for="checkbox" class="form-check-label"><a target="_blank" href="https://www.swedbank.ee/static/pdf/private/home/important/cond_general_eng_01_01_2016.pdf">I accept terms and conditions</a></label>
+</label>
         </div>
           <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="(privateForm.get('checkbox').touched || showErrorMessages) && !isCheckboxChecked"
           class="label label-danger">You must accept terms and conditions</span>

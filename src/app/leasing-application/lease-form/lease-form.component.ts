@@ -35,6 +35,7 @@ export class LeaseFormComponent implements OnInit {
   showCalculation = false;
   showBorderLine = false;
   scheduleResponse;
+  calculationResponse;
   showPreliminarySchedule = false;
   showScheduleBorderLine = false;
  
@@ -48,7 +49,7 @@ export class LeaseFormComponent implements OnInit {
   ngOnInit() {
     this.leaseForm = new FormGroup({
       'customerType': new FormControl(null, Validators.required),
-      'assetType': new FormControl(null),
+      'assetType': new FormControl(null, Validators.required),
       'brand': new FormControl(null, Validators.required),
       'model': new FormControl(null, Validators.required),
       'year': new FormControl(null, Validators.required),
@@ -194,22 +195,22 @@ export class LeaseFormComponent implements OnInit {
         this.showPreliminarySchedule = false;
     });
   }
-//* (1 + (parseFloat(this.leaseForm.get('margin').value) / 100))
+
   calculatePreliminaryLeasingAmount() {
     this.financingAmount = parseFloat(this.leaseForm.get('assetPrice').value)
       - parseFloat(this.leaseForm.get('advancePaymentAmount').value);
-    this.totalMonthlyPayment = (this.financingAmount / ((1 - (1 /
-      Math.pow((1 + ((parseFloat(this.leaseForm.get('margin').value) / 100) / 12)), (parseFloat(this.leaseForm.get('leasePeriod').value) - 1))))
-      / ((parseFloat(this.leaseForm.get('margin').value) / 100) / 12) + 1));
-    this.totalMonthlyPayment = this.totalMonthlyPayment * (1 + (parseFloat(this.leaseForm.get('margin').value) / 100 / 12));
-    //* (1 + (parseFloat(this.leaseForm.get('margin').value) / 100 / 12));
-    this.totalInterest = (parseFloat(this.leaseForm.get('leasePeriod').value) * parseFloat(this.totalMonthlyPayment))
-      - parseFloat(this.financingAmount);
-    this.totalMonthlyPayment = this.totalMonthlyPayment.toFixed(2);
-    this.totalInterest = this.totalInterest.toFixed(2);
-    this.financingAmount = this.financingAmount.toFixed(2);
-    this.showCalculation = true;
-    console.log(this.showCalculation);
+    this.scheduleService.getSchedule(this.leaseForm.get('advancePaymentAmount').value,
+      this.leaseForm.get('assetPrice').value, new Date(), this.leaseForm.get('leasePeriod').value,
+      '30', this.leaseForm.get('margin').value).then( data => {
+      this.totalMonthlyPayment = data[0].totalPaymentAmount;
+      this.totalInterest = (parseFloat(this.leaseForm.get('leasePeriod').value) * parseFloat(this.totalMonthlyPayment))
+        - parseFloat(this.financingAmount);
+      this.totalMonthlyPayment = this.totalMonthlyPayment.toFixed(2);
+      this.totalInterest = this.totalInterest.toFixed(2);
+      this.financingAmount = this.financingAmount.toFixed(2);
+      this.showCalculation = true;
+    }, error => {
+    });
   }
 
   showBorder() {

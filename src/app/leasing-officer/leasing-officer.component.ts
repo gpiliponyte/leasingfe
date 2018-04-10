@@ -46,8 +46,6 @@ export class LeasingOfficerComponent implements OnInit {
         this.globals.status = 'pending';
         this.guard.renewIfSessionExpired();
       }, (error) => {
-        console.log('get all pending error');
-        console.log(error);
       });
     this.isPendingActive = true;
     this.isDeclinedActive = false;
@@ -57,11 +55,10 @@ export class LeasingOfficerComponent implements OnInit {
     this.leaseService.getAllApprovedLeases()
       .then(data => {
         this.listOfLeases = data;
+        this.listOfLeases.sort((a, b) => a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
         this.globals.status = 'approved';
         this.guard.renewIfSessionExpired();
       }, (error) => {
-        console.log('get all approved error');
-        console.log(error);
       });
     this.isPendingActive = false;
     this.isDeclinedActive = false;
@@ -71,6 +68,7 @@ export class LeasingOfficerComponent implements OnInit {
     this.leaseService.getAllDeclinedLeases()
       .then(data => {
         this.listOfLeases = data;
+        this.listOfLeases.sort((a, b) => a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
         this.globals.status = 'declined';
         this.guard.renewIfSessionExpired();
       }, (error) => {

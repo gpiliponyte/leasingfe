@@ -12,12 +12,12 @@ export class PrivateFormComponent implements OnInit {
 
   privateForm: FormGroup;
   emailRegex = '^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
-  cityRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]+$';
+  cityRegex = '^(?!\\s)([a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\\s]){1,}';
   postCodeRegex = '[a-zA-Z0-9\\-]*';
-  streetRegex = '^[a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž0-9\\s\\.\\-]+$';
+  streetRegex = '^(?!\\s)([a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž0-9\\s\\.\\-]){1,}';
   phoneNumberRegex = '^[0-9]+$';
   personalIDRegex = '^[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}$';
-  nameRegex = '^[a-zA-ZąčęėįųūšžĄČĖĘĮŲŪČŠŽ ,.\'-]+$';
+  nameRegex = '^(?!\\s)([a-zA-ZąčęėįųūšžĄČĖĘĮŲŪČŠŽ ,.\'-]){1,}';
   showErrorMessages = false;
   isCheckboxChecked = false;
 
