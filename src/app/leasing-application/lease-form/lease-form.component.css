@@ -3,6 +3,22 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
   /* border: 1px solid red; */
 }
 
+.fixed{
+  position: fixed;
+  margin-left:50%;
+  top: 0;
+}
+@media only screen and (max-width: 1200px) {
+  .fixed{
+    position: relative;
+    margin-left:0%;
+  }
+}
+/* .sticky {
+  position: fixed;
+  top: 0;
+
+} */
 .calculator-control{
   background-color: transparent;
 }
@@ -72,7 +88,9 @@ button:focus{
   border: none;
 }
 
-
+button{
+  float: right;
+}
 .calculateContainer{
   margin-bottom: 20px;
   padding: 10px;

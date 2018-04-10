@@ -218,7 +218,7 @@
       <div class="form-group row notBorder">
         <div class="col-lg-offset-9 col-lg-3 col-md-12 col-sm-12 col-xs-12" >
           <button
-          style="width: 100%;"
+          style="width: auto;"
             name="submit"
             type="button"
             (click)="goToSummary()"
@@ -231,20 +231,23 @@
   <div class="col-lg-0 col-md-2 col-sm-1 col-xs-1" ></div>
 </div>
 
-<div *ngIf="showElement" class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style=" margin-top: 2%; ">
 
+<div *ngIf="showElement" (scroll)="onWindowScroll($event)" class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%; ">
   <div class="col-lg-1 col-md-2 col-sm-1 col-xs-1"></div>
-  <div class="col-lg-9 col-md-8 col-sm-10 col-xs-10">
-    <div style=" width:100%; margin-bottom: 20px; text-align:center;height:45px; padding-top:10px; padding-bottom: 10px;">
-        <!--<label style="font:18px 'Exo' ; margin-bottom:1%; COLOR:white;">Preliminary leasing calculation</label>-->
-      <h3>Preliminary leasing calculation</h3>
+  <div class="col-lg-9 col-md-8 col-sm-10 col-xs-10" style="padding:0%;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0%;">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <label style="font:18px 'Exo' ;padding-top:15px; margin-bottom:1%; COLOR:#981D28;;">Preliminary leasing calculation</label>
     </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="width: auto; padding:0%;">
     <button style="width:100%; margin-top:10px; "
   [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid"
   (click)="calculatePreliminaryLeasingAmount(); showBorder()"
   value="kazkas"
   class="btn btn-dark">Calculate
 </button>
+</div>
+</div>
 <!--  *ngIf="showCalculation"  -->
 <!-- <div  class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" > -->
   <div *ngIf="showBorderLine" class="calculateContainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -257,15 +260,17 @@
       name="financingAmount"
       id="calculatorFinancingAmount"
       class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
-      value="{{financingAmount}}€"
+      value="{{financingAmount}} €"
     >
-  <label *ngIf="showCalculation" for="calculatorContractFee" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">CONTRACT FEE</label>
+   
+  <label *ngIf="showCalculation" for="calculatorContractFee" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">CONTACT FEE</label>
+
   <input *ngIf="showCalculation"
   type="text"
   readonly
       id="calculatorContractFee"
       class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
-      value="{{leaseForm.get('contractFee').value}}€"
+      value="{{leaseForm.get('contractFee').value}} €"
       >
   <label *ngIf="showCalculation" for="calculatorTotalInterest" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">TOTAL INTEREST</label>
   <input
@@ -276,7 +281,7 @@
   name="totalInterest"
   id="calculatorTotalInterest"
   class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
-  value="{{totalInterest}}€"
+  value="{{totalInterest}} €"
  >
   <label *ngIf="showCalculation" for="calculatorTotalMonthlyPayment" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">TOTAL MONTHLY PAYMENT</label>
   <input
@@ -287,15 +292,29 @@
   name="totalMonthlyPayment"
   id="calculatorTotalMonthlyPayment"
   class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
-  value="{{totalMonthlyPayment}}€"
+  value="{{totalMonthlyPayment}} €"
  >
 </div>
-    <button style="width:100%; margin-top:10px;"
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+    <label style="font:18px 'Exo' ;padding-top:15px; margin-bottom:1%; COLOR:#981D28;;">Preliminary payment schedule</label>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="width: auto; padding:0%;">
+    <button style="width:100%; margin-top:10px; "
+    [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid || !leaseForm.get('paymentDate').valid"
+    (click)="getPreliminarySchedule(); showScheduleBorder()"
+    value="kazkas"
+  class="btn btn-dark">Calculate
+</button>
+</div>
+
+
+    <!-- <button style="width:auto; margin-top:10px;"
             [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid || !leaseForm.get('paymentDate').valid"
             (click)="getPreliminarySchedule(); showScheduleBorder()"
             value="kazkas"
-            class="btn btn-dark">Preliminary payment schedule
-    </button>
+            class="btn btn-dark">Calculate
+    </button> -->
     <div *ngIf="showScheduleBorderLine" class=" pre-scrollable calculateContainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <table *ngIf="showPreliminarySchedule"  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table table-dark">
         <thead>

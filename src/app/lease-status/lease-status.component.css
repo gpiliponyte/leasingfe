@@ -25,10 +25,11 @@ h3{
 .first{
 /* background-color: #DEEAF1; */
 /* background-color: rgb(245, 239, 239); */
-background-color: rgb(235, 222, 222);
+/* background-color: rgb(235, 222, 222); */
 padding: 0%;
 padding-top: 0.5%;
 padding-bottom: 0.5%;
+border-bottom: 2px solid #DDDDDD;
 
 }
 
@@ -36,6 +37,7 @@ padding-bottom: 0.5%;
   padding: 0%;
   padding-top: 0.5%;
 padding-bottom: 0.5%;
+border-bottom: 2px solid #DDDDDD;
   /* background-color: #FF8A5B; */
 }
 
@@ -63,7 +65,7 @@ button:focus{
 }
 form div{
   padding: 0%;
-  margin-left: 2%;
+  /* margin-left: 2%; */
 }
 
 
@@ -92,4 +94,12 @@ b{
   font-size: 16px;
   color: black;
   font-weight: normal;
+}
+
+@media only screen and (max-width: 765px) {
+  form div{
+    padding: 0%;
+    margin-left: 2%;
+  }
+
 }

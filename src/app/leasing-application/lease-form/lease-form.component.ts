@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output,Inject,HostListener} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleService} from '../../services/vehicle.service';
 import {LeaseService} from '../../services/lease.service';
 import {ScheduleService} from '../../services/schedule.service';
+import { DOCUMENT } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-lease-form',
@@ -37,11 +38,12 @@ export class LeaseFormComponent implements OnInit {
   calculationResponse;
   showPreliminarySchedule = false;
   showScheduleBorderLine = false;
+ 
 
   @Input() showElement;
   @Input() resetModels;
 
-  constructor(public vehicleService: VehicleService, public leaseService: LeaseService, public scheduleService: ScheduleService) {
+  constructor(public vehicleService: VehicleService, public leaseService: LeaseService, public scheduleService: ScheduleService, @Inject(DOCUMENT) private doc: Document) {
   }
 
   ngOnInit() {
@@ -219,4 +221,27 @@ export class LeaseFormComponent implements OnInit {
     this.showScheduleBorderLine = true;
   }
 
+
+  public fixed: boolean = false; 
+
+        //  constructor(@Inject(DOCUMENT) private doc: Document) {}
+  // @HostListener("window:scroll", [])
+  // onWindowScroll() {
+  //    let num = this.doc.body.scrollTop;
+  //    if ( num > 5 ) {
+  //        this.fixed = true;
+  //    }else if (this.fixed && num < 5) {
+  //        this.fixed = false;
+  //    }
+  // }
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll($event) {
+    const number = $event.target.scrollTop;
+    if (number > 10) {
+      this.fixed = true;
+    } else if (this.fixed && number < 10) {
+      this.fixed = false;
+    }
+    console.log(this.fixed);
+  }
 }

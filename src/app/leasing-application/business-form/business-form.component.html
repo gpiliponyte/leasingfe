@@ -1,14 +1,14 @@
 <!--Business form-->
 <div class="businessPersonalInfo" *ngIf="showElement && leaseService.leaseObject.customerType === 'Business'">
-    <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
-    <div class="container col-lg-6 col-md-8 col-sm-10 col-xs-10">
+    <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+    <div class="container col-lg-5 col-md-6 col-sm-10 col-xs-10">
       <form class="form-horizontal col-lg-12 col-md-12 col-sm-12 col-xs-12"  [formGroup]="businessCustomerForm">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title" >
           <h3>Business customer information</h3>
         </div>
         <div class="form-group">
-          <label for="companyName" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">COMPANY NAME</label>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <label for="companyName" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">COMPANY NAME</label>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <input
               formControlName="companyName"
               id="companyName"
@@ -19,8 +19,8 @@
                 class="label label-danger">Invalid company name. Required field.</span>
         </div>
         <div class="form-group">
-          <label for="companyCode" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">COMPANY CODE</label>
-          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <label for="companyCode" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">COMPANY CODE</label>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <input
               formControlName="companyCode"
               id="companyCode"
@@ -32,8 +32,8 @@
 
         </div>
         <div class="form-group">
-          <label for="email" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">EMAIL</label>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <label for="email" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">EMAIL</label>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <input
               formControlName="email"
               id="bussinessEmail"
@@ -45,21 +45,22 @@
                 class="label label-danger">Invalid email. Required field.</span>
         </div>
         <div class="form-group">
-          <label for="phoneNumber" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">PHONE NUMBER</label>
+          <label for="phoneNumber" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">PHONE NUMBER</label>
 
-          <div  id="phoneNumber input-group" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-              <span class="input-group-addon col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:34px; padding-top:9px;">+</span>
-            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="border-bottom: none;">
+          <div  id="phoneNumber  input-group" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <span class="input-group-addon col-lg-1 col-md-1 col-sm-2 col-xs-3" style="height:34px; padding-top:9px;">+</span>
+            <div class=" numberline col-lg-11 col-md-11 col-sm-10 col-xs-9" style="border-bottom: none;">
               <input
                 formControlName="phoneNumber"
                 id="businessPhoneNumber"
                 class="form-control bfh-phone"
                 type="text">
             </div>
-            <span class="col-lg-7 col-md-11 col-sm-11 col-xs-11" *ngIf="businessCustomerForm.get('phoneNumber').invalid && (businessCustomerForm.get('phoneNumber').touched || showErrorMessages)"
-            class="label label-danger">Only numeric values. Required field.</span>
+            
 
           </div>
+          <span class="col-lg-7 col-md-11 col-sm-11 col-xs-11" *ngIf="businessCustomerForm.get('phoneNumber').invalid && (businessCustomerForm.get('phoneNumber').touched || showErrorMessages)"
+            class="label label-danger">Only numeric values. Required field.</span>
           <!-- <div class="col-xs-5">
             <span class="input-group-addon"><i class="fa fa-plus"></i></span>
             <input
@@ -68,14 +69,13 @@
               class="form-control bfh-phone"
               type="text">
             </div> -->
-
         </div>
         <div class="row form-group">
-          <label class="col-lg-4 col-lg-offset-8 col-md-12 col-sm-12 col-xs-12" id="address">ADDRESS</label>
+          <label class="col-lg-12 col-lg-offset-8 col-md-12 col-sm-12 col-xs-12" id="address">ADDRESS</label>
         </div>
         <div class="form-group">
-          <label for="street" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">street</label>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <label for="street" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">street</label>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <input
               formControlName="street"
               id="businessStreet"
@@ -88,8 +88,8 @@
         </div>
 
         <div class="form-group">
-          <label for="city" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">city</label>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <label for="city" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">city</label>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <input
               formControlName="city"
               id="businessCity"
@@ -103,8 +103,8 @@
 
 
         <div class="form-group">
-          <label for="postCode" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">post code</label>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <label for="postCode" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">post code</label>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <input
               formControlName="postCode"
               id="businessPostCode"
@@ -116,8 +116,8 @@
         </div>
 
         <div class="form-group">
-          <label for="country" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">country</label>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <label for="country" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">country</label>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <input
               formControlName="country"
               id="businessCountry"
@@ -137,16 +137,16 @@
         </div> -->
 
       </form>
-      <div class="form-group button-group row col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:none; margin-top:2%;">
+      <div class="form-group button-group row col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:none; margin-top:2%; margin-bottom:15px;">
           <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 SummaryButtons" style="border-bottom:none; margin-top:2%;">
-            <button style="width: 100%;" (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
+            <button style="width: 100%; background-color: rgb(143, 69, 96);" (click)="goBackToSummary()" name="submit1" type="submit" class="btn">Back</button>
           </div>
           <div class="col-lg-offset-8 col-lg-2 col-md-12 col-sm-12 col-xs-12 SummaryButtons"  style="border-bottom:none; margin-top:2%;">
             <button style="width: 100%;"  (click)="submit()" name="submit2" type="submit" class="btn">Submit</button>
           </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1" ></div>
+    <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1" ></div>
   </div>
 
 

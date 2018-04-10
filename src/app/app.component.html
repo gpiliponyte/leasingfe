@@ -1,30 +1,24 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div *ngIf="router.url!='/login'" style="overflow: hidden; background-color: #F8F8F8;">
-  <div class="paveikslelis" style="height:95px;  ">
+<div *ngIf="router.url!='/login'" style="overflow: hidden;">
+  
+  <div class="paveikslelis" style="height:1px;">
     <!-- <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a> -->
-    <img  src=".\assets\car2.jpg">
+    <img  src=".\assets\car4.png">
    </div>
    <div  class="logo2">
      <!-- <div class="back"></div> -->
       <!-- <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a> -->
-      <a  routerLink="home"> <img *ngIf="router.url!='/home'" src=".\assets\domologo2.png"></a>
+      <a  routerLink="home"> <img *ngIf="router.url!='/home'" src=".\assets\swedbanko logo grey2.png"></a>
      </div>
+  
   <!-- <div class="logo" style="background-color: 2274A5;">
    <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a>
   </div> -->
   <nav class="navbar navbar-default" *ngIf="router.url.split('/leasingOfficer').length==1 && router.url!='/login' && showNavbar" >
-    <div class="container-fluid" >
-      <!--<div class="navbar-header">-->
-          <!--&lt;!&ndash; <a  class="logo" href="#"> <img  src=".\assets\swedbanko logo.png"></a> &ndash;&gt;-->
-        <!--&lt;!&ndash; <div class="logo"> &ndash;&gt;-->
-            <!--&lt;!&ndash; <a  href="#"> <img  src=".\assets\swedbanko logo.png"></a> &ndash;&gt;-->
-            <!--&lt;!&ndash; <a  href="#"> <img  src=".\assets\logonew.png"></a>-->
-           <!--</div> &ndash;&gt;-->
-           <!--<a style="color: #4b0808;" class="navbar-brand" routerLink="home">Home</a>-->
-      <!--</div>-->
-
+    <div class="container-fluid" style="padding-left:0%;" >
+    
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="home" >Home</a></li>
+         <li routerLinkActive="active"> <a routerLink="home">Home</a></li>
         <li routerLinkActive="active"><a routerLink="leaseForm" >Lease Form</a></li>
         <li routerLinkActive="active"><a routerLink="leaseStatus">Search Lease</a></li>
       </ul>
