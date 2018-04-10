@@ -1,14 +1,70 @@
 <!-- id="summary" -->
 <div class="summary col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-    <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
-    <div class="container col-lg-6 col-md-8 col-sm-10 col-xs-10">
+    <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+    <div class="container col-lg-6 col-md-6 col-sm-10 col-xs-10">
 
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title" >
         <h3>Vehicle lease summary</h3>
       </div>
 
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:2%;">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">CUSTOMER TYPE</div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-right:0%;">
+              <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+          <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12" >
+            <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">CUSTOMER TYPE</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.customerType}}</div>
+            </div>
+          
+            <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">ASSET TYPE</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.assetType}}</div>
+            </div>
+          
+            <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">BRAND</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.vehicleBrand}}</div>
+            </div>
+            <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">MODEL</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.model}}</div>
+            </div>
+            <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">YEAR</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.year}}</div>
+            </div>
+            <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">ENGINE POWER  </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.enginePower}} kW</div>
+            </div>
+            <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">ASSET PRICE </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv"> {{leaseService.leaseObject.assetPrice}} €</div>
+            </div>
+            <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">ADVANCE PAYMENT PERCENTAGE</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.advancePaymentPercentage}} %</div>
+            </div>
+            <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">ADVANCE PAYMENT AMOUNT</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.advancePaymentAmount}} €</div>
+            </div>
+            <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">LEASE PERIOD </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.leasePeriod}}</div>
+            </div>
+            <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">CONTRACT FEE </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.contractFee}} €</div>
+            </div>
+            <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">PAYMENT DAY </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{leaseService.leaseObject.paymentDate}}</div>
+            </div>
+
+
+
+
+        <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">CUSTOMER TYPE</div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 borderdiv">{{leaseService.leaseObject.customerType}}</div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">ASSET TYPE</div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 borderdiv" >{{leaseService.leaseObject.assetType}}</div>
@@ -27,24 +83,25 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">ADVANCE PAYMENT AMOUNT</div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 borderdiv">{{leaseService.leaseObject.advancePaymentAmount}} €</div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">LEASE PERIOD </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 borderdiv">{{leaseService.leaseObject.leasePeriod}}</div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 borderdiv">{{leaseService.leaseObject.leasePeriod}}</div> -->
         <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">MARGIN </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 borderdiv">{{leaseService.leaseObject.margin}} %</div> -->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">CONTRACT FEE </div>
+        <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">CONTRACT FEE </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 borderdiv">{{leaseService.leaseObject.contractFee}} €</div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">PAYMENT DATE </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 borderdiv">{{leaseService.leaseObject.paymentDate}}</div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 borderdiv">{{leaseService.leaseObject.paymentDate}}</div> -->
       </div>
+</div>
 
-      <div class="form-group button-group row col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:none; margin-top:2%;">
-          <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 SummaryButtons" style="border-bottom:none; margin-top:2%;">
-            <button  style="width: 100%;" (click)="goBackToForm1()" name="submit1" type="button" class="btn">Back</button>
+      <div class="form-group row col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:none; margin-top:2%;">
+          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 SummaryButtons" style="border-bottom:none; padding-right:0%; margin-top:2%;">
+            <button  style="width: 100%; background-color: rgb(143, 69, 96);" (click)="goBackToForm1()" name="submit1" type="button" class="btn">Back</button>
           </div>
-          <div class="col-lg-offset-8 col-lg-2 col-md-12 col-sm-12 col-xs-12 SummaryButtons"  style="border-bottom:none; margin-top:2%;">
+          <div class="col-lg-offset-8 col-lg-2 col-md-offset-8 col-md-2 col-md-12 col-xs-12 SummaryButtons"  style="border-bottom:none; padding-right:0%; margin-top:2%;">
             <button style="width: 100%;"  (click)="goNextToForm2()" name="submit2" type="button" class="btn">Next</button>
           </div>
         </div>
-
-    </div>
-    <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1" ></div>
+  </div>
+  
+    <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1" ></div>
   </div>

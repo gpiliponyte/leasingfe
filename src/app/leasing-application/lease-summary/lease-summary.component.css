@@ -13,6 +13,7 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
 
 .btn{
   background-color: #550C27;
+  
   color: white;
   min-width: 80px;
   font-family: 'Exo';
@@ -32,6 +33,7 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
   margin-bottom: 3%;
   border: 6px solid #981D28;
   background-color: rgb(255, 255, 255);
+  padding: 0%;
 }
 
 form{
@@ -58,7 +60,7 @@ form{
 }
 
 .summary .container .borderdiv{
-  background-color: #EBDEDE;
+  /* background-color: #EBDEDE; */
   /* background-color:rgb(196, 147, 151); */
   /* width:100%; */
   /* border-bottom: 1px solid #F58321; */
@@ -73,6 +75,26 @@ form{
   font-weight: normal;
 
 }
+
+.first{
+  /* background-color: #DEEAF1; */
+  /* background-color: rgb(245, 239, 239); */
+  /* background-color: rgb(235, 222, 222); */
+  padding: 0%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  border-bottom: 2px solid #DDDDDD;
+  
+  }
+  
+  .second{
+    padding: 0%;
+    padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  border-bottom: 2px solid #DDDDDD;
+    /* background-color: #FF8A5B; */
+  }
+
 .privatePersonalInfo .container .title{
   margin-bottom: 1.5%;
   border-bottom: none;
@@ -118,13 +140,13 @@ form{
   height: 90%;
 
 }
-.privatePersonalInfo .container .form-horizontal .form-group div {
+/* .privatePersonalInfo .container .form-horizontal .form-group div {
   margin-left:2%;
   border-bottom: 1px solid #F58321;
 }
 .privatePersonalInfo .container .form-group span{
   float: right;
-}
+} */
 /* .businessPersonalInfo .container{
   width: 70%;
   border-radius: 1%;

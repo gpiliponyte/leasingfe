@@ -2,6 +2,17 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
   /* border: 1px solid red; */
 }
 
+
+.numberline{
+  width:50%;
+}
+
+@media only screen and (max-width: 600px){
+  .numberline{
+    width:85%;
+  }
+}
+
 #address{
   /* margin: 8px 0 0 0; */
   font-size: 14px;
