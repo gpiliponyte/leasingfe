@@ -37,6 +37,7 @@ export class LeaseStatusComponent implements OnInit {
       }, scheduleError => {
           this.isScheduleError = true;
       });
+
     }, error => {
       this.isError = true;
       this.infoIsShown = true;

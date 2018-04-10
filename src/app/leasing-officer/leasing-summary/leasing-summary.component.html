@@ -4,64 +4,64 @@
 <h2 style="text-align: center" *ngIf="showSummary && response.customerType === 'Business'"><b>Customer: </b>{{response.companyName}} {{response.companyCode}}</h2>
   <h3 style="text-align: center"><b>Application status: </b>{{response.applicationStatus}}</h3>
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
   <div  id="summary" class="container col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 20px">
  <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>CUSTOMER TYPE </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.customerType}}</div>
+   <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>CUSTOMER TYPE </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.customerType}}</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div  class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>ASSET TYPE </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.assetType}}</div>
+  <div  class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>ASSET TYPE </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.assetType}}</div>
 </div>
 <!--a-->
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>BRAND </b></div>
-  <div class="col-lg-6  col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.brand}}</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>BRAND </b></div>
+  <div class="col-lg-2  col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.brand}}</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>MODEL </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.model}}</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>MODEL </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.model}}</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>YEAR </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.year}}</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>YEAR </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.year}}</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>ENGINE POWER </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.enginePower}} kW</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>ENGINE POWER </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.enginePower}} kW</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>ASSET PRICE </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv"> {{response.assetPrice}} €</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>ASSET PRICE </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv"> {{response.assetPrice}} €</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>ADVANCE PAYMENT PERCENTAGE </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.advancePaymentPercentage}} %</div>
+  <div class=" col-lg-10  col-md-10 col-sm-10 col-xs-10"><b>ADVANCE PAYMENT PERCENTAGE </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.advancePaymentPercentage}} %</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>ADVANCE PAYMENT AMOUNT </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.advancePaymentAmount}} €</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>ADVANCE PAYMENT AMOUNT </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.advancePaymentAmount}} €</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>LEASE PERIOD </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.leasePeriod}}</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>LEASE PERIOD </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.leasePeriod}}</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>MARGIN </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.margin}} %</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>MARGIN </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.margin}} %</div>
 </div>
 <div class="row second col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>CONTRACT FEE </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.contractFee}} €</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>CONTRACT FEE </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.contractFee}} €</div>
 </div>
 <div class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>PAYMENT DAY </b></div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{response.paymentDate}}</div>
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>PAYMENT DAY </b></div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{response.paymentDate}}</div>
 </div>
           <div *ngIf="scheduleResponse != null && response.applicationStatus != 'declined'" class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>TOTAL MONTHLY PAYMENT </b></div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 borderdiv">{{scheduleResponse[0].totalPaymentAmount.toFixed(2)}}</div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"><b>TOTAL MONTHLY PAYMENT </b></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 borderdiv">{{scheduleResponse[0].totalPaymentAmount.toFixed(2)}}</div>
           </div>
     <!--<div *ngIf="scheduleResponse != null && response.applicationStatus == 'pending'" class="row first col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
       <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>PROVISIONAL TOTAL MONTHLY PAYMENT </b></div>-->
@@ -77,8 +77,8 @@
   <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
 </div>
 
-  <div style="text-align: center">
-    <button id="schedule_div" *ngIf="!isScheduleError && (response.applicationStatus == 'pending' || response.applicationStatus == 'approved')" style="background-color: #550c27" type="button" class="btn btn-lg btn-primary" (click)="onCalendarClick()" data-toggle="collapse" data-target="#calendar_div">{{buttonText}}</button>
+  <div style="text-align: center; padding-right: 33px;">
+    <button id="schedule_div" *ngIf="!isScheduleError && (response.applicationStatus == 'pending' || response.applicationStatus == 'approved')" style=" background-color: #550c27" type="button" class="btn btn-lg btn-primary" (click)="onCalendarClick()" data-toggle="collapse" data-target="#calendar_div">{{buttonText}}</button>
   </div>
 
 <!--<h3 *ngIf="!isScheduleError && response.applicationStatus == 'approved'" >Payment schedule :</h3>-->
@@ -89,10 +89,10 @@
     <thead>
     <tr>
       <th scope="col">Date</th>
-      <th scope="col">Unpaid Asset Amount</th>
-      <th scope="col">Unpaid Asset Repayment Amount</th>
-      <th scope="col">Interest Amount</th>
-      <th scope="col">Total Payment Amount</th>
+      <th scope="col">Balance</th>
+      <th scope="col">Principal Repayment</th>
+      <th scope="col">Interest Payment</th>
+      <th scope="col">Total Monthly Payment</th>
     </tr>
     </thead>
 
@@ -112,7 +112,7 @@
   </table>
 </div>
 
-  <div style="margin-bottom: 60px; text-align: center" *ngIf="response.applicationStatus == 'pending'">
+  <div style="margin-bottom: 60px; padding-right: 50px; text-align: center" *ngIf="response.applicationStatus == 'pending'">
     <button id="approve" class="btn btn-lg btn-primary" type="submit" (click)="approveLease()">APPROVE</button>
     <button id="deny" class="btn btn-lg btn-primary" type="submit" (click)="declineLease()">DECLINE</button>
   </div>
