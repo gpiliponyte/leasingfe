@@ -235,8 +235,9 @@
 
   <div class="col-lg-1 col-md-2 col-sm-1 col-xs-1"></div>
   <div class="col-lg-9 col-md-8 col-sm-10 col-xs-10">
-    <div style=" background-color:#981D28;width:100%; text-align:center;height:45px; padding-top:10px;">
-        <label style="font:18px 'Exo' ; margin-bottom:1%; COLOR:white;">Preliminary leasing calculation</label>
+    <div style=" width:100%; margin-bottom: 20px; text-align:center;height:45px; padding-top:10px; padding-bottom: 10px;">
+        <!--<label style="font:18px 'Exo' ; margin-bottom:1%; COLOR:white;">Preliminary leasing calculation</label>-->
+      <h3>Preliminary leasing calculation</h3>
     </div>
     <button style="width:100%; margin-top:10px; "
   [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid"
@@ -256,18 +257,16 @@
       name="financingAmount"
       id="calculatorFinancingAmount"
       class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
-      value="{{financingAmount}}"
+      value="{{financingAmount}}€"
     >
-    <label class="col-lg-1 col-md-1 col-sm-1 col-xs-2" >€</label>
-  <label *ngIf="showCalculation" for="calculatorContractFee" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">CONTACT FEE</label>
+  <label *ngIf="showCalculation" for="calculatorContractFee" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">CONTRACT FEE</label>
   <input *ngIf="showCalculation"
   type="text"
   readonly
       id="calculatorContractFee"
       class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
-      value="{{leaseForm.get('contractFee').value}}"
+      value="{{leaseForm.get('contractFee').value}}€"
       >
-      <label class="col-lg-1 col-md-1 col-sm-1 col-xs-2" >€</label>
   <label *ngIf="showCalculation" for="calculatorTotalInterest" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">TOTAL INTEREST</label>
   <input
   *ngIf="showCalculation"
@@ -277,9 +276,8 @@
   name="totalInterest"
   id="calculatorTotalInterest"
   class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
-  value="{{totalInterest}}"
+  value="{{totalInterest}}€"
  >
- <label class="col-lg-1 col-md-1 col-sm-1 col-xs-2" >€</label>
   <label *ngIf="showCalculation" for="calculatorTotalMonthlyPayment" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">TOTAL MONTHLY PAYMENT</label>
   <input
   *ngIf="showCalculation"
@@ -289,9 +287,8 @@
   name="totalMonthlyPayment"
   id="calculatorTotalMonthlyPayment"
   class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
-  value="{{totalMonthlyPayment}}"
+  value="{{totalMonthlyPayment}}€"
  >
- <label class="col-lg-1 col-md-1 col-sm-1 col-xs-2" >€</label>
 </div>
     <button style="width:100%; margin-top:10px;"
             [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid || !leaseForm.get('paymentDate').valid"

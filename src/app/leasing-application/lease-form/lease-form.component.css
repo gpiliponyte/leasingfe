@@ -7,6 +7,11 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
   background-color: transparent;
 }
 
+h3{
+  margin-bottom: 15px;
+  color:#981D28;
+}
+
 .slider {
   -webkit-appearance: none;
   width: 100%;
@@ -125,7 +130,7 @@ form{
   margin: 0%;
   padding: 0%;
   padding-top: 1.5%;
- 
+
   /* height: auto; */
 }
 
@@ -180,7 +185,7 @@ span{
 }
 
 .form-control:focus {
-  
+
   border: 1px solid rgb(158, 54, 62);
   -webkit-box-shadow: 0px 0px 10px rgb(158, 54, 62);
   box-shadow: #981D28;
