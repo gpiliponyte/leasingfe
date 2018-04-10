@@ -6,7 +6,6 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
 .fixed{
   position: fixed;
   margin-left:50%;
-  top: 0;
 }
 @media only screen and (max-width: 1200px) {
   .fixed{

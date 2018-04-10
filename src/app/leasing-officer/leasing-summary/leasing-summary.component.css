@@ -22,7 +22,10 @@ h3{
   margin-bottom: 27px;
 }
 #calendar_div{
-  margin: 15px;
+  margin-top: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 50px;
 }
 
 #schedule_div{

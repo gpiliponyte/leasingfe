@@ -3,7 +3,7 @@
 <button id="button" class="btn btn-lg btn-primary" type="submit" (click)="logout()">Logout</button>
 </div>
 
-<div class="col-md-3">
+<div class="col-md-2">
   <ul class="nav nav-pills nav-stacked red" id="myTabs">
     <li [ngClass]="{'active': isPendingActive}"><a  data-toggle="pill" (click)="pendingLeases()" >Pending</a></li>
     <li [ngClass]="{'active': isApprovedActive}"><a  data-toggle="pill" (click)="approvedLeases()" >Approved</a></li>
@@ -12,7 +12,7 @@
 </div>
 
 <!-- Content -->
-<div class="col-md-9">
+<div class="col-md-8">
   <div class="tab-content" >
     <div class="tab-pane active"  >
       <table class="table">

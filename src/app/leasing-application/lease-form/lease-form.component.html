@@ -232,7 +232,7 @@
 </div>
 
 
-<div *ngIf="showElement" (scroll)="onWindowScroll($event)" class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%; ">
+<div *ngIf="showElement"  class="fixed col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%; ">
   <div class="col-lg-1 col-md-2 col-sm-1 col-xs-1"></div>
   <div class="col-lg-9 col-md-8 col-sm-10 col-xs-10" style="padding:0%;">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0%;">
@@ -262,7 +262,7 @@
       class="calculator-control col-lg-5 col-md-5 col-sm-5 col-xs-10"
       value="{{financingAmount}} €"
     >
-   
+
   <label *ngIf="showCalculation" for="calculatorContractFee" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">CONTACT FEE</label>
 
   <input *ngIf="showCalculation"
@@ -304,7 +304,7 @@
     [disabled]="!leaseForm.get('assetPrice').valid || !leaseForm.get('margin').valid || !leaseForm.get('leasePeriod').valid || !leaseForm.get('advancePaymentAmount').valid || !leaseForm.get('paymentDate').valid"
     (click)="getPreliminarySchedule(); showScheduleBorder()"
     value="kazkas"
-  class="btn btn-dark">Calculate
+  class="btn btn-dark">Schedule
 </button>
 </div>
 
@@ -315,7 +315,7 @@
             value="kazkas"
             class="btn btn-dark">Calculate
     </button> -->
-    <div *ngIf="showScheduleBorderLine" class=" pre-scrollable calculateContainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div *ngIf="showScheduleBorderLine" class=" pre-scrollable calculateContainer col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:223px">
       <table *ngIf="showPreliminarySchedule"  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table table-dark">
         <thead>
         <tr>
