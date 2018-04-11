@@ -43,6 +43,7 @@ export class LeasingOfficerComponent implements OnInit {
     this.leaseService.getAllPendingLeases()
       .then(data => {
         this.listOfLeases = data;
+        this.listOfLeases.sort((a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0);
         this.globals.status = 'pending';
         this.guard.renewIfSessionExpired();
       }, (error) => {
